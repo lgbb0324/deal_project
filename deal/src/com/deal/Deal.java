@@ -1,5 +1,8 @@
 package com.deal;
 
 public class Deal {
-		System.out.println("dssf");
+	public static void main(String[] args) {
+		System.out.println("È£³¯µÎ");
+	}
+		
 }
