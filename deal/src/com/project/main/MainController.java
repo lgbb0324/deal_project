@@ -12,7 +12,7 @@ public class MainController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView method() {
 		ModelAndView mav = new ModelAndView("/main/main");
-		
+		System.out.println("±â»Ý¾Æ ¾È³ç");
 		return mav;
 	}
 }
