@@ -41,7 +41,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-diamond"></i> 뷰티 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-github-alt"></i> 뷰티 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="form_advanced.html">스킨케어</a>
                                         </li>
@@ -69,7 +69,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-bed"></i> 가구/생활 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-home"></i> 가구/생활 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="tables.html">침대/커튼/카페트</a>
                                         </li>
@@ -97,7 +97,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-television"></i> 디지털/가전 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-laptop"></i> 디지털/가전 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="tables.html">카메라/악세사리</a>
                                         </li>
@@ -125,7 +125,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-map"></i> 지역(실시간 딜정보) <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-map-marker"></i> 지역(실시간 딜정보) <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="tables.html">서울</a>
                                         </li>
