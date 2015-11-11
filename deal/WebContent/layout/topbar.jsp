@@ -43,7 +43,7 @@
                           <!-- 쪽지 -->
                             <li role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-envelope"></i>
+                                    <i class="fa fa-envelope fa-5x"></i>
                                     <span class="badge bg-green">2</span>
                                 </a>
                                 
@@ -119,7 +119,7 @@
 							<!-- 대화 -->
 							<li role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-comments"></i>
+                                    <i class="fa fa-comments fa-5x"></i>
                                     <span class="badge bg-green">2</span>
                                 </a>
                                 
@@ -194,7 +194,7 @@
 							<!-- 알림 -->
                             <li role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-paper-plane"></i>
+                                    <i class="fa fa-paper-plane fa-5x"></i>
                                     <span class="badge bg-green">2</span>
                                 </a>
                                 
