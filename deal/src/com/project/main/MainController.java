@@ -13,6 +13,7 @@ public class MainController {
 	public ModelAndView method() {
 		ModelAndView mav = new ModelAndView("/main/main");
 		System.out.println("±‚ª›æ∆ æ»≥Á");
+		System.out.println("±Ë¿ÁºÆ");
 		return mav;
 	}
 }
