@@ -12,7 +12,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Dealer Chic!</span></a>
+                        <a href="index.html" class="site_title"><i class="fa fa-user"></i> <span>Dealer Chic!</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -27,7 +27,7 @@
                         <div class="menu_section">
                             
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> 의류/잡화 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-male"></i> 의류/잡화 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="index.html">남성의류</a>
                                         </li>
@@ -41,10 +41,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-edit"></i> 뷰티 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-diamond"></i> 뷰티 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="form.html">General Form</a>
-                                        </li>
                                         <li><a href="form_advanced.html">스킨케어</a>
                                         </li>
                                         <li><a href="form_validation.html">메이크업</a>
@@ -57,7 +55,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-desktop"></i> 식품 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-cutlery"></i> 식품 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="general_elements.html">농/수/축산 식품</a>
                                         </li>
@@ -71,7 +69,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-table"></i> 가구/생활 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-bed"></i> 가구/생활 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="tables.html">침대/커튼/카페트</a>
                                         </li>
@@ -85,7 +83,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-bar-chart-o"></i> 레저/자동차 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-car"></i> 레저/자동차 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="chartjs.html">스포츠용품</a>
                                         </li>
@@ -99,7 +97,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-table"></i>디지털/가전 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-television"></i> 디지털/가전 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="tables.html">카메라/악세사리</a>
                                         </li>
@@ -113,7 +111,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-table"></i> 도서/취미 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-book"></i> 도서/취미 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="tables.html">도서/음반/DVD</a>
                                         </li>
@@ -127,7 +125,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-table"></i> 지역(실시간 딜정보) <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-map"></i> 지역(실시간 딜정보) <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="tables.html">서울</a>
                                         </li>
