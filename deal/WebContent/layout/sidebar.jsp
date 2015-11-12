@@ -144,7 +144,7 @@
                         <div class="menu_section">
                             <hr>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-bug"></i> 자유게시판 <span class="fa fa-chevron-down"></span></a>
+                                <li><a href="<%=cp%>/board/list.do"><i class="fa fa-bug"></i> 자유게시판 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="e_commerce.html">E-commerce</a>
                                         </li>
