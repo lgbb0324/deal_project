@@ -173,6 +173,18 @@
 
                                     </ul>
                                 </li>
+                                     <li><a><i class="fa fa-windows"></i> 고객센터 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                       
+                                        <li><a href="<%=cp%>/notice/list.do">공지사항</a>
+                                        </li>
+                                        <li><a href="<%=cp%>/qna/list.do">QnA</a>
+                                        </li>
+                                        <li><a href="<%=cp%>/faq/list.do">FaQ</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
                                 <li><a><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a>
                                 </li>
                             </ul>
