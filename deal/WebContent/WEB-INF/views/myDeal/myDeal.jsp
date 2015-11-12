@@ -56,24 +56,43 @@
                                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
 
                                                     <!-- start 참여 딜 -->
-                                                    <ul class="messages">
-                                                        <li>
-                                                            <img src="<%=cp%>/res/images/food1.jpg" class="mydealavatar" alt="Avatar">
-                                                            <div class="message_date">
-                                                                <h3 class="date text-info">24</h3>
-                                                                <p class="month">May</p>
-                                                            </div>
-                                                            <div class="message_wrapper">
-                                                                <h4 class="heading">VIPS 피자 베이컨포테이토,마르게리타 4개×2세트</h4>가공식품
-                                                                <blockquote class="message">
-                                                                	판매가 : 18,900원<br>
-																	딜러시크가 : 15,000원
-                                                                	</blockquote>
-                                                                <br />
+                                                     <table class="data table table-striped no-margin">
+                                                        <thead>
+                                                            <tr>
+                                                                 <th>
+                                                    				참여 일자
+                                              					 </th>
+                                                                <th>참여 상품 정보</th>
+                                                                <th>총 결제 금액</th>
+                                                                <th class="hidden-phone">상태</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr valign="middle">
+                                                                <td class="a-center " ><br>
+                                                 				  2015-11-12<br>
+                                                 				  (2015111201)<br>
+                                                 				  <a href="#" class="btn btn-primary btn-xs">&nbsp; 딜 상세보기&nbsp; </a><br>
+                                                                	 <a href="#" class="btn btn-default btn-xs">&nbsp;&nbsp;영수증발급&nbsp;&nbsp;</a>
+                                              				  </td>
+                                                                <td>
+                                                              	  <img src="<%=cp%>/res/images/food1.jpg" class="mydealavatar2" alt="Avatar">
+                                                           			 <div class="message_wrapper">
+                                                               		 <h4 class="heading">VIPS 피자 베이컨포테이토,마르게리타 4개×2세트</h4>
+                                                               		 <br><br><br>
+                                                                	<div class="cam">참여 기간 : 2015. 11. 03 ~ 2015. 11.30</div>
                                                                 
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+                                                            </div></td>
+                                                                <td><br><br><b>15,000원</b></td>
+                                                                <td class="hidden-phone"><br><br>
+                                                                	딜 성공<br>
+                                                                	 <a href="#" class="btn btn-danger btn-xs">딜 조회</a>
+                                                                </td>
+                                                                
+                                                          		
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                     <!-- end 참여 딜 -->
 
                                                 </div>
@@ -88,7 +107,7 @@
                                               					 </th>
                                                                 <th>상품 정보</th>
                                                                 <th>남은 시간</th>
-                                                                <th class="hidden-phone">주문</th>
+                                                                <th class="hidden-phone">참여</th>
                                                                 <th>인원수</th>
                                                             </tr>
                                                         </thead>
@@ -104,7 +123,7 @@
                                                                 	<b>15,000원</b><br><span class="zzim"> 무료배송 </span>
                                                                 
                                                             </div></td>
-                                                                <td><br><br>(종료일 미정)</td>
+                                                                <td><br>D-18<br>2015. 11. 30</td>
                                                                 <td class="hidden-phone"><br><br>
                                                                 	<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Join </a>
                                                                 	 <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
@@ -123,8 +142,32 @@
 
                                                 </div>
                                                 <!-- start 올린 딜 -->
-                                                <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-                                                   참여딜
+                                                <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">                                
+                                                  <table width="400px">
+                                                  	<tr>
+                                                  		<td colspan="3">
+                                                  			<img src="<%=cp%>/res/images/food1.jpg" class="mydealavatar3" alt="Avatar"></td>
+                                                  	</tr>
+                                                  	<tr>
+                                                  		<td  colspan="2">
+                                                  			<a class="uptitle">VIPS 피자 4개×2세트</a> 
+                                                  		</td>
+                                                  		<td align="right" width="60px">
+                                                  			<br><br>
+                                                  			<b class="zzim">무료배송</b>
+                                                  		</td>
+                                                  	</tr>
+                                                  	<tr>
+                                                  		<td colspan="2" width="100px">
+                                                  			<b class="dealchicga">딜러시크가</b>	<b>15,000원</b>	
+                                                  		</td>
+                                                  		<td align="right" width="150px" ><font color="#DB0000">200</font>명 참여</td>
+                                                  	</tr>
+                                                  	<tr>
+                                                  		<td colspan="3" bgcolor="#D5D5D5" height="1px"></td>
+                                                  	</tr>
+                                                  	
+                                                  </table>
                                                 </div>
                                                 <!-- end 올린 딜 -->
                                             </div>
@@ -296,8 +339,7 @@
    
    <jsp:include page="/layout/footer.jsp"></jsp:include>
         </div>
-        </div>
-        </div>
+    
                         
 </body>
 </html>
