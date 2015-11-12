@@ -38,8 +38,14 @@
                                     <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                     </li>
                                 </ul>
-                            </li>
-
+                            </li><!-- end 내정보 -->
+                            
+							<li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                           				2000
+                                </a>
+                             </li><!-- end 캐쉬 -->
+                             
                           <!-- 쪽지 -->
                             <li role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
@@ -264,8 +270,34 @@
                                         </div>
                                     </li>
                                 </ul>
-                            </li>
+                            </li><!-- end 알림 -->
                             
+                             <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									마이딜<span class="badge bg-red">6</span>
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                                    <li><a href="<%=cp%>/myDeal/myDeal.do">
+                                    <span class="badge bg-red pull-right">2</span>
+                                            <span>참여 딜 목록</span>
+                                    </a>
+                                    </li>
+                                    <li>
+                                        <a href="<%=cp%>/myDeal/myDeal.do">
+                                            <span class="badge bg-red pull-right">2</span>
+                                            <span>찜한 딜 목록</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<%=cp%>/myDeal/myDeal.do">
+                                         <span class="badge bg-red pull-right">2</span>
+                                            <span>올린 딜 목록</span>
+                                        </a>
+                                    </li>
+                                   
+                                </ul>
+                            </li><!-- end 마이딜 -->
 
                         </ul>
                     </nav>
