@@ -144,20 +144,9 @@
                         <div class="menu_section">
                             <hr>
                             <ul class="nav side-menu">
-                                <li><a href="<%=cp%>/board/list.do"><i class="fa fa-bug"></i> 자유게시판 <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu" style="display: none">
-                                        <li><a href="e_commerce.html">E-commerce</a>
-                                        </li>
-                                        <li><a href="projects.html">Projects</a>
-                                        </li>
-                                        <li><a href="project_detail.html">Project Detail</a>
-                                        </li>
-                                        <li><a href="contacts.html">Contacts</a>
-                                        </li>
-                                        <li><a href="profile.html">Profile</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li><a href="<%=cp%>/board/list.do"><i class="fa fa-bug"></i> 자유게시판</a></li>
+                                
+             
                                 <li><a><i class="fa fa-windows"></i> 가격흥정 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="page_404.html">404 Error</a>

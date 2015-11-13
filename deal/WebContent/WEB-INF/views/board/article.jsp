@@ -91,8 +91,8 @@
                                         <div class="row">
                                             <div class="col-xs-12 invoice-header">
                                                 <h1>
-                                        <i class="fa fa-globe"></i> Invoice.
-                                        <small class="pull-right">Date: 16/08/2016</small>
+                                        <i class="fa fa-globe"></i> 제목
+                                        <small class="pull-right">등록일: 16/08/2016</small>
                                     </h1>
                                             </div>
                                             <!-- /.col -->
@@ -100,7 +100,7 @@
                                         <!-- info row -->
                                         <div class="row invoice-info">
                                             <div class="col-sm-4 invoice-col">
-                                                From
+                                              	  작성자
                                                 <address>
                                         <strong>Iron Admin, Inc.</strong>
                                         <br>795 Freedom Ave, Suite 600
@@ -122,10 +122,10 @@
                                             </div>
                                             <!-- /.col -->
                                             <div class="col-sm-4 invoice-col">
-                                                <b>Invoice #007612</b>
+                                                <b>조회수 :</b>
                                                 <br>
                                                 <br>
-                                                <b>Order ID:</b> 4F3S8J
+                                                <b>댓글수:</b> 4F3S8J
                                                 <br>
                                                 <b>Payment Due:</b> 2/22/2014
                                                 <br>
@@ -155,9 +155,11 @@
                                         <!-- this row will not appear when printing -->
                                         <div class="row no-print">
                                             <div class="col-xs-12">
-                                                <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
-                                                <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
-                                                <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                                                <button class="btn btn-default" onclick="window.print();">수정</button>
+                                                <button class="btn btn-default" onclick="window.print();">삭제</button>
+                                                <button class="btn btn-success pull-right">이전글</button>
+                                                <button class="btn btn-primary pull-right" style="margin-right: 5px;">목록</button>
+                                                 <button class="btn btn-success pull-right" style="margin-right: 5px;">다음글</button>
                                             </div>
                                         </div>
                                         
@@ -192,7 +194,7 @@
         <!-- first comment -->
 
         <div class="media-heading">
-          <button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button> <span class="label label-info">12314</span> terminator 12 hours ago
+          <button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button> <span class="label label-info">12314</span>12 hours ago
         </div>
 
         <div class="panel-collapse collapse in" id="collapseOne">
@@ -215,13 +217,14 @@
 
 
           <div class="media-body">
-            <p>yazmayın artık amk, görmeyeyim sol framede. insan bi meraklanıyor, ümitleniyor. sonra yine özlem dolu yazıları görüp hayal kırıklığıyla okuyorum.</p>
+            <p>가나다라마바사아자차카타파하.aasdfg
+            </p>
             <div class="comment-meta">
-              <span><a href="#">delete</a></span>
-              <span><a href="#">report</a></span>
-              <span><a href="#">hide</a></span>
+              <span><a href="#">삭제</a></span>
+              <span><a href="#">신고</a></span>
+              <span><a href="#">숨기기</a></span>
               <span>
-                        <a class="" role="button" data-toggle="collapse" href="#replyCommentT" aria-expanded="false" aria-controls="collapseExample">reply</a>
+                        <a class="" role="button" data-toggle="collapse" href="#replyCommentT" aria-expanded="false" aria-controls="collapseExample">답글</a>
                       </span>
               <div class="collapse" id="replyCommentT">
                 <form>

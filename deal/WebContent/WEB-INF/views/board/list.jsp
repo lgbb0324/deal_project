@@ -168,7 +168,7 @@
                                     
                                             <div class="x_content">
                                     
-                                    <button type="button" class="btn btn-default">글쓰기</button>
+                                    <a href="<%=cp%>/board/created.do"><button type="button" class="btn btn-dark">글쓰기</button></a>
                                     
                                 </div>
                                 </div>
