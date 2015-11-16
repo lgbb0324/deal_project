@@ -7,12 +7,16 @@
 %>
 
    		   <footer>
-                    <div class="">
-                        <a>회사소개</a>
-                        <a>오시는길</a>
+                    <div class="footer">
+				<a href="">회사소개</a>&nbsp;&nbsp;&nbsp;
+				<a href="">제휴제안</a>&nbsp;&nbsp;&nbsp;
+				<a href="">이용약관</a>&nbsp;&nbsp;&nbsp;
+				<a href="">오시는길</a>&nbsp;&nbsp;&nbsp;
                         <p class="pull-right"> 
                             <span class="lead"> <i class="fa fa-user"></i> Dealer Chic!</span>
                         </p>
                     </div>
                     <div class="clearfix"></div>
+
+
           </footer>
