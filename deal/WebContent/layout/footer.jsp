@@ -8,7 +8,7 @@
 
    		   <footer>
                     <div class="footer">
-				<a href="">회사소개</a>&nbsp;&nbsp;&nbsp;<span> | </span>
+				<a href="<%=cp%>/profile/myDealProfile.do">회사소개</a>&nbsp;&nbsp;&nbsp;<span> | </span>
 				&nbsp;&nbsp;&nbsp;<a href="">제휴제안</a>&nbsp;&nbsp;&nbsp;<span> | </span>
 				&nbsp;&nbsp;&nbsp;<a href="">이용약관</a>&nbsp;&nbsp;&nbsp;<span> | </span>
 				&nbsp;&nbsp;&nbsp;<a href="">오시는길</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
