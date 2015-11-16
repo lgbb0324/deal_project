@@ -10,7 +10,7 @@ public class MyDealProfileController {
 	 
 	@RequestMapping(value="/profile/myDealProfile",method=RequestMethod.GET)
 	public ModelAndView method() {
-		ModelAndView mav = new ModelAndView("/profile/myDealProfile");
+		ModelAndView mav = new ModelAndView(".profile.myDealProfile");
 		return mav;
 	}
 }

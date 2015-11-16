@@ -10,19 +10,19 @@ public class NoticeController {
 
 	@RequestMapping(value="/notice/list", method=RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView mav = new ModelAndView("/notice/list");
+		ModelAndView mav = new ModelAndView(".notice.list");
 		return mav;
 	}
 	
 	@RequestMapping(value="/notice/created", method=RequestMethod.GET)
 	public ModelAndView created() {
-		ModelAndView mav = new ModelAndView("/notice/created");
+		ModelAndView mav = new ModelAndView(".notice.created");
 		return mav;
 	}
 	
 	@RequestMapping(value="/notice/article", method=RequestMethod.GET)
 	public ModelAndView article() {
-		ModelAndView mav = new ModelAndView("/notice/article");
+		ModelAndView mav = new ModelAndView(".notice.article");
 		return mav;
 	}
 }

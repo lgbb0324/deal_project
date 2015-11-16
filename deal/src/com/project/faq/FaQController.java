@@ -10,7 +10,7 @@ public class FaQController {
 
 	@RequestMapping(value="/faq/list", method=RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView mav = new ModelAndView("/faq/list");
+		ModelAndView mav = new ModelAndView(".faq.list");
 		return mav;
 	}
 	

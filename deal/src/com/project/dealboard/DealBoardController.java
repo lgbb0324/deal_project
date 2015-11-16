@@ -10,7 +10,7 @@ public class DealBoardController {
 
 	@RequestMapping(value="/dealboard/list", method=RequestMethod.GET)
 	public ModelAndView list(){
-		ModelAndView mav = new ModelAndView("/dealboard/list");
+		ModelAndView mav = new ModelAndView(".dealboard.list");
 		return mav;
 	}
 	

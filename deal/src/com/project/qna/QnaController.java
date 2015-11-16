@@ -10,19 +10,19 @@ public class QnaController {
 
 	@RequestMapping(value="/qna/list", method=RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView mav = new ModelAndView("/qna/list");
+		ModelAndView mav = new ModelAndView(".qna.list");
 		return mav;
 	}
 	
 	@RequestMapping(value="/qna/created", method=RequestMethod.GET)
 	public ModelAndView created() {
-		ModelAndView mav = new ModelAndView("/qna/created");
+		ModelAndView mav = new ModelAndView(".qna.created");
 		return mav;
 	}
 	
 	@RequestMapping(value="/qna/article", method=RequestMethod.GET)
 	public ModelAndView article() {
-		ModelAndView mav = new ModelAndView("/qna/article");
+		ModelAndView mav = new ModelAndView(".qna.article");
 		return mav;
 	}
 

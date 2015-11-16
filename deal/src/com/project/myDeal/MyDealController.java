@@ -10,7 +10,7 @@ public class MyDealController {
 	 
 	@RequestMapping(value="/myDeal/myDeal",method=RequestMethod.GET)
 	public ModelAndView method() {
-		ModelAndView mav = new ModelAndView("/myDeal/myDeal");
+		ModelAndView mav = new ModelAndView(".myDeal.myDeal");
 		System.out.println("∏∂¿ÃµÙ Ω««‡");
 		return mav;
 	}

@@ -11,7 +11,7 @@ public class MainController {
 	 
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView method() {
-		ModelAndView mav = new ModelAndView("/main/main");
+		ModelAndView mav = new ModelAndView(".mainLayout");
 		System.out.println("±‚ª›æ∆ æ»≥Á");
 		System.out.println("±Ë¿ÁºÆ");
 		return mav;
