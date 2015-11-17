@@ -884,10 +884,13 @@ li.current-page a {
 .x_content canvas {}
 
 footer {
-    background: #fff;
-    padding: 5px 20px 0;
-    height: 45px;
-    margin: 0 -17px;
+    width:100%;
+	height:30px;
+	margin:5px auto;
+	text-align:right;
+	background-color: #FFFFFF;
+	line-height: 30px;
+    border-top:1px solid #DAD9FF;
 }
 
 .tile-stats.sparkline {
@@ -4432,6 +4435,47 @@ img.avatar {
     border: 1px solid #e6e6e6;
 }
 
+img.mydealavatar{
+    height: 120px;
+    width: 120px;
+    float: left;
+    display: inline-block;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    padding: 2px;
+    margin-right: 10px;
+    background: #f7f7f7;
+    border: 1px solid #e6e6e6;
+}
+
+img.mydealavatar2{
+    height: 80px;
+    width: 80px;
+    float: left;
+    display: inline-block;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    padding: 2px;
+    margin-right: 10px;
+    background: #f7f7f7;
+    border: 1px solid #e6e6e6;
+}
+
+img.mydealavatar3{
+    height: 400px;
+    width: 400px;
+    float: left;
+    display: inline-block;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    padding: 2px;
+    
+    background: #f7f7f7;
+    border: 1px solid #e6e6e6;
+}
 ul.messages li .message_date {
     float: right;
     text-align: right;
@@ -5491,7 +5535,7 @@ ul.project_files li a i {
 }
 
 .progress.progress_sm .progress-bar {
-    height: 10px !important;
+    height: 15px !important;
 }
 
 .dashboard_graph p {
@@ -6342,4 +6386,35 @@ ul.notifications {
     color: #E9EDEF;
     float: right;
     opacity: 1;
+}
+
+.zzim{
+	background: #003399;
+	color:#ffffff;
+	padding:2px;
+}
+
+.cam{
+	background: #EAEAEA;
+	color : #000000;
+	padding : 15px;
+}
+
+.upma{
+	margin: 20px;
+}
+
+.uptitle{
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.dealchicga{
+	color:#DB0000;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.in_right{
+	text-align: right;
 }
