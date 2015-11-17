@@ -8,6 +8,8 @@
 %>
 
 
+<script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
+
 <!-- top navigation -->
             <div class="top_nav">
 
@@ -54,7 +56,9 @@
                                 </a>
                                 
                                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
-                                    <li>
+                                
+                                	<!-- 첫번째 쪽지 -->
+                                     <li data-toggle="modal" data-target="#myModal">
                                         <a>
                                             <span class="image">
                                         <img src="images/img.jpg" alt="Profile Image" />
@@ -64,11 +68,29 @@
                                             <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                      	 		1
+                                       			2
                                     </span>
                                         </a>
                                     </li>
-                                    <li>
+                                    
+                                    <!-- 두번째 쪽지 -->
+                                     <li data-toggle="modal" data-target="#myModal">
+                                        <a>
+                                            <span class="image">
+                                        <img src="images/img.jpg" alt="Profile Image" />
+                                    </span>
+                                            <span>
+                                        <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                       			2
+                                    </span>
+                                        </a>
+                                    </li>
+                                    
+                                   <!-- 세번째 쪽지 -->
+                                     <li data-toggle="modal" data-target="#myModal">
                                         <a>
                                             <span class="image">
                                         <img src="images/img.jpg" alt="Profile Image" />
@@ -83,45 +105,15 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a>
-                                            <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
-                                    </span>
-                                            <span>
-                                        <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                       			3
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
-                                    </span>
-                                            <span>
-                                        <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                               4
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li>
                                         <div class="text-center">
                                             <a>
-                                                <strong><a href="inbox.html">See All Alerts</strong>
+                                                <strong><a href="<%=cp%>/board/list.do">See All Alerts</a></strong>
                                                 <i class="fa fa-angle-right"></i>
                                             </a>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
-                            
-                            
 							<!-- 대화 -->
 							<li role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">

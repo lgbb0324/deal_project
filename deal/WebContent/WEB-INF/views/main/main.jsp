@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	request.setCharacterEncoding("utf-8");
+   request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
 %>
  <style type="text/css">
@@ -35,12 +35,12 @@
     filter: alpha(opacity=1);    
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
 }
-.panel .panel-footer { padding: 8px !important; background-color: #f9f9f9 !important; border-bottom-right-radius: 0 !important; border-bottom-left-radius: 0 !important; }	
+.panel .panel-footer { padding: 8px !important; background-color: #f9f9f9 !important; border-bottom-right-radius: 0 !important; border-bottom-left-radius: 0 !important; }   
 .panel .panel-footer h4 { display: inline; font: 400 normal 1.125em "Roboto",Arial,Verdana,sans-serif; color: #34495e margin: 0 !important; padding: 0 !important; }
 .panel .panel-footer i.glyphicon { display: inline; font-size: 1.125em; cursor: pointer; }
 .panel .panel-footer i.glyphicon-thumbs-up { color: #1abc9c; }
 .panel .panel-footer i.glyphicon-thumbs-down { color: #e74c3c; padding-left: 5px; }
-.panel .panel-footer div { width: 15px; display: inline; font: 300 normal 1.125em "Roboto",Arial,Verdana,sans-serif; color: #34495e; text-align: center; background-color: transparent !important; border: none !important; }	
+.panel .panel-footer div { width: 15px; display: inline; font: 300 normal 1.125em "Roboto",Arial,Verdana,sans-serif; color: #34495e; text-align: center; background-color: transparent !important; border: none !important; }   
 
 .modal-title { font: 400 normal 1.625em "Roboto",Arial,Verdana,sans-serif; }
 .modal-footer { font: 400 normal 1.125em "Roboto",Arial,Verdana,sans-serif; } 
@@ -78,11 +78,11 @@ $(document).ready(function() {
 });
 
 /* $.fn.ready(function (){
-	$("p").fitText(2,{'minFontSize':1,'maxFontSize':50});
+   $("p").fitText(2,{'minFontSize':1,'maxFontSize':50});
 }); */
 function gogo(){
 
-	location.href="<%=cp%>/deal/article.do";
+   location.href="<%=cp%>/deal/article.do";
 }
 
 </script>
@@ -113,13 +113,9 @@ function gogo(){
                     </span>
                 </div>
                 <div>.</div> 
-                
-                
+							        
 
-
-      
-
-	<div class="panel panel-default" style="margin:0px;">
+   <div class="panel panel-default" style="margin:0px;">
        <ul class="list-group col-xs-12" style="width:100%; padding:0px;">
             <li class="list-group-item"   style="margin-bottom:20px;">
                 <div class="row toggle" style="width:100%; padding-top:0px;" id="dropdown-detail-1" data-toggle="detail-1">
@@ -135,21 +131,21 @@ function gogo(){
                   
                         <div class="row">
        
-								<a  href="#" >
-								<img class="avatar" style="height:17%; width:17%;"   src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar"> 
-										</a>
-											<div class="comment-body">
-												<div class="comment-heading ">
+                        <a  href="#" >
+                        <img class="avatar" style="height:17%; width:17%;"   src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar"> 
+                              </a>
+                                 <div class="comment-body">
+                                    <div class="comment-heading ">
 
-													<h5 class=" pull-left" style="margin:0px;"> kmc5151 </h5>
+                                       <h5 class=" pull-left" style="margin:0px;"> kmc5151 </h5>
 
-													<h6 style="margin:0px;" class="pull-right">&nbsp   2015-11-11</h6>
-												
-												</div>
-										
-												<p  style="margin:0px; padding:0px; width:82%;" class="pull-right clear-fix">eeeeeeeeeeddddddddee!!!!e123323232323223233232322323231243</p>
-								
-											</div>
+                                       <h6 style="margin:0px;" class="pull-right">&nbsp   2015-11-11</h6>
+                                    
+                                    </div>
+                              
+                                    <p  style="margin:0px; padding:0px; width:82%;" class="pull-right clear-fix">eeeeeeeeeeddddddddee!!!!e123323232323223233232322323231243</p>
+                        
+                                 </div>
 
                            
                         </div>
@@ -168,8 +164,8 @@ function gogo(){
 
 </div>
 
-
+ 								
+      
    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   
         </div>
-

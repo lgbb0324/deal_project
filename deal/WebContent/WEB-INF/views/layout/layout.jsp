@@ -29,7 +29,11 @@
  <script src="<%=cp%>/res/template/js/custom.js"></script>
  <script src="<%=cp%>/res/template/js/bootstrap.min.js"></script>
  <script src="<%=cp%>/res/template/js/jquery.min.js"></script>
- 
+ <script type="text/javascript">
+$('#myModal').on('show.bs.modal', function (e) {
+	  if (!data) return e.preventDefault() // stops modal from being shown
+	})
+</script>
  
 </head>
 <body class="nav-md">
@@ -55,7 +59,37 @@
 
 </div>
 	</div>	
- 
+ <!-- Modal -->
+									<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        <h4 class="modal-title" id="myModalLabel">id님의 내게 쓴 쪽지<small> 보낸시간15-11-04 [16:09]</small></h4>
+									        
+									      </div>
+									      <div class="modal-body">
+									       	쪽지<br>
+									       	쪽지<br>
+									       	쪽지<br>
+									       	쪽지<br>
+									       	쪽지<br>
+									       	쪽지<br>
+									       	쪽지<br>
+									       	쪽지<br>
+									       	쪽지<br>
+									       	쪽지<br>
+									       	쪽지<br>
+									       	
+									      </div>
+									      <div class="modal-footer">
+									      	<button type="button" class="btn btn-danger pull-left">삭제</button>
+									      	<button type="button" class="btn btn-default">답장</button>
+									      	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>					
+									      </div>
+									    </div>
+									  </div>
+									</div>
                         
 </body>
 </html>
