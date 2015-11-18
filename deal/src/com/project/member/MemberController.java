@@ -18,8 +18,16 @@ public class MemberController {
 	@RequestMapping(value="/member/member", method=RequestMethod.GET)
 	public ModelAndView memberForm() throws	Exception{
 		
-		ModelAndView mav = new ModelAndView("/member/member");
+		ModelAndView mav = new ModelAndView(".member.member");
 
+		return mav;
+	}
+	
+	@RequestMapping(value="/member/mypage", method=RequestMethod.GET)
+	public ModelAndView mypageForm() throws Exception{
+		
+		ModelAndView mav = new ModelAndView(".member.mypage");
+		
 		return mav;
 	}
 }

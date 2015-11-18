@@ -26,12 +26,12 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                                    <li><a href="javascript:;">  Profile</a>
+                                    <li><a href="<%=cp%>/member/mypage.do">마이페이지</a>
                                     </li>
                                     <li>
-                                        <a href="javascript:;">
+                                        <a href="<%=cp%>/member/member.do">
                                             <span class="badge bg-red pull-right">50%</span>
-                                            <span>Settings</span>
+                                            <span>회원가입</span>
                                         </a>
                                     </li>
                                     <li>
