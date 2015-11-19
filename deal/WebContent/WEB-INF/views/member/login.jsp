@@ -37,6 +37,9 @@
 
 <script type="text/javascript">
 //엔터 처리
+
+
+
 $(function(){
 	   $("input").not($(":button")).keypress(function (evt) {
 	        if (evt.keyCode == 13) {

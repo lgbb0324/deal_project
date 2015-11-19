@@ -6418,3 +6418,20 @@ ul.notifications {
 .in_right{
 	text-align: right;
 }
+
+.btnsetting{
+	background: white;
+	border-color : #AA1212;
+	padding:3px;
+	font-size: 12pt;
+	border: 1px;
+	margin: 0px;
+}
+
+.btnsetting.hover{
+	background: #D5D5D5;
+}
+
+.note_fontsize{
+	font-size: 9pt;
+}
