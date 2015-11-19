@@ -33,9 +33,47 @@
 $('#myModal').on('show.bs.modal', function (e) {
 	  if (!data) return e.preventDefault() // stops modal from being shown
 	})
-	
 </script>
- 
+<style type="text/css">
+ blockquote{
+    border-left:none;
+    margin-left: 28%;
+}
+
+.quote-badge{
+    background-color: rgba(0, 0, 0, 0.2);   
+}
+
+.quote-box{
+
+    overflow: hidden;
+    margin-top: -50px;
+    padding-top: -100px;
+    border-radius: 17px;
+    background-color: white;
+    margin-top: 25px;
+    color:black;
+    width: 325px;
+    box-shadow: 2px 2px 2px 2px #930000;
+    
+}
+
+.quotation-mark{
+    
+    margin-top: -10px;
+    font-weight: bold;
+    font-size:100px;
+    color:black;
+    font-family: "Times New Roman", Georgia, Serif;
+    
+}
+
+.quote-text{
+    
+    font-size: 19px;
+    margin-top: -65px;
+}
+</style>
 </head>
 <body class="nav-md">
 			<div class="container body">
@@ -61,36 +99,42 @@ $('#myModal').on('show.bs.modal', function (e) {
 </div>
 	</div>	
  <!-- Modal -->
-									<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal fade" id="myModal" >
 									  <div class="modal-dialog">
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									        <h4 class="modal-title" id="myModalLabel">id님의 내게 쓴 쪽지<small> 보낸시간15-11-04 [16:09]</small></h4>
-									        
-									      </div>
-									      <div class="modal-body">
-									       	쪽지<br>
-									       	쪽지<br>
-									       	쪽지<br>
-									       	쪽지<br>
-									       	쪽지<br>
-									       	쪽지<br>
-									       	쪽지<br>
-									       	쪽지<br>
-									       	쪽지<br>
-									       	쪽지<br>
-									       	쪽지<br>
-									       	
-									      </div>
-									      <div class="modal-footer">
-									      	<button type="button" class="btn btn-danger pull-left">삭제</button>
-									      	<button type="button" class="btn btn-default">답장</button>
-									      	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>					
-									      </div>
+									      <div class="container">
+											    <blockquote class="quote-box">
+											    <span class="pull-right note_fontsize" >2015-11-18[16:59]</span><!-- 보낸시간 뜨는거야 -->
+											      <p class="quotation-mark">
+											        “
+											      </p>
+											      <p class="quote-text">
+											      	안녕<br>
+											        이건 쪽지다<br>
+											        예시 쪽지다<br>
+											        디자인 예시 쪽지다<br>
+											        처음 만드는 쪽지다<br>
+											      </p>
+											      <hr>
+											      <div class="blog-post-actions">
+											      <!-- 이름 누르면 답장하는거야 -->
+											      <a class="blog-post-bottom pull-left">
+											         박서준
+											       </a>
+											        <p class="blog-post-bottom pull-right">
+											        <span>
+											         <!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
+									      			  <button type="button" class="btn btnsetting"> <span class="glyphicon glyphicon-cog"></span></button>
+									      			  <span class="item-right">
+                       										 <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
+                   									  </span>
+											        </span>
+											        </p>
+											      </div>
+											    </blockquote>
+											</div>
 									    </div>
 									  </div>
-									</div>
+					
                         
 </body>
 </html>

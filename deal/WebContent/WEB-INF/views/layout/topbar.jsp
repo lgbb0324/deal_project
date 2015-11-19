@@ -56,19 +56,19 @@
                                 </a>
                                 
                                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
-                                
+                             
                                 	<!-- 첫번째 쪽지 -->
                                      <li data-toggle="modal" data-target="#myModal">
                                         <a>
                                             <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
-                                    </span>
+                                       <img class="media-object img-circle" src="<%=cp %>/res/images/park.jpg" alt="profile">
+                                    		</span>
                                             <span>
-                                        <span>John Smith</span>
+                                        <span>박서준</span>
                                             <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                       			2
+                                       			안녕
                                     </span>
                                         </a>
                                     </li>
@@ -77,14 +77,14 @@
                                      <li data-toggle="modal" data-target="#myModal">
                                         <a>
                                             <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
+                                          <img class="media-object img-circle" src="<%=cp %>/res/images/ch.jpg" alt="profile">
                                     </span>
                                             <span>
-                                        <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
+                                        <span>최시원</span>
+                                            <span class="time">6 mins ago</span>
                                             </span>
                                             <span class="message">
-                                       			2
+                                       			나야
                                     </span>
                                         </a>
                                     </li>
@@ -93,21 +93,21 @@
                                      <li data-toggle="modal" data-target="#myModal">
                                         <a>
                                             <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
+                                          <img class="media-object img-circle" src="<%=cp %>/res/images/she.jpg" alt="profile">
                                     </span>
                                             <span>
-                                        <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
+                                        <span>황정음</span>
+                                            <span class="time">15 mins ago</span>
                                             </span>
                                             <span class="message">
-                                       			2
+                                       			신촌역
                                     </span>
                                         </a>
                                     </li>
                                     <li>
                                         <div class="text-center">
                                             <a>
-                                                <strong><a href="<%=cp%>/board/list.do">See All Alerts</a></strong>
+                                                <strong><a href="<%=cp%>/note/list.do">ALL </a></strong>
                                                 <i class="fa fa-angle-right"></i>
                                             </a>
                                         </div>
