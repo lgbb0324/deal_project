@@ -40,8 +40,8 @@
                                 </ul>
                             </li><!-- end 내정보 -->
                             
-							<li class="">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+							<li>
+                                <a href="<%=cp%>/cash/myCash.do;">
                            				2000
                                 </a>
                              </li><!-- end 캐쉬 -->
