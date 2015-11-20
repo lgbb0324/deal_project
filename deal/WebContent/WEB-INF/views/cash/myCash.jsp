@@ -5,7 +5,45 @@
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
 %>
+<script type="text/javascript">
+$('#cashModal').on('show.bs.modal', function (e) {
+	  if (!data) return e.preventDefault() // stops modal from being shown
+	})	
+</script>
 
+<style type="text/css">
+ blockquote{
+    border-left:none;
+    margin-left: 0px;
+}
+
+.quote-badge{
+    background-color: rgba(0, 0, 0, 0.2);   
+}
+
+.quote-box{
+
+    overflow: hidden;
+    margin-top: -50px;
+    padding-top: -100px;
+    border-radius: 17px;
+    background-color: white;
+    margin-top: 25px;
+    color:black;
+    width: 325px;
+    box-shadow: 2px 2px 2px 2px #930000;
+    
+}
+
+.quote-text{
+    
+    font-size: 19px;
+    margin-top: -65px;
+}
+#js{
+	width: 700px;
+}
+</style>
    
   		 <div class="right_col" role="main">
 
@@ -153,8 +191,8 @@
                                 <div style="height: 180px" class="bs-example" data-example-id="simple-jumbotron">
                                     <div style="height: 200px" class="jumbotron">
                                         <p>내 잔여캐시  2000 &nbsp;&nbsp;&nbsp;&nbsp;
-                                         <input type="button" class="btn btn-primary" value="충전하기">
-                                          <input type="button" class="btn btn-primary" value="환전하기"></p><br>
+                                         <input type="button" class="btn btn-primary" value="충전하기" data-toggle="modal" data-target="#cashmodal">
+                                          <input type="button" class="btn btn-primary" value="환전하기" data-toggle="modal" data-target="#cashmodal2"></p><br>
                                      	<p style="font-size: 13pt">캐시를 이용하여 사이트에서 진행되는 딜에 참여할 수 있습니다<br>캐시 충전은 카드를 이용하여 충전할 수 있습니다.</p>
                                         
                                       
@@ -185,16 +223,17 @@
                                            		</div>
                                        
                                             </ul>
-                                            <div class="pull-right">
+                                            <div class="pull-right" style="margin-bottom: 10pt">
                                           <div style="float: left;">
                                            <select style="width: 100px" class="form-control">
                                                     <option>2015</option>
                                                     <option>2014</option>
                                               </select>
-                                              	<span>년</span>
                                               </div>
+                                              	<div style="float: left; font-size: 16pt" >년</div>
                                               
-                                              <div class="pull-right">
+                                          
+                                              <div style="float: left;">
                                                <select style="width: 100px" class="form-control">
                                                     <option>1</option>
                                                     <option>2</option>
@@ -209,8 +248,9 @@
                                                     <option>11</option>
                                                     <option>12</option>
                                               </select>
-                                             		 <span>월</span>
+                                         
                                            </div>
+                                             		 <div style="float: left; font-size: 16pt">월</div>
                                           
                                            </div>
                                            
@@ -433,6 +473,7 @@
                                            
                                        </div>
                                        <!--사용/철회내역 end -->
+                                       
                                        <!-- 환불내역  start-->
                                         <div role="tabpanel" class="tab-pane fade" id="listcash3" aria-labelledby="profile-tab">
                                         
@@ -546,17 +587,146 @@
                                            
                                            </div>
                                            </div>
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                            
+                                 
+                                 
 					
                                 </div>
                                  </div>
+                                 
+                                 
+                                 <!--환전하기 모달  -->
+						<div class="modal fade" id="cashmodal2" >
+									  <div class="modal-dialog">
+									      <div class="container">
+											    <blockquote class="quote-box">
+											    <span class="pull-right note_fontsize" >2015-11-18[16:59]</span><!-- 보낸시간 뜨는거야 -->
+											    	
+											      <p class="">
+											     	캐시환전
+											      </p>
+											      <hr>
+											      <div class="blog-post-actions">
+											      <!-- 이름 누르면 답장하는거야 -->
+											     
+											        <p class="blog-post-bottom pull-right">
+											        <span>
+											         <!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
+									      			  <span class="item-right">
+                       										 <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
+                   									  </span>
+											        </span>
+											        </p>
+											      </div>
+											    </blockquote>
+											</div>
+									    </div>
+									  </div>
+									  
+									  <div class="modal fade" id="cashmodal" >
+									  <div class="modal-dialog">
+									      <div class="container">
+											    <blockquote id="js" class="quote-box">
+											    <span class="pull-right note_fontsize" >2015-11-18[16:59]</span><!-- 보낸시간 뜨는거야 -->
+											      
+											      <p class="">
+											      <!-- CREDIT CARD FORM STARTS HERE -->
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table" >
+                    <div class="row display-tr" >
+                        <h3 class="panel-title display-td" >Payment Details</h3>
+                        <div class="display-td" >                            
+                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                        </div>
+                    </div>                    
+                </div>
+                <div class="panel-body">
+                    <form role="form" id="payment-form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input 
+                                            type="tel"
+                                            class="form-control"
+                                            name="cardNumber"
+                                            placeholder="Valid Card Number"
+                                            autocomplete="cc-number"
+                                            required autofocus 
+                                        />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                    <input 
+                                        type="tel" 
+                                        class="form-control" 
+                                        name="cardExpiry"
+                                        placeholder="MM / YY"
+                                        autocomplete="cc-exp"
+                                        required 
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cardCVC">CV CODE</label>
+                                    <input 
+                                        type="tel" 
+                                        class="form-control"
+                                        name="cardCVC"
+                                        placeholder="CVC"
+                                        autocomplete="cc-csc"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="couponCode">COUPON CODE</label>
+                                    <input type="text" class="form-control" name="couponCode" />
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="btn btn-success btn-lg btn-block" type="submit">Start Subscription</button>
+                            </div>
+                        </div>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div> 
+											      </p>
+											      <hr>
+											      <div class="blog-post-actions">
+											      <!-- 이름 누르면 답장하는거야 -->
+											     
+											        <p class="blog-post-bottom pull-right">
+											        <span>
+											         <!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
+									      			  <span class="item-right">
+                       										 <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
+                   									  </span>
+											        </span>
+											        </p>
+											      </div>
+											    </blockquote>
+											</div>
+									    </div>
+									  </div>
+									  
                                  </div>
                                 
 
