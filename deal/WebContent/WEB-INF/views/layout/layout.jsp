@@ -33,6 +33,8 @@
 $('#myModal').on('show.bs.modal', function (e) {
 	  if (!data) return e.preventDefault() // stops modal from being shown
 	})
+	
+
 </script>
 <style type="text/css">
  blockquote{
@@ -114,7 +116,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 											        디자인 예시 쪽지다<br>
 											        처음 만드는 쪽지다<br>
 											      </p>
-											      <hr>
+										      <hr>
 											      <div class="blog-post-actions">
 											      <!-- 이름 누르면 답장하는거야 -->
 											      <a class="blog-post-bottom pull-left">
@@ -134,6 +136,8 @@ $('#myModal').on('show.bs.modal', function (e) {
 											</div>
 									    </div>
 									  </div>
+					
+					
 					
                         
 </body>
