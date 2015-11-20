@@ -1377,8 +1377,8 @@ table.jambo_table {
 }
 
 table.jambo_table thead {
-    background: rgba(52, 73, 94, 0.94);
-    color: #ECF0F1;
+    background: white;
+    color: black;
 }
 
 table.jambo_table tbody tr:hover td {
