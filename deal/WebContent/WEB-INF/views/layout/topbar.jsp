@@ -29,7 +29,7 @@
                                     <li><a href="<%=cp%>/member/mypage.do">마이페이지</a>
                                     </li>
                                     <li>
-                                        <a href="<%=cp%>/member/member.do">
+                                        <a href="<%=cp%>/member/memberch.do">
                                             <span class="badge bg-red pull-right">50%</span>
                                             <span>회원가입</span>
                                         </a>

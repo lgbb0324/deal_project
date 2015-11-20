@@ -177,11 +177,25 @@ function changeEmail() {
 
 
 <div style="min-height: 450px;">
+		<div style="width:100%;	height: 200px; line-height:40px;clear: both; border-top: 1px solid #DAD9FF;border-bottom: 1px solid #DAD9FF;">
+		    <div style="width:100%; height:200px; line-height:30px; margin:5px auto;">
+		   
+		    <textarea rows="5" cols="84" class="boxTF" id="content" style="width:100%; height: 150px;">
+	1. 회원의 주소 또는 e-mail주소에 도달함으로써 회사의 통지는 유효하고, 회원 정보의 변경/미 변경에 대한 책임은 회원에게 있음. (제8조)
+	2. 약관이 정하는 부정거래 행위를 한 회원에 대하여 제재 조치 가능 예: 직거래, 경매 부정행위, 시스템 부정행위, 결제 부정행위, 재판매 목적의 거래행위 등. (제36조)
+	3. G마켓은 통신판매중개자로서 판매자와 구매자와의 거래에 관한 분쟁에 개입하지 않으며 어떠한 보증 및 책임도 부담하지 않음. (제6조, 제38조)
+		    </textarea>
+		   <div style="width:100%; height:200px; line-height:30px; margin:5px auto;">
+		    <input type="checkbox">위 약관에 동의합니다.
+		    </div>	
+		    </div>
+		 
+		</div>
 		
-		<div style="margin: 20px auto 10px; width:90%; min-height: 400px;">
+		<div style="margin: 20px auto 10px; width:600px; min-height: 400px;">
 		
            	<form name="memberForm" method="post">
-				<table style="width:100%; margin: 0px auto; border-collapse: collapse; border-spacing: 0;">
+				<table style="width:600px; margin: 0px auto; border-collapse: collapse; border-spacing: 0;">
 
 				<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
 	
@@ -196,11 +210,7 @@ function changeEmail() {
 										value="${dto.userId}" ${mode=="update" ? "readonly='readonly' style='border:none;'":""}/>
 							  <span id="userIdState" style='display:none;'></span>
 					</td>
-					
-					
 				</tr>
-				
-				
 				<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
 			
 				<tr height="35">
@@ -221,13 +231,8 @@ function changeEmail() {
 						<input type="password" name="userPwd1" class="boxTF" size="25" maxlength="10"/>
 					</td>
 				</tr>
-					<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
-				<tr height="30">
-
-
-					<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
-				</table>
-				<table style="width:100%; margin: 0px auto; border-collapse: collapse; border-spacing: 0;">
+				<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+			
 				<tr height="35">
 					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
 					이&nbsp;&nbsp;&nbsp;&nbsp;름
@@ -292,86 +297,8 @@ function changeEmail() {
 					</td>
 
 				</tr>
-						<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
-					<tr height="30">
-						<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
 				
-				</table>
-				
-				
-				
-				
-				<table style="width:100%; margin: 0px auto; border-collapse: collapse; border-spacing: 0;">
-				<tr height="35">
-					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
-					사업자 번호
-					</td>
-					<td align="left" style="padding-left: 5px;">
-						<input type="text" name="userName" size="25" maxlength="20"  class="boxTF" 
-										value="${dto.userName}" ${mode=="update" ? "readonly='readonly' style='border:none;' ":""}/>
-					</td>
-				</tr>
-
-				<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
-			
-				<tr height="35">
-					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
-					카드번호
-					</td>
-					<td align="left" style="padding-left: 5px;">
-							  <select name="selectEmail" onchange="changeEmail();">
-									<option value="">카드사 선택</option>
-									<option >신한</option>
-									<option >농협</option>
-									<option >롯데</option>
-									<option >삼성</option>
-									<option >하나</option>
-									<option >우체국</option>
-									<option >국민</option>
-									<option >시티</option>
-							  </select>
-							  <input type="text" size="8" maxlength="30"  class="boxTF"> -
-							  <input type="text" size="8" maxlength="30"  class="boxTF"> -
-							  <input type="text" size="8" maxlength="30"  class="boxTF"> -
-							  <input type="text" size="8" maxlength="30"  class="boxTF">
-					</td>
-				</tr>
-				<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
-				
-				<tr height="35">
-					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
-					결제번호
-					</td>
-					<td align="left" style="padding-left: 5px;">
-							
-							  <input type="text" name="tel2" size="5" maxlength="4"  class="boxTF" />
-
-					</td>
-
-				</tr>
-						<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
-					<tr height="30">
-						<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
-				
-				</table>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				<table style="width:100%; margin: 0px auto; border-collapse: collapse; border-spacing: 0;">
-				
-			<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+					<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
 				
 				<tr height="50">
 					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
@@ -382,11 +309,7 @@ function changeEmail() {
 									
 				    <img src="http://static.naver.net/me/new/profile_default.gif" width="100" height="100" data-src="">
 						<input type="file" accpet="image/*" name="image" class="file_upload _img_input N=a:pfe.upimage">
-	
-				
 	</td>
-
-
 
 				</tr>
 				
@@ -394,7 +317,7 @@ function changeEmail() {
 			
 				<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
 			
-				<tr height="60" >
+				<tr height="40" >
 					<td align="center" colspan="2" style="padding-top: 8px">
 						<%-- <c:if test="${mode=='created'}"> --%>
 							<input type="button" value=" 회원가입 " class="btn" onclick="memberOk();"/>
@@ -408,7 +331,12 @@ function changeEmail() {
 						</c:if>
 					</td>
 				</tr>
-
+				
+				<tr height="35">
+					<td align="center" colspan="2">
+					    <span style="color: blue;">${message}</span>
+					</td>
+				</tr>
 				</table>
 			</form>
 		

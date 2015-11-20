@@ -15,6 +15,14 @@ public class MemberController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/member/memberch", method=RequestMethod.GET)
+	public ModelAndView memberchForm() throws	Exception{
+		
+		ModelAndView mav = new ModelAndView(".member.memberch");
+
+		return mav;
+	}
+	
 	@RequestMapping(value="/member/member", method=RequestMethod.GET)
 	public ModelAndView memberForm() throws	Exception{
 		
@@ -22,6 +30,7 @@ public class MemberController {
 
 		return mav;
 	}
+	
 	
 	@RequestMapping(value="/member/mypage", method=RequestMethod.GET)
 	public ModelAndView mypageForm() throws Exception{
