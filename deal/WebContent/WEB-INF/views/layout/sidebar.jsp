@@ -12,7 +12,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-user"></i> <span>Dealer Chic!</span></a>
+                        <a href="<%=cp%>/main.do" class="site_title"><i class="fa fa-user"></i> <span>Dealer Chic!!</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -27,7 +27,10 @@
                         <div class="menu_section">
                             
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-male"></i> 의류/잡화 <span class="fa fa-chevron-down"></span></a>
+                                   <li><a style="text-align:center;" href="<%=cp%>/deal/created.do"><i class="fa fa-plus"></i></a>
+                         
+                                </li>
+                                <li><a ><i class="fa fa-male"></i> 의류/잡화 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="index.html">남성의류</a>
                                         </li>

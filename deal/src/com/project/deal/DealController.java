@@ -15,4 +15,12 @@ public class DealController {
 		return mav;
 	}
 	
+	
+	@RequestMapping(value="/deal/created",method=RequestMethod.GET)
+	public ModelAndView articleCreated() throws Exception {
+		ModelAndView mav=new ModelAndView(".deal.created");
+		
+		return mav;
+	}
+	
 }
