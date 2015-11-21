@@ -90,7 +90,7 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
 
 body {
-    background-color: rgb(229, 229, 229);
+    background-color: rgb(255, 255, 255);
     padding-top: 60px;
     padding-bottom: 30px;
 }
@@ -368,7 +368,7 @@ $(function () {
 
 
 <!--대표이미지  -->
-<div class="container col-xs-12 col-sm-10 col-md-8" style="padding-bottom:120px;">
+<div class="col-xs-12 col-sm-12 col-md-10" style="padding-bottom:120px;padding-left:0px;padding-right:0px;">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
     
       <!-- Wrapper for slides -->
@@ -440,6 +440,87 @@ $(function () {
 
 <!--대표이미지  -->
 
+
+<div class="col-xs-6 col-sm-6 col-md-2 pull-left " >
+
+
+	<div class="row">
+		<div style="padding:0px;" class=" col-xs-12 col-sm-12 col-md-12 sidebar">
+    <div class="mini-submenu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+    <div class="list-group">
+        <span href="#" class="list-group-item active">
+            실시간 급상승 검색어
+            <span class="pull-right" id="slide-submenu">
+                <i class="fa fa-times"></i>
+            </span>
+        </span>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-comment-o"></i> 1.김태희
+        </a>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-search"></i> 2.비
+        </a>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-user"></i> 3.디스패치
+        </a>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-folder-open-o"></i> 4.수능 <span class="badge">↑14</span>
+        </a>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-bar-chart-o"></i> 5.2호선 <span class="badge">↑5</span>
+        </a>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-envelope"></i> 6.겨울
+        </a>
+    </div>        
+</div>
+	</div>
+</div>
+
+
+<div class="col-xs-6 col-sm-6 col-md-2 pull-left " >
+
+
+	<div class="row">
+		<div style="padding:0px;" class=" col-xs-12 col-sm-12 col-md-12 sidebar">
+    <div class="mini-submenu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+    <div class="list-group">
+        <span href="#" class="list-group-item active">
+           딜러왕
+            <span class="pull-right" id="slide-submenu">
+                <i class="fa fa-times"></i>
+            </span>
+        </span>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-comment-o"></i> 1.김민찬 68%
+        </a>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-search"></i> 2.비 22%
+        </a>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-user"></i> 3.김태희 1%
+         </a>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-folder-open-o"></i> 김태희 1% <span class="badge">14</span>
+        </a>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-bar-chart-o"></i> 김태희 1% <span class="badge">14</span>
+        </a>
+        <a href="#" class="list-group-item">
+            <i class="fa fa-envelope"></i> 김태희 1%
+        </a>
+    </div>        
+</div>
+	</div>
+</div>
 
 <!--콘텐츠  -->
 <div class="container" >

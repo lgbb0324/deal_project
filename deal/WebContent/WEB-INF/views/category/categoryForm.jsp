@@ -87,10 +87,11 @@
 	#myCarousel .list-group {display:none;} 
 }
 
+/* 판낼 */
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
 
 body {
-    background-color: rgb(229, 229, 229);
+    background-color: rgb(255, 255, 255);
     padding-top: 60px;
     padding-bottom: 30px;
 }
@@ -418,7 +419,7 @@ $(function () {
 
 
     <ul class="list-group col-sm-4">
-      <li data-target="#myCarousel" data-slide-to="0" class="list-group-item active"><h4>111111111111111111</h4></li>
+      <li data-target="#myCarousel" data-slide-to="0" class="list-group-item active"><h4>${message}</h4></li>
       <li data-target="#myCarousel" data-slide-to="1" class="list-group-item"><h4>22222222222222222222</h4></li>
       <li data-target="#myCarousel" data-slide-to="2" class="list-group-item"><h4>3333333333333333333333</h4></li>
       <li data-target="#myCarousel" data-slide-to="3" class="list-group-item"><h4>44444444444444444444</h4></li>

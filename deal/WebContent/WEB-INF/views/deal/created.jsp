@@ -22,7 +22,6 @@
 
 
 
- <script src="<%=cp%>/res/defaultTemplate/js/bootstrap.min.js"></script>
   <script src="<%=cp%>/res/defaultTemplate/js/icheck/icheck.min.js"></script>
         <!-- tags -->
 

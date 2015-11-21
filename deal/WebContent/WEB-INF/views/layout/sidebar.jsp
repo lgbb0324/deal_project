@@ -32,99 +32,99 @@
                                 </li>
                                 <li><a ><i class="fa fa-male"></i> 의류/잡화 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="index.html">남성의류</a>
+                                        <li><a href="<%=cp%>/deal/manCloth.do">남성의류</a>
                                         </li>
-                                        <li><a href="index2.html">여성의류</a>
+                                        <li><a href="<%=cp%>/deal/womanCloth.do">여성의류</a>
                                         </li>
-                                        <li><a href="index3.html">유아동</a>
+                                        <li><a href="<%=cp%>/deal/childCloth.do">유아동</a>
                                         </li>
-                                         <li><a href="index3.html">악세사리</a>
+                                         <li><a href="<%=cp%>/deal/accessaryCloth.do">악세사리</a>
                                         </li>
-                                         <li><a href="index3.html">잡화</a>
+                                         <li><a href="<%=cp%>/deal/EtcCloth.do">잡화</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-github-alt"></i> 뷰티 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="form_advanced.html">스킨케어</a>
+                                        <li><a href="<%=cp%>/deal/skinBeauty.do">스킨케어</a>
                                         </li>
-                                        <li><a href="form_validation.html">메이크업</a>
+                                        <li><a href="<%=cp%>/deal/makeupBeauty.do">메이크업</a>
                                         </li>
-                                        <li><a href="form_wizards.html">헤어케어</a>
+                                        <li><a href="<%=cp%>/deal/hairBeauty.do">헤어케어</a>
                                         </li>
-                                        <li><a href="form_upload.html">바디케어</a>
+                                        <li><a href="<%=cp%>/deal/bodyBeauty.do">바디케어</a>
                                         </li>
-                                        <li><a href="form_buttons.html">향수</a>
+                                        <li><a href="<%=cp%>/deal/perfumeBeauty.do">향수</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-cutlery"></i> 식품 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="general_elements.html">농/수/축산 식품</a>
+                                        <li><a href="<%=cp%>/deal/farmGrocery.do">농/수/축산 식품</a>
                                         </li>
-                                        <li><a href="media_gallery.html">가공식품</a>
+                                        <li><a href="<%=cp%>/deal/processedGrocery.do">가공식품</a>
                                         </li>
-                                        <li><a href="typography.html">건강/다이어트 식품</a>
+                                        <li><a href="<%=cp%>/deal/healthGrocery.do">건강/다이어트 식품</a>
                                         </li>
-                                        <li><a href="icons.html">유아동식품</a>
+                                        <li><a href="<%=cp%>/deal/childGrocery.do">유아동식품</a>
                                         </li>
-                                        <li><a href="glyphicons.html">음료/음식</a>
+                                        <li><a href="<%=cp%>/deal/waterGrocery.do">음료/음식</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-home"></i> 가구/생활 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="tables.html">침대/커튼/카페트</a>
+                                        <li><a href="<%=cp%>/deal/cottonFurniture.do">침대/커튼/카페트</a>
                                         </li>
-                                        <li><a href="tables_dynamic.html">책상/테이블/식탁</a>
+                                        <li><a href="<%=cp%>/deal/tableFurniture.do">책상/테이블/식탁</a>
                                         </li>
-                                         <li><a href="tables_dynamic.html">홈/인테리어/DIY</a>
+                                         <li><a href="<%=cp%>/deal/interiorFurniture.do">홈/인테리어/DIY</a>
                                         </li>
-                                         <li><a href="tables_dynamic.html">생활/수납/욕실/청소</a>
+                                         <li><a href="<%=cp%>/deal/normalFurniture.do">생활/수납/욕실/청소</a>
                                         </li>
-                                         <li><a href="tables_dynamic.html">주방/수입주방</a>
+                                         <li><a href="<%=cp%>/deal/kitchenFurniture.do">주방/수입주방</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-car"></i> 레저/자동차 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="chartjs.html">스포츠용품</a>
+                                        <li><a href="<%=cp%>/deal/sportsLeisure.do">스포츠용품</a>
                                         </li>
-                                        <li><a href="chartjs2.html">등산/아웃도어</a>
+                                        <li><a href="<%=cp%>/deal/outdoorLeisure.do">등산/아웃도어</a>
                                         </li>
-                                        <li><a href="morisjs.html">캠핑/낚시</a>
+                                        <li><a href="<%=cp%>/deal/campingLeisure.do">캠핑/낚시</a>
                                         </li>
-                                        <li><a href="echarts.html">자동차용품</a>
+                                        <li><a href="<%=cp%>/deal/carLeisure.do">자동차용품</a>
                                         </li>
-                                        <li><a href="other_charts.html">레저용품</a>
+                                        <li><a href="<%=cp%>/deal/normalLeisure.do">레저용품</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-laptop"></i> 디지털/가전 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="tables.html">카메라/악세사리</a>
+                                        <li><a href="<%=cp%>/deal/cameraDigital.do">카메라/악세사리</a>
                                         </li>
-                                        <li><a href="tables_dynamic.html">주방가전</a>
+                                        <li><a href="<%=cp%>/deal/kitchenDigital.do">주방가전</a>
                                         </li>
-                                         <li><a href="tables_dynamic.html">생활가전</a>
+                                         <li><a href="<%=cp%>/deal/lifeDigital.do">생활가전</a>
                                         </li>
-                                         <li><a href="tables_dynamic.html">노트북/데스크탑/PC부품</a>
+                                         <li><a href="<%=cp%>/deal/pcDigital.do">노트북/데스크탑/PC부품</a>
                                         </li>
-                                         <li><a href="tables_dynamic.html">휴대폰/악세사리</a>
+                                         <li><a href="<%=cp%>/deal/phoneDigital.do">휴대폰/악세사리</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-book"></i> 도서/취미 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="tables.html">도서/음반/DVD</a>
+                                        <li><a href="<%=cp%>/deal/normalBook.do">도서/음반/DVD</a>
                                         </li>
-                                        <li><a href="tables_dynamic.html">e쿠폰/상품권/이용권</a>
+                                        <li><a href="<%=cp%>/deal/ticketBook.do">e쿠폰/상품권/이용권</a>
                                         </li>
-                                        <li><a href="tables_dynamic.html">여행/숙박/항공</a>
+                                        <li><a href="<%=cp%>/deal/travelBook.do">여행/숙박/항공</a>
                                         </li>
-                                        <li><a href="tables_dynamic.html">반려동물용품</a>
+                                        <li><a href="<%=cp%>/deal/animalBook.do">반려동물용품</a>
                                         </li>
-                                        <li><a href="tables_dynamic.html">문구/취미</a>
+                                        <li><a href="<%=cp%>/deal/hobbyBook.do">문구/취미</a>
                                         </li>
                                     </ul>
                                 </li>

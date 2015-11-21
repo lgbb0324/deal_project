@@ -22,11 +22,14 @@
 
 
 
+
  <link href="<%=cp%>/res/template/css/bootstrap.min.css" rel="stylesheet">
  <link href="<%=cp%>/res/template/css/custom.css" rel="stylesheet">
   <link href="<%=cp%>/res/template/css/animate.min.css" rel="stylesheet">
    
  <script src="<%=cp%>/res/template/js/custom.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+ 
  <script src="<%=cp%>/res/template/js/bootstrap.min.js"></script>
  <script src="<%=cp%>/res/template/js/jquery.min.js"></script>
  <script type="text/javascript">
