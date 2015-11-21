@@ -77,12 +77,13 @@ $('#myModal').on('show.bs.modal', function (e) {
 }
 </style>
 </head>
-<body class="nav-md">
+<body class="nav-md" style="padding:0px;">
 			<div class="container body">
+			
 			<div class="main_container">
-	<div class="layoutSide">
-		<tiles:insertAttribute name="sidebar"/>
-	</div>
+				<div class="layoutSide">
+				<tiles:insertAttribute name="sidebar"/>
+			</div>
 	
 	<div class="layoutTop">
 		<tiles:insertAttribute name="topbar"/>
