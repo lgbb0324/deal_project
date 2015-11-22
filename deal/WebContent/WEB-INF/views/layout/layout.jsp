@@ -31,6 +31,7 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
  
  <script src="<%=cp%>/res/template/js/bootstrap.min.js"></script>
+
  <script src="<%=cp%>/res/template/js/jquery.min.js"></script>
  <script type="text/javascript">
 $('#myModal').on('show.bs.modal', function (e) {

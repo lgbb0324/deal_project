@@ -4,7 +4,8 @@
    String cp = request.getContextPath();
    request.setCharacterEncoding("UTF-8");
 %>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
    <div class="right_col" role="main">
    
   <div class="col-md-12 col-sm-12 col-xs-12">
