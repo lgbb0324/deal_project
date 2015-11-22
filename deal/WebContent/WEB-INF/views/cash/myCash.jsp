@@ -593,37 +593,8 @@ $('#cashModal').on('show.bs.modal', function (e) {
 					
                                 </div>
                                  </div>
-                                 
-                                 
-                                 <!--환전하기 모달  -->
-						<div class="modal fade" id="cashmodal2" >
-									  <div class="modal-dialog">
-									      <div class="container">
-											    <blockquote class="quote-box">
-											    <span class="pull-right note_fontsize" >2015-11-18[16:59]</span><!-- 보낸시간 뜨는거야 -->
-											    	
-											      <p class="">
-											     	캐시환전
-											      </p>
-											      <hr>
-											      <div class="blog-post-actions">
-											      <!-- 이름 누르면 답장하는거야 -->
-											     
-											        <p class="blog-post-bottom pull-right">
-											        <span>
-											         <!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
-									      			  <span class="item-right">
-                       										 <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
-                   									  </span>
-											        </span>
-											        </p>
-											      </div>
-											    </blockquote>
-											</div>
-									    </div>
-									  </div>
-									  
-									  <div class="modal fade" id="cashmodal" >
+									  <!--충전하기 모달  -->
+									  <div class="modal fade" id="cashmodal">
 									  <div class="modal-dialog">
 									      <div class="container">
 											    <blockquote id="js" class="quote-box">
@@ -634,7 +605,7 @@ $('#cashModal').on('show.bs.modal', function (e) {
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table" >
                     <div class="row display-tr" >
-                        <h3 class="panel-title display-td" >Payment Details</h3>
+                        <h3 class="panel-title display-td" >카드 결제</h3>
                         <div class="display-td" >                            
                             <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
                         </div>
@@ -645,7 +616,7 @@ $('#cashModal').on('show.bs.modal', function (e) {
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <label for="cardNumber">카드 번호</label>
                                     <div class="input-group">
                                         <input 
                                             type="tel"
@@ -691,14 +662,16 @@ $('#cashModal').on('show.bs.modal', function (e) {
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="couponCode">COUPON CODE</label>
-                                    <input type="text" class="form-control" name="couponCode" />
+                                    <label for="couponCode">결제 금액</label>
+                                    <input style="width: 300px" type="text" class="form-control" name="couponCode"/>
                                 </div>
                             </div>                        
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-success btn-lg btn-block" type="submit">Start Subscription</button>
+                                <center>
+                                <button style="width:150px" class="btn btn-success btn-lg btn-block" type="submit">결제</button>
+                            	</center>
                             </div>
                         </div>
                         <div class="row" style="display:none;">
@@ -709,10 +682,7 @@ $('#cashModal').on('show.bs.modal', function (e) {
                     </form>
                 </div>
             </div> 
-											      </p>
-											      <hr>
-											      <div class="blog-post-actions">
-											      <!-- 이름 누르면 답장하는거야 -->
+											    
 											     
 											        <p class="blog-post-bottom pull-right">
 											        <span>
@@ -722,13 +692,116 @@ $('#cashModal').on('show.bs.modal', function (e) {
                    									  </span>
 											        </span>
 											        </p>
-											      </div>
-											    </blockquote>
+											     
+											  
 											</div>
 									    </div>
 									  </div>
 									  
-                                 </div>
+									  <!--환전하기 모달  -->
+									  <div class="modal fade" id="cashmodal2">
+									  <div class="modal-dialog">
+									      <div class="container">
+											    <blockquote id="js" class="quote-box">
+											    <span class="pull-right note_fontsize" >오늘날짜[현재시간]</span><!-- 보낸시간 뜨는거야 -->
+											      
+											      <p class="">
+											      <!-- CREDIT CARD FORM STARTS HERE -->
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table" >
+                    <div class="row display-tr" >
+                        <h3 class="panel-title display-td" >회원계좌로 환전</h3>
+                        <div class="display-td" >                            
+                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                        </div>
+                    </div>                    
+                </div>
+                <div class="panel-body">
+                    <form role="form" id="payment-form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">계좌 번호</label>
+                                    <div class="input-group">
+                                        <input 
+                                            type="tel"
+                                            class="form-control"
+                                            name="cardNumber"
+                                            placeholder="-(하이픈) 제거후 입력"
+                                            autocomplete="cc-number"
+                                            required autofocus 
+                                        />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="cardExpiry">예금주</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        name="cardExpiry"
+                                        placeholder="홍길동"
+                                        autocomplete="cc-exp"
+                                        required 
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cardCVC">잔여캐시</label>
+                                    <input 
+                                        type="tel" 
+                                        class="form-control"
+                                        name="cardCVC"
+                                        placeholder="잔여캐시"
+                                        autocomplete="cc-csc"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="couponCode">환전금액</label>
+                                    <input style="width: 300px" type="text" class="form-control" name="couponCode"/>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <center>
+                                <button style="width:150px" class="btn btn-success btn-lg btn-block" type="submit">환전</button>
+                            	</center>
+                            </div>
+                        </div>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div> 
+			   
+											        <p class="blog-post-bottom pull-right">
+											        <span>
+											         <!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
+									      			  <span class="item-right">
+                       										 <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
+                   									  </span>
+											        </span>
+											        </p>
+											    
+											</div>
+									    </div>
+									  </div>
+									  
+                               
                                 
 
 
