@@ -7,6 +7,20 @@
    String cp = request.getContextPath();
 %>
 
+<style>
+.modal-header-success {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5cb85c;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+</style>
 
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
 
@@ -202,66 +216,38 @@
                                 </a>
                                 
                                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
-                                    <li>
-                                        <a>
+                                   <li data-toggle="modal">
+                                        <a href="#success" data-toggle="modal">
                                             <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
-                                    </span>
+                                       <img class="media-object img-circle" src="<%=cp %>/res/images/mac1.jpg">
+                                    		</span>
                                             <span>
-                                        <span>John Smith</span>
+                                        <span>딜에 성공하셨습니다!</span>
                                             <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                      	 		1
+                                       			확인하기
                                     </span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a>
+                                    <li data-toggle="modal" >
+                                        <a href="#success" data-toggle="modal">
                                             <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
-                                    </span>
+                                       <img class="media-object img-circle" src="<%=cp %>/res/images/prod1.jpg">
+                                    		</span>
                                             <span>
-                                        <span>John Smith</span>
+                                        <span>딜에 성공하셨습니다.</span>
                                             <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
-                                       			2
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
-                                    </span>
-                                            <span>
-                                        <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                       			3
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
-                                    </span>
-                                            <span>
-                                        <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                               4
+                                       			확인하기
                                     </span>
                                         </a>
                                     </li>
                                     <li>
                                         <div class="text-center">
                                             <a>
-                                                <strong><a href="inbox.html">See All Alerts</strong>
+                                                <strong><a href="inbox.html">ALL</strong>
                                                 <i class="fa fa-angle-right"></i>
                                             </a>
                                         </div>
@@ -302,6 +288,32 @@
                         </ul>
                     </nav>
                 </div>
-
+	
             </div>
             <!-- /top navigation -->
+            
+   <!-- 알림 modal -->         
+      <div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h1><i class="glyphicon glyphicon-thumbs-up"></i> 축하합니다!</h1>
+                </div>
+                <div class="modal-body">
+             
+    <img src="<%=cp %>/res/images/mac1.jpg" class="img-responsive">
+     <img align="center" src="<%=cp %>/res/images/bar.jpg" class="img-responsive" style="width: 180px" height="50px">
+    <div class="producttitle">참여하신 딜이 성공적으로 마무리 되었습니다.</div>
+    
+    
+
+                
+                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
