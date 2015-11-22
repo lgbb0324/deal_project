@@ -18,8 +18,13 @@
                         <div class="nav toggle">
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                         </div>
-
-                        <ul class="nav navbar-nav navbar-right">
+                       	<!-- 검색바 -->
+                       	<div style="float: left; margin-top: 10px" >
+                        <input type="text" id="search_bar" required="required" class="form-control col-md-7 col-xs-12" style="width: 450px">
+						
+						<button class="search-button" style="height: 34px; width:40px; background-color: #FFFFFF"><i class="fa fa-search"></i></button>
+						</div>
+                        <ul class="nav navbar-nav navbar-right" style="width: 450px">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     <img src="<%=cp%>/res/images/img.jpg" alt="">John Doe
@@ -263,6 +268,9 @@
                                     </li>
                                 </ul>
                             </li><!-- end 알림 -->
+                      
+                           
+                            
                             
                              <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
