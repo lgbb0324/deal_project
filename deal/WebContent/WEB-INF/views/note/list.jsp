@@ -5,7 +5,7 @@
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
 %>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
  
 
 
@@ -22,7 +22,7 @@ Licensed under MIT
     <div class="row">
 		<div class="col-md-12">
 			<h3>쪽지</h3>
-
+				
 			<div class="tabbable-panel">
 				<div class="tabbable-line">
 					<ul class="nav nav-tabs ">
@@ -34,87 +34,173 @@ Licensed under MIT
 							<a href="#tab_default_2" data-toggle="tab">
 							보낸 쪽지함 </a>
 						</li>
-						<li>
-							<a href="#tab_default_3" data-toggle="tab">
-							쪽지 보내기 </a>
-						</li>
-					</ul>
+					</ul>	
 					<div class="tab-content">
-						<div class="tab-pane active" id="tab_default_1">
-							     <div class="x_content">
-
-                                    <table class="table table-striped responsive-utilities jambo_table bulk_action">
+						<div class="tab-pane active" id="tab_default_1"> <!-- 받은쪽지함 -->
+						<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                                </div>
+                            </div>
+							 <table class="table table-striped responsive-utilities jambo_table bulk_action">
                                         <thead>
                                             <tr class="headings">
-                                                <th>
-                                                    <input type="checkbox" id="check-all" class="flat">
+                                                <th style="text-align: center;">
+                                                    <input type="checkbox" id="check-all" class="flat" >
                                                 </th>
-                                                <th class="column-title">보낸 사람</th>
-                                                <th class="column-title">내 용</th>
-                                                <th class="column-title">날짜</th>
+                                                <th class="column-title"  style="text-align: center;">보낸 사람</th>
+                                                <th class="column-title"  style="text-align: center;">내 용</th>
+                                                <th class="column-title"  style="text-align: center;">날짜</th>
                                			  </tr>
                             			</thead>
 
                             <tbody>
-                                <tr class="even pointer">
+                                <tr class="even pointer"  data-toggle="modal" data-target="#myModal" style="text-align: center;">
                                     <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
-                                    <td class=" ">박서준</td>
-                                    <td class=" ">안녕 </td>
+                                    <td class=" ">
+                                    	<ul style="padding:0">
+                                    	<li class="dropdown">
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">박서준</a>
+								          <ul class="dropdown-menu" >
+								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
+								            <li class="divider"></li>
+								            <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
+								            <li class="divider"></li>
+								            <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
+								             <li class="divider"></li>
+								             <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 신고하기</a></li>
+								            
+								          </ul>
+								        </li></ul></td>
+                                    <td class=" ">안녕나야</td>
                                     <td class=" ">2015-11-17[15:24]</td>
-                                   
-                                   
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">최시원</td>
-                                                <td class=" ">나야</td>
-                                                <td class=" ">2015-11-15[12:29]
-                                                </td>
-                                                
-                                                
-                                            </tr>
-                                            
-                                            
-
-                                            </tbody>
-                                            
-
-                                    </table>
-                                    
-                                            <div class="x_content">
-                                    
-                                    <a href="<%=cp%>/board/created.do"><button type="button" class="btn btn-dark">글쓰기</button></a>
-                                    
+                                 </tr>
+                                 <tr class="odd pointer"   data-toggle="modal" data-target="#myModal"  style="text-align: center;">
+                                    <td class="a-center ">
+                                        <input type="checkbox" class="flat" name="table_records">
+                                    </td>
+                                    <td class=" ">
+                                    	<ul style="padding:0">
+                                    	<li class="dropdown">
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">최시원</a>
+								          <ul class="dropdown-menu">
+								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
+								            <li class="divider"></li>
+								            <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
+								            <li class="divider"></li>
+								            <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
+								             <li class="divider"></li>
+								             <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 신고하기</a></li>
+								            
+								          </ul>
+								        </li></ul></td>
+                                    <td class=" ">신촌역앞</td>
+                                    <td class=" ">2015-11-15[12:29]
+                                    </td>
+                                  </tr>
+                                  
+                                  
+                             </tbody>
+                          </table>
+                       <div class="container" >
+						<ul class="pagination">
+						              <li class="disabled"><a href="#">«</a></li>
+						              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+						              <li><a href="#">2</a></li>
+						              <li><a href="#">3</a></li>
+						              <li><a href="#">4</a></li>
+						              <li><a href="#">5</a></li>
+						              <li><a href="#">»</a></li>
+						            </ul>
+						</div>
+                        </div>
+						<div class="tab-pane" id="tab_default_2"> <!-- 보낸쪽지함 -->
+						<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
                                 </div>
-                                </div>
-						</div>
-						<div class="tab-pane" id="tab_default_2">
-							<p>
-								Howdy, I'm in Tab 2.
-							</p>
-							<p>
-								Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.
-							</p>
-							
-						</div>
-						<div class="tab-pane" id="tab_default_3">
-							<p>
-								Howdy, I'm in Tab 3.
-							</p>
-							<p>
-								Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat
-							</p>
-							
-						</div>
+                            </div>
+							  <table class="table table-striped responsive-utilities jambo_table bulk_action">
+                                        <thead>
+                                            <tr class="headings">
+                                                <th style="text-align: center;">
+                                                    <input type="checkbox" id="check-all" class="flat" >
+                                                </th>
+                                                <th class="column-title"  style="text-align: center;">보낸 사람</th>
+                                                <th class="column-title"  style="text-align: center;">내 용</th>
+                                                <th class="column-title"  style="text-align: center;">날짜</th>
+                               			  </tr>
+                            			</thead>
+
+                            <tbody>
+                                <tr class="even pointer"  data-toggle="modal" data-target="#myModal" style="text-align: center;">
+                                    <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
+                                    <td class=" ">
+                                    	<ul style="padding:0">
+                                    	<li class="dropdown">
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">박서준</a>
+								          <ul class="dropdown-menu">
+								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
+								            <li class="divider"></li>
+								            <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
+								            <li class="divider"></li>
+								            <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
+								             <li class="divider"></li>
+								             <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 신고하기</a></li>
+								            
+								          </ul>
+								        </li></ul></td>
+                                    <td class=" ">안녕나야</td>
+                                    <td class=" ">2015-11-17[15:24]</td>
+                                 </tr>
+                                 <tr class="odd pointer"   data-toggle="modal" data-target="#myModal"  style="text-align: center;">
+                                    <td class="a-center ">
+                                        <input type="checkbox" class="flat" name="table_records">
+                                    </td>
+                                    <td class=" ">
+                                    	<ul style="padding:0">
+                                    	<li class="dropdown">
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">최시원</a>
+								          <ul class="dropdown-menu">
+								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
+								            <li class="divider"></li>
+								            <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
+								            <li class="divider"></li>
+								            <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
+								             <li class="divider"></li>
+								             <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 신고하기</a></li>
+								            
+								          </ul>
+								        </li></ul></td>
+                                    <td class=" ">신촌역앞</td>
+                                    <td class=" ">2015-11-15[12:29]
+                                    </td>
+                                  </tr>
+                             </tbody>
+                          </table>
+                           	<ul class="pagination">
+						              <li class="disabled"><a href="#">«</a></li>
+						              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+						              <li><a href="#">2</a></li>
+						              <li><a href="#">3</a></li>
+						              <li><a href="#">4</a></li>
+						              <li><a href="#">5</a></li>
+						              <li><a href="#">»</a></li>
+						            </ul>
+                        </div>
 					</div>
 				</div>
 			</div>
-
-			  </div>  </div>
-                                    </div>
-                  
+		</div>
+	  </div>
+   </div>
+</div>                  
       
     <div id="custom_notifications" class="custom-notifications dsp_none">
         <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
@@ -363,6 +449,42 @@ Licensed under MIT
   border-top: 0;
   border-bottom: 1px solid #eee;
   padding-bottom: 15px;
+}
+.dropdown-menu:after{
+	left:6%;
+	right:90%;
+}
+ul{
+	 list-style:none;
+}
+
+.dropdown-menu{
+	min-width:100px;
+    float: center;
+    margin-left: 90px;
+}
+
+.pagination{
+	padding-left:33%;
+}
+.pagination>li>a, .pagination>li>span {
+	 border-radius: 50% !important;
+	 margin: 0 5px;
+	 background: white;
+	 color:black;
+	 border-color:#e51b13;
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+	 background: #e51b13;
+	 color:white;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+	background: #e51b13;
+	 color:white;
+	 z-index:2;
+	 cursor: default;
+	 border-color:#e51b13;
+	 
 }
    </style>
    
