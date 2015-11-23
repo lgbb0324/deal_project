@@ -11,7 +11,7 @@
 				<a href="<%=cp%>/profile/myDealProfile.do">회사소개</a>&nbsp;&nbsp;&nbsp;<span> | </span>
 				&nbsp;&nbsp;&nbsp;<a href="">제휴제안</a>&nbsp;&nbsp;&nbsp;<span> | </span>
 				&nbsp;&nbsp;&nbsp;<a href="">이용약관</a>&nbsp;&nbsp;&nbsp;<span> | </span>
-				&nbsp;&nbsp;&nbsp;<a href="">오시는길</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;<a href="<%=cp%>/profile/myDealLocation.do">오시는길</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <p class="pull-right"> 
                             <span class="lead"> <i class="fa fa-user"></i> Dealer Chic!</span>
                         </p>

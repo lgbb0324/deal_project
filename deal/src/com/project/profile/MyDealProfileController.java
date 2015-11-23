@@ -13,4 +13,10 @@ public class MyDealProfileController {
 		ModelAndView mav = new ModelAndView(".profile.myDealProfile");
 		return mav;
 	}
+	
+	@RequestMapping(value="/profile/myDealLocation",method=RequestMethod.GET)
+	public ModelAndView location() {
+		ModelAndView mav = new ModelAndView(".profile.myDealLocation");
+		return mav;
+	}
 }

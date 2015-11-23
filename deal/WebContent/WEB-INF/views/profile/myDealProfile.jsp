@@ -5,7 +5,7 @@
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
 %>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
    
   		 <div class="right_col" role="main">
 
@@ -178,8 +178,9 @@
 
                                 <div class="bs-example" data-example-id="simple-jumbotron">
                                     <div class="jumbotron">
-                                        <h1>Hello, world!</h1>
-                                        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                                        <div class="red"><h1>Dealer Chic</h1></div>
+                                        <p>오로지 고객만족만 생각합니다.</p>
+                                        <p>진심으로 고객만족을 실현하는 것이 <br>Dealer Chic의 사명이자 회사의 존재 이유입니다.<br><br> 고객이 원하는 것에서 모든 것이 출발하고 그것을 할 수 있는 방법을 찾는 것이 우리가 일하는 방식입니다.</p>
                                     </div>
                                 </div>
 
@@ -216,8 +217,12 @@
 
                                 <div class="bs-example" data-example-id="simple-jumbotron">
                                     <div class="jumbotron">
-                                        <h1>Hello, world!</h1>
-                                        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                                        
+                                        <img alt="비전" src="<%=cp%>/res/images/vision.PNG" width="800px" height="350px">
+                                        <p class="red"><br>고객의 돈과 시간을 아껴주는 고객만족경영을 추구합니다.</p>
+                                        <h2><br>집요하게 고객만족 오직 한 가지에만 멈춤 없이 집착합니다.<br><br>어떻게 하면 고객만족이 가능할지 그것이 무엇보다 궁금하고,그 해법을 찾기위해 노력합니다.<br>
+수단이 아닌 궁극의 목적으로서 진심으로 고객만족을 실현하는 것이 Dealer Chic의 사명이요, 존재 이유입니다.<br><br>고객이 가야 할 곳, 그 고객의 기대치가 목표로 삼는 최소한의 Standard입니다.<br>고객이 원하는 것에서 모든것이 출발하고, 그것을 할수 있는 방법을 찾는 것이 우리가 일하는 방식입니다.<br></b><br>
+고객이 원하는 것을 할 수 있도록 과감하게 기존의 방식을 버리면서 새로운 방법을 찾고,<br>현재의 효율을 유지하는 것을 우선으로 하는 것이 아니라, 고객이 원하는 것을 먼저하고 그 다음에 효율을 개선합니다.<br>또한 고객만족기여도가 직원과 조직의 평가,보상의 기준이 될 수 있도록 회사의 인프라를 구축합니다.</h2>
                                     </div>
                                 </div>
 
