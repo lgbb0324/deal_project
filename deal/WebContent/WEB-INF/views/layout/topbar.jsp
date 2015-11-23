@@ -20,6 +20,58 @@
      border-top-left-radius: 5px;
      border-top-right-radius: 5px;
 }
+
+.search-form .form-group {
+  float: right !important;
+  transition: all 0.35s, border-radius 0s;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+.search-form .form-group input.form-control {
+  padding-right: 20px;
+  border: 0 none;
+  background: transparent;
+  box-shadow: none;
+  display:block;
+}
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+  display: none;
+}
+.search-form .form-group input.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  display: none;
+}
+.search-form .form-group input.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  display: none;
+}
+.search-form .form-group input.form-control:-ms-input-placeholder {
+  display: none;
+}
+.search-form .form-group:hover,
+.search-form .form-group.hover {
+  width: 100%;
+  border-radius: 4px 25px 25px 4px;
+}
+.search-form .form-group span.form-control-feedback {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #3596e0;
+  left: initial;
+  font-size: 14px;
+}
+
 </style>
 
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
@@ -32,14 +84,25 @@
                         <div class="nav toggle">
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                         </div>
-                       	<!-- 검색바 -->
-                       	<div style="float: left; margin-top: 10px" >
-                        <input type="text" id="search_bar" required="required" class="form-control col-md-7 col-xs-12" style="width: 450px">
-						
-						<button class="search-button" style="height: 34px; width:40px; background-color: #FFFFFF"><i class="fa fa-search"></i></button>
-						</div>
+
+	<!-- 검색바 -->
+        <div class="col-md-4 col-sm-4 col-xs-10">
+            <form action="" style="padding-top:13px;" class="search-form">
+                <div class="form-group has-feedback">
+            		<label for="search" class="sr-only">Search</label>
+            		<input type="text" class="form-control" name="search" id="search" placeholder="검색">
+              		<span style="margin-bottom: 10px" class="glyphicon glyphicon-search form-control-feedback"></span>
+              		
+            	</div>
+            </form>
+        </div>
+
+
                         <ul class="nav navbar-nav navbar-right" style="width: 450px">
+                           
+                           
                             <li class="">
+                            
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     <img src="<%=cp%>/res/images/img.jpg" alt="">John Doe
                                     <span class=" fa fa-angle-down"></span>
