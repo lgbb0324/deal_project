@@ -91,7 +91,7 @@
                 <div class="form-group has-feedback">
             		<label for="search" class="sr-only">Search</label>
             		<input type="text" class="form-control" name="search" id="search" placeholder="검색">
-              		<span style="margin-bottom: 10px" class="glyphicon glyphicon-search form-control-feedback"></span>
+              		<span style="margin-top: 0px" class="glyphicon glyphicon-search form-control-feedback"></span>
               		
             	</div>
             </form>
