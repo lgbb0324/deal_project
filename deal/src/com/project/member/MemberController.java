@@ -39,4 +39,21 @@ public class MemberController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/member/idFind", method=RequestMethod.GET)
+	public ModelAndView idFind() throws Exception{
+		
+		ModelAndView mav = new ModelAndView(".member.idFind");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/member/passFind", method=RequestMethod.GET)
+	public ModelAndView passFind() throws Exception{
+		
+		ModelAndView mav = new ModelAndView(".member.passFind");
+		
+		return mav;
+	}
+	
 }

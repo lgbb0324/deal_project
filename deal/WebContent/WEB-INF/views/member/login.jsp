@@ -124,8 +124,8 @@ $(function(){
   			  <tr><td height="1" bgcolor="#DAD9FF"></td></tr>
 			  <tr align="center" height="40">
 			      <td>
-			       		<a href="<%=cp%>">아이디 찾기</a>&nbsp;|&nbsp; 
-			       		<a href="<%=cp%>">비밀번호 찾기</a>&nbsp;|&nbsp;
+			       		<a href="<%=cp%>/member/idFind.do">아이디 찾기</a>&nbsp;|&nbsp; 
+			       		<a href="<%=cp%>/member/passFind.do">비밀번호 찾기</a>&nbsp;|&nbsp;
 			       		<a href="<%=cp%>/member/member.do">회원가입</a>
 			      </td>
 			  </tr>
