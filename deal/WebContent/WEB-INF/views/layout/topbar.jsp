@@ -54,6 +54,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="<%=cp%>/friend/list.do">
+                                            <span>팔로우</span>
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="javascript:;">Help</a>
                                     </li>
                                     <li><a href="<%=cp%>/member/login.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a>

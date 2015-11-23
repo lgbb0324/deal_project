@@ -124,7 +124,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 										      <hr>
 											      <div class="blog-post-actions">
 											      <!-- 이름 누르면 답장하는거야 -->
-											      <a class="blog-post-bottom pull-left">
+											      <a class="blog-post-bottom pull-left" data-toggle="modal" data-target="#ModalCreated">
 											         박서준
 											       </a>
 											        <p class="blog-post-bottom pull-right">
@@ -142,6 +142,42 @@ $('#myModal').on('show.bs.modal', function (e) {
 									    </div>
 									  </div>
 					
+					  <div class="modal fade" id="ModalCreated" >
+                             <div class="modal-dialog">
+                                 <div class="container">
+                                     <blockquote class="quote-box">
+                                     <span class="pull-right note_fontsize" >2015-11-18
+
+													[16:59]</span><!-- 보낸시간 뜨는거야 -->
+													                                       <p class="quotation-mark">
+													                                         “
+													                                       </p>
+													                                       <p class="quote-text">
+													                                          <textarea></textarea>
+													                                       </p>
+													                                    <hr>
+													                                       <div class="blog-post-actions">
+													                                      
+													                                       <span class="pull-left">
+													                                          박서준
+													                                        </span>
+													                                         <p class="blog-post-bottom pull-right">
+													                                         <span>
+													
+													 <button type="button" class="btn btnsetting">보내기</button>                                          
+													
+													<!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
+													   <button type="button" class="btn btnsetting"> <span class="glyphicon glyphicon-cog"></span></button>
+												<span class="item-right">
+													 <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
+                                                </span>
+                                         </span>
+                                         </p>
+                                       </div>
+                                     </blockquote>
+                                 </div>
+                               </div>
+                             </div>
 					
 					
                         
