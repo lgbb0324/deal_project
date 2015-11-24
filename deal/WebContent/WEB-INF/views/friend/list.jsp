@@ -67,8 +67,21 @@ Licensed under MIT
 						                                  
                                                     </div>
                                                      <div class="col-xs-3" style="vertical-align: middle;">
-                                                       <button type="button" class="btn btn-default" style="margin-top: 45%"><span class="glyphicon glyphicon-plus"></span> 팔로우</button>
-                                                    </div>
+												        <div class="form-group">
+												            <div class="searchable-container">
+												                    <div class="info-block block-info clearfix">
+												                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
+												                            <label class="btn btn-default">
+												                                <div class="bizcontent">
+												                                    <input type="checkbox" name="var_id[]" autocomplete="off" value="">
+												                                     <h5><span class="glyphicon glyphicon-ok glyphicon-lg"></span> &nbsp;팔로우</h5>
+												                                </div>
+												                            </label>
+												                        </div>
+												                </div>
+												            </div> 
+													</div>
+												</div>
                                                    
                                                 </div>
                                                 </div>
@@ -97,7 +110,21 @@ Licensed under MIT
 						                                  
                                                     </div>
                                                      <div class="col-xs-3" style="vertical-align: middle;">
-                                                      <button type="button" class="btn btn-default" style="margin-top: 45%"><span class="glyphicon glyphicon-plus"></span> 팔로우</button>
+												        <div class="form-group">
+												            <div class="searchable-container">
+												                    <div class="info-block block-info clearfix">
+												                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
+												                            <label class="btn btn-default">
+												                                <div class="bizcontent">
+												                                    <input type="checkbox" name="var_id[]" autocomplete="off" value="">
+												                                     <h5><span class="glyphicon glyphicon-ok glyphicon-lg"></span> &nbsp;팔로우</h5>
+												                                </div>
+												                            </label>
+												                        </div>
+												                </div>
+												            </div> 
+													</div>
+												</div>
                                                     </div>
                                                    
                                                 </div>
@@ -110,7 +137,7 @@ Licensed under MIT
                                             </div>
                                         </div>
                                     </div>
-                               </div>     
+
     <div id="custom_notifications" class="custom-notifications dsp_none">
         <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
         </ul>
@@ -269,6 +296,15 @@ Licensed under MIT
                 $('#reportrange').data('daterangepicker').remove();
             });
         });
+        $(function() {
+            $('#search').on('keyup', function() {
+                var pattern = $(this).val();
+                $('.searchable-container .items').hide();
+                $('.searchable-container .items').filter(function() {
+                    return $(this).text().match(new RegExp(pattern, 'i'));
+                }).show();
+            });
+        });
     </script>
     <!-- /datepicker -->
 <style type="text/css">
@@ -411,5 +447,17 @@ ul{
 .well.profile_view .divider{
 	padding-top:0px;
 }
+.searchable-container{margin:20px 0 0 0}
+.searchable-container label.btn-default.active{background-color:#620000;color:#FFF}
+.searchable-container label.btn-default{width:90%;border:1px solid #efefef;margin:5px; }
+.searchable-container label .bizcontent{width:50%;}
+.searchable-container .btn-group{width:110%}
+.searchable-container .btn span.glyphicon{
+    opacity: 0;
+}
+.searchable-container .btn.active span.glyphicon {
+    opacity: 1;
+}
+
    </style>
    
