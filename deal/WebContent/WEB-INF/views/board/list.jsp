@@ -156,18 +156,15 @@
                                     
                                     <a href="<%=cp%>/board/created.do"><button type="button" class="btn btn-dark">글쓰기</button></a>
                                     
-                                    <div class="dataTable_paginate paging_full_numbers" id="example_paginate" style="float: right">
-	<a tabindex="0" class="first paginate_button paginate_button_disabled" id="example_first">First</a>
-	<a tabindex="0" class="previout paginate_button paginate_button_disabled" id="example_previous">Previous</a>
-	<span>
-		<a tabindex="0" class="paginate_active">1</a>
-		<a tabindex="0" class="paginate_button">2</a>
-		<a tabindex="0" class="paginate_button">3</a>
-		<a tabindex="0" class="paginate_button">4</a>
-	</span>
-	<a tabindex="0" class="next paginate_button" id="example_next">Next</a>
-	<a tabindex="0" class="next paginate_button" id="example_last">Last</a>
-</div>
+                                    <ul class="pagination">
+						              <li class="disabled"><a href="#">«</a></li>
+						              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+						              <li><a href="#">2</a></li>
+						              <li><a href="#">3</a></li>
+						              <li><a href="#">4</a></li>
+						              <li><a href="#">5</a></li>
+						              <li><a href="#">»</a></li>
+						            </ul>
                                 </div>
                                 
                                 
@@ -235,3 +232,28 @@
     
         </script>
         
+<style type="text/css">
+.pagination{
+	padding-left:33%;
+}
+.pagination>li>a, .pagination>li>span {
+	 border-radius: 50% !important;
+	 margin: 0 5px;
+	 background: white;
+	 color:black;
+	 border-color:#e51b13;
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+	 background: #e51b13;
+	 color:white;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+	background: #e51b13;
+	 color:white;
+	 z-index:2;
+	 cursor: default;
+	 border-color:#e51b13;
+	 
+}
+   </style>
+   

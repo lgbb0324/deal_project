@@ -42,10 +42,10 @@
                                 </div>
                                 <div class="x_content">
 
-                                    <div class="col-md-8 col-lg-8 col-sm-7">
-                                        <br><br><br><br><br><br><br><br>
+                                    <div class="col-md-7  col-lg-7 cols-xs-7">
+                                        <img class="col-md-12 col-sm-12 col-xs-12" alt="오시는길" src="<%=cp%>/res/images/location.PNG">
                                     </div>
-                                    <div class="col-md-4 col-lg-4 col-sm-5">
+                                    <div class="col-md-5 col-lg-5 col-sm-5">
                                         
                                         <h1>Dealer Chic <br></h1>
                                        <h3>우리가 만드는 DealerChic는 모두에게 열려있습니다.</h3><br>
@@ -77,22 +77,21 @@
                                     
                                     <div class="col-md-4 col-sm-4 col-xs-10">
                                     <div class="x_panel">
-                                       <img alt="회사전경1" src="<%=cp%>/res/images/company1.jpg" width="265px" height="250px">
+                                       <img class="col-md-12 col-sm-12 col-xs-12" alt="회사전경1" src="<%=cp%>/res/images/company1.jpg">
                                     </div></div>
 
                                     <div class="col-md-4 col-sm-4 col-xs-10" >
                                     <div class="x_panel">
-                                   		<img alt="회사전경2" src="<%=cp%>/res/images/company2.jpg" width="265px" height="250px">
+                                   		<img class="col-md-12 col-sm-12 col-xs-12" alt="회사전경2" src="<%=cp%>/res/images/company2.jpg" width="265px" height="250px">
                                     </div></div>
                                     
                                     <div class="col-md-4 col-sm-4 col-xs-10" >
                                     <div class="x_panel">
-                                        <img alt="회사전경3" src="<%=cp%>/res/images/company3.jpg" width="265px" height="250px">
+                                        <img class="col-md-12 col-sm-12 col-xs-12" alt="회사전경3" src="<%=cp%>/res/images/company3.jpg" width="265px" height="250px">
                                     </div></div>
                      </div>
 
                                 
                             
                 </div>
-             
-                
+    

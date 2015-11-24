@@ -218,7 +218,7 @@
                                 <div class="bs-example" data-example-id="simple-jumbotron">
                                     <div class="jumbotron">
                                         
-                                        <img alt="비전" src="<%=cp%>/res/images/vision.PNG" width="800px" height="350px">
+                                        <img alt="비전" src="<%=cp%>/res/images/vision.PNG" class="col-md-12 col-sm-12 col-xs-12">
                                         <p class="red"><br>고객의 돈과 시간을 아껴주는 고객만족경영을 추구합니다.</p>
                                         <h2><br>집요하게 고객만족 오직 한 가지에만 멈춤 없이 집착합니다.<br><br>어떻게 하면 고객만족이 가능할지 그것이 무엇보다 궁금하고,그 해법을 찾기위해 노력합니다.<br>
 수단이 아닌 궁극의 목적으로서 진심으로 고객만족을 실현하는 것이 Dealer Chic의 사명이요, 존재 이유입니다.<br><br>고객이 가야 할 곳, 그 고객의 기대치가 목표로 삼는 최소한의 Standard입니다.<br>고객이 원하는 것에서 모든것이 출발하고, 그것을 할수 있는 방법을 찾는 것이 우리가 일하는 방식입니다.<br></b><br>
