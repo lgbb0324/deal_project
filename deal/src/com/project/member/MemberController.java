@@ -1,27 +1,19 @@
 package com.project.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+
+
 @Controller("memberController")
 public class MemberController {
 
-	
-	@RequestMapping(value="/member/login", method=RequestMethod.GET)
-	public ModelAndView login() {
-		ModelAndView mav = new ModelAndView("/member/login");
-		return mav;
-	}
-	
-	@RequestMapping(value="/member/memberch", method=RequestMethod.GET)
-	public ModelAndView memberchForm() throws	Exception{
-		
-		ModelAndView mav = new ModelAndView(".member.memberch");
+	@Autowired
+	private MemberService service;
 
-		return mav;
-	}
 	
 	@RequestMapping(value="/member/member", method=RequestMethod.GET)
 	public ModelAndView memberForm() throws	Exception{
@@ -30,30 +22,28 @@ public class MemberController {
 
 		return mav;
 	}
+
 	
 	
-	@RequestMapping(value="/member/mypage", method=RequestMethod.GET)
-	public ModelAndView mypageForm() throws Exception{
+	@RequestMapping(value="/member/member",method=RequestMethod.POST)
+	public ModelAndView memberSubmit(
+			Member dto
+			) throws Exception{
+		int result = service.insertMember(dto);
 		
-		ModelAndView mav = new ModelAndView(".member.mypage");
+		if(result==0){
+			ModelAndView mav = new ModelAndView(".member.member");
+			mav.addObject("mode", "created");
+			mav.addObject("title", "가입");
+			mav.addObject("message","아이디 중복으로 회원가입이 실패 했습니다.");
+			
+			return mav;
+		}
 		
+		ModelAndView mav = new ModelAndView(".member.member");
+		mav.addObject("message", "회원가입이 정상 처리 되었습니다.<br>메인 화면으로 이동하여 로그인 하시기 바랍니다.");
 		return mav;
-	}
+		
 	
-	@RequestMapping(value="/member/idFind", method=RequestMethod.GET)
-	public ModelAndView idFind() throws Exception{
-		
-		ModelAndView mav = new ModelAndView(".member.idFind");
-		
-		return mav;
 	}
-	
-	@RequestMapping(value="/member/passFind", method=RequestMethod.GET)
-	public ModelAndView passFind() throws Exception{
-		
-		ModelAndView mav = new ModelAndView(".member.passFind");
-		
-		return mav;
-	}
-	
 }

@@ -7,9 +7,7 @@
 %>
 
  
- 
- <script src="<%=cp%>/res/template/js/chartjs/chart.min.js"></script>
- 
+
 
   <!-- ion_range -->
     <link rel="stylesheet" href="<%=cp%>/res/template/css/normalize.css" />
