@@ -27,58 +27,90 @@ A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themefores
 Licensed under MIT
 -->
 
-<div class="container">
-    <div class="row">
-      <div class="col-md-12">
-         <h3>팔로우</h3>
-            
-         <div class="tabbable-panel">
-            <div class="tabbable-line">
-                  
-               <div class="tab-content">
-                  
-                  <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search for...">
-                                    <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
+<div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2><i class="fa fa-child fa-2x"></i>팔로우</h2>
+                                    <div class="clearfix"></div>
                                 </div>
-                            </div>
-                      <table class="table table-striped responsive-utilities jambo_table bulk_action">
-                       <tbody>
-                                <tr style="text-align: center;">
-                                <td> <img src="https://s3.amazonaws.com/uifaces/faces/twitter/ManikRathee/128.jpg" class="img-circle1 img-responsive" alt="" /></td>
-                                    <td class=" ">
-                                       <ul style="padding:0">
-                                       <li class="dropdown">
-                                      
-                                  <a class="dropdown-toggle" data-toggle="dropdown">박서준</a>
-                                  <ul class="dropdown-menu" >
-                                    <li><a data-toggle="modal" data-target="#ModalCreated"><span class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
-                                     <li class="divider"></li>
-                                     <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 신고하기</a></li>
-                                    
-                                  </ul>
-                                </li></ul></td>
-                                    <td class=" "><button><span class="glyphicon glyphicon-plus"></span> 팔로우</button></td>
-                                 </tr>
-                                
-                                  
-                             </tbody>
-                          </table>
+						<div class="x_content">
+							 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+							                                <div class="input-group">
+							                                    <input type="text" class="form-control" placeholder="Search for...">
+							                                    <span class="input-group-btn">
+							                            			<button class="btn btn-default" type="button">Go!</button>
+							                       			 </span>
+							                                 </div>
+							                   </div>
+                                    <div class="row">
+                                         <div class="clearfix"></div>
+                                         <div class="col-md-6 col-sm-6 col-xs-12 animated fadeInDown">
+                                            <div class="well profile_view">
+                                                <div class="col-sm-12">
+                                                   <div class="col-xs-5">
+                                                         <a><img src="<%=cp %>/res/images/she.jpg" alt="" class="img-circle1 img-responsive"  style="padding:0px; margin: 0;"></a>
+                                                    </div>
+                                                    <div class="col-xs-4" style="vertical-align: middle;">
+						                                      <ul style="padding:0; margin-top: 20%;">
+						                                       <li class="dropdown" >
+						                                      	 <a class="dropdown-toggle f-namefont" data-toggle="dropdown">황정음</a>
+						                               			   <ul class="dropdown-menu" style="margin-left: 5%;" >
+								                                    <li><a data-toggle="modal" data-target="#ModalCreated"><span class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
+								                                    <li class="divider"></li>
+								                                    <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
+								                                     <li class="divider"></li>
+								                                     <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 신고하기</a></li>
+						                                    
+						                                  		</ul>
+						                                </li></ul>
+						                                	<span>팔로우 450명</span>
+						                                  
+                                                    </div>
+                                                     <div class="col-xs-3" style="vertical-align: middle;">
+                                                       <button type="button" class="btn btn-default" style="margin-top: 45%"><span class="glyphicon glyphicon-plus"></span> 팔로우</button>
+                                                    </div>
+                                                   
+                                                </div>
+                                                </div>
+                                        </div>
+                                        
+                                            <div class="col-md-6 col-sm-6 col-xs-12 animated fadeInDown">
+                                            <div class="well profile_view">
+                                                <div class="col-sm-12">
+                                                   <div class="col-xs-5">
+                                                         <a><img src="<%=cp %>/res/images/ch.jpg" alt="" class="img-circle1 img-responsive"  style="padding:0px; margin: 0;"></a>
+                                                    </div>
+                                                    <div class="col-xs-4" style="vertical-align: middle;">
+						                                      <ul style="padding:0; margin-top: 20%;">
+						                                       <li class="dropdown" >
+						                                      	 <a class="dropdown-toggle f-namefont" data-toggle="dropdown">최시원</a>
+						                               			   <ul class="dropdown-menu" style="margin-left: 5%;" >
+								                                    <li><a data-toggle="modal" data-target="#ModalCreated"><span class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
+								                                    <li class="divider"></li>
+								                                    <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
+								                                     <li class="divider"></li>
+								                                     <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 신고하기</a></li>
+						                                    
+						                                  		</ul>
+						                                </li></ul>
+						                                	<span>팔로우 450명</span>
+						                                  
+                                                    </div>
+                                                     <div class="col-xs-3" style="vertical-align: middle;">
+                                                      <button type="button" class="btn btn-default" style="margin-top: 45%"><span class="glyphicon glyphicon-plus"></span> 팔로우</button>
+                                                    </div>
+                                                   
+                                                </div>
+                                                </div>
+                                        </div>
                     
                         </div>
-                  </div>
-            </div>
-         </div>
-      </div>
-     </div>
-   </div>
-   
-        
+
+                                       
+                                            </div>
+                                        </div>
+                                    </div>
+                               </div>     
     <div id="custom_notifications" class="custom-notifications dsp_none">
         <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
         </ul>
@@ -330,6 +362,7 @@ Licensed under MIT
 .dropdown-menu:after{
 	left:6%;
 	right:90%;
+	margin-left: 0;
 }
 ul{
 	 list-style:none;
@@ -364,9 +397,19 @@ ul{
 	 
 }
 .img-circle1{
-	width:50px;
-	height:50px;
+	width:130px;
+	height:130px;
 	border-radius:50%;
+	margin-left: 0px;
+}
+.f-namefont{
+	font-size: 16pt;
+	font: #00001E;
+	font-weight: bold;
+}
+
+.well.profile_view .divider{
+	padding-top:0px;
 }
    </style>
    
