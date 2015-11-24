@@ -4,6 +4,14 @@
    String cp = request.getContextPath();
    request.setCharacterEncoding("UTF-8");
 %>
+<%
+String birth = "1991-11-04";
+String sanum = "191919191919";
+String num1 = "1234";
+String num2 = "1234";
+String num3 = "1234";
+String num4 = "1234";
+%>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   
    <div class="right_col" role="main">
@@ -11,24 +19,19 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><i class="fa fa-child fa-2x"></i>마이페이지<small>내 정보를 확인하세요</small></h2>
+                                    <h2><i class="fa fa-child fa-2x"></i>정보수정<small>내 정보를 확인하세요</small></h2>
                                     
                                     <div class="clearfix"></div>
                                 </div>
 
 
+
 <div style="min-height: 450px;">
-		<div style="width:100%;	height: 40px; line-height:40px;clear: both; border-top: 1px solid #DAD9FF;border-bottom: 1px solid #DAD9FF;">
-		    <div style="width:600px; height:30px; line-height:30px; margin:5px auto;">
-		        <img src="<%=cp%>/res/images/arrow.gif" width="11" height="11" alt="" style="padding-left: 5px; padding-right: 5px;" />
-		        <span style="font-weight: bold;font-size:13pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">회원 ${title}</span>
-		    </div>
-		</div>
 		
-		<div style="margin: 20px auto 10px; width:600px; min-height: 400px;">
+		<div style="margin: 20px auto 10px; width:90%; min-height: 400px;">
 		
            	<form name="memberForm" method="post">
-				<table style="width:600px; margin: 0px auto; border-collapse: collapse; border-spacing: 0;">
+				<table style="width:100%; margin: 0px auto; border-collapse: collapse; border-spacing: 0;">
 
 				<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
 	
@@ -42,7 +45,11 @@
 						admin
 							  <span id="userIdState" style='display:none;'></span>
 					</td>
+					
+					
 				</tr>
+				
+				
 				<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
 			
 				<tr height="35">
@@ -63,37 +70,32 @@
 						<input type="password" name="userPwd1" class="boxTF" size="25" maxlength="10"/>
 					</td>
 				</tr>
+					<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
+				<tr height="30">
 
-				<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
-					<tr height="35">
+
+					<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
+				</table>
+				<table style="width:100%; margin: 0px auto; border-collapse: collapse; border-spacing: 0;">
+				<tr height="35">
 					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
 					이&nbsp;&nbsp;&nbsp;&nbsp;름
 					</td>
 					<td align="left" style="padding-left: 5px;">
-					어드민입니다.
+						어드민
 					</td>
 				</tr>
 				<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+			
 			
 				<tr height="35">
 					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
 					생년월일
 					</td>
 					<td align="left" style="padding-left: 5px;">
-						1991-11-04
+						<input type="text" name="birth" size="25" maxlength="20"  class="boxTF" 
+										value="<%=birth %>" />
 					</td>
-				</tr>
-								<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
-			
-				<tr height="35">
-					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
-					캐&nbsp;&nbsp;&nbsp;&nbsp;쉬
-					</td>
-					<td align="left" style="padding-left: 5px;">
-					10000원
-					<input type="button" value="캐쉬충전" style="margin-left: 30px;">
-					</td>
-				
 				</tr>
 				<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
 			
@@ -139,8 +141,100 @@
 					</td>
 
 				</tr>
+						<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
+					<tr height="30">
+						<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
 				
-					<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+				</table>
+				
+				
+				
+				
+				<table style="width:100%; margin: 0px auto; border-collapse: collapse; border-spacing: 0;">
+				<tr height="35">
+					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
+					사업자 번호
+					</td>
+					<td align="left" style="padding-left: 5px;">
+						<input type="text" name="userName" size="25" maxlength="20"  class="boxTF" 
+										value="<%=sanum %>"/>
+					</td>
+				</tr>
+
+				<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+			
+				<tr height="35">
+					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
+					카드번호
+					</td>
+					<td align="left" style="padding-left: 5px;">
+							  <select name="selectEmail" onchange="changeEmail();">
+									<option value="">카드사 선택</option>
+									<option >신한</option>
+									<option >농협</option>
+									<option >롯데</option>
+									<option >삼성</option>
+									<option >하나</option>
+									<option >우체국</option>
+									<option >국민</option>
+									<option >시티</option>
+							  </select>
+							  <input type="text" size="8" maxlength="30"  class="boxTF" value="<%=num1%>"> -
+							  <input type="text" size="8" maxlength="30"  class="boxTF" value="<%=num2%>"> -
+							  <input type="text" size="8" maxlength="30"  class="boxTF" value="<%=num3%>"> -
+							  <input type="text" size="8" maxlength="30"  class="boxTF" value="<%=num4%>">
+					</td>
+				</tr>
+				<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+				
+				<tr height="35">
+					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
+					결제번호
+					</td>
+					<td align="left" style="padding-left: 5px;">
+							
+							  <input type="text" name="tel2" size="5" maxlength="4"  class="boxTF" />
+
+					</td>
+
+				</tr>
+				<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+				
+				<tr height="35">
+					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
+					캐&nbsp;&nbsp;&nbsp;&nbsp;쉬
+					</td>
+					<td align="left" style="padding-left: 5px;">
+					10000원
+					<input type="button" value="캐쉬충전" style="margin-left: 30px;">
+					</td>
+				
+				</tr>
+				
+				
+						<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
+					<tr height="30">
+						<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
+				
+				</table>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<table style="width:100%; margin: 0px auto; border-collapse: collapse; border-spacing: 0;">
+				
+			<tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
 				
 				<tr height="50">
 					<td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;" >
@@ -151,7 +245,11 @@
 									
 				    <img src="http://static.naver.net/me/new/profile_default.gif" width="100" height="100" data-src="">
 						<input type="file" accpet="image/*" name="image" class="file_upload _img_input N=a:pfe.upimage">
+	
+				
 	</td>
+
+
 
 				</tr>
 				
@@ -159,26 +257,17 @@
 			
 				<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
 			
-				<tr height="40" >
+				<tr height="60" >
 					<td align="center" colspan="2" style="padding-top: 8px">
-						<c:if test="${mode=='created'}">
-						<%-- 	<input type="button" value=" 회원가입 " class="btn" onclick="memberOk();"/>
-							<input type="reset" value=" 다시입력 " class="btn" onclick="document.memberForm.userId"/>
-							<input type="button" value=" 가입취소 " class="btn" onclick="javascript:location.href='<%=cp%>';"/> --%>
-						<%-- </c:if> --%>
-					<%-- 	<c:if test="${mode=='update'}"> --%>
+						
+
 							<input type="button" value=" 정보수정 " class="btn" onclick="memberOk();"/>
 							<input type="reset" value=" 다시입력 " class="btn" onclick="document.memberForm.userId"/>
 							<input type="button" value=" 수정취소 " class="btn" onclick="javascript:location.href='<%=cp%>';"/>
-					<!-- 	</c:if> -->
+
 					</td>
 				</tr>
-				
-				<tr height="35">
-					<td align="center" colspan="2">
-					    <span style="color: blue;">${message}</span>
-					</td>
-				</tr>
+
 				</table>
 			</form>
 		

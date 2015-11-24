@@ -173,11 +173,13 @@
                                                             <a href="#"><span class="fa fa-star-o"></span></a>
                                                         </p>
                                                     </div>
-                                                    <div class="col-xs-12 col-sm-6 emphasis">
+                                                   <div class="col-xs-12 col-sm-6 emphasis">
                                                         <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#contact" data-original-title> <i class="fa fa-user">
                                                             </i> 쪽지 보내기 </button>
-                                                        <button type="button" class="btn btn-primary btn-xs" > <i class="fa fa-user">
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <i class="fa fa-user">
                                                             </i> 프로필 보기 </button>
+   
+                                                            
                                                     </div>
                                                 </div>
                                             </div>
@@ -212,10 +214,12 @@
                                                         </p>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6 emphasis">
-                                                        <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
-                                                            </i> <i class="fa fa-comments-o"></i> </button>
-                                                        <button type="button" class="btn btn-primary btn-xs"> <i class="fa fa-user">
-                                                            </i> View Profile </button>
+                                                        <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#contact" data-original-title> <i class="fa fa-user">
+                                                            </i> 쪽지 보내기 </button>
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <i class="fa fa-user">
+                                                            </i> 프로필 보기 </button>
+   
+                                                            
                                                     </div>
                                                 </div>
                                             </div>

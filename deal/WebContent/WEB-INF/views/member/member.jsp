@@ -389,9 +389,8 @@ function changeEmail() {
 
 
 				</tr>
-				
 
-			
+
 				<tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
 			
 				<tr height="60" >
