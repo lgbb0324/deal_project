@@ -153,7 +153,7 @@ $('#myModal').on('show.bs.modal', function (e) {
 													                                         “
 													                                       </p>
 													                                       <p class="quote-text">
-													                                          <textarea></textarea>
+													                                          <textarea style="width:280px; height:300px;"></textarea>
 													                                       </p>
 													                                    <hr>
 													                                       <div class="blog-post-actions">
