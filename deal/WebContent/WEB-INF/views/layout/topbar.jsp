@@ -129,7 +129,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$('#myModal').on('hidden.bs.modal', function (e) {
+	$('#myModal1').on('hidden.bs.modal', function (e) {
 		var inputs = $('form input');
 		var title = $('.modal-title');
 		var progressBar = $('.progress-bar');
@@ -192,7 +192,7 @@ function sendLogin() {
                         </div>
 
 	<!-- 검색바 -->
-        <div class="col-md-4 col-sm-4 col-xs-10">
+<!--         <div class="col-md-4 col-sm-4 col-xs-10">
             <form action="" style="padding-top:13px;" class="search-form">
                 <div class="form-group has-feedback">
             		<label for="search" class="sr-only">Search</label>
@@ -202,13 +202,11 @@ function sendLogin() {
             	</div>
             </form>
         </div>
-        
+         -->
         <!--login modal  -->
-<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Log in
-</button>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 
@@ -258,12 +256,16 @@ function sendLogin() {
 
 <!--login modal end  -->
 
-                        <ul class="nav navbar-nav navbar-right" style="width: 450px">
-                           
+                        <ul class="nav navbar-nav navbar-right col-md-4 col-sm-4 col-xs-12" style="width:initial;">
+                             <li>
+                             <button style="margin:0px;" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+ 						   Log in
+							</button>
+                             </li>
                            
                             <li class="">
                             
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <a href="javascript:;" style="padding:0px;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     <img src="<%=cp%>/res/images/img.jpg" alt="">${sessionScope.member.userId}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
@@ -294,8 +296,9 @@ function sendLogin() {
                                 <a href="<%=cp%>/cash/myCash.do;">
                            				2000
                                 </a>
+                                
                              </li><!-- end 캐쉬 -->
-                             
+                           
                           <!-- 쪽지 -->
                             <li role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
@@ -325,7 +328,7 @@ function sendLogin() {
                                      <li data-toggle="modal" data-target="#myModal">
                                         <a>
                                             <span class="image">
-                                          <img class="media-object img-circle" src="<%=cp %>/res/images/ch.jpg" alt="profile">
+                                          <img class="media-object img-circle" src="<%=cp%>/res/images/ch.jpg" alt="profile">
                                     </span>
                                             <span>
                                         <span>최시원</span>
@@ -448,7 +451,7 @@ function sendLogin() {
                                    <li data-toggle="modal">
                                         <a href="#success" data-toggle="modal">
                                             <span class="image">
-                                       <img class="media-object img-circle" src="<%=cp %>/res/images/mac1.jpg">
+                                       <img class="media-object img-circle" src="<%=cp%>/res/images/mac1.jpg">
                                     		</span>
                                             <span>
                                         <span>딜에 성공하셨습니다!</span>
@@ -462,7 +465,7 @@ function sendLogin() {
                                     <li data-toggle="modal" >
                                         <a href="#success" data-toggle="modal">
                                             <span class="image">
-                                       <img class="media-object img-circle" src="<%=cp %>/res/images/prod1.jpg">
+                                       <img class="media-object img-circle" src="<%=cp%>/res/images/prod1.jpg">
                                     		</span>
                                             <span>
                                         <span>딜에 성공하셨습니다.</span>
@@ -488,7 +491,7 @@ function sendLogin() {
                             
                             
                              <li class="">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <a href="javascript:;" style="padding:0px;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									마이딜<span class="badge bg-red">6</span>
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
