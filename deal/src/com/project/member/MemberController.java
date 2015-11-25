@@ -78,4 +78,16 @@ public class MemberController {
 		
 		return new ModelAndView("redirect:/");
 	}
+	
+	
+	@RequestMapping(value="/member/logout")
+	public String logout(HttpSession session) 
+			throws Exception{
+		//세션에 저장된 정보 지우기
+		session.removeAttribute("member");
+		//세션 초기화
+		session.invalidate();
+		
+		return "redirect:/";
+	}
 }

@@ -187,7 +187,7 @@ function sendLogin() {
 
                 <div class="nav_menu">
                     <nav class="" role="navigation">
-                        <div class="nav toggle">
+                        <div class="nav toggle" style="margin-bottom: 0px;">
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                         </div>
 
@@ -231,17 +231,22 @@ function sendLogin() {
 						</div> <!-- /.input-group -->
 					</div> <!-- /.form-group -->
 
-					<div class="checkbox">
+					<div class="checkbox pull-left">
 						<label>
 							<input type="checkbox"> Remember me
 						</label>
 					</div> <!-- /.checkbox -->
+					<label style="padding-top:5px;" class="pull-right">
+							 <a  href="<%=cp%>/member/member.do">회원가입</a>
+						</label>
 				</form>
+				
+				
 
 			</div> <!-- /.modal-body -->
 
 			<div class="modal-footer">
-				<button class="form-control btn btn-primary" onclick="sendLogin();">Ok</button>
+				<button class="form-control btn btn-primary" onclick="sendLogin();">Login</button>
 
 				<div class="progress">
 					<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
@@ -256,28 +261,26 @@ function sendLogin() {
 
 <!--login modal end  -->
 
-                        <ul class="nav navbar-nav navbar-right col-md-4 col-sm-4 col-xs-12" style="width:initial;">
-                             <li>
-                             <button style="margin:0px;" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+                        <ul class="nav navbar-nav navbar-right col-md-4 col-sm-4 col-xs-2" style="width:initial;padding-right:0px;padding-top: 0px;">
+                             <li style="padding-top: 14px;padding-right: 10px;padding-left: 10px;">
+                             <c:if test="${sessionScope.member.userId==null}">
+                             <button style="margin:0px;" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal1">
  						   Log in
 							</button>
+							</c:if>
                              </li>
                            
-                            <li class="">
-                            
+                            <li style="padding-top: 0px; padding-right: 5px;padding-left:5px;" class="">
+                             <c:if test="${sessionScope.member.userId!=null}">
                                 <a href="javascript:;" style="padding:0px;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="<%=cp%>/res/images/img.jpg" alt="">${sessionScope.member.userId}
+                                    <img style="width:55px;height:55px;" src="<%=cp%>/res/images/img.jpg" alt="">${sessionScope.member.userId}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
+                                </c:if>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
                                     <li><a href="<%=cp%>/member/mypage.do">정보수정</a>
                                     </li>
-                                    <li>
-                                        <a href="<%=cp%>/member/member.do">
-                                            <span class="badge bg-red pull-right">50%</span>
-                                            <span>회원가입</span>
-                                        </a>
-                                    </li>
+                               
                                     <li>
                                         <a href="<%=cp%>/friend/list.do">
                                             <span>팔로우</span>
@@ -287,20 +290,18 @@ function sendLogin() {
                                         <a href="javascript:;">Help</a>
                                     </li>
                                    
-                                    <li><a href="<%=cp%>/member/login.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                    <li><a href="<%=cp%>/member/logout.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                     </li>
                                 </ul>
                             </li><!-- end 내정보 -->
-                            
-							<li>
-                                <a href="<%=cp%>/cash/myCash.do;">
-                           				2000
-                                </a>
+                             <c:if test="${sessionScope.member.userId!=null}">
+							<li style="padding-top:7px;padding-right: 5px; padding-left: 5px;">
+                                <a style="padding: 0px;margin-top:4px;" href="<%=cp%>/cash/myCash.do;">2000</a>
                                 
                              </li><!-- end 캐쉬 -->
-                           
+                           </c:if>
                           <!-- 쪽지 -->
-                            <li role="presentation" class="dropdown">
+                            <li style="padding:7px;" role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-envelope fa-5x"></i>
                                     <span class="badge bg-green">2</span>
@@ -366,7 +367,7 @@ function sendLogin() {
                                 </ul>
                             </li>
 							<!-- 대화 -->
-							<li role="presentation" class="dropdown">
+							<li style="padding:7px;" role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-comments fa-5x"></i>
                                     <span class="badge bg-green">2</span>
@@ -441,7 +442,7 @@ function sendLogin() {
                             </li>
 							
 							<!-- 알림 -->
-                            <li role="presentation" class="dropdown">
+                            <li style="padding:7px;"role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-paper-plane fa-5x"></i>
                                     <span class="badge bg-green">2</span>
@@ -490,7 +491,7 @@ function sendLogin() {
                            
                             
                             
-                             <li class="">
+                             <li style="padding-top: 10px;" class="">
                                 <a href="javascript:;" style="padding:0px;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									마이딜<span class="badge bg-red">6</span>
                                     <span class=" fa fa-angle-down"></span>
