@@ -5,235 +5,103 @@
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
 %>
- <%-- <%=cp%>/res/template/ --%>
-<link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
-<link href="<%=cp%>/res/template/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
-<link href="<%=cp%>/res/template/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
-<script src="<%=cp%>/res/template/js/jquery.min.js"></script>
-   
 
-   
-   <div class="right_col" role="main">
-   
-   
-  <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2><i class="fa fa-child fa-2x"></i>QnA<small> 다양한 회원들의 질문답변 소통공간</small></h2>
-                                    <div class="title_right">
-                                    
-                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search for...">
-                                    <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                                </div>
-                            </div>
-                        </div>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <div class="x_content">
-
-                                    <table class="table table-striped responsive-utilities jambo_table dataTable" aria-describedby="example_info">
-                                        <thead>
-                                            <tr class="headings">
-                                                <th class="sorting_disabled">
-                                                    <input type="checkbox" id="check-all" class="flat">
-                                                </th>
-                                                <th class="column-title">글 번호 </th>
-                                                <th class="column-title">제목</th>
-                                                <th class="column-title">작성자 </th>
-                                                <th class="column-title">날짜 </th>
-                                                <th class="column-title">조회수 </th>
-                                                <!-- <th class="column-title">Amount </th>
-                                                <th class="column-title no-link last"><span class="nobr">Action</span>
-                                                </th>
-                                                <th class="bulk-actions" colspan="7">
-                                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                            </th> -->
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr class="even pointer">
-                                    <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
-                                    <td class=" ">121000040</td>
-                                    <td class=" ">May 23, 2014 11:47:56 PM </td>
-                                    <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
-                                    <td class=" ">John Blank L</td>
-                                    <td class=" ">Paid</td>
-                                   
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000039</td>
-                                                <td class=" ">May 23, 2014 11:30:12 PM</td>
-                                                <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
-                                                </td>
-                                                <td class=" ">John Blank L</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000038</td>
-                                                <td class=" ">May 24, 2014 10:55:33 PM</td>
-                                                <td class=" ">121000203 <i class="success fa fa-long-arrow-up"></i>
-                                                </td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000037</td>
-                                                <td class=" ">May 24, 2014 10:52:44 PM</td>
-                                                <td class=" ">121000204</td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                               
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000040</td>
-                                                <td class=" ">May 24, 2014 11:47:56 PM </td>
-                                                <td class=" ">121000210</td>
-                                                <td class=" ">John Blank L</td>
-                                                <td class=" ">Paid</td>
-                                               
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000039</td>
-                                                <td class=" ">May 26, 2014 11:30:12 PM</td>
-                                                <td class=" ">121000208 <i class="error fa fa-long-arrow-down"></i>
-                                                </td>
-                                                <td class=" ">John Blank L</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000038</td>
-                                                <td class=" ">May 26, 2014 10:55:33 PM</td>
-                                                <td class=" ">121000203</td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000037</td>
-                                                <td class=" ">May 26, 2014 10:52:44 PM</td>
-                                                <td class=" ">121000204</td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                               
-                                            </tr>
-
-                                            </tbody>
-                                            
-
-                                    </table>
-                                    
-                                            <div class="x_content" style="float: left">
-                                    
-                                    <a href="<%=cp%>/qna/created.do"><button type="button" class="btn btn-default">글쓰기</button></a>
-                                    
-                                    
-<ul class="pagination">
-	<li class="disabled"><a href="#">«</a></li>
-	<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-	<li><a href="#">2</a></li>
-	<li><a href="#">3</a></li>
-	<li><a href="#">4</a></li>
-	<li><a href="#">5</a></li>
-	<li><a href="#">»</a></li>
-	</ul>
-                                </div>
-                                
-                                
-                                </div>
-                            </div>
-                        </div>  
-        </div>
-        
-          <script src="<%=cp%>/res/template/js/bootstrap.min.js"></script>
- 
-  <script src="<%=cp%>/res/template/js/progressbar/bootstrap-progressbar.min.js"></script>
-
-  <script src="<%=cp%>/res/template/js/icheck/icheck.min.js"></script>
-  <script src="<%=cp%>/res/template/js/custom.js"></script>
- 
-
-        <script>
-
-        $(document).ready(function () {
-            $('input.tableflat').iCheck({
-                checkboxClass: 'icheckbox_flat-green',
-                radioClass: 'iradio_flat-green'
-            });
-        });
-
-        var asInitVals = new Array();
-        $(document).ready(function () {
-            var oTable = $('#example').dataTable({
-                "oLanguage": {
-                    "sSearch": "Search all columns:"
-                },
-                "aoColumnDefs": [
-                    {
-                        'bSortable': false,
-                        'aTargets': [0]
-                    } //disables sorting for column one
-        ],
-                'iDisplayLength': 12,
-                "sPaginationType": "full_numbers",
-                "dom": 'T<"clear">lfrtip',
-                "tableTools": {
-                    "sSwfPath": "<?php echo base_url('assets2/js/Datatables/tools/swf/copy_csv_xls_pdf.swf'); ?>"
-                }
-            });
-            $("tfoot input").keyup(function () {
-                /* Filter on the column based on the index of this element's parent <th> */
-                oTable.fnFilter(this.value, $("tfoot th").index($(this).parent()));
-            });
-            $("tfoot input").each(function (i) {
-                asInitVals[i] = this.value;
-            });
-            $("tfoot input").focus(function () {
-                if (this.className == "search_init") {
-                    this.className = "";
-                    this.value = "";
-                }
-            });
-            $("tfoot input").blur(function (i) {
-                if (this.value == "") {
-                    this.className = "search_init";
-                    this.value = asInitVals[$("tfoot input").index(this)];
-                }
-            });
-        });
-    
-        </script>
-        
 <style type="text/css">
+#login { display: none; }
+.login,
+.logout { 
+    position: absolute; 
+    top: -3px;
+    right: 0;
+}
+.page-header { position: relative; }
+.reviews {
+    color: #555;    
+    font-weight: bold;
+    margin: 10px auto 20px;
+}
+.notes {
+    color: #999;
+    font-size: 12px;
+}
+.media .media-object { max-width: 120px; }
+.media-body { position: relative; }
+.media-date { 
+    position: absolute; 
+    right: 25px;
+    top: 25px;
+}
+.media-date li { padding: 0; }
+.media-date li:first-child:before { content: ''; }
+.media-date li:before { 
+    content: '.'; 
+    margin-left: -2px; 
+    margin-right: 2px;
+}
+.media-comment { margin-bottom: 20px; }
+.media-replied { margin: 0 0 20px 50px; }
+.media-replied .media-heading { padding-left: 6px; }
+
+.btn-circle {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 6px 15px;
+    border-radius: 20px;
+}
+.btn-circle span { padding-right: 6px; }
+.embed-responsive { margin-bottom: 20px; }
+.tab-content {
+    padding: 50px 15px;
+    border: 1px solid #ddd;
+    border-top: 0;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.custom-input-file {
+    overflow: hidden;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background: #eee url('https://s3.amazonaws.com/uifaces/faces/twitter/walterstephanie/128.jpg');    
+    background-size: 120px;
+    border-radius: 120px;
+}
+input[type="file"]{
+    z-index: 999;
+    line-height: 0;
+    font-size: 0;
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity = 0);-ms-filter: "alpha(opacity=0)";
+    margin: 0;
+    padding:0;
+    left:0;
+}
+.uploadPhoto {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    display: none;
+    width: 50%;
+    height: 50%;
+    color: #fff;    
+    text-align: center;
+    line-height: 60px;
+    text-transform: uppercase;    
+    background-color: rgba(0,0,0,.3);
+    border-radius: 50px;
+    cursor: pointer;
+}
+.custom-input-file:hover .uploadPhoto { display: block; }
+.well-lg-reply{
+	padding:25px;
+	border-radius:10px;
+	margin-left:90px;
+}
+
+
+
+
 .pagination{
 	padding-left:33%;
 }
@@ -256,4 +124,186 @@
 	 border-color:#e51b13;
 	 
 }
-   </style>
+</style>
+  
+<div class="right_col" role="main">
+   
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1" id="logout">
+        <div class="page-header">
+            <h3 class="reviews">Q&A</h3>
+            <div class="logout">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                 <div class="input-group">
+                       <input type="text" class="form-control" placeholder="Search for...">
+                       <span class="input-group-btn">
+                       <button class="btn btn-default" type="button">Go!</button>
+                       </span>
+                 </div>
+           	</div>
+           	</div>
+        </div>
+        <div class="comment-tabs">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Q&A</h4></a></li>
+            </ul>            
+            <div class="tab-content">
+                <div class="tab-pane active" id="comments-logout">                
+                    <ul class="media-list">
+                      
+                        
+                      <li class="media">
+                        <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
+                        </a>
+                        <div class="media-body">
+                          <div class="well well-lg">
+                              <h4 class="media-heading text-uppercase reviews">Kriztine</h4>
+                              <ul class="media-date text-uppercase reviews list-inline">
+                                <li class="dd">22</li>
+                                <li class="mm">09</li>
+                                <li class="aaaa">2014</li>
+                              </ul>
+                              <p class="media-comment">
+                                Yehhhh... Thanks for sharing.
+                              </p>
+                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyTwo"><span class="glyphicon glyphicon-comment"></span> 1 comment</a>
+                          </div>              
+                        </div>
+                        <div class="collapse" id="replyTwo">
+                            <ul class="media-list">
+                                <li class="media media-replied">
+                                    <a class="pull-left" href="#">
+                                      <img class="media-object img-circle" src="<%=cp %>/res/images/admin.PNG" alt="profile">
+                                    </a>
+                                    <div class="media-body">
+                                      <div class="well well-lg">
+                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span>관리자</h4>
+                                          <ul class="media-date text-uppercase reviews list-inline">
+                                            <li class="dd">22</li>
+                                            <li class="mm">09</li>
+                                            <li class="aaaa">2014</li>
+                                          </ul>
+                                          <p class="media-comment">
+                                            Classy!
+                                          </p>
+                                      </div>              
+                                    </div>
+                                </li>
+                            </ul>  
+                        </div>
+                      </li>
+                      
+                      <li class="media">
+                        <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
+                        </a>
+                        <div class="media-body">
+                          <div class="well well-lg">
+                              <h4 class="media-heading text-uppercase reviews">Kriztine</h4>
+                              <ul class="media-date text-uppercase reviews list-inline">
+                                <li class="dd">22</li>
+                                <li class="mm">09</li>
+                                <li class="aaaa">2014</li>
+                              </ul>
+                              <p class="media-comment">
+                                Yehhhh... Thanks for sharing.
+                              </p>
+                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyTwo"><span class="glyphicon glyphicon-comment"></span> 1 comment</a>
+                          </div>              
+                        </div>
+                        <div class="collapse" id="replyTwo">
+                            <ul class="media-list">
+                                <li class="media media-replied">
+                                    <a class="pull-left" href="#">
+                                      <img class="media-object img-circle" src="<%=cp %>/res/images/admin.PNG" alt="profile">
+                                    </a>
+                                    <div class="media-body">
+                                      <div class="well well-lg">
+                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span>관리자</h4>
+                                          <ul class="media-date text-uppercase reviews list-inline">
+                                            <li class="dd">22</li>
+                                            <li class="mm">09</li>
+                                            <li class="aaaa">2014</li>
+                                          </ul>
+                                          <p class="media-comment">
+                                            Classy!
+                                          </p>
+                                      </div>              
+                                    </div>
+                                </li>
+                            </ul>  
+                        </div>
+                      </li>
+                      
+                      <li class="media">
+                        <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
+                        </a>
+                        <div class="media-body">
+                          <div class="well well-lg">
+                              <h4 class="media-heading text-uppercase reviews">Kriztine</h4>
+                              <ul class="media-date text-uppercase reviews list-inline">
+                                <li class="dd">22</li>
+                                <li class="mm">09</li>
+                                <li class="aaaa">2014</li>
+                              </ul>
+                              <p class="media-comment">
+                                Yehhhh... Thanks for sharing.
+                              </p>
+                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyTwo"><span class="glyphicon glyphicon-comment"></span> 1 comment</a>
+                          </div>              
+                        </div>
+                        <div class="collapse" id="replyTwo">
+                            <ul class="media-list">
+                                <li class="media media-replied">
+                                    <a class="pull-left" href="#">
+                                      <img class="media-object img-circle" src="<%=cp %>/res/images/admin.PNG" alt="profile">
+                                    </a>
+                                    <div class="media-body">
+                                      <div class="well well-lg">
+                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span>관리자</h4>
+                                          <ul class="media-date text-uppercase reviews list-inline">
+                                            <li class="dd">22</li>
+                                            <li class="mm">09</li>
+                                            <li class="aaaa">2014</li>
+                                          </ul>
+                                          <p class="media-comment">
+                                            Classy!
+                                          </p>
+                                      </div>              
+                                    </div>
+                                </li>
+                            </ul>  
+                        </div>
+                     
+<div class="x_content" style="float: left">
+
+                                   <a href="<%=cp%>/qna/created.do"><button type="button" class="btn btn-default">글쓰기</button></a>
+
+<ul class="pagination">
+	<li class="disabled"><a href="#">«</a></li>
+	<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+	<li><a href="#">2</a></li>
+	<li><a href="#">3</a></li>
+	<li><a href="#">4</a></li>
+	<li><a href="#">5</a></li>
+	<li><a href="#">»</a></li>
+	</ul>
+</div>        
+                      </li> 
+                    </ul>
+                    
+                </div>
+                
+            </div>
+        </div>
+	</div>
+  </div>
+ 
+  
+</div>
