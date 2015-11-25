@@ -57,7 +57,7 @@
                                                     <div class="col-xs-12 col-sm-6 emphasis">
                                                         <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#contact" data-original-title> <i class="fa fa-user">
                                                             </i> 쪽지 보내기 </button>
-                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <i class="fa fa-user">
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-user">
                                                             </i> 프로필 보기 </button>
    
                                                             
@@ -97,7 +97,7 @@
                                                     <div class="col-xs-12 col-sm-6 emphasis">
                                                               <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#contact" data-original-title> <i class="fa fa-user">
                                                             </i> 쪽지 보내기 </button>
-                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <i class="fa fa-user">
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-user">
                                                             </i> 프로필 보기 </button>
    
                                                     </div>
@@ -136,7 +136,7 @@
                                                     <div class="col-xs-12 col-sm-6 emphasis">
                                                              <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#contact" data-original-title> <i class="fa fa-user">
                                                             </i> 쪽지 보내기 </button>
-                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <i class="fa fa-user">
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-user">
                                                             </i> 프로필 보기 </button>
    
                                                     </div>
@@ -175,7 +175,7 @@
                                                    <div class="col-xs-12 col-sm-6 emphasis">
                                                         <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#contact" data-original-title> <i class="fa fa-user">
                                                             </i> 쪽지 보내기 </button>
-                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <i class="fa fa-user">
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-user">
                                                             </i> 프로필 보기 </button>
    
                                                             
@@ -215,7 +215,7 @@
                                                     <div class="col-xs-12 col-sm-6 emphasis">
                                                         <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#contact" data-original-title> <i class="fa fa-user">
                                                             </i> 쪽지 보내기 </button>
-                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <i class="fa fa-user">
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-user">
                                                             </i> 프로필 보기 </button>
    
                                                             
@@ -255,7 +255,7 @@
                                                     <div class="col-xs-12 col-sm-6 emphasis">
                                                               <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#contact" data-original-title> <i class="fa fa-user">
                                                             </i> 쪽지 보내기 </button>
-                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <i class="fa fa-user">
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-user">
                                                             </i> 프로필 보기 </button>
    
                                                     </div>
@@ -294,7 +294,7 @@
                                                     <div class="col-xs-12 col-sm-6 emphasis">
                                                               <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#contact" data-original-title> <i class="fa fa-user">
                                                             </i> 쪽지 보내기 </button>
-                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <i class="fa fa-user">
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-user">
                                                             </i> 프로필 보기 </button>
    
                                                     </div>
@@ -333,7 +333,7 @@
                                                     <div class="col-xs-12 col-sm-6 emphasis">
                                                               <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#contact" data-original-title> <i class="fa fa-user">
                                                             </i> 쪽지 보내기 </button>
-                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <i class="fa fa-user">
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-user">
                                                             </i> 프로필 보기 </button>
    
                                                     </div>
@@ -372,7 +372,7 @@
                                                     <div class="col-xs-12 col-sm-6 emphasis">
                                                              <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#contact" data-original-title> <i class="fa fa-user">
                                                             </i> 쪽지 보내기 </button>
-                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <i class="fa fa-user">
+                                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2"> <i class="fa fa-user">
                                                             </i> 프로필 보기 </button>
    
                                                     </div>
@@ -466,7 +466,7 @@
     
  
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
