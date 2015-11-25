@@ -51,31 +51,13 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member readMember(String userId) {
 		Member dto = null;
-		/*
+		
 		try {
 			dto=dao.getReadData("member.readMember",userId);
-			if(dto!=null){
-				if(dto.getEmail()!=null){
-					String [] ss = dto.getEmail().split("@");
-					if(ss.length==2){
-						dto.setEmail1(ss[0]);
-						dto.setEmail2(ss[1]);
-					}
-				}
-				if(dto.getTel()!=null){
-					String [] ss = dto.getTel().split("-");
-					if(ss.length==3){
-						dto.setTel1(ss[0]);
-						dto.setTel2(ss[1]);
-						dto.setTel3(ss[2]);
-					}
-				}
-				
-				
-			}
+	
 		} catch (Exception e) {
 			System.out.println(e.toString());
-		}*/
+		}
 		return dto;//값이 안들어감...
 	}
 	

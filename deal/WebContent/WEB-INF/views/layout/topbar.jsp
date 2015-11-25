@@ -71,8 +71,114 @@
   left: initial;
   font-size: 14px;
 }
+body{
+    padding: 50px;
+}
+.modal-dialog {
+    width: 300px;
+}
+.modal-footer {
+    height: 70px;
+    margin: 0;
+}
+.modal-footer .btn {
+    font-weight: bold;
+}
+.modal-footer .progress {
+    display: none;
+    height: 32px;
+    margin: 0;
+}
+.input-group-addon {
+    color: #fff;
+    background: #3276B1;
+}
 
 </style>
+<script>
+$(document).ready(function(){
+    $('.modal-footer button').click(function(){
+		var button = $(this);
+
+		if ( button.attr("data-dismiss") != "modal" ){
+			var inputs = $('form input');
+			var title = $('.modal-title');
+			var progress = $('.progress');
+			var progressBar = $('.progress-bar');
+
+		/* 	inputs.attr("disabled", "disabled"); */
+
+			button.hide();
+
+			progress.show();
+
+			progressBar.animate({width : "100%"}, 100);
+
+			progress.delay(1000)
+					.fadeOut(600);
+
+			button.text("Close")
+					.removeClass("btn-primary")
+					.addClass("btn-success")
+    				.blur()
+					.delay(1600)
+					.fadeIn(function(){
+						title.text("Log in is successful");
+						button.attr("data-dismiss", "modal");
+					});
+		}
+	});
+
+	$('#myModal').on('hidden.bs.modal', function (e) {
+		var inputs = $('form input');
+		var title = $('.modal-title');
+		var progressBar = $('.progress-bar');
+		var button = $('.modal-footer button');
+
+		inputs.removeAttr("disabled");
+
+		title.text("Log in");
+
+		progressBar.css({ "width" : "0%" });
+
+		button.removeClass("btn-success")
+				.addClass("btn-primary")
+				.text("Ok")
+				.removeAttr("data-dismiss");
+                
+	});
+});
+    
+function sendLogin() {
+    var f = document.loginForm;
+
+	var str = f.userId.value;
+
+	
+	
+	str = f.userPwd.value;
+    if(!str) {
+        alert("\n패스워드를 입력하세요. ");
+        f.userPwd.focus();
+        return;
+    }
+	
+	if(!str) {
+        alert("\n아이디를 입력하세요. ");
+        f.userId.focus();
+        return;
+    }
+
+    
+
+    f.action = "<%=cp%>/member/login.do";
+    f.submit();
+}
+    
+
+    
+
+</script>
 
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
 
@@ -96,7 +202,61 @@
             	</div>
             </form>
         </div>
+        
+        <!--login modal  -->
+<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Log in
+</button>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title" id="myModalLabel">Log in</h4>
+			</div> <!-- /.modal-header -->
+
+			<div class="modal-body">
+				<form name="loginForm" method="post" action="" role="form">
+					<div class="form-group">
+						<div class="input-group">
+							<input name="userId" type="text" class="form-control" id="uLogin" placeholder="Login">
+							<label for="uLogin" class="input-group-addon glyphicon glyphicon-user"></label>
+						</div>
+					</div> <!-- /.form-group -->
+
+					<div class="form-group">
+						<div class="input-group">
+							<input name="userPwd" type="password" class="form-control" id="uPassword" placeholder="Password">
+							<label for="uPassword" class="input-group-addon glyphicon glyphicon-lock"></label>
+						</div> <!-- /.input-group -->
+					</div> <!-- /.form-group -->
+
+					<div class="checkbox">
+						<label>
+							<input type="checkbox"> Remember me
+						</label>
+					</div> <!-- /.checkbox -->
+				</form>
+
+			</div> <!-- /.modal-body -->
+
+			<div class="modal-footer">
+				<button class="form-control btn btn-primary" onclick="sendLogin();">Ok</button>
+
+				<div class="progress">
+					<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
+						<span class="sr-only">progress</span>
+					</div>
+				</div>
+			</div> <!-- /.modal-footer -->
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--login modal end  -->
 
                         <ul class="nav navbar-nav navbar-right" style="width: 450px">
                            
@@ -104,7 +264,7 @@
                             <li class="">
                             
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="<%=cp%>/res/images/img.jpg" alt="">John Doe
+                                    <img src="<%=cp%>/res/images/img.jpg" alt="">${sessionScope.member.userId}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
@@ -124,25 +284,7 @@
                                     <li>
                                         <a href="javascript:;">Help</a>
                                     </li>
-                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-										<div class="form-group">
-											 <label class="sr-only" for="exampleInputEmail2">Email address</label>
-											 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-										</div>
-										<div class="form-group">
-											 <label class="sr-only" for="exampleInputPassword2">Password</label>
-											 <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                             <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-										</div>
-										<div class="form-group">
-											 <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-										</div>
-										<div class="checkbox">
-											 <label>
-											 <input type="checkbox"> keep me logged-in
-											 </label>
-										</div>
-								 </form>
+                                   
                                     <li><a href="<%=cp%>/member/login.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                     </li>
                                 </ul>

@@ -1,10 +1,16 @@
 package com.project.member;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+
 
 
 
@@ -45,5 +51,31 @@ public class MemberController {
 		return mav;
 		
 	
+	}
+	
+	@RequestMapping(value="/member/login",method=RequestMethod.POST)
+	public ModelAndView loginSubmit(
+			HttpSession session,
+			@RequestParam String userId,
+			@RequestParam String userPwd
+			) throws Exception{
+		
+		Member dto = service.readMember(userId);
+		if(dto == null){
+			String msg = "아이디 또는 패스워드가 일치하지 않습니다.";
+			ModelAndView mav = new ModelAndView(".member.member");
+			mav.addObject("message",msg);
+			return mav;
+		}
+		
+		SessionInfo info = new SessionInfo();
+		info.setUserId(dto.getUserId());
+		info.setUserName(dto.getUserName());
+
+		//세션에 로그인 정보 저장
+		session.setAttribute("member", info);
+		
+		
+		return new ModelAndView("redirect:/");
 	}
 }
