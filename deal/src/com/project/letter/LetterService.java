@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface LetterService {
 	
-	public List<Letter> listFriend(String userId);
+
 	
 	public int insertLetter(Letter dto);
 
@@ -29,4 +29,7 @@ public interface LetterService {
 	public int deleteLetter(Map<String, Object> map);
 	
 	public int newLetterCount(String userId);
+
+	public List<Letter> listSend(String userId);
+	public List<Letter> listReceive(String userId);
 }

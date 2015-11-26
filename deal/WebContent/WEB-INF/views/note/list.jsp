@@ -10,6 +10,9 @@
  
 
 
+
+
+
   					 <div class="right_col" role="main">
    							<div class="clearfix"></div>
    
@@ -59,12 +62,13 @@ Licensed under MIT
                             			</thead>
 
                             <tbody>
+                          	
                                 <tr style="text-align: center;">
                                     <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
                                     <td class=" ">
                                     	<ul style="padding:0">
                                     	<li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">박서준</a>
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">보낸인간</a>
 								          <ul class="dropdown-menu" >
 								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
 								            <li class="divider"></li>
@@ -76,9 +80,14 @@ Licensed under MIT
 								            
 								          </ul>
 								        </li></ul></td>
-                                    <td class="even pointer"  data-toggle="modal" data-target="#myModal" >안녕나야</td>
+                                    <td class="even pointer"  data-toggle="modal" data-target="#myModal" >${dto.content}</td>
                                     <td class=" ">2015-11-17[15:24]</td>
                                  </tr>
+                                 
+                    
+                                 
+                                 
+                                     	 <c:forEach var="dto" items="${list}">
                                  <tr style="text-align: center;">
                                     <td class="a-center ">
                                         <input type="checkbox" class="flat" name="table_records">
@@ -86,7 +95,7 @@ Licensed under MIT
                                     <td class=" ">
                                     	<ul style="padding:0">
                                     	<li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">최시원</a>
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${dto.sendUserId}</a>
 								          <ul class="dropdown-menu">
 								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
 								            <li class="divider"></li>
@@ -98,11 +107,11 @@ Licensed under MIT
 								            
 								          </ul>
 								        </li></ul></td>
-                                    <td class="even pointer"  data-toggle="modal" data-target="#myModal" >신촌역앞</td>
+                                    <td class="even pointer"  data-toggle="modal" data-target="#myModal" >${dto.content}</td>
                                     <td class=" ">2015-11-15[12:29]
                                     </td>
                                   </tr>
-                                  
+                                  </c:forEach>
                                   
                              </tbody>
                           </table>
@@ -139,13 +148,18 @@ Licensed under MIT
                                			  </tr>
                             			</thead>
 
+
+
                             <tbody>
+                          
+                          
+                           <c:forEach var="dto" items="${list2}">
                                 <tr style="text-align: center;">
                                     <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
                                     <td class=" ">
                                     	<ul style="padding:0">
                                     	<li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">박서준</a>
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${dto.receiveUserId}</a>
 								          <ul class="dropdown-menu">
 								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
 								            <li class="divider"></li>
@@ -157,9 +171,10 @@ Licensed under MIT
 								            
 								          </ul>
 								        </li></ul></td>
-                                    <td  class="even pointer"  data-toggle="modal" data-target="#myModal" >안녕나야</td>
-                                    <td class=" ">2015-11-17[15:24]</td>
+                                    <td  class="even pointer"  data-toggle="modal" data-target="#myModal" >${dto.content}</td>
+                                    <td class=" ">${dto.sendDay}</td>
                                  </tr>
+                                  </c:forEach>
                                  <tr  style="text-align: center;">
                                     <td class="a-center ">
                                         <input type="checkbox" class="flat" name="table_records">

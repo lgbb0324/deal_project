@@ -13,16 +13,11 @@ public class LetterServiceImpl implements LetterService{
 	@Autowired
 	CommonDAO dao;
 	
-	@Override
-	public List<Letter> listFriend(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public int insertLetter(Letter dto) {
 		int result=0;
-		System.out.println("들어오냐1111");
+
 		try {
 			result=dao.insertData("letter.insertLetter", dto);
 		} catch (Exception e) {
@@ -35,26 +30,51 @@ public class LetterServiceImpl implements LetterService{
 
 	@Override
 	public int dataCountReceive(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result=0;
+		try {
+			result=dao.getIntValue("letter.dataCountReceive", map);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
 	}
 
 	@Override
-	public List<Letter> listReceive(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Letter> listReceive(String userId) {
+		
+		List<Letter> list = null;
+		
+		try {
+			list=dao.getListData("letter.listReceive", userId);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return list;
 	}
 
 	@Override
 	public int dataCountSend(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+			int result=0;
+			try {
+				result=dao.getIntValue("letter.dataCountSend", map);
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+		return result;
 	}
 
 	@Override
-	public List<Letter> listSend(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Letter> listSend(String userId) {
+		
+		List<Letter> list = null;
+		
+		try {
+			list = dao.getListData("letter.listSend", userId);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return list;
 	}
 
 	@Override
@@ -115,6 +135,18 @@ public class LetterServiceImpl implements LetterService{
 	public int newLetterCount(String userId) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<Letter> listSend(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Letter> listReceive(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
