@@ -10,14 +10,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.member.SessionInfo;
 
-@Controller("qnaController")
+@Controller("qna.qnaController")
 public class QnaController {
 	
-	/*@Autowired
+	@Autowired
 	private QnaService service;
 
 	@RequestMapping(value="/qna/created", method=RequestMethod.GET)
-	public ModelAndView qnaForm() throws Exception{
+	public ModelAndView qnaForm(HttpSession session) throws Exception{
+		SessionInfo info=(SessionInfo)session.getAttribute("member");
+		if(info==null)
+			return new ModelAndView("redirect:/main.do");
 		
 		ModelAndView mav = new ModelAndView(".qna.created");
 		mav.addObject("mode", "created");
@@ -28,13 +31,13 @@ public class QnaController {
 	public ModelAndView qnaSubmit(HttpSession session,Qna qna) throws Exception{
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 		if(info==null)
-			return new ModelAndView("redirect:/member/login");
+			return new ModelAndView("redirect:/main.do");
 		
 		qna.setUserId(info.getUserId());
 		service.insertQna(qna);
 		
-		return new ModelAndView("redirect:/qna/list");
-	}*/
+		return new ModelAndView("redirect:/qna/list.do");
+	}
 	
 	@RequestMapping(value="/qna/list", method=RequestMethod.GET)
 	public ModelAndView list() throws Exception{
