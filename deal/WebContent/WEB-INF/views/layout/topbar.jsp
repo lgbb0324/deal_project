@@ -276,7 +276,7 @@ function sendLogin() {
                             <li style="padding-top: 0px; padding-right: 5px;padding-left:5px;" class="">
                              <c:if test="${sessionScope.member.userId!=null}">
                                 <a href="javascript:;" style="padding:0px;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img style="width:55px;height:55px;" src="<%=cp%>/res/images/img.jpg" alt="">${sessionScope.member.userId}
+                                    <img style="width:55px;height:55px;" src="<%=cp%>/uploads/photo/${pdto.imageFilename}" alt="">${sessionScope.member.userId}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 </c:if>

@@ -18,4 +18,18 @@
 		WHERE userId=#{userId}
 	</select>
 	
+	
+	<insert id="insertPhoto" 
+	      parameterType="com.project.member.Photo">
+	    INSERT INTO photo( userId,  imageFilename)
+	      VALUES ( #{userId}, #{imageFilename})
+	</insert>
+	
+	<select id="readPhoto" parameterType="String"
+	      resultType="com.project.member.Photo">
+	SELECT  imageFilename
+			FROM photo
+	             WHERE userId=#{userId}
+	</select>
+	
 </mapper>

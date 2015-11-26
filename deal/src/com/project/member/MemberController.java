@@ -1,6 +1,8 @@
 package com.project.member;
 
-import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.project.member.SessionInfo;
+import com.project.member.Photo;
 
 
 
@@ -19,6 +24,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private PhotoService pservice;
 
 	
 	@RequestMapping(value="/member/member", method=RequestMethod.GET)
@@ -33,10 +41,22 @@ public class MemberController {
 	
 	@RequestMapping(value="/member/member",method=RequestMethod.POST)
 	public ModelAndView memberSubmit(
+			HttpSession session,
+			Photo pdto,
 			Member dto
 			) throws Exception{
-		int result = service.insertMember(dto);
+		SessionInfo info = new SessionInfo();
+		session.setAttribute("member", info);
 		
+		String root=session.getServletContext().getRealPath("/");
+		String path=root+File.separator+"uploads"+File.separator+"photo";
+	
+	
+		int result = service.insertMember(dto);
+
+		pdto.setUserId(dto.getUserId());
+	
+		pservice.insertPhoto(pdto, path);
 		if(result==0){
 			ModelAndView mav = new ModelAndView(".member.member");
 			mav.addObject("mode", "created");
@@ -71,10 +91,12 @@ public class MemberController {
 		SessionInfo info = new SessionInfo();
 		info.setUserId(dto.getUserId());
 		info.setUserName(dto.getUserName());
+	
+		Photo pdto = pservice.readPhoto(dto.getUserId());
 
 		//세션에 로그인 정보 저장
 		session.setAttribute("member", info);
-		
+		session.setAttribute("pdto", pdto);
 		
 		return new ModelAndView("redirect:/");
 	}
