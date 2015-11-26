@@ -154,7 +154,7 @@
                                     
                                             <div class="x_content" style="float: left">
                                    
-                                    
+        <a href="<%=cp%>/notice/created.do"><button type="button" class="btn btn-dark">글쓰기</button></a>                            
 <ul class="pagination">
 	<li class="disabled"><a href="#">«</a></li>
 	<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>

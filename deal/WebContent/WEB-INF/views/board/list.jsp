@@ -5,11 +5,16 @@
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
 %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
  <%-- <%=cp%>/res/template/ --%>
 <link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
 <link href="<%=cp%>/res/template/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
 <link href="<%=cp%>/res/template/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
 <script src="<%=cp%>/res/template/js/jquery.min.js"></script>
+   
    
 
    
@@ -40,7 +45,6 @@
                                         <thead>
                                             <tr class="headings">
                                                 <th class="sorting_disabled">
-                                                    <input type="checkbox" id="check-all" class="flat">
                                                 </th>
                                                 <th class="column-title">글 번호 </th>
                                                 <th class="column-title">제목</th>
@@ -57,97 +61,19 @@
                             </thead>
 
                             <tbody>
+                            <c:forEach var="dto" items="${list}">
+                            
                                 <tr class="even pointer">
-                                    <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
-                                    <td class=" ">121000040</td>
-                                    <td class=" ">May 23, 2014 11:47:56 PM </td>
-                                    <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
-                                    <td class=" ">John Blank L</td>
-                                    <td class=" ">Paid</td>
+                                    <td class="a-center ">
+                                    <td class=" ">${dto.num}</td>
+                                    <td class=" "><a href="${urlArticle}&num=${dto.num}">${dto.subject}</a></td>
+                                    <td class=" ">${dto.userName}</td>
+                                    <td class=" ">${dto.created}</td>
+                                    <td class=" ">${dto.hitCount}</td>
                                    
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000039</td>
-                                                <td class=" ">May 23, 2014 11:30:12 PM</td>
-                                                <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
-                                                </td>
-                                                <td class=" ">John Blank L</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000038</td>
-                                                <td class=" ">May 24, 2014 10:55:33 PM</td>
-                                                <td class=" ">121000203 <i class="success fa fa-long-arrow-up"></i>
-                                                </td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000037</td>
-                                                <td class=" ">May 24, 2014 10:52:44 PM</td>
-                                                <td class=" ">121000204</td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                               
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000040</td>
-                                                <td class=" ">May 24, 2014 11:47:56 PM </td>
-                                                <td class=" ">121000210</td>
-                                                <td class=" ">John Blank L</td>
-                                                <td class=" ">Paid</td>
-                                               
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000039</td>
-                                                <td class=" ">May 26, 2014 11:30:12 PM</td>
-                                                <td class=" ">121000208 <i class="error fa fa-long-arrow-down"></i>
-                                                </td>
-                                                <td class=" ">John Blank L</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000038</td>
-                                                <td class=" ">May 26, 2014 10:55:33 PM</td>
-                                                <td class=" ">121000203</td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000037</td>
-                                                <td class=" ">May 26, 2014 10:52:44 PM</td>
-                                                <td class=" ">121000204</td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                               
-                                            </tr>
-
-                                            </tbody>
+                                 </tr>
+                            </c:forEach>
+                                      </tbody>
                                             
 
                                     </table>
@@ -156,15 +82,18 @@
                                     
                                     <a href="<%=cp%>/board/created.do"><button type="button" class="btn btn-dark">글쓰기</button></a>
                                     
-                                    <ul class="pagination">
+                      <c:if test="${dataCount==0}">
+					   		등록된 게시물이 없습니다.
+					   </c:if>
+					   <c:if test="${dataCount!=0}">
+					   		${pageIndexList}
+					   </c:if>
+                                    
+                                 <!--    <ul class="pagination">
 						              <li class="disabled"><a href="#">«</a></li>
 						              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-						              <li><a href="#">2</a></li>
-						              <li><a href="#">3</a></li>
-						              <li><a href="#">4</a></li>
-						              <li><a href="#">5</a></li>
 						              <li><a href="#">»</a></li>
-						            </ul>
+						            </ul> -->
                                 </div>
                                 
                                 
@@ -180,6 +109,8 @@
   <script src="<%=cp%>/res/template/js/icheck/icheck.min.js"></script>
   <script src="<%=cp%>/res/template/js/custom.js"></script>
  
+ 
+
 
         <script>
 
@@ -256,4 +187,6 @@
 	 
 }
    </style>
+   
+
    
