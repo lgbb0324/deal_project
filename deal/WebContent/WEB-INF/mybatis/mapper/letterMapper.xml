@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="letter">
+	
+	<!-- 쪽지 보내기 -->
+	<insert id="insertLetter" parameterType="com.project.letter.Letter">
+			INSERT INTO note( content, sendUserId, receiveUserId,parent
+                 ) VALUES (
+                  #{content}, #{sendUserId}, #{receiveUserId},1
+                
+                 )
+	</insert>
+</mapper>
