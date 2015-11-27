@@ -42,6 +42,7 @@
         return false;
     }
 	 str=f.content.value ;
+	 alert(str);
 
 	var mode="${mode}";
 	if(mode == "created")

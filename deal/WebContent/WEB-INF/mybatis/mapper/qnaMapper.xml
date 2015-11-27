@@ -4,7 +4,45 @@
 <mapper namespace="qna">
 
 <insert id="insertQna" parameterType="com.project.qna.Qna">
-	INSERT INTO qna(userId,subject,content,hitCount) VALUES (#{userId},#{subject}, #{content}, #{hitCount})
+	INSERT INTO qna(userId,subject,content) VALUES (#{userId},#{subject}, #{content})
 </insert>
+
+<sql id="where-list">
+ 	<if test = "searchKey == 'name'">
+		name = #{searchValue}
+	</if>
+	<if test="searchKey == 'subject'">
+		subject LIKE CONCAT('%', #{searchValue}, '%')
+	</if>
+	<if test="searchKey == 'content'">
+		INSTR(content, #{searchValue}) &gt; 0
+	</if>
+	<if test="searchKey == 'created'">
+		DATE_FORMAT(created, '%Y-%m-%d') = #{searchValue}
+	</if>
+</sql>
+   
+<select id="dataCount" resultType="Integer" parameterType="map">
+    SELECT IFNULL(COUNT(*),0) FROM qna q
+    <where>
+  	<if test="searchValue!=null and searchValue != '' ">
+  	      <include refid="where-list"/>
+  	</if>
+  </where>
+</select>
+
+<select id="listQna" resultType="com.project.qna.Qna" parameterType="map">
+SELECT num, userId, subject,content,DATE_FORMAT(created, '%Y-%m-%d') AS created
+FROM qna
+<where>
+	<if test="searchValue != null and searchValue != ''">
+		<include refid="where-list"/>
+	</if>
+</where>
+ORDER BY num DESC
+LIMIT #{start}, 10
+
+</select>
+
 
 </mapper>
