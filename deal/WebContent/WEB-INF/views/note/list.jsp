@@ -62,32 +62,7 @@ Licensed under MIT
                             			</thead>
 
                             <tbody>
-                          	
-                                <tr style="text-align: center;">
-                                    <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
-                                    <td class=" ">
-                                    	<ul style="padding:0">
-                                    	<li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">보낸인간</a>
-								          <ul class="dropdown-menu" >
-								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
-								            <li class="divider"></li>
-								            <li><a  data-toggle="modal" data-target="#ModalCreated"><span class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
-								            <li class="divider"></li>
-								            <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
-								             <li class="divider"></li>
-								             <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 신고하기</a></li>
-								            
-								          </ul>
-								        </li></ul></td>
-                                    <td class="even pointer"  data-toggle="modal" data-target="#myModal" >${dto.content}</td>
-                                    <td class=" ">2015-11-17[15:24]</td>
-                                 </tr>
-                                 
-                    
-                                 
-                                 
-                                     	 <c:forEach var="dto" items="${list}">
+                         <c:forEach var="dto" items="${list1}">
                                  <tr style="text-align: center;">
                                     <td class="a-center ">
                                         <input type="checkbox" class="flat" name="table_records">
@@ -108,11 +83,12 @@ Licensed under MIT
 								          </ul>
 								        </li></ul></td>
                                     <td class="even pointer"  data-toggle="modal" data-target="#myModal" >${dto.content}</td>
-                                    <td class=" ">2015-11-15[12:29]
+                                    <td class=" ">${dto.sendDay}
+                                    
                                     </td>
                                   </tr>
-                                  </c:forEach>
                                   
+                                  </c:forEach>
                              </tbody>
                           </table>
                        <div class="container" >
@@ -175,29 +151,7 @@ Licensed under MIT
                                     <td class=" ">${dto.sendDay}</td>
                                  </tr>
                                   </c:forEach>
-                                 <tr  style="text-align: center;">
-                                    <td class="a-center ">
-                                        <input type="checkbox" class="flat" name="table_records">
-                                    </td>
-                                    <td class=" ">
-                                    	<ul style="padding:0">
-                                    	<li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">최시원</a>
-								          <ul class="dropdown-menu">
-								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
-								            <li class="divider"></li>
-								            <li><a  data-toggle="modal" data-target="#ModalCreated"><span class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
-								            <li class="divider"></li>
-								            <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
-								             <li class="divider"></li>
-								             <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 신고하기</a></li>
-								            
-								          </ul>
-								        </li></ul></td>
-                                    <td  class="even pointer"  data-toggle="modal" data-target="#myModal" >신촌역앞</td>
-                                    <td class=" ">2015-11-15[12:29]
-                                    </td>
-                                  </tr>
+                                 
                              </tbody>
                           </table>
                            	<ul class="pagination">

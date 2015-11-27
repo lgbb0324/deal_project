@@ -79,19 +79,16 @@ public class LetterController {
 		//보낸쪽지리스트
 		SessionInfo info = (SessionInfo)session.getAttribute("member");
 		
+		List<Letter> list1 = null;
+		List<Letter> list2 = null;
+		
+		list1=service.listSend(info.getUserId());
+		list2=service.listReceive(dto.getReceiveUserId());
 
 		ModelAndView mav=new  ModelAndView(".note.list");
 
-	
-			
-			List<Letter> list = null;
-			List<Letter> list2 = null;
-			
-		list=service.listSend(info.getUserId());
-		list2=service.listReceive(info.getUserId());
-
-			mav.addObject("list", list);
-			mav.addObject("list", list2);
+			mav.addObject("list1", list1);
+			mav.addObject("list2", list2);
 
 		
 			return  mav;
