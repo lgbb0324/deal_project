@@ -66,7 +66,7 @@
                                             <label class="control-label col-md-2 col-sm-2 col-xs-12" for="last-name">작성자<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                               
+                                               ${sessionScope.member.userName}
                                             </div>
                                         </div>
                                         
