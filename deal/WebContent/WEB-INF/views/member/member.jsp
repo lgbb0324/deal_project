@@ -129,12 +129,36 @@ function memberOk() {
 	var f = document.memberForm;
 	var str;
 
-	 
-	
+	 if (document.getElementById('check1').checked) {
+	    	alert("약관의 동의해주세용");
+	    	return false;
+	        
+	    } 
+	 if(! /(\.gif|\.jpg|\.png|\.jpeg)$/i.test(f.upload.value)) {
+			alert('이미지 파일만 가능합니다. !!!');
+			f.upload.focus();
+			return false;
+		}
+
 	f.action = "<%=cp%>/member/member.do";
 	f.submit();
 	
 }
+
+
+
+
+
+
+function validate() {
+    if (document.getElementById('check1').unchecked) {
+    	alert("약관의 동의해주세용");
+    	return false;
+        
+    } 
+    
+}
+
     
     
 
@@ -164,7 +188,7 @@ function memberOk() {
             </div>
             <!-- Step Wizard END -->
             <!-- quote form -->
-            <form name="memberForm" class="form-horizontal" role="form" method="post" autocomplete="on" spellcheck="true">
+            <form name="memberForm" class="form-horizontal" role="form" method="post" enctype="multipart/form-data" autocomplete="on" spellcheck="true">
             
                 <fieldset><!-- form contents -->
 
@@ -315,7 +339,7 @@ function memberOk() {
 3. 딜러시크는 통신판매중개자로서 판매자와 구매자와의 거래에 관한 분쟁에 개입하지 않으며 어떠한 보증 및 책임도 부담하지 않음.(제6조, 제38조)
 										</textarea>
 										   <div>
-		    <input  type="checkbox">&nbsp;위 약관에 동의합니다.<br>
+		    <input id="check1" type="checkbox" required>&nbsp;위 약관에 동의합니다.<br>
 		    </div>	
 										  <span class="input-group-addon bg-success"><i class="fa fa-list-ol fa-lg text-white"></i></span>
 										</div>
@@ -333,7 +357,7 @@ function memberOk() {
 3. 딜러시크는 통신판매중개자로서 판매자와 구매자와의 거래에 관한 분쟁에 개입하지 않으며 어떠한 보증 및 책임도 부담하지 않음.(제6조, 제38조)
 										</textarea>
 										   <div>
-		    <input  type="checkbox">&nbsp;위 약관에 동의합니다.<br>
+		    <input id="check2"  type="checkbox">&nbsp;위 약관에 동의합니다.<br>
 		    </div>	
 										  <span class="input-group-addon bg-success"><i class="fa fa-list-ol fa-lg text-white"></i></span>
 										</div>
@@ -362,7 +386,7 @@ function memberOk() {
 ② 본 조 및 본 약관 각 장의 정의조항에서 정한 것을 제외하고는 전자금융거래법 등 관련법령이 정한 바에 의합니다.
 										</textarea>
 										   <div>
-		    <input  type="checkbox">&nbsp;위 약관에 동의합니다.<br>
+		    <input id="check3"  type="checkbox">&nbsp;위 약관에 동의합니다.<br>
 		    </div>	
 										  <span class="input-group-addon bg-success"><i class="fa fa-list-ol fa-lg text-white"></i></span>
 										</div>
@@ -371,7 +395,7 @@ function memberOk() {
 								
 		
 								<p style="display:inline;" class="small col-xs-9 col-sm-offset-2 col-sm-7">this is a block of copy for you to write some blurb.</p>
-								<button class="btn btn-primary nextBtn col-xs-3 pull-right" type="button" >Next Step <i class="fa fa-angle-double-right"></i> </button>
+								<button class="btn btn-primary nextBtn col-xs-3 pull-right" type="button"  >Next Step <i class="fa fa-angle-double-right"></i> </button>
 							</div>
 						</div>
 					</div>
@@ -386,13 +410,9 @@ function memberOk() {
                             
                             <hr>
                             
-                                <ul class="list-inline">
-                                    <li>Process step 1 <i class="fa fa-chevron-right fa-fw text-success"></i></li>
-                                    <li>Process step 2 <i class="fa fa-chevron-right fa-fw text-success"></i></li>
-                                    <li>Process step 3 <i class="fa fa-chevron-right fa-fw text-success"></i></li>
-                                    <li>Process step 4 <i class="fa fa-smile-o fa-fw text-success"></i></li>
-                                    <button class="btn btn-info btn-xs hidden-xs pull-right">example</button>
-                                </ul>
+                                <div class="list-inline">
+                                    <input type="file"  name="upload" class="boxTF" style="height: 20px; width: 480px;">
+                                </div>
                                 
                                 <div class="row">
                                     <i class="fa fa-info-circle fa-3x half-top text-danger col-xs-2"></i>
@@ -411,7 +431,7 @@ function memberOk() {
 
                                   <!-- SUBMIT FORM BUTTON-->
                                   <div class="col-sm-4 pull-right">
-                                    <button type="submit" value="submit" class="btn btn-block btn-success" onclick="memberOk();">Send</button>
+                                    <button type="submit" value="submit" class="btn btn-block btn-success" onclick="return memberOk();">Send</button>
                                   </div>
                                   <!-- SUBMIT FORM BUTTON END-->
                                 </div>
