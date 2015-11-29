@@ -71,7 +71,7 @@ public class LetterController {
 		out.print(job.toString());
 	}
 	
-	// 받은 쪽지 리스트/ 보낸쪽지 리스트 -- 동시에 가져오기
+	// 받은 쪽지 리스트/ 보낸쪽지 리스트 -- 동시에 
 	@RequestMapping(value="/letter/list")
 	public ModelAndView list(HttpServletResponse resp, HttpSession session,
 			Letter dto
