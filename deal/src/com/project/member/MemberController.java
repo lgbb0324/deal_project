@@ -29,6 +29,7 @@ public class MemberController {
 	private PhotoService pservice;
 
 	
+	
 	@RequestMapping(value="/member/member", method=RequestMethod.GET)
 	public ModelAndView memberForm() throws	Exception{
 		
@@ -36,6 +37,16 @@ public class MemberController {
 
 		return mav;
 	}
+	
+	
+	@RequestMapping(value="/member/login", method=RequestMethod.GET)
+	public ModelAndView loginForm() throws	Exception{
+		
+		ModelAndView mav = new ModelAndView(".member.login");
+		mav.addObject("mode", "login");
+		return mav;
+	}
+
 
 	
 	
@@ -66,8 +77,9 @@ public class MemberController {
 			return mav;
 		}
 		
-		ModelAndView mav = new ModelAndView(".member.member");
-		mav.addObject("message", "회원가입이 정상 처리 되었습니다.<br>메인 화면으로 이동하여 로그인 하시기 바랍니다.");
+		ModelAndView mav = new ModelAndView(".member.login");
+		mav.addObject("message", "회원가입이 정상 처리 되었습니다.<br> 로그인 하시기 바랍니다.");
+		mav.addObject("mode", "login");
 		return mav;
 		
 	

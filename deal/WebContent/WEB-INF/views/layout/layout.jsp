@@ -119,7 +119,7 @@ function sendLetter() {
 </style>
 </head>
 <body class="nav-md" style="padding:0px;">
-         <div class="container body">
+         <div class="container body" style="padding:0px;">
          
          <div class="main_container">
             <div class="layoutSide">
