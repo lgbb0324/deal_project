@@ -22,8 +22,7 @@ public class LetterController {
 	@Autowired
 	private LetterService service;
 
-	@Autowired
-	private Letter letter;
+
 	//페이징처리시 사용할 것
 	/*@Autowired
 	private MyUtil myUtil;*/
