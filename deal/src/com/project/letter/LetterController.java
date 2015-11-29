@@ -21,8 +21,9 @@ public class LetterController {
 
 	@Autowired
 	private LetterService service;
-	
-	
+
+	@Autowired
+	private Letter letter;
 	//페이징처리시 사용할 것
 	/*@Autowired
 	private MyUtil myUtil;*/
@@ -48,12 +49,13 @@ public class LetterController {
 
 		String state = "false";
 		try {
-	
+				
 				dto.setSendUserId(info.getUserId());
+				System.out.println(dto.getReceiveUserId());
 				dto.setReceiveUserId(info.getUserId());
+				//dto.setReceiveUserId(); 받는사람아이디
 			
-				service.insertLetter(dto);
-			
+
 			state="true";
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -82,8 +84,9 @@ public class LetterController {
 		List<Letter> list1 = null;
 		List<Letter> list2 = null;
 		
-		list1=service.listSend(info.getUserId());
-		list2=service.listReceive(dto.getReceiveUserId());
+		list1=service.listReceive(info.getUserId());
+		list2=service.listSend(info.getUserId());
+		System.out.println(info.getUserId());
 
 		ModelAndView mav=new  ModelAndView(".note.list");
 

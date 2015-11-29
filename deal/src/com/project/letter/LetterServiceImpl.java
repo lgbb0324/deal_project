@@ -145,8 +145,18 @@ public class LetterServiceImpl implements LetterService{
 
 	@Override
 	public List<Letter> listReceive(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		
+		List<Letter> list = null;
+		
+		try {
+			list=dao.getListData("letter.listReceive", map);
+		} catch (Exception e) {
+		
+			System.out.println(e.toString());
+			
+		}
+		return list;
 	}
 
 }

@@ -362,7 +362,7 @@ function sendLogin() {
                                     <li>
                                         <div class="text-center">
                                             <a>
-                                                <strong><a href="<%=cp%>/note/list.do">ALL </a></strong>
+                                                <strong><a href="<%=cp%>/letter/list.do">ALL </a></strong>
                                                 <i class="fa fa-angle-right"></i>
                                             </a>
                                         </div>

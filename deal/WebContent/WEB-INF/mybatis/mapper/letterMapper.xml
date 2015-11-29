@@ -6,26 +6,24 @@
 	<!-- 쪽지 보내기 -->
 	<insert id="insertLetter" parameterType="com.project.letter.Letter">
 		
-			INSERT INTO letter(content, sendUserId, receiveUserId, parent
-                 ) VALUES ( #{content}, #{sendUserId}, #{receiveUserId}, 3)
+			INSERT INTO letter(content, sendUserId, receiveUserId, parent, sendDelete, receiveDelete
+                 ) VALUES ( #{content}, #{sendUserId}, #{receiveUserId}, #{parent}, 'N','N')
                  
 	</insert>
 	
 <!-- 	
-	<sql id="where-list">
-	  <if test="searchKey=='sendUserName' or searchKey=='receiveUserName'">
-	      INSTR(userName, #{searchValue}) = 1
-	  </if>
-	  <if test="searchKey=='sendUserId' or searchKey=='receiveUserId'">
-	      ${searchKey}=#{searchValue}
-	  </if>
-	  <if test="searchKey=='content'">
-	      INSTR(content, #{searchValue}) &gt; 0
-	  </if>
-	</sql> -->
-	
-	<!-- 받은 쪽지 리스트 -->
-    <select id="dataCountReceive" parameterType="map" resultType="Integer">
+ <sql id="where-list">
+        <if test = "searchKey=='sendUserId' or searchKey=='receiveUserId'">
+            sendUserId = #{searchValue} or receiveUserId = #{searchValue}
+        </if>
+       
+       <if test="searchKey == 'sendDay'">
+            DATE_FORMAT(sendDay, '%Y-%m-%d') = #{searchValue}
+        </if>
+    </sql>
+	 -->
+	<!-- 받은 쪽지 리스트 --><!-- 갯수 -->
+   <!--  <select id="dataCountReceive" parameterType="map" resultType="Integer">
         SELECT NVL(COUNT(*), 0) 
                    FROM letter JOIN member
                    ON sendUserId=userId
@@ -33,32 +31,36 @@
 	     	     	 receiveUserId = #{userId}
 	     	          AND receiveDelete = 'N'
                   </where> 
-    </select>
+    </select> -->
 	
 	<select id="listReceive" parameterType="String" resultType="com.project.letter.Letter">
-		SELECT * FROM (
-		    SELECT ROWNUM rnum, tb.* FROM (
-			     SELECT num, content, sendUserId, 
-                   TO_CHAR(sendDay, 'YYYY-MM-DD HH24:MI:SS') sendDay, 
-                   NVL2(identifyDay, TO_CHAR(identifyDay, 'YYYY-MM-DD HH24:MI:SS'), null) identifyDay, 
-                   sendDelete, receiveDelete, parent
-                 FROM letter JOIN member ON sendUserId=userId
-        <!--             <where>
-	     	            <if test="searchValue!=null and searchValue!='' ">
+		    SELECT num, content, sendUserId, receiveUserId, DATE_FORMAT(sendDay, '%Y-%m-%d') AS sendDay
+             
+                   FROM letter JOIN member ON sendUserId=userId
+           
+	     	      <where>
+	     	      
+	     	      receiveUserId = #{userId}
+	     	      </where>
+	     	      
+	     	      
+	     	      
+	     	            <!-- <if test="searchValue!=null and searchValue!='' ">
 	     	                <include refid="where-list"/>
-	     	             </if>
-	     	             AND receiveUserId = #{userId}
-	     	             AND receiveDelete = 'N'
-	                </where>
-	                ORDER BY num DESC
-	<![CDATA[
+	     	             </if> -->
+	     	          <!--  receiveUserId = #{userId} -->
+	     	       <!--       AND receiveDelete = 'N' -->
+	              
+	     <!--            ORDER BY num DESC -->
+
+<!-- 	<![CDATA[
 	        ) tb WHERE ROWNUM <= #{end}
 		) WHERE rnum >= #{start}
-	]]> -->
+	]]> --> 
     </select>
-	
-	 <!-- 보낸 쪽지 리스트 -->
-    <select id="dataCountSend" parameterType="map" resultType="Integer">
+
+	 <!-- 보낸 쪽지 리스트 --><!-- 밑에는 개수라서 일단은 신경노 -->
+    <!-- <select id="dataCountSend" parameterType="map" resultType="Integer">
         SELECT NVL(COUNT(*), 0) 
                    FROM note JOIN member
                    ON receiveUserId=userId
@@ -67,25 +69,27 @@
 	     	          sendUserId = #{userId}
 	     	          AND sendDelete = 'N'
                   </where> 
-    </select>
+    </select> -->
     
     <select id="listSend" parameterType="String" resultType="com.project.letter.Letter">
-		SELECT * FROM (
-		    SELECT ROWNUM rnum, tb.* FROM (
-			     SELECT num, content, receiveUserId, 
-                    TO_CHAR(sendDay, 'YYYY-MM-DD HH24:MI:SS') sendDay, 
-                    NVL2(identifyDay, TO_CHAR(identifyDay, 'YYYY-MM-DD HH24:MI:SS'), null) identifyDay, 
-                    sendDelete, receiveDelete, parent
+	
+		 
+			     SELECT num, content, sendUserId, receiveUserId, DATE_FORMAT(sendDay, '%Y-%m-%d') AS sendDay
+             
                    FROM letter JOIN member ON receiveUserId=userId
-                  <!--   <where>
-	     	             <if test="searchValue!=null and searchValue!='' ">
+                    <where>
+	     	    	sendUserId = #{userId}
+	     	      </where>
+    
+	     	             <!-- <if test="searchValue!=null and searchValue!='' ">
 	     	                  <include refid="where-list"/>
-	     	              </if>
-	     	              AND sendUserId = #{userId}
-	     	              AND sendDelete = 'N'
-	                </where>
-	                ORDER BY num DESC
-	<![CDATA[
+	     	              </if> -->
+	     	            <!--   sendUserId = #{userId} -->
+	     	             <!--  AND sendDelete = 'N' -->
+	           
+	           <!--      ORDER BY num DESC -->
+	
+<!-- 	<![CDATA[
 	        ) tb WHERE ROWNUM <= #{end}
 		) WHERE rnum >= #{start}
 	]]> -->
@@ -95,8 +99,9 @@
 	
 	
 	 <!-- 쪽지를확인상태로변경 -->
-    <delete id="updateIdentifyDay" parameterType="Integer">
+	 
+<!--     <delete id="updateIdentifyDay" parameterType="Integer">
         UPDATE letter SET identifyDay = SYSDATE 
                  WHERE num=#{num} AND identifyDay IS NULL
-    </delete>
+    </delete> -->
 </mapper>

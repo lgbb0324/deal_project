@@ -118,7 +118,7 @@ Licensed under MIT
                                                 <th style="text-align: center;">
                                                     <input type="checkbox" id="check-all" class="flat" >
                                                 </th>
-                                                <th class="column-title"  style="text-align: center;">보낸 사람</th>
+                                                <th class="column-title"  style="text-align: center;">받는 사람</th>
                                                 <th class="column-title"  style="text-align: center;">내 용</th>
                                                 <th class="column-title"  style="text-align: center;">날짜</th>
                                			  </tr>
