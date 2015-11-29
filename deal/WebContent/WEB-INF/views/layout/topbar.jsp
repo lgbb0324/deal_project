@@ -75,10 +75,10 @@
   font-size: 14px;
 }
 body{
-    padding: 50px;
+  /*   padding: 50px; */
 }
 .modal-dialog {
-    width: 300px;
+   /*  width: 20%;  */
 }
 .modal-footer {
     height: 70px;
@@ -210,8 +210,8 @@ function sendLogin() {
 
 
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
+	<div class="modal-dialog" >
+		<div class="modal-content col-md-8" style="margin-left: 5%; margin-right: 5%;">
 
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -266,7 +266,7 @@ function sendLogin() {
 
                         <ul class="nav navbar-nav navbar-right col-md-4 col-sm-4 col-xs-2" style="width:initial;padding-right:0px;padding-top: 0px;">
                              <li style="padding-top: 14px;padding-right: 10px;padding-left: 10px;">
-                             <c:if test="${sessionScope.member.userId==null}">
+                             <c:if test="${sessionScope.member.userId==null&&mode==null}">
                              <button style="margin:0px;" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal1">
  						   Log in
 							</button>

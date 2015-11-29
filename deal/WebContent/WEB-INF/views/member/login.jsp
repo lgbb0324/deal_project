@@ -4,139 +4,245 @@
    String cp = request.getContextPath();
    request.setCharacterEncoding("UTF-8");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
 
-<style type="text/css">
-.loginButton {
-	 font-size: 11pt; 
-	 font-family: 나눔고딕, 맑은 고딕, 돋움;
-	 background-color:#507CD1;
-	 border:none;
-	 color:#FFFFFF;
-	 width: 360px;
-	 height: 50px;
-	 line-height: 50px;
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+
+<style>
+body{background: #eee url(http://subtlepatterns.com/patterns/sativa.png);}
+html,body{
+    position: relative;
+    height: 100%;
 }
-.lbl {
-   position:absolute; 
-   margin-left:15px; margin-top: 17px;
-   color: #999999; font-size: 11pt;
-   font-family: 맑은 고딕;
+
+.login-container{
+    position: relative;
+    width: 300px;
+    margin: 80px auto;
+    padding: 20px 40px 40px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ccc;
 }
-.loginTF {
-  width: 340px; height: 35px;
-  padding: 5px;
-  padding-left: 15px;
-  border:1px solid #666666;
-  margin-top:5px; margin-bottom:5px;
-  font-family:돋움;
-  font-size:10pt;
+
+#output{
+    position: absolute;
+    width: 300px;
+    top: -75px;
+    left: 0;
+    color: #fff;
 }
+
+#output.alert-success{
+    background: rgb(25, 204, 25);
+}
+
+#output.alert-danger{
+    background: rgb(228, 105, 105);
+}
+
+
+.login-container::before,.login-container::after{
+    content: "";
+    position: absolute;
+    width: 100%;height: 100%;
+    top: 3.5px;left: 0;
+    background: #fff;
+    z-index: -1;
+    -webkit-transform: rotateZ(4deg);
+    -moz-transform: rotateZ(4deg);
+    -ms-transform: rotateZ(4deg);
+    border: 1px solid #ccc;
+
+}
+
+.login-container::after{
+    top: 5px;
+    z-index: -2;
+    -webkit-transform: rotateZ(-2deg);
+     -moz-transform: rotateZ(-2deg);
+      -ms-transform: rotateZ(-2deg);
+
+}
+
+.avatar{
+    width: 100px;height: 100px;
+    margin: 10px auto 30px;
+    border-radius: 100%;
+    border: 2px solid #aaa;
+    background-size: cover;
+}
+
+.form-box input{
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    height:40px;
+    border: 1px solid #ccc;;
+    background: #fafafa;
+    transition:0.2s ease-in-out;
+
+}
+
+.form-box input:focus{
+    outline: 0;
+    background: #eee;
+}
+
+.form-box input[type="text"]{
+    border-radius: 5px 5px 0 0;
+    text-transform: lowercase;
+}
+
+.form-box input[type="password"]{
+    border-radius: 0 0 5px 5px;
+    border-top: 0;
+}
+
+.form-box button.login{
+    margin-top:15px;
+    padding: 10px 20px;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
 </style>
 
-<script type="text/javascript">
-//엔터 처리
 
-
+<script>
 
 $(function(){
-	   $("input").not($(":button")).keypress(function (evt) {
-	        if (evt.keyCode == 13) {
-	            var fields = $(this).parents('form:eq(0),body').find('button,input,textarea,select');
-	            var index = fields.index(this);
-	            if ( index > -1 && ( index + 1 ) < fields.length ) {
-	                fields.eq( index + 1 ).focus();
-	            }
-	            return false;
-	        }
-	     });
-});
+	var textfield = $("input[name=userId]");
+    var f = document.loginForm;
 
-	function bgLabel(ob, id) {
-	    if(!ob.value) {
-		    document.getElementById(id).style.display="";
-	    } else {
-		    document.getElementById(id).style.display="none";
-	    }
-	}
+	var str = f.userId.value;
 
-	function sendLogin() {
-        var f = document.loginForm;
+	
+	            $('button[type="submit"]').click(function(e) {
+	                e.preventDefault();
+	                
+	              /*   //little validation just to check username
+	                if (textfield.val() != "") {
+	                    //$("body").scrollTo("#output");
+	                    $("#output").addClass("alert alert-success animated fadeInUp").html("Welcome back " + "<span style='text-transform:uppercase'>" + textfield.val() + "</span>");
+	                    $("#output").removeClass(' alert-danger');
+	                    $("input").css({
+	                    "height":"0",
+	                    "padding":"0",
+	                    "margin":"0",
+	                    "opacity":"0"
+	                    });
+	                    //change button text 
+	                    $('button[type="submit"]').html("continue")
+	                    .removeClass("btn-info")
+	                    .addClass("btn-default").click(function(){
+	                    $("input").css({
+	                    "height":"auto",
+	                    "padding":"10px",	
+	                    "opacity":"1"
+	                    }).val("");
+	                    });
+	                    
+	                    //show avatar
+	                    $(".avatar").css({
+	                        "background-image": "url('http://api.randomuser.me/0.3.2/portraits/women/35.jpg')"
+	                    });
+	                } else {
+	                    //remove success mesage replaced with error message
+	                    $("#output").removeClass(' alert alert-success');
+	                    $("#output").addClass("alert alert-danger animated fadeInUp").html("sorry enter a username ");
+	                }
+	                //console.log(textfield.val()); */
+	                
+	          
+	            	
+	            	str = f.userPwd.value;
+	                if(!str) {
+	                    alert("\n패스워드를 입력하세요. ");
+	                    f.userPwd.focus();
+	                    return;
+	                }
+	                str = f.userId.value;
+	            	if(!str) {
+	                    alert("\n아이디를 입력하세요. ");
+	                    f.userId.focus();
+	                    return;
+	                }
 
-    	var str = f.userId.value;
-        if(!str) {
-            alert("\n아이디를 입력하세요. ");
-            f.userId.focus();
-            return;
-        }
+	                alert(f.userId.value);
+	                alert(f.userPwd.value);
 
-        str = f.userPwd.value;
-        if(!str) {
-            alert("\n패스워드를 입력하세요. ");
-            f.userPwd.focus();
-            return;
-        }
+	                f.action = "<%=cp%>/member/login.do";
+	                f.submit();
 
-        f.action = "<%=cp%>/member/login.do";
-        f.submit();
-	}
+	            });
+	});
+
+
+
+    
+
+    
+
 </script>
 
-<div style="min-height: 450px;">
-		<div style="width:100%;	height: 40px; line-height:40px;clear: both; border-top: 1px solid #DAD9FF;border-bottom: 1px solid #DAD9FF;">
-		    <div style="width:360px; height:30px; line-height:30px; margin:5px auto;">
-		        <img src="<%=cp%>/res/images/arrow.gif" width="11" height="11" alt="" style="padding-left: 5px; padding-right: 5px;" />
-		        <span style="font-weight: bold;font-size:13pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">회원 로그인</span>
-		    </div>
-		</div>
-		
-		<div style="margin: 50px auto 10px; width:360px; min-height: 350px;">
-		
-			<form name="loginForm" method="post" action="">
-			  <table style="margin: 30px auto; width: 360px; border-spacing: 0px;">
-			  <tr align="center" height="60"> 
-			      <td> 
-	                <label for="userId" id="lblUserId" class="lbl" >아이디</label>
-			        <input type="text" name="userId" class="loginTF" maxlength="15"
-			                   tabindex="1"
-	                           onfocus="document.getElementById('lblUserId').style.display='none';"
-	                           onblur="bgLabel(this, 'lblUserId');"
-			           />
-			      </td>
-			  </tr>
-			  <tr align="center" height="60"> 
-			      <td>
-			        <label for="userPwd" id="lblUserPwd" class="lbl" >패스워드</label>
-			        <input type="password" name="userPwd" class="loginTF" maxlength="20" 
-			                   tabindex="2"
-	                           onfocus="document.getElementById('lblUserPwd').style.display='none';"
-	                           onblur="bgLabel(this, 'lblUserPwd');"
-			        />
-			      </td>
-			  </tr>
-			  <tr align="center" height="65" > 
-			      <td>
-			        <input type="button" value=" 로그인 " onclick="sendLogin();" class="loginButton"/>
-			      </td>
-			  </tr>
-  			  <tr height="10"><td></td></tr>
-  			  <tr><td height="1" bgcolor="#DAD9FF"></td></tr>
-			  <tr align="center" height="40">
-			      <td>
-			       		<a href="<%=cp%>/member/idFind.do">아이디 찾기</a>&nbsp;|&nbsp; 
-			       		<a href="<%=cp%>/member/passFind.do">비밀번호 찾기</a>&nbsp;|&nbsp;
-			       		<a href="<%=cp%>/member/member.do">회원가입</a>
-			      </td>
-			  </tr>
-			  
-			  <tr align="center" height="40" >
-			    	<td><span style="color: blue;">${message}</span></td>
-			  </tr>
-			  
-			  </table>
-			</form>           
-		</div>
+<div class="right_col" role="main">
+
+<div class="container col-xs-12 col-sm-12 col-md-10">
+
+	<div class="login-container">
+	  <p> <span style="color: blue;">${message}</span></p>
+            <div id="output"></div>
+            <div class="avatar"></div>
+            <div class="form-box">
+                <form name="loginForm" method="post" action="" role="form">
+                    <input name="userId" type="text" placeholder="Id">
+                    <input name="userPwd" type="password" placeholder="Password">
+                    <button class="btn btn-info btn-block login" type="submit">Log in</button>
+                </form>
+            </div>
+        </div>
+        
+</div>
+
 
 </div>
-	
