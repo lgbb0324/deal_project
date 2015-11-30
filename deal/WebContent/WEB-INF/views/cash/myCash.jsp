@@ -69,20 +69,20 @@ $('#cashModal').on('show.bs.modal', function (e) {
                     <div class="clearfix"></div>
 
                     <div class="row">
-                            <div style="height: 350px" class="x_panel">
+                            <div  class="x_panel">
                     
                               
                                
-                                <div style="height: 250px;" class="x_content">
+                                <div  class="x_content">
 
-                                    <div style="height: 280px" class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                                    <div  class="col-md-3 col-sm-3 col-xs-12 profile_left">
 
                                         <div class="profile_img">
 
                                             <!-- end of image cropping -->
                                             <div id="crop-avatar">
                                                 <!-- Current avatar -->
-                                                <div style="height: 280px;" class="avatar-view" title="Change the avatar">
+                                                <div  class="avatar-view" title="Change the avatar">
                                                     <img src="<%=cp%>/res/images/picture.jpg" alt="Avatar">
                                                 </div>
 
@@ -190,8 +190,8 @@ $('#cashModal').on('show.bs.modal', function (e) {
                             </div>
                             <div class="x_content">
 
-                                <div style="height: 180px" class="bs-example" data-example-id="simple-jumbotron">
-                                    <div style="height: 200px" class="jumbotron">
+                                <div  class="bs-example" data-example-id="simple-jumbotron">
+                                    <div  class="jumbotron" style="margin-bottom:0px; padding:0px; padding-bottom:8px;">
                                         <p>내 잔여캐시  2000 &nbsp;&nbsp;&nbsp;&nbsp;
                                          <input type="button" class="btn btn-primary" value="충전하기" data-toggle="modal" data-target="#cashmodal">
                                           <input type="button" class="btn btn-primary" value="환전하기" data-toggle="modal" data-target="#cashmodal2"></p><br>
