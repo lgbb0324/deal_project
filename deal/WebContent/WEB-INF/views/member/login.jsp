@@ -152,7 +152,7 @@ html,body{
 
 $(function(){
 	var textfield = $("input[name=userId]");
-    var f = document.loginForm;
+    var f = document.loginFailForm;
 
 	var str = f.userId.value;
 
@@ -208,8 +208,6 @@ $(function(){
 	                    return;
 	                }
 
-	                alert(f.userId.value);
-	                alert(f.userPwd.value);
 
 	                f.action = "<%=cp%>/member/login.do";
 	                f.submit();
@@ -234,7 +232,7 @@ $(function(){
             <div id="output"></div>
             <div class="avatar"></div>
             <div class="form-box">
-                <form name="loginForm" method="post" action="" role="form">
+                <form name="loginFailForm" method="post" action="" role="form">
                     <input name="userId" type="text" placeholder="Id">
                     <input name="userPwd" type="password" placeholder="Password">
                     <button class="btn btn-info btn-block login" type="submit">Log in</button>
