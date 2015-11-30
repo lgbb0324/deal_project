@@ -80,6 +80,14 @@ public class LetterController {
 		//보낸쪽지리스트
 		SessionInfo info = (SessionInfo)session.getAttribute("member");
 		
+		
+	
+
+				if (info == null) {
+					return new ModelAndView(".member.login");
+				}
+		
+		
 		List<Letter> list1 = null;
 		List<Letter> list2 = null;
 		

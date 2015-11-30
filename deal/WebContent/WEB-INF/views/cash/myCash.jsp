@@ -600,7 +600,7 @@ $('#cashModal').on('show.bs.modal', function (e) {
 									      <div class="container">
 											    <blockquote id="js" class="quote-box">
 											    <span class="pull-right note_fontsize" >2015-11-18[16:59]</span><!-- 보낸시간 뜨는거야 -->
-											      
+											      </blockquote>
 											      <p class="">
 											      <!-- CREDIT CARD FORM STARTS HERE -->
             <div class="panel panel-default credit-card-box">
@@ -802,6 +802,7 @@ $('#cashModal').on('show.bs.modal', function (e) {
 									    </div>
 									  </div>
 									  
+                               </div>
                                
                                 
 
