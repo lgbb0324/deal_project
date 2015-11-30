@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="<%=cp%>/res/defaultTemplate/css/switchery/switchery.min.css" />
 
  
-
+<!-- //sdff -->
   <script src="<%=cp%>/res/defaultTemplate/js/icheck/icheck.min.js"></script>
         <!-- tags -->
 
