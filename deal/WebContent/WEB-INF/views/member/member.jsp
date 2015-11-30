@@ -84,7 +84,9 @@ $(document).ready(function () {
 
     var navListItems = $('div.setup-panel div a'),
             allWells = $('.setup-content'),
-            allNextBtn = $('.nextBtn');
+            
+    allNextBtn2 = $('.nextBtn2');
+    allNextBtn1 = $('.nextBtn1');
 
     allWells.hide();
 
@@ -102,7 +104,34 @@ $(document).ready(function () {
         }
     });
 
-    allNextBtn.click(function(){
+    allNextBtn2.click(function(){
+    	
+
+
+         if (!document.getElementById('check1').checked) {
+        	alert("약관의 동의해주세용1");
+
+        	document.getElementById('check1').focus();
+        	return false;
+            
+        } 
+        
+        if (!document.getElementById('check2').checked) {
+        	alert("약관의 동의해주세용2");
+       
+        	document.getElementById('check2').focus();
+        	return false;
+            
+        } 
+        
+        if (!document.getElementById('check3').checked) {
+        	alert("약관의 동의해주세용3");
+
+        	document.getElementById('check3').focus();
+        	return false;
+            
+        } 
+    	
         var curStep = $(this).closest(".setup-content"),
             curStepBtn = curStep.attr("id"),
             nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
@@ -120,17 +149,45 @@ $(document).ready(function () {
         if (isValid)
             nextStepWizard.removeAttr('disabled').trigger('click');
     });
+    
+    allNextBtn1.click(function(){
+    	
+
+
+   	
+       var curStep = $(this).closest(".setup-content"),
+           curStepBtn = curStep.attr("id"),
+           nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+           curInputs = curStep.find("input[type='text'],input[type='email'],select[id='industry']"),
+           isValid = true;
+
+       $(".form-group").removeClass("has-error");
+       for(var i=0; i<curInputs.length; i++){
+           if (!curInputs[i].validity.valid){
+               isValid = false;
+               $(curInputs[i]).closest(".form-group").addClass("has-error");
+           }
+       }
+
+       if (isValid)
+           nextStepWizard.removeAttr('disabled').trigger('click');
+   });
 
     $('div.setup-panel div a.btn-primary').trigger('click');
 });
+
+
+
+
 
 
 function memberOk() {
 	var f = document.memberForm;
 	var str;
 
-	 if (document.getElementById('check1').checked) {
+	 if (document.check1.unchecked) {
 	    	alert("약관의 동의해주세용");
+	    	f.check1.focus();
 	    	return false;
 	        
 	    } 
@@ -145,18 +202,27 @@ function memberOk() {
 	
 }
 
+function memberOk() {
+	var f = document.memberForm;
+	var str;
+
+	 if(! /(\.gif|\.jpg|\.png|\.jpeg)$/i.test(f.upload.value)) {
+			alert('이미지 파일만 가능합니다. !!!');
+			f.upload.focus();
+			return false;
+		}
+
+	f.action = "<%=cp%>/member/member.do";
+	f.submit();
+	
+}
 
 
 
 
-
-function validate() {
-    if (document.getElementById('check1').unchecked) {
-    	alert("약관의 동의해주세용");
-    	return false;
-        
-    } 
-    
+function checkBox() {
+	
+     
 }
 
     
@@ -316,7 +382,7 @@ function validate() {
                         
                             
                             <p style="display:inline;" class="small col-xs-9 col-sm-offset-2 col-sm-7 text-SI-grey">this is a block of copy for you to write some blurb.</p>
-                            <button class="btn btn-primary nextBtn col-xs-3 pull-right" type="button" >Next Step <i class="fa fa-angle-double-right"></i> </button>
+                            <button class="btn btn-primary nextBtn1 col-xs-3 pull-right" type="button" >Next Step <i class="fa fa-angle-double-right"></i> </button>
                         </div>
                     </div>
                   
@@ -339,7 +405,7 @@ function validate() {
 3. 딜러시크는 통신판매중개자로서 판매자와 구매자와의 거래에 관한 분쟁에 개입하지 않으며 어떠한 보증 및 책임도 부담하지 않음.(제6조, 제38조)
 										</textarea>
 										   <div>
-		    <input id="check1" type="checkbox" required>&nbsp;위 약관에 동의합니다.<br>
+		    <input id="check1" type="checkbox">&nbsp;위 약관에 동의합니다.<br>
 		    </div>	
 										  <span class="input-group-addon bg-success"><i class="fa fa-list-ol fa-lg text-white"></i></span>
 										</div>
@@ -395,7 +461,7 @@ function validate() {
 								
 		
 								<p style="display:inline;" class="small col-xs-9 col-sm-offset-2 col-sm-7">this is a block of copy for you to write some blurb.</p>
-								<button class="btn btn-primary nextBtn col-xs-3 pull-right" type="button"  >Next Step <i class="fa fa-angle-double-right"></i> </button>
+								<button class="btn btn-primary nextBtn2 col-xs-3 pull-right" type="button" onclick="return checkBox();" >Next Step <i class="fa fa-angle-double-right"></i> </button>
 							</div>
 						</div>
 					</div>
