@@ -552,7 +552,7 @@ $(function () {
                 </div>
                 <div class="panel-body">
                     <p style="font-size:20px;">Just created a new snippet inspired by the Svbtle Menu. Find it here: <a href="http://bootsnipp.com/snippets/MaWrA">http://bootsnipp.com/snippets/MaWrA</a></p>
-                    <a class="panel-google-plus-image" href="https://plus.google.com/photos/115077481218689845626/albums/6028961040749409985/6028961040650432498">
+                    <a class="panel-google-plus-image" href="<%=cp%>/deal/article.do">
                         <img src="<%=cp%>/res/images/mac5.jpg" />
                     </a>
                 </div>

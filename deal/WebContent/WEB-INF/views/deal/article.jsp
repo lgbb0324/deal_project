@@ -6,8 +6,23 @@
    String cp = request.getContextPath();
 %>
 
- 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+
+
+
+
+
+ 
+  
+    <!-- bootstrap progress js -->
+    <script src="<%=cp%>/res/template/js/progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="<%=cp%>/res/template/js/nicescroll/jquery.nicescroll.min.js"></script>
+    <!-- icheck -->
+    <script src="<%=cp%>/res/template/js/icheck/icheck.min.js"></script>
+
+   <!--  <script src="js/custom.js"></script> -->
 
   <!-- ion_range -->
     <link rel="stylesheet" href="<%=cp%>/res/template/css/normalize.css" />
@@ -17,7 +32,7 @@
   <!-- colorpicker -->
     <link href="<%=cp%>/res/template/css/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
     
-    <script src="<%=cp%>/res/template/js/jquery.min.js"></script>
+   
   
   
   <!-- daterangepicker -->
@@ -28,96 +43,16 @@
     <script src="<%=cp%>/res/template/js/ion_range/ion.rangeSlider.min.js"></script>
   
  <!-- ion_range -->
-    <script>
-        $(function () {
-            $("#range_27").ionRangeSlider({
-                type: "double",
-                min: 1000000,
-                max: 2000000,
-                grid: true,
-                force_edges: true
-            });
-            $("#range").ionRangeSlider({
-                hide_min_max: true,
-                keyboard: true,
-                min: 0,
-                max: 5000,
-                from: 1000,
-                to: 4000,
-                type: 'double',
-                step: 1,
-                prefix: "$",
-                grid: true
-            });
-            $("#range_25").ionRangeSlider({
-                type: "double",
-                min: 1000000,
-                max: 2000000,
-                grid: true
-            });
-            $("#range_26").ionRangeSlider({
-                type: "double",
-                min: 0,
-                max: 10000,
-                step: 500,
-                grid: true,
-                grid_snap: true
-            });
-            $("#range_31").ionRangeSlider({
-                type: "double",
-                min: 0,
-                max: 100,
-                from: 30,
-                to: 70,
-                from_fixed: true
-            });
-            $(".range_min_max").ionRangeSlider({
-                type: "double",
-                min: 0,
-                max: 100,
-                from: 30,
-                to: 70,
-                max_interval: 50
-            });
-            $(".range_time24").ionRangeSlider({
-                min: +moment().subtract(12, "hours").format("X"),
-                max: +moment().format("X"),
-                from: +moment().subtract(6, "hours").format("X"),
-                grid: true,
-                force_edges: true,
-                prettify: function (num) {
-                    var m = moment(num, "X");
-                    return m.format("Do MMMM, HH:mm");
-                }
-            });
-        });
-    </script>
-    <!-- /ion_range -->
-    <script type="text/javascript">
-    $(document).ready(function() {              
-        $('div.glyphicon-thumbs-up, div.glyphicon-thumbs-down').click(function(){    
-            var $this = $(this),
-            c = $this.data('count');    
-            if (!c) c = 0;
-            c++;
-            $this.data('count',c);
-            $('#'+this.id+'-bs3').html(c);
-        });      
-        $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });                                        
-    }); 
+   <script>
 
-    $(document).ready(function() {
-        $('[id^=detail-]').hide();
-        $('.toggle').click(function() {
-            $input = $( this );
-            $target = $('#'+$input.attr('data-toggle'));
-            $target.slideToggle();
-        });
-    });
 
+
+    
+    function changeimg(){
+    	
+    	
+    	
+    }
     </script>
 
    <div class="right_col" role="main">
@@ -171,7 +106,7 @@
                                         </div>
                                         <div class="product_gallery">
                                             <a>
-                                                <img src="<%=cp%>/res/images/mac2.jpg" alt="..." />
+                                                <img onclick="javascript:alert('1');" src="<%=cp%>/res/images/mac2.jpg" alt="..." />
                                             </a>
                                             <a>
                                                 <img src="<%=cp%>/res/images/mac3.jpg" alt="..." />
@@ -183,7 +118,7 @@
                                                 <img src="<%=cp%>/res/images/mac5.jpg" alt="..." />
                                             </a>
                                         </div>
-                                    </div>
+                                    </div>	
 
                                     <div class="col-md-5 col-sm-5 col-xs-12 pull-right" style="border:0px solid #e5e5e5;">
 
@@ -266,7 +201,7 @@
   <span class="price-tax">즉시 구매가: ₩1,552,000</span>
     <button class="btn btn-primary" type="button">바로구매하기</button>
    <!--  <button class="btn btn-mini" type="button">취소</button> -->
-  </p>
+
 </div>
                                                 
                                                 <br>
@@ -371,10 +306,7 @@
                                             <p>Grid with minimum and maximum values</p>
                                             <input type="text" class="range_min_max" value="" name="range" />
                                         </div>
-                                        <div>
-                                            <p>Grid With time in 24 hour format</p>
-                                            <input type="text" class="range_time24" value="" name="range" />
-                                        </div>
+                               
                                     </div>
                                 </div>
                             </div>
@@ -417,23 +349,18 @@
    
    
         </div>
+ <script src="<%=cp%>/res/template/js/chartjs/chart.min.js"></script>
 
- 
-                     
-              <script>
-        var randomScalingFactor = function () {
-            return Math.round(Math.random() * 100)
-        };
-
-
-
+  <script>
+       
+    
 
         var lineChartData = {
             labels: ["January", "February", "March", "April", "May", "June", "July"],
             datasets: [
                 {
                     label: "My First dataset",
-                    fillColor: "rgba(38, 185, 154, 0.31)", //rgba(220,220,220,0.2)
+                    fillColor: "rgba(38, 185, 154, 0.21)", //rgba(220,220,220,0.2)
                     strokeColor: "rgba(38, 185, 154, 0.7)", //rgba(220,220,220,1)
                     pointColor: "rgba(38, 185, 154, 0.7)", //rgba(220,220,220,1)
                     pointStrokeColor: "#fff",
@@ -443,7 +370,7 @@
             },
                 {
                     label: "My Second dataset",
-                    fillColor: "rgba(3, 88, 106, 0.3)", //rgba(151,187,205,0.2)
+                    fillColor: "rgba(3, 88, 106, 0.2)", //rgba(151,187,205,0.2)
                     strokeColor: "rgba(3, 88, 106, 0.70)", //rgba(151,187,205,1)
                     pointColor: "rgba(3, 88, 106, 0.70)", //rgba(151,187,205,1)
                     pointStrokeColor: "#fff",
@@ -462,7 +389,135 @@
             });
         });
 
-     
+        var sharePiePolorDoughnutData = [
+            {
+                value: 120,
+                color: "#455C73",
+                highlight: "#34495E",
+                label: "Dark Grey"
+        },
+            {
+                value: 50,
+                color: "#9B59B6",
+                highlight: "#B370CF",
+                label: "Purple Color"
+        },
+            {
+                value: 150,
+                color: "#BDC3C7",
+                highlight: "#CFD4D8",
+                label: "Gray Color"
+        },
+            {
+                value: 180,
+                color: "#26B99A",
+                highlight: "#36CAAB",
+                label: "Green Color"
+        },
+            {
+                value: 100,
+                color: "#3498DB",
+                highlight: "#49A9EA",
+                label: "Blue Color"
+        }
 
-       
-    </script>    
+    ];
+
+        
+    
+
+
+     
+   
+        $(function () {
+            $("#range_27").ionRangeSlider({
+                type: "double",
+                min: 1000000,
+                max: 2000000,
+                grid: true,
+                force_edges: true
+            });
+            $("#range").ionRangeSlider({
+                hide_min_max: true,
+                keyboard: true,
+                min: 0,
+                max: 5000,
+                from: 1000,
+                to: 4000,
+                type: 'double',
+                step: 1,
+                prefix: "$",
+                grid: true
+            });
+            $("#range_25").ionRangeSlider({
+                type: "double",
+                min: 1000000,
+                max: 2000000,
+                grid: true
+            });
+            $("#range_26").ionRangeSlider({
+                type: "double",
+                min: 0,
+                max: 10000,
+                step: 500,
+                grid: true,
+                grid_snap: true
+            });
+            $("#range_31").ionRangeSlider({
+                type: "double",
+                min: 0,
+                max: 100,
+                from: 30,
+                to: 70,
+                from_fixed: true
+            });
+            $(".range_min_max").ionRangeSlider({
+                type: "double",
+                min: 0,
+                max: 100,
+                from: 30,
+                to: 70,
+                max_interval: 50
+            });
+            $(".range_time24").ionRangeSlider({
+                min: +moment().subtract(12, "hours").format("X"),
+                max: +moment().format("X"),
+                from: +moment().subtract(6, "hours").format("X"),
+                grid: true,
+                force_edges: true,
+                prettify: function (num) {
+                    var m = moment(num, "X");
+                    return m.format("Do MMMM, HH:mm");
+                }
+            });
+        });
+   
+    <!-- /ion_range -->
+ 
+    $(document).ready(function() {              
+        $('div.glyphicon-thumbs-up, div.glyphicon-thumbs-down').click(function(){    
+            var $this = $(this),
+            c = $this.data('count');    
+            if (!c) c = 0;
+            c++;
+            $this.data('count',c);
+            $('#'+this.id+'-bs3').html(c);
+        });      
+        $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });                                        
+    }); 
+
+    $(document).ready(function() {
+        $('[id^=detail-]').hide();
+        $('.toggle').click(function() {
+            $input = $( this );
+            $target = $('#'+$input.attr('data-toggle'));
+            $target.slideToggle();
+        });
+    });
+    
+    </script>
+
+
