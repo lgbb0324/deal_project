@@ -59,7 +59,7 @@
                                             <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">제목<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" required="required" class="form-control col-md-7 col-xs-12">
+                                                <input type="text" required="required" name="subject" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -140,7 +140,7 @@
                                 <div id="editor" style="padding:0px; border:0px;" class="col-md-9 col-sm-9 col-xs-12" contenteditable="true">
                                     
                                 </div>
-                              <textarea style="padding:0px; border:0px;" class="col-md-9 col-sm-9 col-xs-12" ></textarea>
+                              <textarea style="padding:0px; border:0px;" name="content" class="col-md-9 col-sm-9 col-xs-12" ></textarea>
                                 <br>
                                 <div>
                    

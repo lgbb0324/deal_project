@@ -4,7 +4,17 @@
 <%
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
+   
 %>
+
+<script type="text/javascript">
+function searchList() {
+	var f=document.searchForm;
+	f.action="<%=cp%>/board/list.do";
+	f.submit();
+}
+</script>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -21,20 +31,43 @@
    <div class="right_col" role="main">
    
    
+<!--    <form name="searchForm" action="" method="post">
+			              <select name="searchKey" class="selectField">
+			                  <option value="subject">제목</option>
+			                  <option value="userName">작성자</option>
+			                  <option value="content">내용</option>
+			                  <option value="created">등록일</option>
+			            </select>
+			            <input type="text" name="searchValue" class="boxTF"/>
+			            <input type="button" value=" 검 색 " class="btn" onclick="searchList()"/>
+			        </form> -->
+   
   <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2><i class="fa fa-child fa-2x"></i>자유 게시판<small> 자유로운 의견을 올려주세요.</small></h2>
-                                    <div class="title_right">
-                                    
-                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <div class="title_right">           
+
+<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                         <form name="searchForm" action="" method="post">  
+                            	     <select name="searchKey" class="selectField">
+					                  <option value="subject">제목</option>
+					                  <option value="userName">작성자</option>
+					                  <option value="content">내용</option>
+					                  <option value="created">등록일</option>
+			           				 </select>
+			           			 
+			            
+                                <div class="input-group"> 
+                            <input type="text" name="searchValue"  class="form-control" placeholder="Search for...">
                                     <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                                </div>
-                            </div>
+                            <button class="btn btn-default" type="button" onclick="searchList()" >Go!</button>
+                   			     </span>
+                   			      </div>     
+                        
+                          		   </form>
+   
+                                   </div>
                         </div>
                                     <div class="clearfix"></div>
                                 </div>

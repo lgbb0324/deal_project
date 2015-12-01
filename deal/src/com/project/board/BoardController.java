@@ -176,6 +176,7 @@ public class BoardController {
 		
 		dto.setContent(
 				dto.getContent().replaceAll("\n", "<br>"));
+		//이전글, 다음글
 		searchValue=URLDecoder.decode(searchValue, "UTF-8");
 		
 		

@@ -13,13 +13,13 @@
 	      userName=#{searchValue}
 	  </if>
 	  <if test="searchKey=='subject'">
-	      subject LIKE '%' || #{searchValue} || '%'
+	      subject LIKE CONCAT('%', #{searchValue}, '%')
 	  </if>
 	  <if test="searchKey=='content'">
-	      DBMS_LOB.INSTR(content, #{searchValue}) &gt; 0 
+	      INSTR(content, #{searchValue}) &gt; 0 
 	  </if>
 	  <if test="searchKey=='created'">
-	      TO_CHAR(b.created, 'YYYY-MM-DD') = #{searchValue}
+	      DATE_FORMAT(created, '%Y-%m-%d') = #{searchValue}
 	  </if>
 	</sql>
 	
@@ -39,7 +39,7 @@
 
 <select id="listBoard" parameterType="map" resultType="com.project.board.Board">
 
-select num, b.userId, subject, userName, content, created, hitCount
+select num, b.userId, subject, userName, content, DATE_FORMAT(created, '%Y-%m-%d') AS created, hitCount
 from board b
 Join member m ON b.userId = m.userId 
  <where>
@@ -55,7 +55,7 @@ LIMIT #{start}, 10
 
   <select id="readBoard" parameterType="Integer"
                resultType="com.project.board.Board">
-		   SELECT num, b.userId, subject, content, userName,created,hitCount
+		SELECT num, b.userId, subject, content, userName,DATE_FORMAT(created, '%Y-%m-%d') AS created,hitCount
 		FROM board b
 		JOIN member m ON b.userId = m.userId
 		WHERE num=#{num}
@@ -91,11 +91,6 @@ LIMIT #{start}, 10
 	  	content=#{content}
        			WHERE num=#{num}	                                
 	</update>
-
-
-
-
-
 
 
 
