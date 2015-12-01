@@ -77,6 +77,7 @@ function sendLetter() {
 }
    
 </script>
+
 <style type="text/css">
  blockquote{
     border-left:none;
@@ -190,14 +191,14 @@ function sendLetter() {
                                                                                 “
                                                                               </p>
                                                                               <p class="quote-text">
-                                                                                 <textarea id="letterContent" style="width:280px; height:300px;"></textarea>
+                                                                                 <textarea id="letterContent2" style="width:280px; height:300px;"></textarea>
                                                                               </p>
                                                                            <hr>
                                                                               <div class="blog-post-actions">
                                                                              
-                                                                              <span class="pull-left">
-                     					                                                            박서준
-                                                                               </span>
+                                                                              <button id="sendId" class="btn-primary pull-left" value="박서준">
+                     					                                                        
+                                                                               </button>
                                                                                 <p class="blog-post-bottom pull-right">
                                                                                 <span>
                                        

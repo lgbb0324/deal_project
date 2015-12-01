@@ -7,6 +7,38 @@
 %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+ <script>
+var sendId;
+	 $(function (){
+			var n=0;
+			
+			alert("클릭만 하면 쿼리 실행?");
+	
+			$("#ModalCreated").click(function(){
+				alert("텍스트 아리아 클릭");
+			var s = sendId;
+			$("#sendId").text(s); 
+			
+		
+			});
+	
+		
+			$("#btn2").click(function(){
+				n++;
+				var s = "<p>텟트"+n+"</p>";
+				$(s).appendTo("body");
+				});
+			
+		});
+	 
+	 
+	 function sendId(sendId){
+		 
+		 this.sendId=sendId;
+		 
+	 }
+
+ </script>
  
 
 
@@ -70,7 +102,7 @@ Licensed under MIT
                                     <td class=" ">
                                     	<ul style="padding:0">
                                     	<li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${dto.sendUserId}</a>
+								          <a onclick="sendId('${dto.sendUserId}');" href="#" class="dropdown-toggle" data-toggle="dropdown" >${dto.sendUserId}</a>
 								          <ul class="dropdown-menu">
 								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
 								            <li class="divider"></li>
@@ -139,7 +171,7 @@ Licensed under MIT
 								          <ul class="dropdown-menu">
 								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
 								            <li class="divider"></li>
-								            <li><a  data-toggle="modal" data-target="#ModalCreated"><span class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
+								            <li ><a onclick="javascript:alert();" data-toggle="modal" data-target="#ModalCreated" ><span  class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
 								            <li class="divider"></li>
 								            <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
 								             <li class="divider"></li>
