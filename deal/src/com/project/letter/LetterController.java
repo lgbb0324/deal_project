@@ -54,7 +54,7 @@ public class LetterController {
 				dto.setReceiveUserId(info.getUserId());
 				//dto.setReceiveUserId(); 받는사람아이디
 			
-
+				service.insertLetter(dto);
 			state="true";
 		} catch (Exception e) {
 			System.out.println(e.toString());

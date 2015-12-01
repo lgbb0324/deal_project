@@ -11,11 +11,8 @@
 var sendId;
 	 $(function (){
 			var n=0;
-			
-			alert("클릭만 하면 쿼리 실행?");
-	
 			$("#ModalCreated").click(function(){
-				alert("텍스트 아리아 클릭");
+			
 			var s = sendId;
 			$("#sendId").text(s); 
 			
@@ -23,11 +20,11 @@ var sendId;
 			});
 	
 		
-			$("#btn2").click(function(){
+			/* $("#btn2").click(function(){
 				n++;
 				var s = "<p>텟트"+n+"</p>";
 				$(s).appendTo("body");
-				});
+				}); */
 			
 		});
 	 

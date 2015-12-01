@@ -32,7 +32,7 @@
    
 
 
- <%-- 
+
  <script type="text/javascript">
 $('#myModal').on('show.bs.modal', function (e) {
      if (!data) return e.preventDefault() // stops modal from being shown
@@ -65,8 +65,8 @@ function sendLetter() {
 						return false;
 					}
 					// var state=data.state;
-		    		$("#noteContent").val("");
-	
+		    		$("#letterContent").val("");
+					// 여기에 받는 유저아이디를 받아야한다.?
 		    		alert("메시지를 전송 했습니다.");
 		    	},
 		    	error:function(e) {
@@ -116,7 +116,7 @@ function sendLetter() {
     font-size: 19px;
     margin-top: -65px;
 }
-</style> --%>
+</style>
 </head>
 <body class="nav-md" style="padding:0px;">
          <div class="container body" style="padding:0px;">
@@ -141,8 +141,8 @@ function sendLetter() {
 
 
 </div>
-<!--    </div>   
- Modal
+  </div>   
+<!-- modal -->
                            <div class="modal fade" id="myModal" >
                              <div class="modal-dialog">
                                  <div class="container">
@@ -160,13 +160,13 @@ function sendLetter() {
                                        </p>
                                     <hr>
                                        <div class="blog-post-actions">
-                                       이름 누르면 답장하는거야
+                   
                                        <a class="blog-post-bottom pull-left" data-toggle="modal" data-target="#ModalCreated">
-                                          박서준
+                                          	(보낸사람)-답장
                                         </a>
                                          <p class="blog-post-bottom pull-right">
                                          <span>
-                                          이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야
+                        
                                             <button type="button" class="btn btnsetting"> <span class="glyphicon glyphicon-cog"></span></button>
                                             <span class="item-right">
                                                       <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
@@ -190,7 +190,7 @@ function sendLetter() {
                                                                                 “
                                                                               </p>
                                                                               <p class="quote-text">
-                                                                                 <textarea id="letterContent2" style="width:280px; height:300px;"></textarea>
+                                                                                 <textarea id="letterContent" style="width:280px; height:300px;"></textarea>
                                                                               </p>
                                                                            <hr>
                                                                               <div class="blog-post-actions">
@@ -203,7 +203,7 @@ function sendLetter() {
                                        
                                         
 													 <button type="button" class="btn btnsetting"  onclick="sendLetter();">보내기</button>
-                                       이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야
+                                       				<!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
                                           <button type="button" class="btn btnsetting"> <span class="glyphicon glyphicon-cog"></span></button>
                                     <span class="item-right">
                                         <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
