@@ -5,7 +5,8 @@
    request.setCharacterEncoding("UTF-8");
 %>
 
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
 
 
   
@@ -14,7 +15,7 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><i class="fa fa-child fa-2x"></i>가격 흥정<small>원하는 회사를 찾아보세요.</small></h2>
+                                    <h2><i class="fa fa-child fa-2x"></i>dd가격 흥정<small>원하는 회사를 찾아보세요.</small></h2>
                                     
                                     <div class="clearfix"></div>
                                 </div>

@@ -6,78 +6,6 @@
    String cp = request.getContextPath();
 %>
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
-
-<style>
-.stepwizard-step p {
-    margin-top: 10px;
-}
-
-.stepwizard-row {
-    display: table-row;
-}
-
-.stepwizard {
-    display: table;
-    width: 100%;
-    position: relative;
-}
-
-.stepwizard-step button[disabled] {
-    opacity: 1 !important;
-    filter: alpha(opacity=100) !important;
-}
-
-.stepwizard-row:before {
-    top: 14px;
-    bottom: 0;
-    position: absolute;
-    content: " ";
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-    z-order: 0;
-
-}
-
-.stepwizard-step {
-    display: table-cell;
-    text-align: center;
-    position: relative;
-}
-
-.btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
-/* nice check boxes */
-.input-group-addon.beautiful input[type="checkbox"],
-.input-group-addon.beautiful input[type="radio"] {
-    display: none;
-}
-.beautiful {
-    color: white !important;
-    font-size: 14px;
-}
-.beautiful .fa {
-    font-size: 20px !important;
-}
-.bg-success {
-  background-color: #5cb85c;
-}
-.text-white {
-    color:white;
-}
-.add-top {
-    margin-top:20px;
-}
-</style>
-
 <script>
 //nice form step wizard
 $(document).ready(function () {
@@ -229,6 +157,78 @@ function checkBox() {
     
 
 </script>
+
+<style>
+.stepwizard-step p {
+    margin-top: 10px;
+}
+
+.stepwizard-row {
+    display: table-row;
+}
+
+.stepwizard {
+    display: table;
+    width: 100%;
+    position: relative;
+}
+
+.stepwizard-step button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important;
+}
+
+.stepwizard-row:before {
+    top: 14px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    z-order: 0;
+
+}
+
+.stepwizard-step {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+/* nice check boxes */
+.input-group-addon.beautiful input[type="checkbox"],
+.input-group-addon.beautiful input[type="radio"] {
+    display: none;
+}
+.beautiful {
+    color: white !important;
+    font-size: 14px;
+}
+.beautiful .fa {
+    font-size: 20px !important;
+}
+.bg-success {
+  background-color: #5cb85c;
+}
+.text-white {
+    color:white;
+}
+.add-top {
+    margin-top:20px;
+}
+</style>
+
+
 
 <div class="right_col" role="main">
 

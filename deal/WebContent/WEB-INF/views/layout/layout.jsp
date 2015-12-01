@@ -13,27 +13,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <script src="<%=cp%>/res/template/js/jquery.min.js"></script>
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> --> 
+
+
+
+<%--  <script src="<%=cp%>/res/template/js/bootstrap.min.js"></script>
+ --%>
+
+<link href="<%=cp%>/res/template/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%=cp%>/res/template/css/custom.css" rel="stylesheet">
+<link href="<%=cp%>/res/template/css/animate.min.css" rel="stylesheet">
+<link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">      
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-
-
-
- <link href="<%=cp%>/res/template/css/bootstrap.min.css" rel="stylesheet">
- <link href="<%=cp%>/res/template/css/custom.css" rel="stylesheet">
-  <link href="<%=cp%>/res/template/css/animate.min.css" rel="stylesheet">
-     <link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
    
-   
- <script src="<%=cp%>/res/template/js/custom.js"></script>
 
- <script src="<%=cp%>/res/template/js/bootstrap.min.js"></script>
 
- <script src="<%=cp%>/res/template/js/jquery.min.js"></script>
+ <%-- 
  <script type="text/javascript">
 $('#myModal').on('show.bs.modal', function (e) {
      if (!data) return e.preventDefault() // stops modal from being shown
@@ -117,7 +116,7 @@ function sendLetter() {
     font-size: 19px;
     margin-top: -65px;
 }
-</style>
+</style> --%>
 </head>
 <body class="nav-md" style="padding:0px;">
          <div class="container body" style="padding:0px;">
@@ -142,13 +141,13 @@ function sendLetter() {
 
 
 </div>
-   </div>   
- <!-- Modal -->
+<!--    </div>   
+ Modal
                            <div class="modal fade" id="myModal" >
                              <div class="modal-dialog">
                                  <div class="container">
                                      <blockquote class="quote-box">
-                                     <span class="pull-right note_fontsize" >2015-11-18[16:59]</span><!-- 보낸시간 뜨는거야 -->
+                                     <span class="pull-right note_fontsize" >2015-11-18[16:59]</span>보낸시간 뜨는거야
                                        <p class="quotation-mark">
                                          “
                                        </p>
@@ -161,13 +160,13 @@ function sendLetter() {
                                        </p>
                                     <hr>
                                        <div class="blog-post-actions">
-                                       <!-- 이름 누르면 답장하는거야 -->
+                                       이름 누르면 답장하는거야
                                        <a class="blog-post-bottom pull-left" data-toggle="modal" data-target="#ModalCreated">
                                           박서준
                                         </a>
                                          <p class="blog-post-bottom pull-right">
                                          <span>
-                                          <!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
+                                          이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야
                                             <button type="button" class="btn btnsetting"> <span class="glyphicon glyphicon-cog"></span></button>
                                             <span class="item-right">
                                                       <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
@@ -186,7 +185,7 @@ function sendLetter() {
                                      <blockquote class="quote-box">
                                      <span class="pull-right note_fontsize" >2015-11-18
 
-                                       [16:59]</span><!-- 보낸시간 뜨는거야 -->
+                                       [16:59]</span>보낸시간 뜨는거야
                                                                               <p class="quotation-mark">
                                                                                 “
                                                                               </p>
@@ -204,7 +203,7 @@ function sendLetter() {
                                        
                                         
 													 <button type="button" class="btn btnsetting"  onclick="sendLetter();">보내기</button>
-                                       <!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
+                                       이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야
                                           <button type="button" class="btn btnsetting"> <span class="glyphicon glyphicon-cog"></span></button>
                                     <span class="item-right">
                                         <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
@@ -215,9 +214,10 @@ function sendLetter() {
                                      </blockquote>
                                  </div>
                                </div>
-                             </div>
+                             </div> -->
                
-               
-                        
+       </div>      
+       
+   <script src="<%=cp%>/res/template/js/custom.js"></script>           
 </body>
 </html>
