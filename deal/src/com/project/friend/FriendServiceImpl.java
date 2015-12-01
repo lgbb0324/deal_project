@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.common.FileManager;
 import com.project.common.dao.CommonDAO;
 
 @Service("friend.friendService")
@@ -16,20 +15,7 @@ public class FriendServiceImpl implements FriendService{
 	private CommonDAO dao;
 	
 	@Override
-	public int insertFriend(Friend dto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<Friend> friendAllList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<Friend> friendSearchList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -56,22 +42,19 @@ public class FriendServiceImpl implements FriendService{
 		return 0;
 	}
 
-	@Override
-	public int dataCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
-	public Friend readNotice(int num) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Friend> friendList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Friend> followFriend(String userId, Friend dto) {
+		List<Friend> list=null;
+		try {
+			if(dto.getFriendUserId()==null)
+				dao.insertData("friend.insertFriend", dto);
+			else
+				dao.deleteData("friend.deleteFriend", dto);	
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return list;
 	}
 
 }

@@ -8,4 +8,10 @@
                            FROM  member
                            WHERE  userId  NOT IN  (#{userId})
      </select>
+     
+     <insert id="insertFriend" parameterType="com.project.friend.Friend">
+	  INSERT INTO friend( userId, friendUserId,
+	      state) VALUES ( #{userId},
+	      #{friendUserId}, #{state})
+	</insert>
 </mapper>
