@@ -46,6 +46,14 @@ public class MemberController {
 		mav.addObject("mode", "login");
 		return mav;
 	}
+	
+	@RequestMapping(value="/member/default", method=RequestMethod.GET)
+	public ModelAndView defaultForm() throws	Exception{
+		
+		ModelAndView mav = new ModelAndView(".main.default");
+		mav.addObject("mode", "login");
+		return mav;
+	}
 
 
 	

@@ -5,11 +5,12 @@
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
 %>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
  <%-- <%=cp%>/res/template/ --%>
-<link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
+ <link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
 <link href="<%=cp%>/res/template/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
-<link href="<%=cp%>/res/template/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
-<script src="<%=cp%>/res/template/js/jquery.min.js"></script>
+
    
 
    
@@ -171,15 +172,13 @@
                             </div>
                         </div>  
         </div>
-        
-          <script src="<%=cp%>/res/template/js/bootstrap.min.js"></script>
  
   <script src="<%=cp%>/res/template/js/progressbar/bootstrap-progressbar.min.js"></script>
 
   <script src="<%=cp%>/res/template/js/icheck/icheck.min.js"></script>
-  <script src="<%=cp%>/res/template/js/custom.js"></script>
- 
 
+ 
+ <%--  
         <script>
 
         $(document).ready(function () {
@@ -229,8 +228,8 @@
             });
         });
     
-        </script>
-        
+        </script> --%> 
+     
 <style type="text/css">
 .pagination{
 	padding-left:33%;
@@ -254,4 +253,4 @@
 	 border-color:#e51b13;
 	 
 }
-   </style>
+   </style>  

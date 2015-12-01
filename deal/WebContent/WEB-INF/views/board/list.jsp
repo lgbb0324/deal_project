@@ -16,15 +16,15 @@ function searchList() {
 </script>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+ -->
  <%-- <%=cp%>/res/template/ --%>
 <link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
 <link href="<%=cp%>/res/template/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
 <link href="<%=cp%>/res/template/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
-<script src="<%=cp%>/res/template/js/jquery.min.js"></script>
-   
+<%-- <script src="<%=cp%>/res/template/js/jquery.min.js"></script>
+    --%>
    
 
    
