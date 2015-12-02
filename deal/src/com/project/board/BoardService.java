@@ -18,4 +18,9 @@ public interface BoardService {
 	
 	public int updateBoard(Board dto);
 	public int deleteBoard(int num);
+	
+	public int insertReply(Reply dto);
+	public List<Reply> listReply(Map<String, Object>map);
+	public int DataCountReply(Map<String, Object>map);
+	public int deleteReply(int replyNum);
 }

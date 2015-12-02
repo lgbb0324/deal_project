@@ -59,7 +59,7 @@
                                             <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">제목<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" required="required" name="subject" class="form-control col-md-7 col-xs-12">
+                                                <input type="text" required="required" name="subject" value="${dto.subject}" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -140,19 +140,19 @@
                                 <div id="editor" style="padding:0px; border:0px;" class="col-md-9 col-sm-9 col-xs-12" contenteditable="true">
                                     
                                 </div>
-                              <textarea style="padding:0px; border:0px;" name="content" class="col-md-9 col-sm-9 col-xs-12" ></textarea>
+                              <textarea style="padding:0px; border:0px;" name="content" class="col-md-9 col-sm-9 col-xs-12" >${dto.content}</textarea>
                                 <br>
                                 <div>
                    
   
 			      </div>
 
-                                        </div> 
+                    </div> 
                                         
-                                           <c:if test="${mode=='update'}">
+                            <c:if test="${mode=='update'}">
 				               <input type="hidden" name="pageNum" value="${pageNum}">
 				               <input type="hidden" name="num" value="${dto.num}">
-			         						</c:if>     
+			         		</c:if>     
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                        

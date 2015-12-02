@@ -115,4 +115,48 @@ public class BoardServiceImpl implements BoardService{
 		return result;
 	}
 
+
+	@Override
+	public int insertReply(Reply dto) {
+		int result = 0;
+		
+		try {
+			result = dao.insertData("board.insertReply", dto);	
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+
+
+	@Override
+	public List<Reply> listReply(Map<String, Object> map) {
+		List<Reply> list = null;
+		try {
+			list=dao.getListData("board.listReply", map);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return list;
+	}
+
+
+	@Override
+	public int DataCountReply(Map<String, Object> map) {
+		int result = 0;
+		try {
+			result = dao.getIntValue("board.dataCountReply",map);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+
+
+	@Override
+	public int deleteReply(int replyNum) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

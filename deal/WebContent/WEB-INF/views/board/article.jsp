@@ -12,6 +12,77 @@
 		if(confirm("게시물을 삭제 하시겠습니까 ?"))
 			location.href=url;
 	}
+	
+	//--------------
+	
+	$(function(){
+		listPage(1);
+	});
+	function listPage(page){
+		var url="<%=cp%>/board/listReply.do";
+		var num="${dto.num}";
+		$.post(url,{num:num, pageNo:page},function(data){
+			$("#listReply").html(data);
+			});
+	}
+	function sendReply(){
+		var num="${dto.num}";
+		var content=$.trim($("#content").val());
+		if(! content){
+			alert("내용을 입력하세용!");
+			$("#content").focus();
+			return false;
+		}
+		
+		var params="num="+num;
+		params+="&content="+content;
+		params+="&answer=0";
+		
+		$.ajax({
+			type:"POST"
+			,url:"<%=cp%>/board/insertReply.do"
+			,data:params
+			,dataType:"json"
+			,success:function(data){
+				$("#content").val("");
+				var state=data.state;
+				if(state=="loginFail"){
+					location.href="<%=cp%>/member/login.do";
+					return false;
+				}
+				
+				listPage(1);
+				
+			}
+			,error:function(e){
+				alert(e.responseText);
+			}
+		});
+		
+	}
+	
+	function deleteReply(replyNum, pageNo){
+		if(! confirm("게시물을 삭제 하시겠습니까?"))
+			return false;
+		
+		var url="<%=cp%>/bbs/deleteReply.do"
+		$.post(url,{replyNum:replyNum}, function(data){
+			if(data.state=="loginFail"){
+				location.href="<%=cp%>/member/login.do";
+			}else if(data.state=="false") {
+				alert("게시물을 삭제할 수 없습니다.");
+			}else{
+				listPage(pageNo);
+			}
+				
+		}, "json");		
+	}
+	
+	
+	
+	
+	
+	
 	</script>
 </c:if>
 
@@ -123,9 +194,9 @@
                                             <!-- /.col -->
                                         </div>
                                        
-                                        <c:if test="${not empty nextReadDto}">
-			            <a href="<%=cp%>/board/article.do?num=${nextReadDto.num}&${params}">${nextReadDto.subject}</a>
-			       </c:if>
+                                         <c:if test="${not empty nextReadDto}">
+			      						      <a href="<%=cp%>/board/article.do?num=${nextReadDto.num}&${params}">${nextReadDto.subject}</a>
+			       						</c:if>
                                        
 
                                         <!-- this row will not appear when printing -->
@@ -148,9 +219,9 @@
     <form>
       <div class="form-group">
         <label for="comment">Your Comment</label>
-        <textarea name="comment" class="form-control" rows="3"></textarea>
+        <textarea name="comment" id="content" class="form-control" rows="3"></textarea>
       </div>
-      <button type="submit" class="btn btn-default">Send</button>
+      <button type="submit" class="btn btn-default" onclick="sendReply()">Send</button>
     </form>
 
     <div class="comments-nav">
@@ -167,92 +238,13 @@
       </ul>
     </div>
 
-    <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-2 col-md-1">
-                                <img src="<%=cp%>/res/images/img.jpg" class="img-circle img-responsive" alt="" /></div>
-                            <div class="col-xs-10 col-md-11">
-                                <div>Google Style Login Page Design Using Bootstrap
-                                    <div class="mic-info">
-                                        By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
-                                    </div>
-                                </div>
-                                <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>답글
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-2 col-md-1">
-                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/ManikRathee/128.jpg" class="img-circle img-responsive" alt="" /></div>
-                            <div class="col-xs-10 col-md-11">
-                                <div>Google Style Login Page Design Using Bootstrap
-                                    <div class="mic-info">
-                                        By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
-                                    </div>
-                                </div>
-                                <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>답글
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-2 col-md-1">
-                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" class="img-circle img-responsive" alt="" /></div>
-                            <div class="col-xs-10 col-md-11">
-                                <div>Google Style Login Page Design Using Bootstrap
-                                    <div class="mic-info">
-                                        By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
-                                    </div>
-                                </div>
-                                <div class="action">
-                                <a data-toggle="collapse" href="#replyOne">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit" onclick="">
-                                       <span class="glyphicon glyphicon-pencil"></span>답글
-                                    </button></a>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    
-                    </li>
 
-                </ul>
-                <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
-            </div>
-
+<div id="listReply" style="width:100%; margin: 0px auto;"></div>
   </div>
   <!-- post-comments -->
 </div>
-                                        
+       
+                         
                                     </section>
                                 </div>
                             </div>

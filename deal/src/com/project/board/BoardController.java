@@ -1,5 +1,6 @@
 package com.project.board;
 
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.common.MyUtil;
 import com.project.member.SessionInfo;
+
+import net.sf.json.JSONObject;
 
 @Controller("board.boardController")
 public class BoardController {
@@ -313,6 +317,94 @@ public class BoardController {
 		         +dto.getNum()+"&pageNum="+pageNum;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/board/insertReply", method=RequestMethod.POST)
+	public void insertReply(HttpServletResponse resp, HttpSession session, Reply dto) throws Exception{
+	
+		SessionInfo info=(SessionInfo)
+				session.getAttribute("member");
+		
+		String state="true";
+		if(info==null) { // 로그인이 되지 않는 경우
+			state="loginFail";
+		} else {
+			dto.setUserId(info.getUserId());
+			int result=service.insertReply(dto);
+			if(result==0)
+				state="false";
+		}
+		
+		JSONObject job = new JSONObject();
+		job.put("state", state);
+		
+		resp.setContentType("text/html;charset=utf-8");
+		PrintWriter out=resp.getWriter();
+		out.print(job.toString());
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="board/listReply")
+	public ModelAndView listReply(@RequestParam int num,
+								@RequestParam(value="pageNo", defaultValue="1")int current_page)throws Exception{
+		
+		int numPerPage = 5;
+		int total_page;
+		int dataCountReply;
+		
+		Map<String, Object>map = new HashMap<String, Object>();
+		map.put("num", num);
+		
+		dataCountReply = service.DataCountReply(map);
+		total_page = myUtil.getPageCount(numPerPage, dataCountReply);
+		
+		int start = (current_page - 1) * numPerPage;
+		map.put("start", start);
+		
+		List<Reply> listReply = service.listReply(map);
+		
+		Iterator<Reply>it = listReply.iterator();
+		while (it.hasNext()) {
+			Reply data = it.next();
+			data.setContent(
+					data.getContent().replaceAll("\n", "<br>"));
+		}
+		
+		ModelAndView mav = new ModelAndView("board/listReply");
+		
+		mav.addObject("listReply", listReply);
+		mav.addObject("dataCountReply", dataCountReply);
+		mav.addObject("pageNo", current_page);
+		// AJAX 인자 두개
+		mav.addObject("pageIndexList",
+				myUtil.pageIndexList(current_page, total_page));
+		
+		return mav;
+	}
 	
 	
 	
