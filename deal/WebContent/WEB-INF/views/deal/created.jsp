@@ -20,6 +20,8 @@
 
  
 <!-- //sdff -->
+   <script type="text/javascript" src="<%=cp%>/res/template/se/js/HuskyEZCreator.js" charset="utf-8"></script>
+
   <script src="<%=cp%>/res/defaultTemplate/js/icheck/icheck.min.js"></script>
         <!-- tags -->
 
@@ -57,7 +59,6 @@
 		<script src="<%=cp%>/res/defaultTemplate/js/editor/external/google-code-prettify/prettify.js"></script>
         
 
-       
   
 
 
@@ -100,16 +101,16 @@
                                 </div>
                                 <div class="x_content">
                                     <br />
-                                    <form class="form-horizontal form-label-left">
+                                    <form name="boardForm" method="post" enctype="multipart/form-data" onsubmit="return submitContents(this);" class="form-horizontal form-label-left">
 
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" placeholder="제목을 입력하세요">
+                                                <input name="subject" type="text" class="form-control" placeholder="제목을 입력하세요">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">가격</label>
+                                            <label name="price" class="control-label col-md-3 col-sm-3 col-xs-12">가격</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                 <input type="text" class="form-control" placeholder="딜 성공 예상가격">
                                             </div>
@@ -117,19 +118,19 @@
                                            <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">즉시구매가</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" placeholder="상품의 정가를 입력하시오">
+                                                <input name="instantPrice" type="text" class="form-control" placeholder="상품의 정가를 입력하시오">
                                             </div>
                                         </div>
                                             <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">할인율 </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" disabled="disabled" placeholder="자동으로 계산됩니다.">
+                                                <input name="discountRate" type="text" class="form-control" disabled="disabled" placeholder="자동으로 계산됩니다.">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">카테고리</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select class="form-control">
+                                                <select name="category1" class="form-control">
                                                     <option>Choose Category</option>
                                                     <option>옷</option>
                                                     <option>음식</option>
@@ -141,7 +142,7 @@
                                            <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">세부 카테고리</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select class="form-control">
+                                                <select name="category2" class="form-control">
                                                     <option>Choose Category</option>
                                                     <option>신발</option>
                                                     <option>바지</option>
@@ -154,13 +155,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">인원수</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" placeholder="예상 참여 인원수를 입력하시오.">
+                                                <input name="people" type="text" class="form-control" placeholder="예상 참여 인원수를 입력하시오.">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">승인여부 </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" disabled="disabled" placeholder="승인되지 않았습니다">
+                                                <input name="approveCheck" type="text" class="form-control" disabled="disabled" placeholder="승인되지 않았습니다">
                                             </div>
                                         </div>
                                  
@@ -172,7 +173,7 @@
                                                     <div class="controls">
                                                         <div class="input-prepend input-group">
                                                             <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                                            <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="11/25/2015 - 11/28/2015">
+                                                            <input type="text" style="width: 200px" name="start_date" id="reservation" class="form-control" value="11/25/2015 - 11/28/2015">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -184,8 +185,8 @@
                                         </div>
 					
 					<!--  -->
-				 <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">내용을 입력하시오 <span class="required">*</span>
+				<!--  <div class="form-group">
+                                            <label  class="control-label col-md-3 col-sm-3 col-xs-12">내용을 입력하시오 <span class="required">*</span>
                                             </label>
                                        
                         
@@ -248,29 +249,37 @@
                                 </div>
 								<label class="control-label col-md-3 col-sm-3 col-xs-12"> <span class="required"></span>
                                             </label>
-                                <div id="editor" style="padding:0px; border:0px;" class="col-md-9 col-sm-9 col-xs-12" contenteditable="true">
+                                <div  id="editor" style="padding:0px; border:0px;" class="col-md-9 col-sm-9 col-xs-12" style="display:none;" contenteditable="true"> 
                                     
                                 </div>
-                                <textarea class="col-md-9 col-sm-9 col-xs-12" name="descr" id="descr" style="display:none;"></textarea>
-                                <br>
+                                	
 
-                                
-                                
-                                
-
-                         
                                         </div>
                                         
                                         
-                                        <!--  -->
+                                         -->
                         
-                                        
+                                         <div class="form-group">
+                                            <label  class="control-label col-md-3 col-sm-3 col-xs-12">내용을 입력하시오 <span class="required">*</span>
+                                            </label>
+                               <!--  <textarea name="content" class="col-md-9 col-sm-9 col-xs-12" name="descr" id="descr" ></textarea> -->
+                                 <%-- <textarea id="content" name="content" cols="75" rows="12" style="width:610px; height:270px;">${dto.content}</textarea>
+                                <br> --%>
+                                  <table style="width: 730px; margin: 0px; border-spacing: 0px;">
+                                  <tr align="left"> 
+			      <td width="90" bgcolor="#EFEFEF" style="text-align: center; padding-top:5px;" valign="top"></td>
+			      <td width="640" valign="top" style="padding:5px; padding-left:10px;"> 
+			        <textarea id="content" name="content" cols="75" rows="12" style="width:610px; height:270px;">${dto.content}</textarea>
+			      </td>
+			  </tr>
+			  </table>
+								</div>
                                    
                                        
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Custom</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select class="select2_single form-control" tabindex="-1">
+                                                <select name="region1" class="select2_single form-control" tabindex="-1">
                                                     <option value="AK">서울</option>
                                                     <option value="HI">대전</option>
                                                     <option value="CA">대구</option>
@@ -282,7 +291,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Grouped</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select class="select2_group form-control">
+                                                <select name="region2"  class="select2_group form-control">
                                                     <optgroup label="서울">
                                                         <option value="AK">강남구</option>
                                                         <option value="HI">강서구</option>
@@ -301,7 +310,7 @@
                                         <div class="control-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Input Tags</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input id="tags_1" type="text" class="tags form-control" value="social, adverts, sales" />
+                                                <input name="tag1" id="tags_1" type="text" class="tags form-control" value="social, adverts, sales" />
                                                 <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
                                             </div>
                                         </div>
@@ -331,19 +340,20 @@
 
       
             </div>
-
+<script type="text/javascript">
+function submitContents(elClickedObj) {
+	/* oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+	
+	// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
+	 */try {
+		// elClickedObj.form.submit();
+		return check();
+	} catch(e) {}
+}
+</script>
     
        <script type="text/javascript" src="<%=cp%>/res/defaultTemplate/js/moment.min2.js"></script>
-    <script type="text/javascript" src="<%=cp%>/res/defaultTemplate/js/datepicker/daterangepicker.js"></script>
-<script type="text/javascript">
-        $(document).ready(function () {
-            $('#reservation').daterangepicker(null, function (start, end, label) {
-                console.log(start.toISOString(), end.toISOString(), label);
-            });
-        });
-    </script>
-    <script type="text/javascript" src="<%=cp%>/res/defaultTemplate/js/datepicker/daterangepicker.js"></script>
-    
+
 
 
 
@@ -412,7 +422,9 @@
         $(document).ready(function () {
             $('#reservation').daterangepicker(null, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
+              
             });
+
         });
     </script>
     <script type="text/javascript" src="<%=cp%>/res/defaultemplate/js/datepicker/daterangepicker.js"></script>
@@ -436,8 +448,8 @@
        <!--  <script src="js/custom.js"></script> -->
 
 
-        <!-- select2 -->
-        <script>
+         <!-- select2 -->
+       <!-- <script>
             $(document).ready(function () {
                 $(".select2_single").select2({
                     placeholder: "Select a state",
@@ -449,19 +461,19 @@
                     placeholder: "With Max Selection limit 4",
                     allowClear: true
                 });
-            });
-        </script>
+            }); 
+        </script>-->
         <!-- /select2 -->
       
         
         <!-- daterangepicker -->
-       <script type="text/javascript">
+    <!--    <script type="text/javascript">
         $(document).ready(function () {
             $('#reservation').daterangepicker(null, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
             });
         });
-    </script>
+    </script> -->
     <script type="text/javascript" src="<%=cp%>/res/defaultTemplate/js/datepicker/daterangepicker.js"></script>
     
              <script>
@@ -527,5 +539,94 @@
                 window.prettyPrint && prettyPrint();
             });
         </script>
+   <script type="text/javascript">
+
+   var start_date,end_date;
    
+function check() {
+    var f = document.boardForm;
+	
+	var str = f.subject.value;
+  
+	if(!str) {
+        alert("\n제목을 입력하세요. ");
+        f.subject.focus();
+        return false;
+    }
+
+	str = f.content.value;
+    if(str=="" || str=="<br>") {
+        alert("내용을 입력하세요. ");
+        f.content.focus();
+        return false;
+    }
+    
+
+
+  
+		f.action="<%=cp%>/bbs/created";
+
+
+		/* // image 버튼, submit은 submit() 메소드 호출하면 두번전송 */
+    return true;
+}
+
+
+$(document).ready(function () {
+    $('#reservation').daterangepicker(null, function (start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+        start_date=start.toISOString();
+        end_date=end.toISOString();
+        
+        alert( start_date+":"+end_date);
+    });
+
+});
+</script>
+
+       <script type="text/javascript">
+var oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+	oAppRef: oEditors,
+	elPlaceHolder: "content",
+	sSkinURI: "<%=cp%>/res/template/se/SmartEditor2Skin.html",	
+	htParams : {bUseToolbar : true,
+		fOnBeforeUnload : function(){
+			//alert("아싸!");
+		}
+	}, //boolean
+	fOnAppLoad : function(){
+		//예제 코드
+		//oEditors.getById["content"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+	},
+	fCreator: "createSEditor2"
+});
+
+function pasteHTML() {
+	var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
+	oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
+}
+
+function showHTML() {
+	var sHTML = oEditors.getById["content"].getIR();
+	alert(sHTML);
+}
+	
+function submitContents(elClickedObj) {
+	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+	
+	// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
+	try {
+		// elClickedObj.form.submit();
+		return check();
+	} catch(e) {}
+}
+
+function setDefaultFont() {
+	var sDefaultFont = '돋움';
+	var nFontSize = 24;
+	oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
+}
+</script>
+ 
    
