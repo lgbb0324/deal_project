@@ -3,6 +3,9 @@ package com.project.qna;
 public class Qna {
 	private int num,hitCount;
 	private String userId,subject,content,created;
+	
+	private int replyNum;
+	
 	public int getNum() {
 		return num;
 	}
@@ -39,5 +42,11 @@ public class Qna {
 	public void setCreated(String created) {
 		this.created = created;
 	}
-	
+	public int getReplyNum() {
+		return replyNum;
+	}
+	public void setReplyNum(int replyNum) {
+		this.replyNum = replyNum;
+	}
+
 }

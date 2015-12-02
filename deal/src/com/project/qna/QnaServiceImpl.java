@@ -46,5 +46,29 @@ public class QnaServiceImpl implements QnaService{
 		}
 		return list;
 	}
+
+	@Override
+	public int insertReply(Qna dto) {
+		int result=0;
+		
+		try {
+			result=dao.insertData("qna.insertReply", dto);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+
+	@Override
+	public List<Qna> listReply(int num) {
+		List<Qna> list=null;
+		try {
+			list=dao.getListData("qna.listReply",num);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return list;
+	}
 	
 }

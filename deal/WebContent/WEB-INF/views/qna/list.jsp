@@ -5,8 +5,6 @@
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
 %>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
 <style>
 
 .page-header{
@@ -39,6 +37,93 @@ margin-left:5%
 	 
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+
+// 댓글별 답글 리스트
+function listReply(num) {
+	var rta="#listReply"+num;
+	var url="<%=cp%>/qna/replyList";
+	
+	$.post(url, {num:num}, function(data){
+		$(rta).html(data);
+	});
+}
+
+//댓글별 답글 폼
+function replyAnswerForm(num) {
+	var id="#layoutAnswer"+num;
+	var rta="#rta"+num;
+	var btn="#btnAnswer"+num;
+	var s;
+	
+	if($(id).is(':hidden')) {
+		$("[id*=layoutAnswer]").hide();
+		
+		$("[id*=btnAnswer]").each(function(){
+			s=$(this).val();
+			$(this).val(s);
+		});
+
+		$(id).show();
+		//$(rta).focus();
+		s=$(btn).val();
+		$(btn).val(s);
+	}  else {
+		$(id).hide();
+		s=$(btn).val();
+		$(btn).val(s);
+	}
+}
+
+// 댓글별 답글 추가
+function sendReplyAnswer(num) {
+	var isLogin="${sessionScope.member.userId}";
+	if(! isLogin) {
+		login();
+		return false;
+	}
+	
+	var rta="#rta"+num;
+	var content=$.trim($(rta).val());
+	
+	
+	if(! content ) {
+		alert("내용을 입력하세요 !!!\n");
+		$(rta).focus();
+		return false;
+	} 
+	
+	var params="num="+num;
+	params+="&content="+content;
+	
+	$.ajax({
+		type:"POST"
+		,url:"<%=cp%>/qna/reply.do"
+		,data:params
+		,dataType:"json"
+		,success:function(data) {
+			$(rta).val("");
+			
+  			var state=data.state;
+			if(state=="true") {
+				listReply(num);
+			} else if(state=="false") {
+				alert("답글을 등록하지 못했습니다. !!!");
+			} else if(state=="loginFail") {
+				login();
+			}
+		}
+		,error:function(e) {
+			alert(e.responseText);
+		}
+	});
+}
+
+</script>
 
 <div class="right_col" role="main">
 <div class="container">
@@ -54,12 +139,11 @@ margin-left:5%
                  </div>
            	</div>
            	
-      <h2 class="page-header">Comments</h2>
-      
-      	
+      <h2 class="page-header">Q&A</h2>
         <section class="comment-list">
           <!-- First Comment -->
           <c:forEach var="dto" items="${list}">
+          
           <article class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
               <figure class="thumbnail">
@@ -67,155 +151,49 @@ margin-left:5%
                 <figcaption class="text-center">${dto.userId}</figcaption>
               </figure>
             </div>
-            <div class="col-md-10 col-sm-10">
-              <div class="panel panel-default arrow left">
+             <div class="panel panel-default arrow left col-md-10 col-sm-10 col-xs-12">
+                <div class="panel-heading right">${dto.subject}</div>
                 <div class="panel-body">
                   <header class="text-left">
-                    <div class="comment-user"><i class="fa fa-user">${dto.subject}</i></div>
+                    <div class="comment-user"><i class="fa fa-user"></i></div>
                     <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i>${dto.created}</time>
                   </header>
                   <div class="comment-post">
                     <p>
-                      ${dto.content}
+                     ${dto.content}
                     </p>
                   </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i>reply</a></p>
+                  
+    
+    <c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">
+		<span class="pull-right"><a class="btn btn-default btn-sm" onclick="listReply('${dto.num}')">답글보기</a></span>
+	</c:if>
+	
+	<c:if test="${sessionScope.member.userId=='admin'}">
+		<span class="pull-right" id="btnAnswer${dto.num}" ><a class="btn btn-default btn-sm" onclick="replyAnswerForm('${dto.num}')"><i class="fa fa-reply"></i> reply</a></span>
+                  
+		<div id="layoutAnswer${dto.num}" >
+			<div class="form-group">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<textarea class="form-control" id="rta${dto.num}" name="content" placeholder="내용을 입력해 주세요" rows="5"></textarea>
+				</div>
+				<div style="float: right;">
+				<input type="button" value="등록" onclick="sendReplyAnswer('${dto.num}')" class="btn"
+						style="width: 60px; height: 35px; margin-top: 5px;"> 
+				</div>
+			</div>
+		</div>
+	</c:if>
+	
+	
                 </div>
               </div>
-            </div>
+
+
           </article>
           </c:forEach>
-          <!-- Second Comment Reply -->
-          <article class="row">
-            <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
-              <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-            <div class="col-md-9 col-sm-9">
-              <div class="panel panel-default arrow left">
-                <div class="panel-heading right">Reply</div>
-                <div class="panel-body">
-                  <header class="text-left">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                </div>
-              </div>
-            </div>
-          </article>
-        <!-- 
-          Third Comment
-          <article class="row">
-            <div class="col-md-10 col-sm-10">
-              <div class="panel panel-default arrow right">
-                <div class="panel-body">
-                  <header class="text-right">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-          </article>
-          Fourth Comment
-          <article class="row">
-            <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-            <div class="col-md-10 col-sm-10 col-xs-12">
-              <div class="panel panel-default arrow left">
-                <div class="panel-body">
-                  <header class="text-left">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                </div>
-              </div>
-            </div>
-          </article>
-          Fifth Comment
-          <article class="row">
-            <div class="col-md-10 col-sm-10">
-              <div class="panel panel-default arrow right">
-                <div class="panel-body">
-                  <header class="text-right">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-          </article>
-          Sixth Comment Reply
-          <article class="row">
-            <div class="col-md-9 col-sm-9 col-md-offset-1 col-md-pull-1 col-sm-offset-0">
-              <div class="panel panel-default arrow right">
-                <div class="panel-heading">Reply</div>
-                <div class="panel-body">
-                  <header class="text-right">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-2 col-md-pull-1 hidden-xs">
-              <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-          </article> 
-           -->
-           
-           
+          
+        
           <!-- 페이징 -->
           <div class="x_content" style="float: left">
           <a href="<%=cp%>/qna/created.do"><button type="button" class="btn btn-danger">글쓰기</button></a>

@@ -45,4 +45,15 @@ LIMIT #{start}, 10
 </select>
 
 
+<insert id="insertReply" parameterType="com.project.qna.Qna">
+INSERT INTO qna_reply(num,userId,content) VALUES (#{num},#{userId},#{content})
+</insert>
+
+<select id="listReply" resultType="com.project.qna.Qna" parameterType="Integer">
+SELECT replyNum,qr.num,qr.userId,qr.content
+FROM qna_reply qr
+JOIN member m ON qr.userId=m.userId
+JOIN qna q ON qr.num=q.num
+WHERE qr.num=#{num}
+</select>
 </mapper>
