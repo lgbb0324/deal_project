@@ -155,8 +155,13 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public int deleteReply(int replyNum) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		try {
+			result = dao.deleteData("board.deleteReply", replyNum);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
 	}
 
 }

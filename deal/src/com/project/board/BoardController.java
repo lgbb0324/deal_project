@@ -316,20 +316,7 @@ public class BoardController {
 		return "redirect:/board/article.do?num="
 		         +dto.getNum()+"&pageNum="+pageNum;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	@RequestMapping(value="/board/insertReply", method=RequestMethod.POST)
@@ -408,22 +395,31 @@ public class BoardController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value="/board/deleteReply", method=RequestMethod.POST)
+	public void deleteReply(HttpServletResponse resp,
+			HttpSession session,
+			@RequestParam int replyNum)throws Exception{
+		
+		SessionInfo info=(SessionInfo)
+				session.getAttribute("member");
+		
+		String state="true";
+		if(info==null) { // 로그인이 되지 않는 경우
+			state="loginFail";
+		} else {
+			int result=service.deleteReply(replyNum);
+			if(result==0)
+				state="false";
+		}
+		
+		JSONObject job=new JSONObject();
+		job.put("state", state);
+		
+		resp.setContentType("text/html;charset=utf-8");
+		PrintWriter out=resp.getWriter();
+		out.print(job.toString());
+		
+	}
 
-	
+
 }

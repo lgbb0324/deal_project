@@ -9,32 +9,64 @@
     <link href="<%=cp%>/res/defaultTemplate/css/editor/external/google-code-prettify/prettify.css" rel="stylesheet">
     <link href="<%=cp%>/res/defaultTemplate/css/editor/index.css" rel="stylesheet">
  
+ <script type="text/javascript">
+  function check() {
+        var f = document.noticeForm;
+
+    	var str = f.subject.value;
+        if(!str) {
+            alert("\n제목을 입력하세요. ");
+            f.subject.focus();
+            return false;
+        }
+
+    	str = f.content.value;
+        if(!str) {
+            alert("\n내용을 입력하세요. ");
+            f.content.focus();
+            return false;
+        }
+
+        var mode="${mode}";
+        if(mode=="created")
+            f.action = "<%=cp%>/notice/created.do";
+        else if(mode=="update")
+            f.action = "<%=cp%>/notice/update.do";
+        else if(mode=="reply")
+            f.action = "<%=cp%>/notice/reply.do";
+                   
+            
+       return true;
+  }
+</script>
+ 
+ 
    <div class="right_col" role="main">
    <div class="clearfix"></div>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><i class="fa fa-child fa-2x"></i>공지사항<small>홈페이지 이용에 대한 공지사항입니다.</small></h2>
+                                    <h2><i class="fa fa-child fa-2x"></i>공지사항<small>중요공지를 확인하세요.</small></h2>
                                     
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     <br>
-                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" onsubmit="return check();">
 
                                         <div class="form-group">
                                             <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">제목<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                <input type="text" required="required" name="subject" value="${dto.subject}" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-2 col-sm-2 col-xs-12" for="last-name">작성자<span class="required">*</span>
                                             </label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                               ${sessionScope.member.userName}
                                             </div>
                                         </div>
                                         
@@ -104,19 +136,38 @@
                                     </div>
                                 </div>
 								<label class="control-label col-md-2 col-sm-2 col-xs-12"> <span class="required"></span>
-                                            </label>
+                              </label>
                                 <div id="editor" style="padding:0px; border:0px;" class="col-md-9 col-sm-9 col-xs-12" contenteditable="true">
                                     
                                 </div>
-                                <textarea class="col-md-9 col-sm-9 col-xs-12" name="descr" id="descr" style="display:none;"></textarea>
+                              <textarea style="padding:0px; border:0px;" name="content" class="col-md-9 col-sm-9 col-xs-12" >${dto.content}</textarea>
                                 <br>
+                                <div>
+                   
+  
+			      </div>
 
-                                        </div>      
+                    </div> 
+                                        
+                            <c:if test="${mode=='update'}">
+				               <input type="hidden" name="pageNum" value="${pageNum}">
+				               <input type="hidden" name="num" value="${dto.num}">
+			         		</c:if>     
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
+                                       
+                                        
                                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                                <button type="submit" class="btn btn-dark">Cancel</button>
-                                                <a href="<%=cp%>/board/list.do"><button type="submit" class="btn btn-dark">Submit</button></a>
+                                              <a href="<%=cp%>/notice/list.do"><button type="submit" class="btn btn-dark">
+                                              <c:if test="${mode=='update'}">
+                                              	수정하기
+                                              </c:if>
+                                              <c:if test="${mode=='created'}">
+                                              	저장하기
+                                              </c:if>
+                                              </button></a>
+                                              <a href="<%=cp%>/notice/list.do"><button type="button" class="btn btn-dark">돌아가기</button></a>
+                                              
                                             </div>
                                         </div>
  
@@ -127,3 +178,5 @@
                     
                     </div>
         </div>
+
+ 

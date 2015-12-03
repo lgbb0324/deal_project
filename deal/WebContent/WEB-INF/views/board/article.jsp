@@ -5,14 +5,15 @@
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
 %>
-<c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">
+
 	<script type="text/javascript">
+	<c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">
 	function deleteBoard(num) {
 		var url="<%=cp%>/board/delete.do?num="+num+"&pageNum=${pageNum}";
 		if(confirm("게시물을 삭제 하시겠습니까 ?"))
 			location.href=url;
 	}
-	
+	</c:if>
 	//--------------
 	
 	$(function(){
@@ -65,7 +66,7 @@
 		if(! confirm("게시물을 삭제 하시겠습니까?"))
 			return false;
 		
-		var url="<%=cp%>/bbs/deleteReply.do"
+		var url="<%=cp%>/board/deleteReply.do"
 		$.post(url,{replyNum:replyNum}, function(data){
 			if(data.state=="loginFail"){
 				location.href="<%=cp%>/member/login.do";
@@ -84,7 +85,7 @@
 	
 	
 	</script>
-</c:if>
+
 
 
 
@@ -216,13 +217,11 @@
                                         <div class="container">
   <div class="post-comments">
 
-    <form>
       <div class="form-group">
         <label for="comment">Your Comment</label>
         <textarea name="comment" id="content" class="form-control" rows="3"></textarea>
       </div>
-      <button type="submit" class="btn btn-default" onclick="sendReply()">Send</button>
-    </form>
+      <button type="button" class="btn btn-default" onclick="sendReply()">Send</button>
 
     <div class="comments-nav">
       <ul class="nav nav-pills">
@@ -239,12 +238,12 @@
     </div>
 
 
-<div id="listReply" style="width:100%; margin: 0px auto;"></div>
+
   </div>
   <!-- post-comments -->
 </div>
        
-                         
+                         <div id="listReply" style="width:100%; margin: 0px auto;"></div>
                                     </section>
                                 </div>
                             </div>

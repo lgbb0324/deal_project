@@ -122,11 +122,15 @@ function searchList() {
 					   		${pageIndexList}
 					   </c:if>
                                     
-                                 <!--    <ul class="pagination">
-						              <li class="disabled"><a href="#">«</a></li>
-						              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-						              <li><a href="#">»</a></li>
-						            </ul> -->
+             <!--      <ul class="pagination">
+					<li ><a href="#">«</a></li>
+					<li class="active">
+					<a href="#">1 <span class="sr-only">(current)</span></a></li>
+					 <li><a href="#">»</a></li>
+					</ul> -->
+                               
+                               
+                               
                                 </div>
                                 
                                 
@@ -134,6 +138,8 @@ function searchList() {
                             </div>
                         </div>  
         </div>
+        
+        
         
           <script src="<%=cp%>/res/template/js/bootstrap.min.js"></script>
  

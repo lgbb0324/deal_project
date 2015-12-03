@@ -6,14 +6,97 @@
    String cp = request.getContextPath();
 %>
 
-   
+	<script type="text/javascript">
+	<c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">
+	function deleteBoard(num) {
+		var url="<%=cp%>/board/delete.do?num="+num+"&pageNum=${pageNum}";
+		if(confirm("게시물을 삭제 하시겠습니까 ?"))
+			location.href=url;
+	}
+	</c:if>
+	//--------------
+	
+	$(function(){
+		listPage(1);
+	});
+	function listPage(page){
+		var url="<%=cp%>/board/listReply.do";
+		var num="${dto.num}";
+		$.post(url,{num:num, pageNo:page},function(data){
+			$("#listReply").html(data);
+			});
+	}
+	function sendReply(){
+		var num="${dto.num}";
+		var content=$.trim($("#content").val());
+		if(! content){
+			alert("내용을 입력하세용!");
+			$("#content").focus();
+			return false;
+		}
+		
+		var params="num="+num;
+		params+="&content="+content;
+		params+="&answer=0";
+		
+		$.ajax({
+			type:"POST"
+			,url:"<%=cp%>/board/insertReply.do"
+			,data:params
+			,dataType:"json"
+			,success:function(data){
+				$("#content").val("");
+				var state=data.state;
+				if(state=="loginFail"){
+					location.href="<%=cp%>/member/login.do";
+					return false;
+				}
+				
+				listPage(1);
+				
+			}
+			,error:function(e){
+				alert(e.responseText);
+			}
+		});
+		
+	}
+	
+	function deleteReply(replyNum, pageNo){
+		if(! confirm("게시물을 삭제 하시겠습니까?"))
+			return false;
+		
+		var url="<%=cp%>/board/deleteReply.do"
+		$.post(url,{replyNum:replyNum}, function(data){
+			if(data.state=="loginFail"){
+				location.href="<%=cp%>/member/login.do";
+			}else if(data.state=="false") {
+				alert("게시물을 삭제할 수 없습니다.");
+			}else{
+				listPage(pageNo);
+			}
+				
+		}, "json");		
+	}
+	
+	
+	
+	
+	
+	
+	</script>
+
+
+
+
+
    <div class="right_col" role="main">
 
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                   <i class="fa fa-child fa-2x"></i>공지사항
+                   <i class="fa fa-child fa-2x"></i>자유게시판
                     
                 </h3>
                         </div>
@@ -60,8 +143,8 @@
                                         <div class="row">
                                             <div class="col-xs-12 invoice-header">
                                                 <h1>
-                                        <i class="fa fa-globe"></i> 제목
-                                        <small class="pull-right">등록일: 16/08/2016</small>
+                                        <i class="fa fa-globe"></i> ${dto.subject}
+                                        <small class="pull-right">등록일: ${dto.created}</small>
                                     </h1>
                                             </div>
                                             <!-- /.col -->
@@ -71,18 +154,15 @@
                                             <div class="col-sm-4 invoice-col">
                                               	  작성자
                                                 <address>
-                                        <strong>Iron Admin, Inc.</strong>
-                                        <br>795 Freedom Ave, Suite 600
-                                        <br>New York, CA 94107
-                                        <br>Phone: 1 (804) 123-9876
-                                        <br>Email: ironadmin.com
+                                        <strong>${dto.userName}</strong>
+
                                     </address>
                                             </div>
                                             <!-- /.col -->
                                             <div class="col-sm-4 invoice-col">
                                                 To
                                                 <address>
-                                        <strong>John Doe</strong>
+                                        <strong>${dto.userName}</strong>
                                         <br>795 Freedom Ave, Suite 600
                                         <br>New York, CA 94107
                                         <br>Phone: 1 (804) 123-9876
@@ -91,7 +171,7 @@
                                             </div>
                                             <!-- /.col -->
                                             <div class="col-sm-4 invoice-col">
-                                                <b>조회수 :</b>
+                                                <b>조회수 : ${dto.hitCount}</b>
                                                 <br>
                                                 <br>
                                                 <b>댓글수:</b> 4F3S8J
@@ -109,35 +189,61 @@
                                             <div class="col-xs-12 table">
                                                 
                                        <div class='span8 main'>
-        <h3>Main Content Section</h3>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.<p> 
-
-        <p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
-      </div>
+								         ${dto.content}
+								      </div>
                                             </div>
                                             <!-- /.col -->
                                         </div>
                                        
-                                       
+                                         <c:if test="${not empty nextReadDto}">
+			      						      <a href="<%=cp%>/board/article.do?num=${nextReadDto.num}&${params}">${nextReadDto.subject}</a>
+			       						</c:if>
                                        
 
                                         <!-- this row will not appear when printing -->
                                         <div class="row no-print">
                                             <div class="col-xs-12">
-                                                <button class="btn btn-default" onclick="window.print();">수정</button>
-                                                <button class="btn btn-default" onclick="window.print();">삭제</button>
+                                             <c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">
+                                                <button class="btn btn-default" onclick="javascript:location.href='<%=cp%>/board/update.do?num=${dto.num}&pageNum=${pageNum}';">수정</button>
+                                                <button class="btn btn-default" onclick="javascript:deleteBoard('${dto.num}');">삭제</button>
+                                               </c:if>
                                                 <button class="btn btn-success pull-right">이전글</button>
-                                                <button class="btn btn-primary pull-right" style="margin-right: 5px;">목록</button>
+                                                <a href="<%=cp%>/board/list.do"><button class="btn btn-primary pull-right" style="margin-right: 5px;">목록</button></a>
                                                  <button class="btn btn-success pull-right" style="margin-right: 5px;">다음글</button>
+   
                                             </div>
                                         </div>
                                         
                                         <div class="container">
-  
-  
+  <div class="post-comments">
+
+      <div class="form-group">
+        <label for="comment">Your Comment</label>
+        <textarea name="comment" id="content" class="form-control" rows="3"></textarea>
+      </div>
+      <button type="button" class="btn btn-default" onclick="sendReply()">Send</button>
+
+    <div class="comments-nav">
+      <ul class="nav nav-pills">
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                  there are 2593 comments <span class="caret"></span>
+                </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Best</a></li>
+            <li><a href="#">Hot</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+
+  </div>
   <!-- post-comments -->
 </div>
-                                        
+       
+                         <div id="listReply" style="width:100%; margin: 0px auto;"></div>
                                     </section>
                                 </div>
                             </div>

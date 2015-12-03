@@ -4,33 +4,70 @@
 <%
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
+   
 %>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  
- <%-- <%=cp%>/res/template/ --%>
- <link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
-<link href="<%=cp%>/res/template/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
 
+<script type="text/javascript">
+function searchList() {
+	var f=document.searchForm;
+	f.action="<%=cp%>/notice/list.do";
+	f.submit();
+}
+</script>
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+ -->
+ <%-- <%=cp%>/res/template/ --%>
+<link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
+<link href="<%=cp%>/res/template/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
+<link href="<%=cp%>/res/template/css/datatables/tools/css/dataTables.tableTools.css" rel="stylesheet">
+<%-- <script src="<%=cp%>/res/template/js/jquery.min.js"></script>
+    --%>
    
 
    
    <div class="right_col" role="main">
    
    
+<!--    <form name="searchForm" action="" method="post">
+			              <select name="searchKey" class="selectField">
+			                  <option value="subject">제목</option>
+			                  <option value="userName">작성자</option>
+			                  <option value="content">내용</option>
+			                  <option value="created">등록일</option>
+			            </select>
+			            <input type="text" name="searchValue" class="boxTF"/>
+			            <input type="button" value=" 검 색 " class="btn" onclick="searchList()"/>
+			        </form> -->
+   
   <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><i class="fa fa-child fa-2x"></i>공지사항<small>홈페이지 이용에 대한 공지사항입니다.</small></h2>
-                                    <div class="title_right">
-                                    
-                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <h2><i class="fa fa-child fa-2x"></i>자유 게시판<small> 자유로운 의견을 올려주세요.</small></h2>
+                                    <div class="title_right">           
+
+<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                         <form name="searchForm" action="" method="post">  
+                            	     <select name="searchKey" class="selectField">
+					                  <option value="subject">제목</option>
+					                  <option value="userName">작성자</option>
+					                  <option value="content">내용</option>
+					                  <option value="created">등록일</option>
+			           				 </select>
+			           			 
+			            
+                                <div class="input-group"> 
+                            <input type="text" name="searchValue"  class="form-control" placeholder="Search for...">
                                     <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                                </div>
-                            </div>
+                            <button class="btn btn-default" type="button" onclick="searchList()" >Go!</button>
+                   			     </span>
+                   			      </div>     
+                        
+                          		   </form>
+   
+                                   </div>
                         </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -41,7 +78,6 @@
                                         <thead>
                                             <tr class="headings">
                                                 <th class="sorting_disabled">
-                                                    <input type="checkbox" id="check-all" class="flat">
                                                 </th>
                                                 <th class="column-title">글 번호 </th>
                                                 <th class="column-title">제목</th>
@@ -58,113 +94,43 @@
                             </thead>
 
                             <tbody>
+                            <c:forEach var="dto" items="${list}">
+                            
                                 <tr class="even pointer">
-                                    <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
-                                    <td class=" ">121000040</td>
-                                    <td class=" ">May 23, 2014 11:47:56 PM </td>
-                                    <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
-                                    <td class=" ">John Blank L</td>
-                                    <td class=" ">Paid</td>
+                                    <td class="a-center ">
+                                    <td class=" ">${dto.num}</td>
+                                    <td class=" "><a href="${urlArticle}&num=${dto.num}">${dto.subject}</a></td>
+                                    <td class=" ">${dto.userName}</td>
+                                    <td class=" ">${dto.created}</td>
+                                    <td class=" ">${dto.hitCount}</td>
                                    
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000039</td>
-                                                <td class=" ">May 23, 2014 11:30:12 PM</td>
-                                                <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
-                                                </td>
-                                                <td class=" ">John Blank L</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000038</td>
-                                                <td class=" ">May 24, 2014 10:55:33 PM</td>
-                                                <td class=" ">121000203 <i class="success fa fa-long-arrow-up"></i>
-                                                </td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000037</td>
-                                                <td class=" ">May 24, 2014 10:52:44 PM</td>
-                                                <td class=" ">121000204</td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                               
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000040</td>
-                                                <td class=" ">May 24, 2014 11:47:56 PM </td>
-                                                <td class=" ">121000210</td>
-                                                <td class=" ">John Blank L</td>
-                                                <td class=" ">Paid</td>
-                                               
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000039</td>
-                                                <td class=" ">May 26, 2014 11:30:12 PM</td>
-                                                <td class=" ">121000208 <i class="error fa fa-long-arrow-down"></i>
-                                                </td>
-                                                <td class=" ">John Blank L</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000038</td>
-                                                <td class=" ">May 26, 2014 10:55:33 PM</td>
-                                                <td class=" ">121000203</td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                                
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000037</td>
-                                                <td class=" ">May 26, 2014 10:52:44 PM</td>
-                                                <td class=" ">121000204</td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                               
-                                            </tr>
-
-                                            </tbody>
+                                 </tr>
+                            </c:forEach>
+                                      </tbody>
                                             
 
                                     </table>
                                     
                                             <div class="x_content" style="float: left">
-                                   
-        <a href="<%=cp%>/notice/created.do"><button type="button" class="btn btn-dark">글쓰기</button></a>                            
-<ul class="pagination">
-	<li class="disabled"><a href="#">«</a></li>
-	<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-	<li><a href="#">2</a></li>
-	<li><a href="#">3</a></li>
-	<li><a href="#">4</a></li>
-	<li><a href="#">5</a></li>
-	<li><a href="#">»</a></li>
-	</ul>
+                                    
+                                    <a href="<%=cp%>/notice/created.do"><button type="button" class="btn btn-dark">글쓰기</button></a>
+                                    
+                      <c:if test="${dataCount==0}">
+					   		등록된 게시물이 없습니다.
+					   </c:if>
+					   <c:if test="${dataCount!=0}">
+					   		${pageIndexList}
+					   </c:if>
+                                    
+             <!--      <ul class="pagination">
+					<li ><a href="#">«</a></li>
+					<li class="active">
+					<a href="#">1 <span class="sr-only">(current)</span></a></li>
+					 <li><a href="#">»</a></li>
+					</ul> -->
+                               
+                               
+                               
                                 </div>
                                 
                                 
@@ -172,13 +138,19 @@
                             </div>
                         </div>  
         </div>
+        
+        
+        
+          <script src="<%=cp%>/res/template/js/bootstrap.min.js"></script>
  
   <script src="<%=cp%>/res/template/js/progressbar/bootstrap-progressbar.min.js"></script>
 
   <script src="<%=cp%>/res/template/js/icheck/icheck.min.js"></script>
-
+  <script src="<%=cp%>/res/template/js/custom.js"></script>
  
- <%--  
+ 
+
+
         <script>
 
         $(document).ready(function () {
@@ -228,8 +200,8 @@
             });
         });
     
-        </script> --%> 
-     
+        </script>
+        
 <style type="text/css">
 .pagination{
 	padding-left:33%;
@@ -253,4 +225,7 @@
 	 border-color:#e51b13;
 	 
 }
-   </style>  
+   </style>
+   
+
+   

@@ -14,8 +14,6 @@ public class NoticeServiceImpl implements NoticeService{
 		int result = 0;
 		
 		try {
-			int maxNum = dao.getIntValue("notice.maxNum");
-			dto.setNum(maxNum+1);
 			result = dao.insertData("notice.insertNotice", dto);
 		} catch (Exception e) {
 			System.out.println(e.toString());
