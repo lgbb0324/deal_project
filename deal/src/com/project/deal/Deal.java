@@ -1,8 +1,32 @@
 package com.project.deal;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Deal {
 		private String userId,userName,subject,category1,category2,start_date,end_date,content,imageFilename,region1,region2,tag1,tag2;
 		private int price,instantPrice,discountRate,people,approveCheck;
+		private MultipartFile upload;
+		private String saveFilename;
+		private String originalFilename;
+		
+		public MultipartFile getUpload() {
+			return upload;
+		}
+		public void setUpload(MultipartFile upload) {
+			this.upload = upload;
+		}
+		public String getSaveFilename() {
+			return saveFilename;
+		}
+		public void setSaveFilename(String saveFilename) {
+			this.saveFilename = saveFilename;
+		}
+		public String getOriginalFilename() {
+			return originalFilename;
+		}
+		public void setOriginalFilename(String originalFilename) {
+			this.originalFilename = originalFilename;
+		}
 		public String getUserId() {
 			return userId;
 		}
