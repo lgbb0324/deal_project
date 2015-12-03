@@ -44,13 +44,28 @@ public class FriendServiceImpl implements FriendService{
 
 
 	@Override
-	public List<Friend> followFriend(String userId, Friend dto) {
+	public List<Friend> followFriend( Friend dto) {
 		List<Friend> list=null;
+		
 		try {
-			if(dto.getFriendUserId()==null)
+			/*list=dao.getListData("friend.friendCheck", dto);
+			
+			
+			if(list.get==null)*/
 				dao.insertData("friend.insertFriend", dto);
-			else
-				dao.deleteData("friend.deleteFriend", dto);	
+		
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return list;
+	}
+
+	@Override
+	public List<Friend> myFriendList(String userId) {
+		List<Friend> list=null;
+	
+		try {
+			list=dao.getListData("friend.myFriendList",userId);
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
