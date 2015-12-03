@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.member.SessionInfo;
@@ -36,8 +37,17 @@ public class DealController {
 	@RequestMapping(value="/deal/created", method=RequestMethod.POST)
 	public ModelAndView createdSubmit(
 			HttpSession session,
-			Deal dto
+			Deal dto,
+			@RequestParam(value="start_date", defaultValue="1") String start_date,
+			@RequestParam(value="end_date", defaultValue="1") String end_date
 			) throws Exception {
+		
+		System.out.println(start_date);
+		System.out.println(end_date);
+		start_date.substring(0, 9);
+		
+		dto.setStart_date(start_date.substring(0, 10));
+		dto.setEnd_date(end_date.substring(0, 10));
 		
 		System.out.println(dto.getSubject());
 		System.out.println(dto.getDiscountRate());
@@ -69,7 +79,7 @@ public class DealController {
 
 		service.insertDeal(dto, path);
 		
-		return new ModelAndView("redirect:/deal/created");
+		return new ModelAndView("redirect:/main.do");
 	}
 	
 	

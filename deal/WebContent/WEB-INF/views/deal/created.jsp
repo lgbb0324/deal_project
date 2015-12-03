@@ -173,7 +173,7 @@
                                                     <div class="controls">
                                                         <div class="input-prepend input-group">
                                                             <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                                            <input type="text" style="width: 200px" name="start_date" id="reservation" class="form-control" value="11/25/2015 - 11/28/2015">
+                                                            <input type="text" style="width: 200px"  id="reservation" class="form-control" value="11/25/2015 - 11/28/2015">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -489,7 +489,7 @@ function check() {
     
 
   
-		f.action="<%=cp%>/deal/created.do";
+		f.action="<%=cp%>/deal/created.do?start_date="+start_date+"&end_date="+end_date;
 
 
 		/* // image 버튼, submit은 submit() 메소드 호출하면 두번전송 */
@@ -503,7 +503,7 @@ $(document).ready(function () {
         start_date=start.toISOString();
         end_date=end.toISOString();
         
-        alert( start_date+":"+end_date);
+         alert( start_date+":"+end_date); 
     });
 
 });
