@@ -45,7 +45,7 @@ function searchList() {
   <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><i class="fa fa-child fa-2x"></i>자유 게시판<small> 자유로운 의견을 올려주세요.</small></h2>
+                                    <h2><i class="fa fa-child fa-2x"></i>공지사항<small> 공지사항을 확인해주세요.</small></h2>
                                     <div class="title_right">           
 
 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
