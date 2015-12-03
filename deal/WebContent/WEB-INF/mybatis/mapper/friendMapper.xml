@@ -2,16 +2,33 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="friend">
-     <select id="friendList" parameterType="map"
+     <select id="friendList"  parameterType="map"
                resultType="com.project.friend.Friend">
                  SELECT   userId
                            FROM  member
                            WHERE  userId  NOT IN  (#{userId})
      </select>
      
-     <insert id="insertFriend" parameterType="com.project.friend.Friend">
+     <insert id="insertFriend"  parameterType="com.project.friend.Friend">
 	  INSERT INTO friend( userId, friendUserId,
 	      state) VALUES ( #{userId},
-	      #{friendUserId}, #{state})
+	      #{friendUserId}, 1)
 	</insert>
+	
+	
+	<select id="friendCheck"  parameterType="com.project.friend.Friend"
+               resultType="com.project.friend.Friend">
+             SELECT   friendUserId,COUNT(*) friendUserIdcount 
+                           FROM  friend
+                           WHERE userId #{userId} AND friendUserId   IN (#{friendUserId})
+     </select>
+     
+         <select id="myFriendList"  parameterType="String"
+               resultType="com.project.friend.Friend">
+                 SELECT   friendUserId
+                           FROM  friend
+                           WHERE  userId = #{userId}
+     </select>
+     
+     
 </mapper>
