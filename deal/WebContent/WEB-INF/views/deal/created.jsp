@@ -488,10 +488,8 @@ function check() {
     }
     
 
-	alert(f.region1.value);
-	alert(f.region2.value);
   
-		f.action="<%=cp%>/bbs/created";
+		f.action="<%=cp%>/deal/created.do";
 
 
 		/* // image 버튼, submit은 submit() 메소드 호출하면 두번전송 */
