@@ -79,6 +79,7 @@ function searchList() {
                                             <tr class="headings">
                                                 <th class="sorting_disabled">
                                                 </th>
+                                               
                                                 <th class="column-title">글 번호 </th>
                                                 <th class="column-title">제목</th>
                                                 <th class="column-title">작성자 </th>
@@ -94,6 +95,19 @@ function searchList() {
                             </thead>
 
                             <tbody>
+                            <c:forEach var="dto" items="${noticeList}">
+                            
+                                <tr class="even pointer" style="background-color: #FFD9FA;">
+                                    <td class="a-center ">
+                                    <td class=" ">공지</td>
+                                    <td class=" "><a href="${urlArticle}&num=${dto.num}">${dto.subject}</a></td>
+                                    <td class=" ">${dto.userName}</td>
+                                    <td class=" ">${dto.created}</td>
+                                    <td class=" ">${dto.hitCount}</td>
+                                   
+                                 </tr>
+                            </c:forEach>
+                            
                             <c:forEach var="dto" items="${list}">
                             
                                 <tr class="even pointer">
@@ -111,10 +125,10 @@ function searchList() {
 
                                     </table>
                                     
-                                            <div class="x_content" style="float: left">
-                                    
+                                    <div class="x_content" style="float: left">
+                                    <c:if test="${sessionScope.member.userId=='admin'}">
                                     <a href="<%=cp%>/notice/created.do"><button type="button" class="btn btn-dark">글쓰기</button></a>
-                                    
+                                    </c:if>
                       <c:if test="${dataCount==0}">
 					   		등록된 게시물이 없습니다.
 					   </c:if>

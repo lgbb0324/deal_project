@@ -5,8 +5,116 @@
 
 
 <insert id="insertNotice" parameterType="com.project.notice.Notice">
-		insert into notice(userId, subject, content)
-		 values(#{userId}, #{subject}, #{content})
+		insert into notice(userId, notice, subject, content)
+		 values(#{userId},#{notice}, #{subject}, #{content})
 	</insert>
+	
+	<sql id="where-list">
+	  <if test="searchKey=='userName'">
+	      userName=#{searchValue}
+	  </if>
+	  <if test="searchKey=='subject'">
+	      subject LIKE CONCAT('%', #{searchValue}, '%')
+	  </if>
+	  <if test="searchKey=='content'">
+	      INSTR(content, #{searchValue}) &gt; 0 
+	  </if>
+	  <if test="searchKey=='created'">
+	      DATE_FORMAT(created, '%Y-%m-%d') = #{searchValue}
+	  </if>
+	</sql>
+	<!-- 공지글 리스트 -->
+	
+	<select id="listNoticeTop" resultType="com.project.notice.Notice">
+		select num, n.userId, notice, subject, userName, content, DATE_FORMAT(created, '%Y-%m-%d') AS created, hitCount
+		from notice n
+		Join member m ON n.userId = m.userId 
+		where notice = 1
+		ORDER BY num DESC		
+	</select>
+	
+	
+<select id="listNotice" parameterType="map" resultType="com.project.notice.Notice">
+
+select num, n.userId, notice, subject, userName, content, DATE_FORMAT(created, '%Y-%m-%d') AS created, hitCount
+from notice n
+Join member m ON n.userId = m.userId 
+ <where>
+		<if test="searchValue!=null and searchValue!='' ">
+			 <include refid="where-list"/>
+		</if>
+</where>
+ORDER BY num DESC
+LIMIT #{start}, 10
+
+</select>
+
+	
+	<select id="dataCount" resultType="Integer"
+	           parameterType="map">
+	    SELECT ifnull(COUNT(*), 0) FROM notice n
+	    JOIN member m ON n.userId  = m.userId
+	    <where>
+	    	<if test="searchValue!=null and searchValue!='' ">
+	    		<include refid="where-list"/>
+	    	</if>
+	    </where>
+	</select>
+	
+
+
+  <select id="readNotice" parameterType="Integer"
+               resultType="com.project.notice.Notice">
+		SELECT num, n.userId, notice, subject, content, userName,DATE_FORMAT(created, '%Y-%m-%d') AS created,hitCount
+		FROM notice n
+		JOIN member m ON n.userId = m.userId
+		WHERE num=#{num}
+   </select>
+
+    <update id="updateHitCount" 
+                  parameterType="Integer">
+       UPDATE notice SET hitCount=hitCount+1
+                 WHERE num=#{num}
+    </update>
+    
+
+	<delete id="deleteNotice" parameterType="Integer">
+	
+	 DELETE FROM notice WHERE num = #{num}
+	</delete>
+	
+	<update id="updateNotice" parameterType="com.project.notice.Notice">
+	   UPDATE notice SET notice=#{notice}, subject=#{subject},
+	  	content=#{content}
+       			WHERE num=#{num}	                                
+	</update>
+
+<!-- 댓글입니다. -->
+<!-- 	<insert id="insertReply" parameterType="com.project.board.Reply">
+			INSERT INTO bbsreply(num, userId, content, answer)
+	  		VALUES (#{num},#{userId},#{content}, #{answer})
+	</insert> 
+	
+	
+	<select id="dataCountReply" parameterType="map" resultType="Integer">
+		  SELECT ifnull(COUNT(*), 0) FROM bbsreply b
+	    	where num=#{num} and answer=0
+	</select>
+	
+	<select id="listReply" parameterType="map" resultType="com.project.board.Reply">
+
+			select replyNum, num, r.userId, userName,
+	            content, answer, DATE_FORMAT(created, '%Y-%m-%d') AS created
+				from bbsreply r
+				Join member m ON r.userId = m.userId
+				where num=#{num} and answer=0
+				ORDER BY replyNum DESC 
+				LIMIT #{start}, 10
+	</select>
+	
+	<delete id="deleteReply" parameterType="Integer">
+		DELETE FROM bbsreply WHERE replyNum=#{replyNum}
+	</delete>
+ -->
 
 </mapper>

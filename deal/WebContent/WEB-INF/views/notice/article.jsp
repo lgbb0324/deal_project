@@ -7,9 +7,9 @@
 %>
 
 	<script type="text/javascript">
-	<c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">
-	function deleteBoard(num) {
-		var url="<%=cp%>/board/delete.do?num="+num+"&pageNum=${pageNum}";
+	<c:if test="${sessionScope.member.userId=='admin'}">
+	function deleteNotice(num) {
+		var url="<%=cp%>/notice/delete.do?num="+num+"&pageNum=${pageNum}";
 		if(confirm("게시물을 삭제 하시겠습니까 ?"))
 			location.href=url;
 	}
@@ -20,7 +20,7 @@
 		listPage(1);
 	});
 	function listPage(page){
-		var url="<%=cp%>/board/listReply.do";
+		var url="<%=cp%>/notice/listReply.do";
 		var num="${dto.num}";
 		$.post(url,{num:num, pageNo:page},function(data){
 			$("#listReply").html(data);
@@ -66,7 +66,7 @@
 		if(! confirm("게시물을 삭제 하시겠습니까?"))
 			return false;
 		
-		var url="<%=cp%>/board/deleteReply.do"
+		var url="<%=cp%>/notice/deleteReply.do"
 		$.post(url,{replyNum:replyNum}, function(data){
 			if(data.state=="loginFail"){
 				location.href="<%=cp%>/member/login.do";
@@ -96,7 +96,7 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                   <i class="fa fa-child fa-2x"></i>자유게시판
+                   <i class="fa fa-child fa-2x"></i>공지사항
                     
                 </h3>
                         </div>
@@ -203,12 +203,12 @@
                                         <!-- this row will not appear when printing -->
                                         <div class="row no-print">
                                             <div class="col-xs-12">
-                                             <c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">
-                                                <button class="btn btn-default" onclick="javascript:location.href='<%=cp%>/board/update.do?num=${dto.num}&pageNum=${pageNum}';">수정</button>
-                                                <button class="btn btn-default" onclick="javascript:deleteBoard('${dto.num}');">삭제</button>
+                                             <c:if test="${sessionScope.member.userId=='admin'}">
+                                                <button class="btn btn-default" onclick="javascript:location.href='<%=cp%>/notice/update.do?num=${dto.num}&pageNum=${pageNum}';">수정</button>
+                                                <button class="btn btn-default" onclick="javascript:deleteNotice('${dto.num}');">삭제</button>
                                                </c:if>
                                                 <button class="btn btn-success pull-right">이전글</button>
-                                                <a href="<%=cp%>/board/list.do"><button class="btn btn-primary pull-right" style="margin-right: 5px;">목록</button></a>
+                                                <a href="<%=cp%>/notice/list.do"><button class="btn btn-primary pull-right" style="margin-right: 5px;">목록</button></a>
                                                  <button class="btn btn-success pull-right" style="margin-right: 5px;">다음글</button>
    
                                             </div>
