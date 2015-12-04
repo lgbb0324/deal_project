@@ -25,10 +25,15 @@
      
          <select id="myFriendList"  parameterType="String"
                resultType="com.project.friend.Friend">
-                 SELECT   friendUserId
+                 SELECT num,   friendUserId
                            FROM  friend
                            WHERE  userId = #{userId}
      </select>
+     
+     	
+    <delete id="deleteFriend" parameterType="Integer">
+        DELETE FROM friend WHERE num=#{num}
+    </delete>	
      
      
 </mapper>

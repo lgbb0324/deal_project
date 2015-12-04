@@ -7,9 +7,28 @@
 %>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-function deleteMessage() {
-	if(confirm("팔로우를 취소하시겠습니까? "))
+function deleteFriend(num) {
+	if(!confirm("팔로우를 취소하시겠습니까? "))
 		return false;
+	
+	   var params="num="+num;
+	    
+	    $.ajax({
+	        type: "POST",
+	        url: "<%=cp%>/friend/deleteFriend.do",
+	        data: params,
+	        success: function(data){
+	        	var s=$.trim(data);
+				if(s=="loginFail") {
+					location.href="<%=cp%>/member/login";
+					return false;	
+				}
+	        	
+	        },
+	        error: function(e){
+	            alert(e.responseText);
+	        }
+	    });
 }
 function insertFriend(friendUserId) {
 		if(!confirm("팔로우 하시겠습니까? "))
@@ -114,7 +133,7 @@ Licensed under MIT
 						                            </div>   <!-- 이름과 팔로우수 끝 -->   
 						                            
                                                     <div class="" data-toggle="buttons" style="margin-top:35px; ">
-												         <label class="btn btn-lg btn-default active" onclick="deleteMessage()" style="font-size: 9pt; border-color: #791212; border-width: 3px;">
+												         <label class="btn btn-lg btn-default active" onclick="deleteFriend('${dto.userId}')" style="font-size: 9pt; border-color: #791212; border-width: 3px;">
 												            <input  type="radio" name="options" id="option1" autocomplete="off" checked>
 												            <span class="glyphicon glyphicon-ok"></span>팔로우
 												        </label>
@@ -160,7 +179,7 @@ Licensed under MIT
 						                            
                                                     <div class="" data-toggle="buttons" style="margin-top:35px; ">
                                                     <c:if test="${mode=='myFriendList'}">
-												         <label class="btn btn-lg btn-default" onclick="deleteMessage()" style="font-size: 9pt; border-color: #791212; border-width: 3px;">
+												         <label class="btn btn-lg btn-default" onclick="deleteFriend('${dto.num}')" style="font-size: 9pt; border-color: #791212; border-width: 3px;">
 												            <input  type="radio" name="options" id="option1" autocomplete="off" checked>
 												            <span class="glyphicon glyphicon-ok"></span>팔로우
 												        </label>
@@ -270,5 +289,6 @@ ul{
 	border-left-width: 0px;
 	border-right-width: 0px;
 }
+
    </style>
    

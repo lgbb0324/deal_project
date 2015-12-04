@@ -68,5 +68,23 @@ public class FriendController {
 	      out.print(job.toString());
 	}
 	
+	@RequestMapping(value="/friend/deleteFriend", method=RequestMethod.POST)
+	public void deleteFriend(HttpSession session,
+			HttpServletResponse resp,
+			Friend dto, 
+			@RequestParam(value="num") int num) throws Exception{
+		SessionInfo info=(SessionInfo)session.getAttribute("member");
+		
+		dto.setUserId(info.getUserId());
+		System.out.println(num);
+		service.deleteFriend(num);
+		   
+		JSONObject job=new JSONObject();
+	     
+	      resp.setContentType("text/html;charset=utf-8");
+	      PrintWriter out=resp.getWriter();
+	      out.print(job.toString());
+	}
+	
 
 }
