@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.member.Photo;
 import com.project.member.SessionInfo;
 
 import net.sf.json.JSONObject;
@@ -21,9 +22,9 @@ import net.sf.json.JSONObject;
 public class FriendController {
 	@Autowired
 	private FriendService service;
-		 
+
 	@RequestMapping(value="/friend/list")
-	public ModelAndView list(HttpSession session) throws Exception {
+	public ModelAndView list(HttpSession session, Photo dto) throws Exception {
 		
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 		List<Friend> list=service.friendList(info.getUserId());
@@ -36,11 +37,12 @@ public class FriendController {
 	}
 	
 	@RequestMapping(value="/friend/myFriendList")
-	public ModelAndView myFriendList(HttpSession session) throws Exception {
+	public ModelAndView myFriendList(HttpSession session, Photo dto) throws Exception {
 		
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 		
 		List<Friend> myFriendList=service.myFriendList(info.getUserId());
+
 
 		ModelAndView mav = new ModelAndView(".friend.list");
 		mav.addObject("myFriendList", myFriendList);

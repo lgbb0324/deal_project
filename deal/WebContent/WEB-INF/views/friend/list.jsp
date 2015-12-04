@@ -102,7 +102,7 @@ Licensed under MIT
                    </div>
                    
                    <div class="x_content">
-                   							<div class="col-lg-12">
+                   							<div class="col-lg-12 col-md-12 col-xs-12">
 									            <input type="search" class="form-control" id="input-search" placeholder="Seach" >
 									        </div>
 							                  <br><br><br>
@@ -160,7 +160,7 @@ Licensed under MIT
                                             <div class="well profile_view"> <!-- 테두리 -->
                                                 <div class="col-xs-12"> <!-- 전체 크기 -->
                                                    <div class="col-xs-5"> <!-- 그림 -->
-                                                         <a><img src="<%=cp %>/res/images/admin.PNG" alt="" class="img-circle1 img-responsive"  style="padding:0px; margin: 0;"></a> <!-- 사진 -->
+                                                         <a><img src="<%=cp%>/uploads/photo/${dto.imageFilename}" alt="" class="img-circle1 img-responsive"  style="padding:0px; margin: 0;"></a> <!-- 사진 -->
                                                    </div> <!-- 그림끝 -->
                                                     <div class="col-xs-4" style="vertical-align: middle;"> <!-- 이름과 팔로우수 -->
 						                                      <ul style="padding:0; margin-top: 20%;">

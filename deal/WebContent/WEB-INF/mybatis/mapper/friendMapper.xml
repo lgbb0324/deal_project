@@ -25,9 +25,8 @@
      
          <select id="myFriendList"  parameterType="String"
                resultType="com.project.friend.Friend">
-                 SELECT num,   friendUserId
-                           FROM  friend
-                           WHERE  userId = #{userId}
+               select  f.num, p.userId,  f.friendUserId, p.imageFilename from  photo p JOIN   friend f ON p.userId=f.friendUserId
+					where f.userId=#{userId}
      </select>
      
      	

@@ -7,7 +7,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.project.common.FileManager;
 import com.project.common.dao.CommonDAO;
 
@@ -39,7 +38,7 @@ public class PhotoServiceImpl implements PhotoService {
 
 	@Override
 	public Photo readPhoto(String userId) {
-			Photo dto=null;
+		Photo dto=null;
 	
 		try {
 			dto=dao.getReadData("member.readPhoto", userId);
@@ -48,9 +47,6 @@ public class PhotoServiceImpl implements PhotoService {
 		
 		return dto;
 	}
-
-
-	
 
 	@Override
 	public int deletePhotoId(String userId, String root) {
@@ -120,6 +116,9 @@ public class PhotoServiceImpl implements PhotoService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
+
 
 
 }

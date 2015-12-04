@@ -5,7 +5,7 @@ import java.util.List;
 public class Friend {
 	private int num;
 	private String userId, userName, friendUserId, friendUserName;
-	private String state;
+	private String state, imageFilename;
 	
 	private List<Integer> numList;
 	private List<String> userIdList;
@@ -78,4 +78,11 @@ public class Friend {
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
+	public String getImageFilename() {
+		return imageFilename;
+	}
+	public void setImageFilename(String imageFilename) {
+		this.imageFilename = imageFilename;
+	}
+	
 }
