@@ -1,3 +1,5 @@
+<!-- 복사본(강사님) -->
+
 
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -32,12 +34,10 @@
 			$("#idWrite").text(s); 
 			
 			});
-		
 		$(".ui-dialog-titlebar-close").click(function(){
 			
-		$("#idWrite").text("");
-			});
-	
+			$("#idWrite").text("");
+				});
 		
  }
  
@@ -54,6 +54,12 @@
  
   					 <div class="right_col" role="main">
    							<div class="clearfix"></div>
+   
+                                      <!--
+Bootstrap Line Tabs by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+-->
 
 <div class="container">
     <div class="row">
@@ -203,8 +209,6 @@
 		</div>
 	  </div>
    </div>
-   
-   
 </div>                  
       
     <div id="custom_notifications" class="custom-notifications dsp_none">
@@ -214,20 +218,7 @@
         <div id="notif-group" class="tabbed_notifications"></div>
     </div>
 
-
-
-    
-    <!-- bootstrap progress js -->
-<!--     <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
-    <script src="js/nicescroll/jquery.nicescroll.min.js"></script> -->
-
-
-<!--     <script src="js/custom.js"></script>
-
-     -->
-
-
-
+   
 <style type="text/css">
    	/***
 Bootstrap Line Tabs by @keenthemes
@@ -352,7 +343,5 @@ ul{
 	 border-color:#e51b13;
 	 
 }
-
-
    </style>
    

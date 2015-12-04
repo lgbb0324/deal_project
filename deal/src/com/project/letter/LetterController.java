@@ -28,7 +28,7 @@ public class LetterController {
 	private MyUtil myUtil;*/
 	
 	
-	//쪽지 보내기폼은 모달창으로 인식함--바로 post로 보냄????--질문
+	//쪽지 보내기폼은 모달창으로 인식함--바로 post로 보냄????--질문-- 받는아이디
 	@RequestMapping(value="/letter/send", method=RequestMethod.POST)
 	public void sendSubmit(HttpServletResponse resp, HttpSession session, Letter dto) throws Exception{
 	
@@ -50,10 +50,7 @@ public class LetterController {
 		try {
 				
 				dto.setSendUserId(info.getUserId());
-				
-				dto.setReceiveUserId(info.getUserId());
-				//dto.setReceiveUserId(); 받는사람아이디
-			
+			System.out.println(dto.getReceiveUserId());
 				service.insertLetter(dto);
 			state="true";
 		} catch (Exception e) {
@@ -79,9 +76,6 @@ public class LetterController {
 		
 		//보낸쪽지리스트
 		SessionInfo info = (SessionInfo)session.getAttribute("member");
-		
-		
-	
 
 				if (info == null) {
 					return new ModelAndView(".member.login");
@@ -93,8 +87,7 @@ public class LetterController {
 		
 		list1=service.listReceive(info.getUserId());
 		list2=service.listSend(info.getUserId());
-		System.out.println(info.getUserId());
-
+		
 		ModelAndView mav=new  ModelAndView(".note.list");
 
 			mav.addObject("list1", list1);

@@ -1,3 +1,4 @@
+<!-- 복사본  deal2 테스터용-->
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -21,17 +22,22 @@
 <link href="<%=cp%>/res/template/css/custom.css" rel="stylesheet">
 <link href="<%=cp%>/res/template/css/animate.min.css" rel="stylesheet">
 <link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  
 
-
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">  
+<link rel="stylesheet" href=" http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" type="text/css"/>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
- <link rel="stylesheet" href=" http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" type="text/css"/>
-
+         
 
 <script type="text/javascript">
 
 
+/* $('#myModal').on('show.bs.modal', function (e) {
+     if (!data) return e.preventDefault() // stops modal from being shown
+   })
+ */   
 
    // 쪽지보내기
 function sendLetter() {
@@ -46,7 +52,7 @@ function sendLetter() {
 	 
 	 var url="<%=cp%>/letter/send.do";
 	 var params="receiveUserId="+receiveUserId+"&content="+content;
-	alert(params+"  확인용");
+
 		 $.ajax({
 		    	type:"POST",
 		    	url:url,
@@ -146,8 +152,8 @@ function sendLetter() {
 <!--  쪽지 보내기 제이쿼리 모달창 종료 -->
 
 <!-- 쪽지 내용 모달창 -->
-									<div class="modal fade">
-  								 <div id="ModalArticle" >
+<div class="modal fade">
+   <div id="ModalArticle" >
                              
                                  <div>
                                     
@@ -173,12 +179,11 @@ function sendLetter() {
                                
                                
                                
-</div>
+                             </div>
 </div>
  
 
-       
-   <script src="<%=cp%>/res/template/js/custom.js"></script>       
-  
+         <script src="<%=cp%>/res/template/js/custom.js"></script>  
+
 </body>
 </html>
