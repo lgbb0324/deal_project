@@ -124,17 +124,19 @@ public class QnaController {
 		// 작업 결과를 json으로 전송
 		JSONObject job=new JSONObject();
 		job.put("state", state);
-				
+		
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter out=resp.getWriter();
 		out.print(job.toString());
 	}
 	
-	@RequestMapping(value="/qna/replyList")
-	public ModelAndView replyList(
-			@RequestParam (value="num")int num)throws Exception{
+	@RequestMapping(value="/qna/reply")
+	public ModelAndView reply(
+			@RequestParam (value="num")int num
+			)throws Exception{
 		
 		List<Qna> listReply=service.listReply(num);
+		service.updateHitCount(num);
 		
 		Iterator<Qna> it=listReply.iterator();
 		while(it.hasNext()){
@@ -142,7 +144,7 @@ public class QnaController {
 			dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
 		}
 		
-		ModelAndView mav=new ModelAndView("qna/replyList");
+		ModelAndView mav=new ModelAndView("qna/reply");
 		
 		mav.addObject("listReply", listReply);
 		return mav;

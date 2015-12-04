@@ -70,5 +70,16 @@ public class QnaServiceImpl implements QnaService{
 		
 		return list;
 	}
+
+	@Override
+	public int updateHitCount(int num) {
+		int result=0;
+		try {
+			result=dao.updateData("qna.updateHitCount", num);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
 	
 }

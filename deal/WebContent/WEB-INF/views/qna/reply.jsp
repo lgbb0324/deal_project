@@ -5,12 +5,26 @@
 <%
 	String cp=request.getContextPath();
 %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<style>
+.thumbnail{
+  height: auto;
+}
+.panel panel-default arrow right{
+	height: 131px;
+}
+div {word-break:break-all;}
+</style>
+
+
 <c:if test="${not empty listReply}">
 <c:forEach var="dto" items="${listReply}">
 
 <!-- reply Comment --> 
 <article class="row">
-	<div class="col-md-10 col-sm-10">
+	<div class="col-md-10 col-sm-10 col-xs-12">
 		<div class="panel panel-default arrow right">
 			<div class="panel-body">
  				<header class="text-right">
@@ -34,6 +48,11 @@
 </article>
 
 </c:forEach>
+</c:if>
+
+
+<c:if test="${empty listReply}">
+<div class="pull-right" style="color:red; font-size: 11px; font:bolder;">아직 답글이 작성되지 않았습니다.</div>
 </c:if>
 
 

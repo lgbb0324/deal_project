@@ -5,6 +5,10 @@
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
 %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 <style>
 
 .page-header{
@@ -36,17 +40,23 @@ margin-left:5%
 	 border-color:#e51b13;
 	 
 }
+.thumbnail{
+  height: auto;
+}
+
+.panel panel-default arrow left{
+	height: 131px;
+}
+
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-
+<c:if test="${dataCount!=0}">
 <script type="text/javascript">
 
 // 댓글별 답글 리스트
 function listReply(num) {
 	var rta="#listReply"+num;
-	var url="<%=cp%>/qna/replyList";
+	var url="<%=cp%>/qna/reply.do";
 	
 	$.post(url, {num:num}, function(data){
 		$(rta).html(data);
@@ -102,7 +112,7 @@ function sendReplyAnswer(num) {
 	
 	$.ajax({
 		type:"POST"
-		,url:"<%=cp%>/qna/reply.do"
+		,url:"<%=cp%>/qna/replyCreated.do"
 		,data:params
 		,dataType:"json"
 		,success:function(data) {
@@ -122,6 +132,7 @@ function sendReplyAnswer(num) {
 		}
 	});
 }
+
 
 </script>
 
@@ -158,39 +169,39 @@ function sendReplyAnswer(num) {
                     <div class="comment-user"><i class="fa fa-user"></i></div>
                     <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i>${dto.created}</time>
                   </header>
-                  <div class="comment-post">
-                    <p>
+                  <div class="comment-post col-md-10 col-sm-10 col-xs-10">
+                  
                      ${dto.content}
-                    </p>
+                  
                   </div>
-                  
-    
-    <c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">
-		<span class="pull-right"><a class="btn btn-default btn-sm" onclick="listReply('${dto.num}')">답글보기</a></span>
-	</c:if>
-	
-	<c:if test="${sessionScope.member.userId=='admin'}">
-		<span class="pull-right" id="btnAnswer${dto.num}" ><a class="btn btn-default btn-sm" onclick="replyAnswerForm('${dto.num}')"><i class="fa fa-reply"></i> reply</a></span>
-                  
-		<div id="layoutAnswer${dto.num}" >
-			<div class="form-group">
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<textarea class="form-control" id="rta${dto.num}" name="content" placeholder="내용을 입력해 주세요" rows="5"></textarea>
+ 
+                </div>
+                <div><div class="pull-right"><a id="btnAnswer${dto.num}" class="btn btn-default btn-sm" onclick="listReply('${dto.num}')">답글보기</a></div><br><br>
+					<div id="listReply${dto.num}"></div>
+					
+<c:if test="${sessionScope.member.userId=='admin'}">
+	<div id="layoutAnswer${dto.num}" >
+		<div class="form-group">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<textarea class="form-control" id="rta${dto.num}" name="content" placeholder="내용을 입력해 주세요" rows="5"></textarea>
 				</div>
-				<div style="float: right;">
-				<input type="button" value="등록" onclick="sendReplyAnswer('${dto.num}')" class="btn"
-						style="width: 60px; height: 35px; margin-top: 5px;"> 
-				</div>
+			<div style="float: right;"><br><br>
+				<input type="button" value="등록" onclick="sendReplyAnswer('${dto.num}')" class="btn" style="width: 60px; height: 35px; margin-top: 5px;"> 
 			</div>
 		</div>
-	</c:if>
-	
-	
-                </div>
+	</div>
+</c:if>
+					
+					
+					</div> 
+		
               </div>
 
 
           </article>
+          
+		
+		
           </c:forEach>
           
         
@@ -212,3 +223,9 @@ function sendReplyAnswer(num) {
   </div>
 </div>
 </div>
+
+</c:if>
+
+<style>
+div {word-break:break-all;}
+</style>

@@ -44,6 +44,10 @@ LIMIT #{start}, 10
 
 </select>
 
+<update id="updateHitCount" parameterType="Integer">
+UPDATE qna SET hitCount=hitCount+1 WHERE num = #{num}
+</update>
+
 
 <insert id="insertReply" parameterType="com.project.qna.Qna">
 INSERT INTO qna_reply(num,userId,content) VALUES (#{num},#{userId},#{content})
