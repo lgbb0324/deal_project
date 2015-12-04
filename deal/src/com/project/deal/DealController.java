@@ -44,7 +44,7 @@ public class DealController {
 		
 		System.out.println(start_date);
 		System.out.println(end_date);
-		start_date.substring(0, 9);
+		
 		
 		dto.setStart_date(start_date.substring(0, 10));
 		dto.setEnd_date(end_date.substring(0, 10));
