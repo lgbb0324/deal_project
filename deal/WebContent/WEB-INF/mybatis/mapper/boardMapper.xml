@@ -5,7 +5,7 @@
 
 <insert id="insertBoard" parameterType="com.project.board.Board">
 		insert into board(userId, subject, content)
-		 values(#{userId}, #{subject}, #{content})
+		 values(#{userId}, #{subject}, #{content}) 
 	</insert>
 	
 		<sql id="where-list">
