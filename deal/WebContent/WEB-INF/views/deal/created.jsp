@@ -487,7 +487,8 @@ function check() {
         return false;
     }
     
-
+alert(start_date);
+alert(end_date);
   
 		f.action="<%=cp%>/deal/created.do?start_date="+start_date+"&end_date="+end_date;
 

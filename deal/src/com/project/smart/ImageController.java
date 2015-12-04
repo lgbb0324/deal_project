@@ -1,4 +1,4 @@
-package com.sp.smart;
+package com.project.smart;
 
 import java.io.File;
 import java.io.InputStream;
