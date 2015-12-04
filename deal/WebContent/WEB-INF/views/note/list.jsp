@@ -1,55 +1,59 @@
+
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%
 	request.setCharacterEncoding("utf-8");
    String cp = request.getContextPath();
 %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
  <script>
-var sendId;
-	 $(function (){
-			var n=0;
-			$("#ModalCreated").click(function(){
+ 
+ // 아이디 출력방법??
+  var receiveUserId;
+ 
+ // 모달창열기(쪽지 보내기창)
+
+ function noteForm(id) {
+ 		receiveUserId=id;
+		$("#ModalCreated").dialog({
+				 title: "쪽지 보내기"
+			    /*  modal: true,
+			     width:300,
+			     height:300 */
+			     
+		});
+		$("#ModalCreated").click(function(){
 			
-			var s = sendId;
-			$("#sendId").text(s); 
+			var s = receiveUserId;
+			$("#idWrite").change();
+			$("#idWrite").text(s); 
 			
+			});
 		
+		$(".ui-dialog-titlebar-close").click(function(){
+			
+		$("#idWrite").text("");
 			});
 	
 		
-			/* $("#btn2").click(function(){
-				n++;
-				var s = "<p>텟트"+n+"</p>";
-				$(s).appendTo("body");
-				}); */
-			
-		});
-	 
-	 
-	 function sendId(sendId){
+ }
+ 
+ 
+ function readForm(id){
+	 sendUserId=id;
+	 $("#ModalArticle").dialog({
+		 title: "받은 쪽지창"
 		 
-		 this.sendId=sendId;
 		 
-	 }
-
+	 });
+ }
  </script>
  
-
-
-
-
-
   					 <div class="right_col" role="main">
    							<div class="clearfix"></div>
-   
-                                      <!--
-Bootstrap Line Tabs by @keenthemes
-A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
-Licensed under MIT
--->
 
 <div class="container">
     <div class="row">
@@ -99,11 +103,11 @@ Licensed under MIT
                                     <td class=" ">
                                     	<ul style="padding:0">
                                     	<li class="dropdown">
-								          <a onclick="sendId('${dto.sendUserId}');" href="#" class="dropdown-toggle" data-toggle="dropdown" >${dto.sendUserId}</a>
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" >${dto.sendUserId}</a>
 								          <ul class="dropdown-menu">
 								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
 								            <li class="divider"></li>
-								            <li><a  data-toggle="modal" data-target="#ModalCreated"><span class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
+								            <li ><a onclick="noteForm('${dto.sendUserId}');"><span  class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
 								            <li class="divider"></li>
 								            <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
 								             <li class="divider"></li>
@@ -111,7 +115,7 @@ Licensed under MIT
 								            
 								          </ul>
 								        </li></ul></td>
-                                    <td class="even pointer"  data-toggle="modal" data-target="#myModal" >${dto.content}</td>
+                                    <td class="even pointer"><a onclick="readForm('${dto.sendUserId}')">${dto.content}</a></td>
                                     <td class=" ">${dto.sendDay}
                                     
                                     </td>
@@ -122,13 +126,13 @@ Licensed under MIT
                           </table>
                        <div class="container" >
 						<ul class="pagination">
-						              <li class="disabled"><a href="#">«</a></li>
+						              <li class="disabled"><a href="#">≪</a></li>
 						              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 						              <li><a href="#">2</a></li>
 						              <li><a href="#">3</a></li>
 						              <li><a href="#">4</a></li>
 						              <li><a href="#">5</a></li>
-						              <li><a href="#">»</a></li>
+						              <li><a href="#">≫</a></li>
 						            </ul>
 						</div>
                         </div>
@@ -168,7 +172,7 @@ Licensed under MIT
 								          <ul class="dropdown-menu">
 								            <li><a href="#"><span class="glyphicon glyphicon-plus"></span> 팔로우</a></li>
 								            <li class="divider"></li>
-								            <li ><a onclick="javascript:alert();" data-toggle="modal" data-target="#ModalCreated" ><span  class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
+								            <li ><a onclick="noteForm('${dto.receiveUserId}');"><span  class="glyphicon glyphicon-envelope"></span> 쪽지보내기</a></li>
 								            <li class="divider"></li>
 								            <li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> 차단하기</a></li>
 								             <li class="divider"></li>
@@ -184,13 +188,13 @@ Licensed under MIT
                              </tbody>
                           </table>
                            	<ul class="pagination">
-						              <li class="disabled"><a href="#">«</a></li>
+						              <li class="disabled"><a href="#">≪</a></li>
 						              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 						              <li><a href="#">2</a></li>
 						              <li><a href="#">3</a></li>
 						              <li><a href="#">4</a></li>
 						              <li><a href="#">5</a></li>
-						              <li><a href="#">»</a></li>
+						              <li><a href="#">≫</a></li>
 						            </ul>
                         </div>
 					</div>
@@ -199,6 +203,8 @@ Licensed under MIT
 		</div>
 	  </div>
    </div>
+   
+   
 </div>                  
       
     <div id="custom_notifications" class="custom-notifications dsp_none">
@@ -208,159 +214,20 @@ Licensed under MIT
         <div id="notif-group" class="tabbed_notifications"></div>
     </div>
 
-    <script src="js/bootstrap.min.js"></script>
 
-    <!-- chart js -->
-    <script src="js/chartjs/chart.min.js"></script>
-    <!-- bootstrap progress js -->
-    <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
-    <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
-    <!-- icheck -->
-    <script src="js/icheck/icheck.min.js"></script>
-
-    <script src="js/custom.js"></script>
-
-    <!-- image cropping -->
-    <script src="js/cropping/cropper.min.js"></script>
-    <script src="js/cropping/main.js"></script>
 
     
-    <!-- daterangepicker -->
-    <script type="text/javascript" src="js/moment.min.js"></script>
-    <script type="text/javascript" src="js/datepicker/daterangepicker.js"></script>
-    <!-- moris js -->
-    <script src="js/moris/raphael-min.js"></script>
-    <script src="js/moris/morris.js"></script>
-    <script>
-        $(function () {
-            var day_data = [
-                {
-                    "period": "Jan",
-                    "Hours worked": 80
-                },
-                {
-                    "period": "Feb",
-                    "Hours worked": 125
-                },
-                {
-                    "period": "Mar",
-                    "Hours worked": 176
-                },
-                {
-                    "period": "Apr",
-                    "Hours worked": 224
-                },
-                {
-                    "period": "May",
-                    "Hours worked": 265
-                },
-                {
-                    "period": "Jun",
-                    "Hours worked": 314
-                },
-                {
-                    "period": "Jul",
-                    "Hours worked": 347
-                },
-                {
-                    "period": "Aug",
-                    "Hours worked": 287
-                },
-                {
-                    "period": "Sep",
-                    "Hours worked": 240
-                },
-                {
-                    "period": "Oct",
-                    "Hours worked": 211
-                }
-    ];
-            Morris.Bar({
-                element: 'graph_bar',
-                data: day_data,
-                xkey: 'period',
-                hideHover: 'auto',
-                barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-                ykeys: ['Hours worked', 'sorned'],
-                labels: ['Hours worked', 'SORN'],
-                xLabelAngle: 60
-            });
-        });
-    </script>
-    <!-- datepicker -->
-    <script type="text/javascript">
-        $(document).ready(function () {
+    <!-- bootstrap progress js -->
+<!--     <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="js/nicescroll/jquery.nicescroll.min.js"></script> -->
 
-            var cb = function (start, end, label) {
-                console.log(start.toISOString(), end.toISOString(), label);
-                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                //alert("Callback has fired: [" + start.format('MMMM D, YYYY') + " to " + end.format('MMMM D, YYYY') + ", label = " + label + "]");
-            }
 
-            var optionSet1 = {
-                startDate: moment().subtract(29, 'days'),
-                endDate: moment(),
-                minDate: '01/01/2012',
-                maxDate: '12/31/2015',
-                dateLimit: {
-                    days: 60
-                },
-                showDropdowns: true,
-                showWeekNumbers: true,
-                timePicker: false,
-                timePickerIncrement: 1,
-                timePicker12Hour: true,
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                },
-                opens: 'left',
-                buttonClasses: ['btn btn-default'],
-                applyClass: 'btn-small btn-primary',
-                cancelClass: 'btn-small',
-                format: 'MM/DD/YYYY',
-                separator: ' to ',
-                locale: {
-                    applyLabel: 'Submit',
-                    cancelLabel: 'Clear',
-                    fromLabel: 'From',
-                    toLabel: 'To',
-                    customRangeLabel: 'Custom',
-                    daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-                    monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                    firstDay: 1
-                }
-            };
-            $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
-            $('#reportrange').daterangepicker(optionSet1, cb);
-            $('#reportrange').on('show.daterangepicker', function () {
-                console.log("show event fired");
-            });
-            $('#reportrange').on('hide.daterangepicker', function () {
-                console.log("hide event fired");
-            });
-            $('#reportrange').on('apply.daterangepicker', function (ev, picker) {
-                console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
-            });
-            $('#reportrange').on('cancel.daterangepicker', function (ev, picker) {
-                console.log("cancel event fired");
-            });
-            $('#options1').click(function () {
-                $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
-            });
-            $('#options2').click(function () {
-                $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
-            });
-            $('#destroy').click(function () {
-                $('#reportrange').data('daterangepicker').remove();
-            });
-        });
-    </script>
-    <!-- /datepicker -->
+<!--     <script src="js/custom.js"></script>
+
+     -->
+
+
+
 <style type="text/css">
    	/***
 Bootstrap Line Tabs by @keenthemes
@@ -485,5 +352,7 @@ ul{
 	 border-color:#e51b13;
 	 
 }
+
+
    </style>
    

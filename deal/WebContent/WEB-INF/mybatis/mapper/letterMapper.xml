@@ -40,7 +40,7 @@
            
 	     	      <where>
 	     	      
-	     	      receiveUserId = #{userId}
+	     	     receiveUserId = #{userId}
 	     	      </where>
 	     	      
 	     	      

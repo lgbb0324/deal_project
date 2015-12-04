@@ -16,33 +16,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    <script src="<%=cp%>/res/template/js/jquery.min.js"></script>
- <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> --> 
-
-
-
-<%--  <script src="<%=cp%>/res/template/js/bootstrap.min.js"></script>
- --%>
 
 <link href="<%=cp%>/res/template/css/bootstrap.min.css" rel="stylesheet">
 <link href="<%=cp%>/res/template/css/custom.css" rel="stylesheet">
 <link href="<%=cp%>/res/template/css/animate.min.css" rel="stylesheet">
 <link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-   
 
 
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">  
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+ <link rel="stylesheet" href=" http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" type="text/css"/>
 
- <script type="text/javascript">
-$('#myModal').on('show.bs.modal', function (e) {
-     if (!data) return e.preventDefault() // stops modal from being shown
-   })
-   
+
+<script type="text/javascript">
+
+
 
    // 쪽지보내기
 function sendLetter() {
 	var content=$.trim($("#letterContent").val());
-
+	
 	
 	 if(! content){
 		alert("내용을 입력하세요!!!!!!!!!!!");
@@ -51,8 +45,8 @@ function sendLetter() {
 	 }
 	 
 	 var url="<%=cp%>/letter/send.do";
-	 var params="content="+content;
-		
+	 var params="receiveUserId="+receiveUserId+"&content="+content;
+	alert(params+"  확인용");
 		 $.ajax({
 		    	type:"POST",
 		    	url:url,
@@ -80,35 +74,11 @@ function sendLetter() {
 <style type="text/css">
  blockquote{
     border-left:none;
-    margin-left: 28%;
+  
 }
 
 .quote-badge{
     background-color: rgba(0, 0, 0, 0.2);   
-}
-
-.quote-box{
-
-    overflow: hidden;
-    margin-top: -50px;
-    padding-top: -100px;
-    border-radius: 17px;
-    background-color: white;
-    margin-top: 25px;
-    color:black;
-    width: 325px;
-    box-shadow: 2px 2px 2px 2px #930000;
-    
-}
-
-.quotation-mark{
-    
-    margin-top: -10px;
-    font-weight: bold;
-    font-size:100px;
-    color:black;
-    font-family: "Times New Roman", Georgia, Serif;
-    
 }
 
 .quote-text{
@@ -117,6 +87,7 @@ function sendLetter() {
     margin-top: -65px;
 }
 </style>
+
 </head>
 <body class="nav-md" style="padding:0px;">
          <div class="container body" style="padding:0px;">
@@ -140,84 +111,73 @@ function sendLetter() {
    </div>
 
 
+<!-- 제이쿼리 . 모달창-(쪽지보내기창) -->
+<div class="modal fade">
+<div id="ModalCreated">
+<div>
+
+  <span class="pull-right note_fontsize" >2015-11-18
+
+  [16:59]</span>보낸시간 뜨는거야
+
+ <p class="quote-text">
+     <textarea id="letterContent"></textarea>
+ </p>
+<hr>
+
+<div class="blog-post-actions">
+ 
+ <div>받는 사람 아이디: </div> <div  id="idWrite" class="btn-primary pull-left" style="float: left">
+  
+ </div>
+  <p class="blog-post-bottom pull-right">
+ <span>
+ <button type="button" class="btn btnsetting"  onclick="sendLetter();">보내기</button>
+<!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
+  </span>
+</p>
+
+   </div>
+
+ </div>
+
 </div>
-  </div>   
-<!-- modal -->
-                           <div class="modal fade" id="myModal" >
-                             <div class="modal-dialog">
-                                 <div class="container">
-                                     <blockquote class="quote-box">
+</div>
+<!--  쪽지 보내기 제이쿼리 모달창 종료 -->
+
+<!-- 쪽지 내용 모달창 -->
+									<div class="modal fade">
+  								 <div id="ModalArticle" >
+                             
+                                 <div>
+                                    
                                      <span class="pull-right note_fontsize" >2015-11-18[16:59]</span>보낸시간 뜨는거야
-                                       <p class="quotation-mark">
-                                         “
-                                       </p>
+                                       
                                        <p class="quote-text">
-                                          안녕<br>
-                                         이건 쪽지다<br>
-                                         예시 쪽지다<br>
-                                         디자인 예시 쪽지다<br>
-                                         처음 만드는 쪽지다<br>
+                                     			쪽지내용
                                        </p>
                                     <hr>
                                        <div class="blog-post-actions">
                    
                                        <a class="blog-post-bottom pull-left" data-toggle="modal" data-target="#ModalCreated">
-                                          	(보낸사람)-답장
+                                          	(보낸사람)-바로답장
                                         </a>
-                                         <p class="blog-post-bottom pull-right">
-                                         <span>
-                        
-                                            <button type="button" class="btn btnsetting"> <span class="glyphicon glyphicon-cog"></span></button>
-                                            <span class="item-right">
-                                                      <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
-                                                </span>
-                                         </span>
-                                         </p>
+                                         
                                        </div>
-                                     </blockquote>
                                  </div>
                                </div>
-                             </div>
-               
-                 <div class="modal fade" id="ModalCreated" >
-                             <div class="modal-dialog">
-                                 <div class="container">
-                                     <blockquote class="quote-box">
-                                     <span class="pull-right note_fontsize" >2015-11-18
+                               </div>
+                              <!-- 쪽지 내용 확인창 --> 
+                               
+                               
+                               
+                               
+                               
+</div>
+</div>
+ 
 
-                                       [16:59]</span>보낸시간 뜨는거야
-                                                                              <p class="quotation-mark">
-                                                                                “
-                                                                              </p>
-                                                                              <p class="quote-text">
-                                                                                 <textarea id="letterContent" style="width:280px; height:300px;"></textarea>
-                                                                              </p>
-                                                                           <hr>
-                                                                              <div class="blog-post-actions">
-                                                                             
-                                                                              <button id="sendId" class="btn-primary pull-left" value="박서준">
-                     					                                                        
-                                                                               </button>
-                                                                                <p class="blog-post-bottom pull-right">
-                                                                                <span>
-                                       
-                                        
-													 <button type="button" class="btn btnsetting"  onclick="sendLetter();">보내기</button>
-                                       				<!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
-                                          <button type="button" class="btn btnsetting"> <span class="glyphicon glyphicon-cog"></span></button>
-                                    <span class="item-right">
-                                        <button class="btn btn-xs btn-danger pull-right" data-dismiss="modal">x</button>
-                                                </span>
-                                         </span>
-                                         </p>
-                                       </div>
-                                     </blockquote>
-                                 </div>
-                               </div>
-                             </div> -->
-               
-       </div>      
        
-   <script src="<%=cp%>/res/template/js/custom.js"></script>           
+  
 </body>
 </html>

@@ -50,7 +50,7 @@ public class LetterController {
 		try {
 				
 				dto.setSendUserId(info.getUserId());
-				System.out.println(dto.getReceiveUserId());
+				
 				dto.setReceiveUserId(info.getUserId());
 				//dto.setReceiveUserId(); 받는사람아이디
 			
