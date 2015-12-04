@@ -178,6 +178,7 @@ function sendLetter() {
  
 
        
+   <script src="<%=cp%>/res/template/js/custom.js"></script>       
   
 </body>
 </html>
