@@ -37,11 +37,13 @@ public class MainController {
 		 String cp = req.getContextPath();
 		 Map<String, Object> map = new HashMap<String, Object>();
 		 
-		 List<Deal> list = service.listDeal(map);
+		 List<Deal> mainList = service.listDeal(map);
 		 
 		 
 		ModelAndView mav = new ModelAndView(".mainLayout");
 	
+		mav.addObject("MainDealList", mainList);
+		
 		return mav;
 	}
 	

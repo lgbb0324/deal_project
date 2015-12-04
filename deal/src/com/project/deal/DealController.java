@@ -20,8 +20,18 @@ public class DealController {
 	private DealService service;
 	 
 	@RequestMapping(value="/deal/article",method=RequestMethod.GET)
-	public ModelAndView articleInform() throws Exception {
+	public ModelAndView articleInform(
+			HttpSession session,
+			@RequestParam(value="num") int num
+			
+			) throws Exception {
+		System.out.println(num);
 		ModelAndView mav=new ModelAndView(".deal.article");
+		
+		Deal dto = service.readDeal(num);
+		System.out.println(dto.getSubject());
+		System.out.println(dto.getContent());
+		mav.addObject("dealArticle", dto);
 		
 		return mav;
 	}

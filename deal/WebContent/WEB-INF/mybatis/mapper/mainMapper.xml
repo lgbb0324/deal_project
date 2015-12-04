@@ -7,7 +7,7 @@
 	<!-- 글리스트 -->
 	<select id="listDeal" parameterType="map"
 	            resultType="com.project.deal.Deal">
-SELECT userId,userName,subject,price,instantPrice,discountRate,category1,category2,
+SELECT num,userId,userName,subject,price,instantPrice,discountRate,category1,category2,
 					people,approveCheck,start_date,end_date,content,saveFilename,originalFilename
 					,region1,region2,tag1,tag2 FROM deal
 	</select>

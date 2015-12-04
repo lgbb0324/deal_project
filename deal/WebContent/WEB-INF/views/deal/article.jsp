@@ -119,15 +119,9 @@
 
                                     <div class="col-md-5 col-sm-5 col-xs-12 pull-right" style="border:0px solid #e5e5e5;">
 
-                                        <h3 class="prod_title">2015 13형 MacBook Air</h3>
+                                        <h3 class="prod_title">${dealArticle.subject}</h3>
 
-                                        <p>1.6GHz 프로세서 
-										128GB 저장 용량
-										1.6GHz 듀얼 코어 Intel Core i5 프로세서
-											최대 2.7GHz Turbo Boost
-										Intel HD Graphics 6000
-										4GB 메모리
-											128GB PCIe 기반 flash 저장 장치1</p>
+                                        <p>${dealArticle.content}</p>
                                         <br />
 
                                         <div class="">
@@ -176,8 +170,8 @@
                                         <div class="">
                                             <div class="product_price">
                                                <div class="">
-  <h1>딜 성공시 구매가능 가격:   ₩1,000,000</h1>
-  40% Success  <span class="pull-right">100명중 40명 참여</span>
+  <h1>딜 성공시 구매가능 가격:   ₩${dealArticle.price}</h1>
+  40% Success  <span class="pull-right">${dealArticle.people}명중 40명 참여</span>
   <div class="progress">
   <div class="progress-bar progress-bar-striped active" role="progressbar"
   aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
@@ -195,8 +189,19 @@
   
   
      <br>   <br>
-  <span class="price-tax">즉시 구매가: ₩1,552,000</span>
+  <span class="price-tax">즉시 구매가: ₩${dealArticle.instantPrice}</span>
     <button class="btn btn-primary" type="button">바로구매하기</button>
+    <div>${dealArticle.category1}</div>
+    <div>${dealArticle.category2}</div>
+    <div>${dealArticle.approveCheck}</div>
+    <div>${dealArticle.start_date}</div>
+    <div>${dealArticle.end_date}</div>
+    <div>${dealArticle.saveFilename}</div>
+    <div>${dealArticle.originalFilename}</div>
+    <div>${dealArticle.region1}</div>
+    <div>${dealArticle.region2}</div>
+    <div>${dealArticle.tag1}</div>
+    <div>${dealArticle.tag2}</div>
    <!--  <button class="btn btn-mini" type="button">취소</button> -->
 
 </div>

@@ -7,6 +7,7 @@ import com.project.common.FileManager;
 import com.project.common.dao.CommonDAO;
 
 
+
 @Service("deal.dealService")
 public class DealServiceImpl implements DealService{
 	@Autowired
@@ -29,5 +30,18 @@ public class DealServiceImpl implements DealService{
 		}
 		return result;
 	}
+
+	@Override
+	public Deal readDeal(int num) {
+		Deal dto=null;
+		try {
+			dto=dao.getReadData("deal.readDeal", num);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return dto;
+	}
+	
+
 
 }

@@ -3,11 +3,20 @@ package com.project.deal;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Deal {
+
+		private int num;
 		private String userId,userName,subject,category1,category2,start_date,end_date,content,imageFilename,region1,region2,tag1,tag2;
 		private int price,instantPrice,discountRate,people,approveCheck;
 		private MultipartFile upload;
 		private String saveFilename;
 		private String originalFilename;
+		
+		public int getNum() {
+		return num;
+		}
+		public void setNum(int num) {
+		this.num = num;
+		}
 		
 		public MultipartFile getUpload() {
 			return upload;
