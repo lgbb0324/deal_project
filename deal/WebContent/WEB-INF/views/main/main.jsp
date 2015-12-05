@@ -289,7 +289,7 @@ $(function () {
                 <div class="panel-body">
                     <p style="font-size:20px;">${dto.subject}<!--  <a href="http://bootsnipp.com/snippets/MaWrA">http://bootsnipp.com/snippets/MaWrA</a> --></p>
                     <a class="panel-google-plus-image" href="<%=cp%>/deal/article.do?num=${dto.num}">
-                        <img src="<%=cp%>/res/images/mac5.jpg" />
+                        ${dto.image1}
                     </a>
                 </div>
                 <div class="panel-footer">
