@@ -95,6 +95,62 @@ $(function () {
 	        }
 	   });
 	});
+	
+	
+	
+//댓글 추가
+function sendReply(dealNum) {
+	
+	/*  var isLogin="${sessionScope.member.userId}";
+	if(! isLogin) {
+		login();
+		return false;
+	} */
+
+
+	
+
+ 	var content=$.trim($("#replyContent-"+dealNum).val());
+	
+	
+	var params="dealNum="+dealNum;
+	params+="&content="+content;
+
+	$.ajax({
+		type:"POST"
+		,url:"<%=cp%>/deal/dealReplyCreated.do"
+		,data:params
+		,dataType:"json"
+		,success:function(data) {
+			$("#replyContent-"+dealNum).val("");
+			
+			var state=data.state;
+			if(state=="true") {
+				listPage(dealNum);
+			} else if(state=="false") {
+				alert("댓글을 등록하지 못했습니다. !!!");
+			} else if(state=="loginFail") {
+				login();
+			}
+		}
+		,error:function(e) {
+			alert(e.responseText);
+		}
+	});  
+}
+
+function listPage(dealNum) {
+
+	var url="<%=cp%>/deal/mainDealreplyList.do";
+
+	$.post(url, {dealNum:dealNum}, function(data){
+	 $("#listReply-"+dealNum).html(data); 
+	});
+}
+
+
+
+
 </script>
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -301,27 +357,33 @@ $(function () {
                         <i id="like1" style="font-size: 30px;" class="glyphicon glyphicon-thumbs-up"></i> <div style="font-size: 25px;" id="like1-bs3"></div>
                         <i id="dislike1"  style="font-size: 30px;" class="glyphicon glyphicon-thumbs-down"></i> <div style="font-size: 25px;" id="dislike1-bs3"></div>
                     </span>
-                    <div class="input-placeholder" style="font-size:20px;">Add a comment...</div>
+                    <div class="input-placeholder" style="font-size:15px;" onclick="listPage('${dto.num}')">Add a comment...</div>
                 </div>
-                <div class="panel-google-plus-comment">
-                    <img class="img-circle" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s46" alt="User Image" />
+                <div class="panel-google-plus-comment" style="padding:10px;">
+                    <c:if test="${pdto.imageFilename==null}">
+                   <img class="img-circle" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s46" alt="User Image" /> 
+                    </c:if>
+                    <c:if test="${pdto.imageFilename!=null}">
+                    <img class="img-circle" src="<%=cp%>/uploads/photo/${pdto.imageFilename}" style="width:55px;height:55px;padding-right:2px;" alt="User Image" />
+                    </c:if>
                     <div class="panel-google-plus-textarea">
-                        <textarea rows="4"></textarea>
-                        <button type="submit" class="[ btn btn-success disabled ]">Post comment</button>
+                    
+                        <textarea id="replyContent-${dto.num}" style="padding:0px;" rows="5"></textarea>
+                        <button type="submit" class="[ btn btn-success disabled ]" onclick="sendReply('${dto.num}')">Post comment</button>
                         <button type="reset" class="[ btn btn-default ]">Cancel</button>
                     </div>
                     <div class="clearfix"></div>
-                    
-                    <li class="comment">
+               <ul id="listReply-${dto.num}" style="padding:0px;">
+                  <!--   <li class="comment">
                         <a class="pull-left" href="#">
                             <img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">
                         </a>
                         <div class="comment-body">
                             <div class="comment-heading">
-                                <h4 class="user">Gavino Free</h4>
-                                <h5 class="time">5 minutes ago</h5>
+                               <h5 class="time pull-right">5 minutes ago</h5><h4 class="user">Gavino Free</h4>
+                               
                             </div>
-                            <p>Sure, oooooooooooooooohhhhhhhhhhhhhhhh</p>
+                            <p style="word-break:break-all;margin-left:40px;">Sure, oooooooooooooooohhhhhhhhhhhhhhhhddddddddddddddddddddddddddddddddddddddddddddddd</p>
                         </div>
                         <ul class="comments-list">
                             <li class="comment">
@@ -349,7 +411,8 @@ $(function () {
                                 </div>
                             </li> 
                         </ul>
-                    </li>
+                    </li> -->
+                       </ul>
                 </div>
                 
             </div>

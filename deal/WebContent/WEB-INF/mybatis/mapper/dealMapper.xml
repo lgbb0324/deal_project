@@ -20,5 +20,22 @@
 					people,approveCheck,start_date,end_date,content,saveFilename,originalFilename
 					,region1,region2,tag1,tag2 FROM deal WHERE num=#{num}
 	</select>
+	
+	<insert id="insertDealReply" parameterType="com.project.deal.Deal" >
+	INSERT INTO dealReply (dealNum,userId,userName,content) 
+	VALUES (#{dealNum},#{userId},#{userName},#{content});
+
+	</insert>
+	
+	
+	<!-- 댓글 리스트 -->
+	<select id="listReply" resultType="com.project.deal.DealReply" 
+	          parameterType="map">
+		SELECT num,dealNum,userId,userName,created,content FROM dealReply WHERE dealNum= #{dealNum}
+	</select>
+	
+	
+	
+
 
 </mapper>
