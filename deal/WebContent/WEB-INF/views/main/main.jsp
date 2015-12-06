@@ -116,7 +116,7 @@ function sendReply(dealNum) {
 			} else if(state=="false") {
 				alert("댓글을 등록하지 못했습니다. !!!");
 			} else if(state=="loginFail") {
-				login();
+				alert("로그인하세여");
 			}
 		}
 		,error:function(e) {
@@ -439,7 +439,7 @@ function countLike(id,count){
                     </button>
                      <span class="pull-right">
                         <i id="like${dto.num}" style="font-size: 30px; backgoround-color:red;" onclick="Like(${dto.num},1);" class="glyphicon glyphicon-thumbs-up"><div style="font-size: 25px;" id="like${dto.num}-bs3" >3</div></i> 
-                        <i id="dislike${dto.num}"  style="font-size: 30px;" onclick="disLike(${dto.num});" class="glyphicon glyphicon-thumbs-down"><div style="font-size: 25px;" id="dislike${dto.num}-bs3">4</div></i> 
+                       <%--  <i id="dislike${dto.num}"  style="font-size: 30px;" onclick="disLike(${dto.num});" class="glyphicon glyphicon-thumbs-down"><div style="font-size: 25px;" id="dislike${dto.num}-bs3">4</div></i> --%> 
                     </span>
                     <div class="input-placeholder" style="font-size:15px;" onclick="listPage('${dto.num}')">Add a comment...</div>
                 </div>
