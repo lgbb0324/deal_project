@@ -12,13 +12,14 @@ public class Deal {
 		private MultipartFile upload;
 		private String saveFilename;
 		private String originalFilename;
-		private int dealLike;
+		private int countLike;
 		
-		public int getDealLike() {
-			return dealLike;
+
+		public int getCountLike() {
+			return countLike;
 		}
-		public void setDealLike(int dealLike) {
-			this.dealLike = dealLike;
+		public void setCountLike(int countLike) {
+			this.countLike = countLike;
 		}
 		public int getNum() {
 		return num;

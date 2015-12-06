@@ -250,7 +250,7 @@ function countLike(id,count){
       <div class="carousel-inner">
       
         <div class="item active">
-          <img src="http://placehold.it/760x400/cccccc/ffffff">
+          <img src="<%=cp%>/res/images/fifa.png">
            <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
             <h4><a href="#">aaaaaaaaaaaaaaaaaaaaaaaaa</a></h4>
             <p>aaaaaaaaaaaaaaaaaaaaaa ㅅㅅ</a></p>
@@ -258,7 +258,7 @@ function countLike(id,count){
         </div><!-- End Item -->
  
          <div class="item">
-          <img src="http://placehold.it/760x400/999999/cccccc">
+          <img src="<%=cp%>/res/images/wmp.png">
            <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
             <h4><a href="#">bbbbbbbbbbbbbbbbbbbbbbbbbbbb</a></h4>
             <p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb<a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
@@ -266,7 +266,7 @@ function countLike(id,count){
         </div><!-- End Item -->
         
         <div class="item">
-          <img src="http://placehold.it/760x400/dddddd/333333">
+          <img src="<%=cp%>/res/images/fifa2.png">
            <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
             <h4><a href="#">cccccccccccccccccccccccccccccccccc</a></h4>
             <p>cccccccccccccccccccccccccccccccccccccccccccccc <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
@@ -274,7 +274,7 @@ function countLike(id,count){
         </div><!-- End Item -->
         
         <div class="item">
-          <img src="http://placehold.it/760x400/999999/cccccc">
+          <img src="<%=cp%>/res/images/wmp2.png">
            <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
             <h4><a href="#">ddddddddddddddddddddddddddddddddd</a></h4>
             <p>ddddddddddddddddddddddddddddddddddddddddddddddd<a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
@@ -282,7 +282,7 @@ function countLike(id,count){
         </div><!-- End Item -->
 
         <div class="item">
-          <img src="http://placehold.it/760x400/dddddd/333333">
+          <img src="<%=cp%>/res/images/wmp3.png">
            <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
             <h4><a href="#">tempor invidunt ut labore et dolore magna aliquyam erat</a></h4>
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
@@ -438,7 +438,7 @@ function countLike(id,count){
                         <span class="[ glyphicon glyphicon-share-alt ]"></span>
                     </button>
                      <span class="pull-right">
-                        <i id="like${dto.num}" style="font-size: 30px; backgoround-color:red;" onclick="Like(${dto.num},1);" class="glyphicon glyphicon-thumbs-up"><div style="font-size: 25px;" id="like${dto.num}-bs3" >3</div></i> 
+                        <i id="like${dto.num}" style="font-size: 30px; backgoround-color:red;" onclick="Like(${dto.num},1);" class="glyphicon glyphicon-thumbs-up"><div style="font-size: 25px;" id="like${dto.num}-bs3" >${dto.countLike}</div></i> 
                        <%--  <i id="dislike${dto.num}"  style="font-size: 30px;" onclick="disLike(${dto.num});" class="glyphicon glyphicon-thumbs-down"><div style="font-size: 25px;" id="dislike${dto.num}-bs3">4</div></i> --%> 
                     </span>
                     <div class="input-placeholder" style="font-size:15px;" onclick="listPage('${dto.num}')">Add a comment...</div>

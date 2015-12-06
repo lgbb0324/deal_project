@@ -5,13 +5,23 @@
 
 
 	<!-- 글리스트 -->
-	<select id="listDeal" parameterType="map"
+<!-- 	<select id="listDeal" parameterType="map"
 	            resultType="com.project.deal.Deal">
 SELECT num,userId,userName,subject,price,instantPrice,discountRate,category1,category2,
 					people,approveCheck,start_date,end_date,content,saveFilename,originalFilename
 					,region1,region2,tag1,tag2,image1,image2,image3,image4,image5,image6,image7,image8,image9,image10 FROM deal
-	</select>
+	</select> -->
 
+
+	<select id="listDeal" parameterType="map"
+	            resultType="com.project.deal.Deal">
+SELECT num,d.userId,userName,subject,price,instantPrice,discountRate,category1,category2,
+					people,approveCheck,start_date,end_date,content,saveFilename,originalFilename
+					,region1,region2,tag1,tag2,image1,image2,image3,image4,image5,image6,image7,image8,image9,image10
+					,COUNT(*) countLike FROM deal d
+					 JOIN dealLike l ON d.num=l.dealNum
+					GROUP BY num
+	</select>
 
 
 </mapper>
