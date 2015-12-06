@@ -75,23 +75,11 @@ function sendLetter() {
 		    });
 }
    
+
 </script>
 
 <style type="text/css">
- blockquote{
-    border-left:none;
-  
-}
 
-.quote-badge{
-    background-color: rgba(0, 0, 0, 0.2);   
-}
-
-.quote-text{
-    
-    font-size: 19px;
-    margin-top: -65px;
-}
 </style>
 
 </head>
@@ -116,43 +104,47 @@ function sendLetter() {
       <tiles:insertAttribute name="footer"/>
    </div>
 
-
-<!-- 제이쿼리 . 모달창-(쪽지보내기창) -->
-<div class="modal fade">
-<div id="ModalCreated">
-<div>
-
-  <span class="pull-right note_fontsize" >2015-11-18
-
-  [16:59]</span>보낸시간 뜨는거야
-
- <p class="quote-text">
-     <textarea id="letterContent"></textarea>
- </p>
-<hr>
-
-<div class="blog-post-actions">
- 
- <div>받는 사람 아이디: </div> <div  id="idWrite" class="btn-primary pull-left" style="float: left">
-  
- </div>
-  <p class="blog-post-bottom pull-right">
- <span>
- <button type="button" class="btn btnsetting"  onclick="sendLetter();">보내기</button>
-<!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
-  </span>
-</p>
-
-   </div>
-
- </div>
-
-</div>
-</div>
+<!--  쪽지 보내기 -->
+<div class="modal fade" id="contact" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="panel panel-primary">
+                     <div class="panel-heading">
+                        <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> 쪽지보내기</h4>
+                    </div>
+                    <div class="modal-body" style="padding: 5px;">
+                          <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                 <div class="col-lg-4 col-md-4 col-sm-4" style="padding-bottom: 10px; margin-top: 10px">
+                            	 <div> 받는사람 </div> 
+                                </div> 
+                            
+                                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-bottom: 10px;">
+                            	 <div style="margin-right: 20px;" class="form-control" id="idWrite">  </div> 
+                                </div>
+                                	</div>
+                              
+                                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
+                                    <div style="float: right" class="form-control" id="sendDay">보내는 날짜 : </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <textarea style="resize:vertical;" class="form-control" placeholder="메세지.." rows="6" id="letterContent"></textarea>
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="panel-footer" style="margin-bottom:-14px;">
+                            <input type="submit" class="btn btn-success" value="전송" onclick="sendLetter();"/>
+                            <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  임시 쪽지 종료 -->
 <!--  쪽지 보내기 제이쿼리 모달창 종료 -->
 
 <!-- 쪽지 내용 모달창 -->
-<div class="modal fade">
+<!-- <div class="modal fade">
    <div id="ModalArticle" >
                              
                                  <div>
@@ -172,9 +164,10 @@ function sendLetter() {
                                        </div>
                                  </div>
                                </div>
-                               </div>
+                               </div> -->
                               <!-- 쪽지 내용 확인창 --> 
                                
+         
                                
                                
                                

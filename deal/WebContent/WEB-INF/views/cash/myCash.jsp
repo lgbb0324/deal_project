@@ -8,15 +8,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-$('#cashModal').on('show.bs.modal', function (e) {
+/* $('#cashModal').on('show.bs.modal', function (e) {
 	  if (!data) return e.preventDefault() // stops modal from being shown
-	})	
+	})	 */
+	
+	function cashForm(userId) {
+		$("#userId").val("");
+		$('#cashmodal').modal('show');
+	}
+	
+	function refundForm(userId) {
+		$("#userId").val("");
+		$('#refundModal').modal('show');
+	}
+	
+	
 </script>
 
 <style type="text/css">
  blockquote{
     border-left:none;
-    margin-left: 0px;
+
 }
 
 .quote-badge{
@@ -86,70 +98,8 @@ $('#cashModal').on('show.bs.modal', function (e) {
                                                     <img src="<%=cp%>/res/images/picture.jpg" alt="Avatar">
                                                 </div>
 
-                                                <!-- Cropping modal -->
-                                                <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content">
-                                                            <form class="avatar-form" action="crop.php" enctype="multipart/form-data" method="post">
-                                                                <div class="modal-header">
-                                                                    <button class="close" data-dismiss="modal" type="button">&times;</button>
-                                                                    <h4 class="modal-title" id="avatar-modal-label">Change Avatar</h4>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="avatar-body">
 
-                                                                        <!-- Upload image and data -->
-                                                                        <div class="avatar-upload">
-                                                                            <input class="avatar-src" name="avatar_src" type="hidden">
-                                                                            <input class="avatar-data" name="avatar_data" type="hidden">
-                                                                            <label for="avatarInput">Local upload</label>
-                                                                            <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
-                                                                        </div>
-
-                                                                        <!-- Crop and preview -->
-                                                                        <div class="row">
-                                                                            <div class="col-md-9">
-                                                                                <div class="avatar-wrapper"></div>
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <div class="avatar-preview preview-lg"></div>
-                                                                                <div class="avatar-preview preview-md"></div>
-                                                                                <div class="avatar-preview preview-sm"></div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="row avatar-btns">
-                                                                            <div class="col-md-9">
-                                                                                <div class="btn-group">
-                                                                                    <button class="btn btn-primary" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees">Rotate Left</button>
-                                                                                    <button class="btn btn-primary" data-method="rotate" data-option="-15" type="button">-15deg</button>
-                                                                                    <button class="btn btn-primary" data-method="rotate" data-option="-30" type="button">-30deg</button>
-                                                                                    <button class="btn btn-primary" data-method="rotate" data-option="-45" type="button">-45deg</button>
-                                                                                </div>
-                                                                                <div class="btn-group">
-                                                                                    <button class="btn btn-primary" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees">Rotate Right</button>
-                                                                                    <button class="btn btn-primary" data-method="rotate" data-option="15" type="button">15deg</button>
-                                                                                    <button class="btn btn-primary" data-method="rotate" data-option="30" type="button">30deg</button>
-                                                                                    <button class="btn btn-primary" data-method="rotate" data-option="45" type="button">45deg</button>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <button class="btn btn-primary btn-block avatar-save" type="submit">Done</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- <div class="modal-footer">
-                                                  <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
-                                                </div> -->
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /.modal -->
-
-                                                <!-- Loading state -->
-                                                <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+                                              
                                             </div>
                                             <!-- end of image cropping -->
 
@@ -193,8 +143,8 @@ $('#cashModal').on('show.bs.modal', function (e) {
                                 <div  class="bs-example" data-example-id="simple-jumbotron">
                                     <div  class="jumbotron" style="margin-bottom:0px; padding:0px; padding-bottom:8px;">
                                         <p>내 잔여캐시  2000 &nbsp;&nbsp;&nbsp;&nbsp;
-                                         <input type="button" class="btn btn-primary" value="충전하기" data-toggle="modal" data-target="#cashmodal">
-                                          <input type="button" class="btn btn-primary" value="환전하기" data-toggle="modal" data-target="#cashmodal2"></p><br>
+                                         <input type="button" class="btn btn-primary" value="충전하기" onclick="cashForm('userId');" >
+                                          <input type="button" class="btn btn-primary" value="환전하기"  onclick="refundForm('userId');" ></p><br>
                                      	<p style="font-size: 13pt">캐시를 이용하여 사이트에서 진행되는 딜에 참여할 수 있습니다<br>캐시 충전은 카드를 이용하여 충전할 수 있습니다.</p>
                                         
                                       
@@ -595,12 +545,12 @@ $('#cashModal').on('show.bs.modal', function (e) {
                                 </div>
                                  </div>
 									  <!--충전하기 모달  -->
-									  <div class="modal fade" id="cashmodal">
+									  <div class="modal fade" id="cashmodal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 									  <div class="modal-dialog">
 									      <div class="container">
 											    <blockquote id="js" class="quote-box">
 											    <span class="pull-right note_fontsize" >2015-11-18[16:59]</span><!-- 보낸시간 뜨는거야 -->
-											      </blockquote>
+											     
 											      <p class="">
 											      <!-- CREDIT CARD FORM STARTS HERE -->
             <div class="panel panel-default credit-card-box">
@@ -615,59 +565,52 @@ $('#cashModal').on('show.bs.modal', function (e) {
                 <div class="panel-body">
                     <form role="form" id="payment-form">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label for="cardNumber">카드 번호</label>
                                     <div class="input-group">
                                         <input 
-                                            type="tel"
+                                      
                                             class="form-control"
                                             name="cardNumber"
-                                            placeholder="Valid Card Number"
-                                            autocomplete="cc-number"
+                                            placeholder="하이픈(-)제거 후 입력"
                                             required autofocus 
                                         />
+                                        <input type="hidden" id="userId">
                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                     </div>
                                 </div>                            
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-7 col-md-7">
+                       
+                            <div class="col-xs-5 col-md-5 ">
                                 <div class="form-group">
-                                    <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                    <label for="cardCVC">CVC CODE</label>
                                     <input 
-                                        type="tel" 
-                                        class="form-control" 
-                                        name="cardExpiry"
-                                        placeholder="MM / YY"
-                                        autocomplete="cc-exp"
-                                        required 
-                                    />
-                                </div>
-                            </div>
-                            <div class="col-xs-5 col-md-5 pull-right">
-                                <div class="form-group">
-                                    <label for="cardCVC">CV CODE</label>
-                                    <input 
-                                        type="tel" 
+                                    
                                         class="form-control"
                                         name="cardCVC"
-                                        placeholder="CVC"
-                                        autocomplete="cc-csc"
+                                        placeholder="CVC 3자리 입력"
                                         required
                                     />
+                                    <input type="hidden" id="userId">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
+                     <div class="col-xs-5 col-md-5 ">
                                 <div class="form-group">
                                     <label for="couponCode">결제 금액</label>
-                                    <input style="width: 300px" type="text" class="form-control" name="couponCode"/>
+                                     <input 
+                                
+                                        class="form-control"
+                                        name="cashPrice"
+                                        placeholder="1000원이상"
+                                        required
+                                    />
+                               		<input type="hidden" id="userId">
                                 </div>
-                            </div>                        
                         </div>
+                        </div>
+                        
                         <div class="row">
                             <div class="col-xs-12">
                                 <center>
@@ -682,9 +625,8 @@ $('#cashModal').on('show.bs.modal', function (e) {
                         </div>
                     </form>
                 </div>
-            </div> 
-											    
-											     
+  
+					     
 											        <p class="blog-post-bottom pull-right">
 											        <span>
 											         <!-- 이거 설정버튼인데 밑에 드롭다운 메뉴 뜨는거야 -->
@@ -693,14 +635,14 @@ $('#cashModal').on('show.bs.modal', function (e) {
                    									  </span>
 											        </span>
 											        </p>
-											     
-											  
+											          </blockquote>
+											        </div> 
 											</div>
 									    </div>
 									  </div>
 									  
 									  <!--환전하기 모달  -->
-									  <div class="modal fade" id="cashmodal2">
+									  <div class="modal fade" id="refundModal">
 									  <div class="modal-dialog">
 									      <div class="container">
 											    <blockquote id="js" class="quote-box">
@@ -732,6 +674,7 @@ $('#cashModal').on('show.bs.modal', function (e) {
                                             autocomplete="cc-number"
                                             required autofocus 
                                         />
+                                        <input type="hidden" id="userId">
                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                     </div>
                                 </div>                            
@@ -749,6 +692,7 @@ $('#cashModal').on('show.bs.modal', function (e) {
                                         autocomplete="cc-exp"
                                         required 
                                     />
+                                    <input type="hidden" id="userId">
                                 </div>
                             </div>
                             <div class="col-xs-5 col-md-5 pull-right">
@@ -762,6 +706,8 @@ $('#cashModal').on('show.bs.modal', function (e) {
                                         autocomplete="cc-csc"
                                         required
                                     />
+                                      <input type="hidden" id="userId">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -770,6 +716,8 @@ $('#cashModal').on('show.bs.modal', function (e) {
                                 <div class="form-group">
                                     <label for="couponCode">환전금액</label>
                                     <input style="width: 300px" type="text" class="form-control" name="couponCode"/>
+                              		<input type="hidden" id="userId">
+                              		
                                 </div>
                             </div>                        
                         </div>
@@ -797,6 +745,7 @@ $('#cashModal').on('show.bs.modal', function (e) {
                    									  </span>
 											        </span>
 											        </p>
+											        </blockquote>
 											    
 											</div>
 									    </div>

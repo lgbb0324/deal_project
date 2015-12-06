@@ -19,37 +19,53 @@
  // 모달창열기(쪽지 보내기창)
 
  function noteForm(id) {
- 		receiveUserId=id;
-		$("#ModalCreated").dialog({
-				 title: "쪽지 보내기"
-			    /*  modal: true,
-			     width:300,
-			     height:300 */
-			     
-		});
-		$("#ModalCreated").click(function(){
+ 	
+	 
+	 receiveUserId=id;
+	 $('#contact').modal('show');
+		$("#contact").click(function(){
 			
 			var s = receiveUserId;
 			$("#idWrite").change();
 			$("#idWrite").text(s); 
 			
 			});
+		
 		$(".ui-dialog-titlebar-close").click(function(){
 			
 			$("#idWrite").text("");
 				});
 		
+	
  }
  
  
  function readForm(id){
 	 sendUserId=id;
-	 $("#ModalArticle").dialog({
-		 title: "받은 쪽지창"
+	 $("#ModalArticle").modal('show');
+	 $("#ModalArticle").click(function(){
+			
+			var s = sendUserId;
+			$("#idWrite2").change();
+			$("#idWrite2").text(s); 
+			
+			});
+		
+		$(".btn btn-default btn-close").click(function(){
+			
+			$("#idWrite2").text("");
+				});
+		
+		 $(".btn btn-success").click(function(){
+		 
+			 $('#ModalArticle').modal('close');
+		 });
 		 
 		 
-	 });
  }
+ 
+ 
+ 
  </script>
  
   					 <div class="right_col" role="main">
@@ -60,6 +76,45 @@ Bootstrap Line Tabs by @keenthemes
 A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
 Licensed under MIT
 -->
+                      <!--  임시 쪽지 확인창 -->
+                               <div class="modal fade" id="ModalArticle"  role="dialog" aria-labelledby="receiveLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="panel panel-primary">
+                     <div class="panel-heading">
+                        <h4 class="panel-title" id="receiveLabel"><span class="glyphicon glyphicon-info-sign"></span> 쪽지확인창</h4>
+                    </div>
+                    <div class="modal-body" style="padding: 5px;">
+                          <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                 <div class="col-lg-4 col-md-4 col-sm-4" style="padding-bottom: 10px; margin-top: 10px">
+                            	 <div> 보낸사람 </div> 
+                                </div> 
+                            
+                                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-bottom: 10px;">
+                            	 <div style="margin-right: 20px;" class="form-control" id="idWrite2">  </div> 
+                                </div>
+                                	</div>
+                              
+                                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
+                                    <div style="float: right" class="form-control" id="sendDay2">받은 날짜 : </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div  style="resize:vertical;" class="form-control" id="letterContent2"></div>
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="panel-footer" style="margin-bottom:-14px;">
+                            <input type="submit" class="btn btn-success" value="답장" onclick="noteForm('${dto.sendUserId}');"/>
+                            <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  임시쪽지 확인 종료 -->
+
+
 
 <div class="container">
     <div class="row">
