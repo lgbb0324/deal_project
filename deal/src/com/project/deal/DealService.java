@@ -10,4 +10,5 @@ public interface DealService {
 	public Deal readDeal(int num);
 	public int insertDealReply(DealReply dto);
 	public List<DealReply> dealReplyList(Map<String, Object> map);
+	public int insertDealLike(DealLike dto);
 }

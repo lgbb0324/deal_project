@@ -34,7 +34,11 @@
 		SELECT num,dealNum,userId,userName,created,content FROM dealReply WHERE dealNum= #{dealNum}
 	</select>
 	
-	
+	<insert id="insertDealLike" parameterType="com.project.deal.DealLike" >
+	INSERT INTO dealLike (dealNum,userId,replyLike) 
+	VALUES (#{dealNum},#{userId},#{replyLike});
+
+	</insert>
 	
 
 

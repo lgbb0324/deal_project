@@ -68,6 +68,17 @@ public class DealServiceImpl implements DealService{
 		}
 		return list;
 	}
+
+	@Override
+	public int insertDealLike(DealLike dto) {
+		int result=0;
+		try {
+			result=dao.insertData("deal.insertDealLike", dto);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
 	
 
 

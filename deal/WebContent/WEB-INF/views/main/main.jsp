@@ -11,21 +11,7 @@
    <link href="<%=cp%>/res/template/css/main/minchanmain.css" rel="stylesheet">
    
 <script type="text/javascript">
-$(document).ready(function() {              
-    $('i.glyphicon-thumbs-up, i.glyphicon-thumbs-down').click(function(){    
-        var $this = $(this),
-        c = $this.data('count');    
-        if (!c) c = 0;
-        c++;
-        $this.data('count',c);
-        $('#'+this.id+'-bs3').html(c);
-    });      
-    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-        event.preventDefault();
-        $(this).ekkoLightbox();
-    });                                        
-}); 
-
+ 
 $(document).ready(function() {
     $('[id^=detail-]').hide();
     $('.toggle').click(function() {
@@ -33,7 +19,7 @@ $(document).ready(function() {
         $target = $('#'+$input.attr('data-toggle'));
         $target.slideToggle();
     });
-});
+}); 
 
 /* $.fn.ready(function (){
    $("p").fitText(2,{'minFontSize':1,'maxFontSize':50});
@@ -147,14 +133,112 @@ function listPage(dealNum) {
 	 $("#listReply-"+dealNum).html(data); 
 	});
 }
+var dealNum,replyLike;
+
+function Like(dealNum,replyLike) {
+	
+	/*  var isLogin="${sessionScope.member.userId}";
+	if(! isLogin) {
+		login();
+		return false;
+	} */
+	this.dealNum=dealNum;
+	this.replyLike=replyLike;
+
+	<%-- var params="dealNum="+dealNum;
+	params+="&replyLike="+replyLike;
+
+	$.ajax({
+		type:"POST"
+		,url:"<%=cp%>/deal/dealLike"
+		,data:params
+		,dataType:"json"
+		,success:function(data) {
+			
+			var state=data.state;
+			if(state=="true") {
+				countLike(replyNum);
+			} else if(state=="false") {
+				alert("좋아요/싫어요는 한번만 가능합니다. !!!");
+			} else if(state=="loginFail") {
+				login();
+			}else{
+				alert("로그인해");
+			}
+		}
+		,error:function(e) {
+			alert(e.responseText);
+		}
+	});
+ --%>
+
+}
+
+$(document).ready(function() {              
+    $('i.glyphicon-thumbs-up, i.glyphicon-thumbs-down').click(function(){    
+        var $this = $(this),
+        c = $this.data('count');
+        var count = $('#'+this.id+'-bs3').html();
+        var id = this.id;
+     
+        var params="dealNum="+dealNum;
+    	params+="&replyLike="+replyLike;
+
+    	$.ajax({
+    		type:"POST"
+    		,url:"<%=cp%>/deal/dealLike.do"
+    		,data:params
+    		,dataType:"json"
+    		,success:function(data) {
+    			
+    			var state=data.state;
+    			if(state=="true") {
+    				 if (!count) count = 0;
+    				 count++;
+    				countLike(id,count); 
+    			   
+    			} else if(state=="false") {
+    				alert("좋아요/싫어요는 한번만 가능합니다. !!!");
+    				return false;
+    			} else if(state=="loginFail") {
+    				alert("로그인하세여");
+    				return false;
+    			}else{
+    				alert("로그인해");
+    			}
+    		}
+    		,error:function(e) {
+    			alert(e.responseText);
+    		}
+    	});
+ 
+    	/*   if (!id) id = 0;
+	        id++; */
+      /*   $this.data('count',id); */
+     /*  alert(this.id);
+        $('#'+this.id+'-bs3').html(id); */
+    });      
+    
+    
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });                                        
+}); 
 
 
-
+function countLike(id,count){
+	
+	$('#'+id+'-bs3').html(count); 
+}
 
 </script>
+
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
 <div class="right_col" role="main">
 
 
@@ -354,8 +438,8 @@ function listPage(dealNum) {
                         <span class="[ glyphicon glyphicon-share-alt ]"></span>
                     </button>
                      <span class="pull-right">
-                        <i id="like1" style="font-size: 30px;" class="glyphicon glyphicon-thumbs-up"></i> <div style="font-size: 25px;" id="like1-bs3"></div>
-                        <i id="dislike1"  style="font-size: 30px;" class="glyphicon glyphicon-thumbs-down"></i> <div style="font-size: 25px;" id="dislike1-bs3"></div>
+                        <i id="like${dto.num}" style="font-size: 30px; backgoround-color:red;" onclick="Like(${dto.num},1);" class="glyphicon glyphicon-thumbs-up"><div style="font-size: 25px;" id="like${dto.num}-bs3" >3</div></i> 
+                        <i id="dislike${dto.num}"  style="font-size: 30px;" onclick="disLike(${dto.num});" class="glyphicon glyphicon-thumbs-down"><div style="font-size: 25px;" id="dislike${dto.num}-bs3">4</div></i> 
                     </span>
                     <div class="input-placeholder" style="font-size:15px;" onclick="listPage('${dto.num}')">Add a comment...</div>
                 </div>

@@ -231,6 +231,33 @@ public class DealController {
 			return mav;
 		}
 	
+		
+		@RequestMapping(value="/deal/dealLike",method=RequestMethod.POST)
+		public void replyLike(
+				HttpServletResponse resp,
+				HttpSession session,
+				DealLike dto) throws Exception {
+		
+			SessionInfo info=(SessionInfo) session.getAttribute("member");
+			
+			String state="true";
+			if(info==null) { // 로그인이 되지 않는 경우
+				state="loginFail";
+			} else {
+				dto.setUserId(info.getUserId());
+				int result=service.insertDealLike(dto);
+				if(result==0)
+					state="false";
+			}
+			
+			// 작업 결과를 json으로 전송
+			JSONObject job=new JSONObject();
+			job.put("state", state);
+			
+			resp.setContentType("text/html;charset=utf-8");
+			PrintWriter out=resp.getWriter();
+			out.print(job.toString());
+		}
 	
 	
 }
