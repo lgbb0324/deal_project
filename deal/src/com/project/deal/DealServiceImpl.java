@@ -1,10 +1,14 @@
 package com.project.deal;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.common.FileManager;
 import com.project.common.dao.CommonDAO;
+
 
 
 
@@ -40,6 +44,40 @@ public class DealServiceImpl implements DealService{
 			System.out.println(e.toString());
 		}
 		return dto;
+	}
+
+	@Override
+	public int insertDealReply(DealReply dto) {
+		int result=0;
+		try{
+			
+			result=dao.insertData("deal.insertDealReply", dto);
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+
+	@Override
+	public List<DealReply> dealReplyList(Map<String, Object> map) {
+		List<DealReply> list=null;
+		try {
+			list=dao.getListData("deal.listReply", map);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return list;
+	}
+
+	@Override
+	public int insertDealLike(DealLike dto) {
+		int result=0;
+		try {
+			result=dao.insertData("deal.insertDealLike", dto);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
 	}
 	
 

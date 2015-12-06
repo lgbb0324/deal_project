@@ -11,21 +11,7 @@
    <link href="<%=cp%>/res/template/css/main/minchanmain.css" rel="stylesheet">
    
 <script type="text/javascript">
-$(document).ready(function() {              
-    $('i.glyphicon-thumbs-up, i.glyphicon-thumbs-down').click(function(){    
-        var $this = $(this),
-        c = $this.data('count');    
-        if (!c) c = 0;
-        c++;
-        $this.data('count',c);
-        $('#'+this.id+'-bs3').html(c);
-    });      
-    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-        event.preventDefault();
-        $(this).ekkoLightbox();
-    });                                        
-}); 
-
+ 
 $(document).ready(function() {
     $('[id^=detail-]').hide();
     $('.toggle').click(function() {
@@ -33,7 +19,7 @@ $(document).ready(function() {
         $target = $('#'+$input.attr('data-toggle'));
         $target.slideToggle();
     });
-});
+}); 
 
 /* $.fn.ready(function (){
    $("p").fitText(2,{'minFontSize':1,'maxFontSize':50});
@@ -95,10 +81,164 @@ $(function () {
 	        }
 	   });
 	});
+	
+	
+	
+//댓글 추가
+function sendReply(dealNum) {
+	
+	/*  var isLogin="${sessionScope.member.userId}";
+	if(! isLogin) {
+		login();
+		return false;
+	} */
+
+
+	
+
+ 	var content=$.trim($("#replyContent-"+dealNum).val());
+	
+	
+	var params="dealNum="+dealNum;
+	params+="&content="+content;
+
+	$.ajax({
+		type:"POST"
+		,url:"<%=cp%>/deal/dealReplyCreated.do"
+		,data:params
+		,dataType:"json"
+		,success:function(data) {
+			$("#replyContent-"+dealNum).val("");
+			
+			var state=data.state;
+			if(state=="true") {
+				listPage(dealNum);
+			} else if(state=="false") {
+				alert("댓글을 등록하지 못했습니다. !!!");
+			} else if(state=="loginFail") {
+				alert("로그인하세여");
+			}
+		}
+		,error:function(e) {
+			alert(e.responseText);
+		}
+	});  
+}
+
+function listPage(dealNum) {
+
+	var url="<%=cp%>/deal/mainDealreplyList.do";
+
+	$.post(url, {dealNum:dealNum}, function(data){
+	 $("#listReply-"+dealNum).html(data); 
+	});
+}
+var dealNum,replyLike;
+
+function Like(dealNum,replyLike) {
+	
+	/*  var isLogin="${sessionScope.member.userId}";
+	if(! isLogin) {
+		login();
+		return false;
+	} */
+	this.dealNum=dealNum;
+	this.replyLike=replyLike;
+
+	<%-- var params="dealNum="+dealNum;
+	params+="&replyLike="+replyLike;
+
+	$.ajax({
+		type:"POST"
+		,url:"<%=cp%>/deal/dealLike"
+		,data:params
+		,dataType:"json"
+		,success:function(data) {
+			
+			var state=data.state;
+			if(state=="true") {
+				countLike(replyNum);
+			} else if(state=="false") {
+				alert("좋아요/싫어요는 한번만 가능합니다. !!!");
+			} else if(state=="loginFail") {
+				login();
+			}else{
+				alert("로그인해");
+			}
+		}
+		,error:function(e) {
+			alert(e.responseText);
+		}
+	});
+ --%>
+
+}
+
+$(document).ready(function() {              
+    $('i.glyphicon-thumbs-up, i.glyphicon-thumbs-down').click(function(){    
+        var $this = $(this),
+        c = $this.data('count');
+        var count = $('#'+this.id+'-bs3').html();
+        var id = this.id;
+     
+        var params="dealNum="+dealNum;
+    	params+="&replyLike="+replyLike;
+
+    	$.ajax({
+    		type:"POST"
+    		,url:"<%=cp%>/deal/dealLike.do"
+    		,data:params
+    		,dataType:"json"
+    		,success:function(data) {
+    			
+    			var state=data.state;
+    			if(state=="true") {
+    				 if (!count) count = 0;
+    				 count++;
+    				countLike(id,count); 
+    			   
+    			} else if(state=="false") {
+    				alert("좋아요/싫어요는 한번만 가능합니다. !!!");
+    				return false;
+    			} else if(state=="loginFail") {
+    				alert("로그인하세여");
+    				return false;
+    			}else{
+    				alert("로그인해");
+    			}
+    		}
+    		,error:function(e) {
+    			alert(e.responseText);
+    		}
+    	});
+ 
+    	/*   if (!id) id = 0;
+	        id++; */
+      /*   $this.data('count',id); */
+     /*  alert(this.id);
+        $('#'+this.id+'-bs3').html(id); */
+    });      
+    
+    
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });                                        
+}); 
+
+
+function countLike(id,count){
+	
+	$('#'+id+'-bs3').html(count); 
+}
+
 </script>
+
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
 <div class="right_col" role="main">
 
 
@@ -110,7 +250,7 @@ $(function () {
       <div class="carousel-inner">
       
         <div class="item active">
-          <img src="http://placehold.it/760x400/cccccc/ffffff">
+          <img src="<%=cp%>/res/images/fifa.png">
            <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
             <h4><a href="#">aaaaaaaaaaaaaaaaaaaaaaaaa</a></h4>
             <p>aaaaaaaaaaaaaaaaaaaaaa ㅅㅅ</a></p>
@@ -118,7 +258,7 @@ $(function () {
         </div><!-- End Item -->
  
          <div class="item">
-          <img src="http://placehold.it/760x400/999999/cccccc">
+          <img src="<%=cp%>/res/images/wmp.png">
            <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
             <h4><a href="#">bbbbbbbbbbbbbbbbbbbbbbbbbbbb</a></h4>
             <p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb<a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
@@ -126,7 +266,7 @@ $(function () {
         </div><!-- End Item -->
         
         <div class="item">
-          <img src="http://placehold.it/760x400/dddddd/333333">
+          <img src="<%=cp%>/res/images/fifa2.png">
            <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
             <h4><a href="#">cccccccccccccccccccccccccccccccccc</a></h4>
             <p>cccccccccccccccccccccccccccccccccccccccccccccc <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
@@ -134,7 +274,7 @@ $(function () {
         </div><!-- End Item -->
         
         <div class="item">
-          <img src="http://placehold.it/760x400/999999/cccccc">
+          <img src="<%=cp%>/res/images/wmp2.png">
            <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
             <h4><a href="#">ddddddddddddddddddddddddddddddddd</a></h4>
             <p>ddddddddddddddddddddddddddddddddddddddddddddddd<a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
@@ -142,7 +282,7 @@ $(function () {
         </div><!-- End Item -->
 
         <div class="item">
-          <img src="http://placehold.it/760x400/dddddd/333333">
+          <img src="<%=cp%>/res/images/wmp3.png">
            <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
             <h4><a href="#">tempor invidunt ut labore et dolore magna aliquyam erat</a></h4>
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
@@ -289,7 +429,7 @@ $(function () {
                 <div class="panel-body">
                     <p style="font-size:20px;">${dto.subject}<!--  <a href="http://bootsnipp.com/snippets/MaWrA">http://bootsnipp.com/snippets/MaWrA</a> --></p>
                     <a class="panel-google-plus-image" href="<%=cp%>/deal/article.do?num=${dto.num}">
-                        <img src="<%=cp%>/res/images/mac5.jpg" />
+                        ${dto.image1}
                     </a>
                 </div>
                 <div class="panel-footer">
@@ -298,30 +438,36 @@ $(function () {
                         <span class="[ glyphicon glyphicon-share-alt ]"></span>
                     </button>
                      <span class="pull-right">
-                        <i id="like1" style="font-size: 30px;" class="glyphicon glyphicon-thumbs-up"></i> <div style="font-size: 25px;" id="like1-bs3"></div>
-                        <i id="dislike1"  style="font-size: 30px;" class="glyphicon glyphicon-thumbs-down"></i> <div style="font-size: 25px;" id="dislike1-bs3"></div>
+                        <i id="like${dto.num}" style="font-size: 30px; backgoround-color:red;" onclick="Like(${dto.num},1);" class="glyphicon glyphicon-thumbs-up"><div style="font-size: 25px;" id="like${dto.num}-bs3" >${dto.countLike}</div></i> 
+                       <%--  <i id="dislike${dto.num}"  style="font-size: 30px;" onclick="disLike(${dto.num});" class="glyphicon glyphicon-thumbs-down"><div style="font-size: 25px;" id="dislike${dto.num}-bs3">4</div></i> --%> 
                     </span>
-                    <div class="input-placeholder" style="font-size:20px;">Add a comment...</div>
+                    <div class="input-placeholder" style="font-size:15px;" onclick="listPage('${dto.num}')">Add a comment...</div>
                 </div>
-                <div class="panel-google-plus-comment">
-                    <img class="img-circle" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s46" alt="User Image" />
+                <div class="panel-google-plus-comment" style="padding:10px;">
+                    <c:if test="${pdto.imageFilename==null}">
+                   <img class="img-circle" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s46" alt="User Image" /> 
+                    </c:if>
+                    <c:if test="${pdto.imageFilename!=null}">
+                    <img class="img-circle" src="<%=cp%>/uploads/photo/${pdto.imageFilename}" style="width:55px;height:55px;padding-right:2px;" alt="User Image" />
+                    </c:if>
                     <div class="panel-google-plus-textarea">
-                        <textarea rows="4"></textarea>
-                        <button type="submit" class="[ btn btn-success disabled ]">Post comment</button>
+                    
+                        <textarea id="replyContent-${dto.num}" style="padding:0px;" rows="5"></textarea>
+                        <button type="submit" class="[ btn btn-success disabled ]" onclick="sendReply('${dto.num}')">Post comment</button>
                         <button type="reset" class="[ btn btn-default ]">Cancel</button>
                     </div>
                     <div class="clearfix"></div>
-                    
-                    <li class="comment">
+               <ul id="listReply-${dto.num}" style="padding:0px;">
+                  <!--   <li class="comment">
                         <a class="pull-left" href="#">
                             <img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">
                         </a>
                         <div class="comment-body">
                             <div class="comment-heading">
-                                <h4 class="user">Gavino Free</h4>
-                                <h5 class="time">5 minutes ago</h5>
+                               <h5 class="time pull-right">5 minutes ago</h5><h4 class="user">Gavino Free</h4>
+                               
                             </div>
-                            <p>Sure, oooooooooooooooohhhhhhhhhhhhhhhh</p>
+                            <p style="word-break:break-all;margin-left:40px;">Sure, oooooooooooooooohhhhhhhhhhhhhhhhddddddddddddddddddddddddddddddddddddddddddddddd</p>
                         </div>
                         <ul class="comments-list">
                             <li class="comment">
@@ -349,7 +495,8 @@ $(function () {
                                 </div>
                             </li> 
                         </ul>
-                    </li>
+                    </li> -->
+                       </ul>
                 </div>
                 
             </div>

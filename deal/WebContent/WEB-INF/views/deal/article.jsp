@@ -99,20 +99,35 @@
 
                                     <div class="col-md-7 col-sm-7 col-xs-12">
                                         <div class="product-image">
-                                            <img src="<%=cp%>/res/images/mac1.jpg" alt="..." />
+                                            ${dealPhoto[0]}
                                         </div>
                                         <div class="product_gallery">
                                             <a>
-                                                <img onclick="javascript:alert('1');" src="<%=cp%>/res/images/mac2.jpg" alt="..." />
+                                                 ${dealPhoto[1]}
                                             </a>
                                             <a>
-                                                <img src="<%=cp%>/res/images/mac3.jpg" alt="..." />
+                                               ${dealPhoto[2]}
                                             </a>
                                             <a>
-                                                <img src="<%=cp%>/res/images/mac4.jpg" alt="..." />
+                                             ${dealPhoto[3]}
                                             </a>
                                             <a>
-                                                <img src="<%=cp%>/res/images/mac5.jpg" alt="..." />
+                                                ${dealPhoto[4]}
+                                            </a>
+                                            <a>
+                                               ${dealPhoto[5]}
+                                            </a>
+                                            <a>
+                                               ${dealPhoto[6]}
+                                            </a>
+                                            <a>
+                                               ${dealPhoto[7]}
+                                            </a>
+                                            <a>
+                                               ${dealPhoto[8]}
+                                            </a>
+                                            <a>
+                                               ${dealPhoto[9]}
                                             </a>
                                         </div>
                                     </div>	
@@ -121,7 +136,7 @@
 
                                         <h3 class="prod_title">${dealArticle.subject}</h3>
 
-                                        <p>${dealArticle.content}</p>
+                                        <%-- <p>${dealArticle.content}</p> --%>
                                         <br />
 
                                         <div class="">
@@ -202,6 +217,8 @@
     <div>${dealArticle.region2}</div>
     <div>${dealArticle.tag1}</div>
     <div>${dealArticle.tag2}</div>
+    <div>${dealPhoto[9]}</div>
+ 
    <!--  <button class="btn btn-mini" type="button">취소</button> -->
 
 </div>
@@ -329,9 +346,11 @@
                                             <div id="myTabContent" class="tab-content">
                                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
                                                     <p>설명</p>
+                                                       <p>${dealArticle.content}</p>
                                                 </div>
                                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                                                     <p>댓글</p>
+                                                 
                                                 </div>
                                                 <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
                                                     <p>딜러정보</p>
