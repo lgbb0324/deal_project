@@ -101,7 +101,7 @@ public class MemberController {
 			) throws Exception{
 		
 		Member dto = service.readMember(userId);
-		if(dto == null||dto.getUserPwd()!=userPwd){
+		if(dto == null){
 			String msg = "아이디 또는 패스워드가 일치하지 않습니다.";
 			ModelAndView mav = new ModelAndView(".member.member");
 			mav.addObject("message",msg);
