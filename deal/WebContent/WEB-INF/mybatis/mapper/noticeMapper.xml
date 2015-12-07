@@ -90,22 +90,22 @@ LIMIT #{start}, 10
 	</update>
 
 <!-- 댓글입니다. -->
-<!-- 	<insert id="insertReply" parameterType="com.project.board.Reply">
-			INSERT INTO bbsreply(num, userId, content, answer)
+	<insert id="insertReply" parameterType="com.project.notice.Reply">
+			INSERT INTO noticereply(num, userId, content, answer)
 	  		VALUES (#{num},#{userId},#{content}, #{answer})
 	</insert> 
 	
 	
 	<select id="dataCountReply" parameterType="map" resultType="Integer">
-		  SELECT ifnull(COUNT(*), 0) FROM bbsreply b
+		  SELECT ifnull(COUNT(*), 0) FROM noticereply n
 	    	where num=#{num} and answer=0
 	</select>
 	
-	<select id="listReply" parameterType="map" resultType="com.project.board.Reply">
+	<select id="listReply" parameterType="map" resultType="com.project.notice.Reply">
 
 			select replyNum, num, r.userId, userName,
 	            content, answer, DATE_FORMAT(created, '%Y-%m-%d') AS created
-				from bbsreply r
+				from noticereply r
 				Join member m ON r.userId = m.userId
 				where num=#{num} and answer=0
 				ORDER BY replyNum DESC 
@@ -113,8 +113,8 @@ LIMIT #{start}, 10
 	</select>
 	
 	<delete id="deleteReply" parameterType="Integer">
-		DELETE FROM bbsreply WHERE replyNum=#{replyNum}
+		DELETE FROM noticereply WHERE replyNum=#{replyNum}
 	</delete>
- -->
+
 
 </mapper>

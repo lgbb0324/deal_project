@@ -16,11 +16,14 @@ public interface NoticeService {
 	
 	public Notice readNotice(int num);
 	
-	
-	
 	public int updateNotice(Notice dto);
 	public int deleteNotice(int num);
 	
+	
+	public int insertReply(Reply dto);
+	public List<Reply> listReply(Map<String, Object>map);
+	public int DataCountReply(Map<String, Object>map);
+	public int deleteReply(int replyNum);
 	
 	
 }

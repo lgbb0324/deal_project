@@ -1,5 +1,6 @@
 package com.project.notice;
 
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.board.Board;
 import com.project.common.MyUtil;
 import com.project.member.SessionInfo;
+
+import net.sf.json.JSONObject;
 
 @Controller("notice.noticeController")
 public class NoticeController {
@@ -183,7 +186,7 @@ public class NoticeController {
 		map.put("searchKey", searchKey);
 		map.put("searchValue", searchValue);
 		
-		//Notice nextReadDto = service.nextReadBoard(map);
+		
 		
 		String params="pageNum="+pageNum;
 		if(searchValue.length()!=0) {
@@ -277,10 +280,122 @@ public class NoticeController {
 		
 		service.updateNotice(dto);
 		
-		// return "redirect:/board/list.do?pageNum="+pageNum;
+	
 		return "redirect:/notice/article.do?num="
 		         +dto.getNum()+"&pageNum="+pageNum;
 	}
+	
+	
+	
+	
+	
+	@RequestMapping(value="/notice/insertReply", method=RequestMethod.POST)
+	public void insertReply(HttpServletResponse resp, HttpSession session, Reply dto) throws Exception{
+	
+		SessionInfo info=(SessionInfo)
+				session.getAttribute("member");
+		
+		String state="true";
+		if(info==null) { // 로그인이 되지 않는 경우
+			state="loginFail";
+		} else {
+			dto.setUserId(info.getUserId());
+			int result=service.insertReply(dto);
+			if(result==0)
+				state="false";
+		}
+		
+		JSONObject job = new JSONObject();
+		job.put("state", state);
+		
+		resp.setContentType("text/html;charset=utf-8");
+		PrintWriter out=resp.getWriter();
+		out.print(job.toString());
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="notice/listReply")
+	public ModelAndView listReply(@RequestParam int num,
+								@RequestParam(value="pageNo", defaultValue="1")int current_page)throws Exception{
+		
+		int numPerPage = 5;
+		int total_page;
+		int dataCountReply;
+		
+		Map<String, Object>map = new HashMap<String, Object>();
+		map.put("num", num);
+		
+		dataCountReply = service.DataCountReply(map);
+		total_page = myUtil.getPageCount(numPerPage, dataCountReply);
+		
+		int start = (current_page - 1) * numPerPage;
+		map.put("start", start);
+		
+		List<Reply> listReply = service.listReply(map);
+		
+		Iterator<Reply>it = listReply.iterator();
+		while (it.hasNext()) {
+			Reply data = it.next();
+			data.setContent(
+					data.getContent().replaceAll("\n", "<br>"));
+		}
+		
+		ModelAndView mav = new ModelAndView("notice/listReply");
+		
+		mav.addObject("listReply", listReply);
+		mav.addObject("dataCountReply", dataCountReply);
+		mav.addObject("pageNo", current_page);
+		// AJAX 인자 두개
+		mav.addObject("pageIndexList",
+				myUtil.pageIndexList(current_page, total_page));
+		
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/notice/deleteReply", method=RequestMethod.POST)
+	public void deleteReply(HttpServletResponse resp,
+			HttpSession session,
+			@RequestParam int replyNum)throws Exception{
+		
+		SessionInfo info=(SessionInfo)
+				session.getAttribute("member");
+		
+		String state="true";
+		if(info==null) { // 로그인이 되지 않는 경우
+			state="loginFail";
+		} else {
+			int result=service.deleteReply(replyNum);
+			if(result==0)
+				state="false";
+		}
+		
+		JSONObject job=new JSONObject();
+		job.put("state", state);
+		
+		resp.setContentType("text/html;charset=utf-8");
+		PrintWriter out=resp.getWriter();
+		out.print(job.toString());
+		
+	}
+	
+	
+	
 	
 	
 	

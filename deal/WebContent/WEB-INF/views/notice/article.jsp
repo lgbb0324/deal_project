@@ -41,7 +41,7 @@
 		
 		$.ajax({
 			type:"POST"
-			,url:"<%=cp%>/board/insertReply.do"
+			,url:"<%=cp%>/notice/insertReply.do"
 			,data:params
 			,dataType:"json"
 			,success:function(data){
@@ -196,7 +196,7 @@
                                         </div>
                                        
                                          <c:if test="${not empty nextReadDto}">
-			      						      <a href="<%=cp%>/board/article.do?num=${nextReadDto.num}&${params}">${nextReadDto.subject}</a>
+			      						      <a href="<%=cp%>/notice/article.do?num=${nextReadDto.num}&${params}">${nextReadDto.subject}</a>
 			       						</c:if>
                                        
 
