@@ -84,6 +84,11 @@ public class DealController {
 	public ModelAndView articleCreated() throws Exception {
 		ModelAndView mav=new ModelAndView(".deal.created");
 		
+		List<DealCategory> list=service.listBigCategory();
+		
+	
+		mav.addObject("list", list);
+		
 		return mav;
 	}
 	
@@ -257,6 +262,19 @@ public class DealController {
 			resp.setContentType("text/html;charset=utf-8");
 			PrintWriter out=resp.getWriter();
 			out.print(job.toString());
+		}
+		
+		
+		@RequestMapping(value="/deal/dealCategoryList", method=RequestMethod.POST)
+		public void cityList(HttpServletResponse resp, int bcNum) throws Exception {
+			List<DealCategory> list=service.listSmallCategory(bcNum);
+			
+			JSONObject jso=new JSONObject();
+			jso.put("list", list);
+			
+			resp.setContentType("text/html;charset=utf-8");
+			PrintWriter out=resp.getWriter();
+			out.print(jso.toString());
 		}
 	
 	

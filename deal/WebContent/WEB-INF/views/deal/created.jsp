@@ -57,13 +57,47 @@
 		<script src="<%=cp%>/res/defaultTemplate/js/editor/bootstrap-wysiwyg.js"></script>
 		<script src="<%=cp%>/res/defaultTemplate/js/editor/external/jquery.hotkeys.js"></script>
 		<script src="<%=cp%>/res/defaultTemplate/js/editor/external/google-code-prettify/prettify.js"></script>
-        
+        <script>
+function bigCategoryList() {
+	var bcNum=$("#bigCategory").val();
+	if(bcNum=="") {
+		$("#smallCategory option").each(function() {
+			$("#smallCategory option:eq(0)").remove();
+		});
 
+		$("#smallCategory").append("<option value=''>::소분류선택::</option>");
+		return false;
+	}
+	
+	var url="<%=cp%>/deal/dealCategoryList.do";
+	var params="bcNum="+bcNum;
+	
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+		,success:function(data){
+			$("#smallCategory option").each(function() {
+				$("#smallCategory option:eq(0)").remove();
+			});
+
+			 $("#smallCategory").append("<option value=''>::소분류선택::</option>");
+			 
+			 for(var idx=0; idx<data.list.length; idx++) {
+				 $("#smallCategory").append("<option value='"+data.list[idx].smNum+"'>"+data.list[idx].smName+"</option>");
+			 }
+		}
+	    ,error:function(e) {
+	    	alert(e.responseText);
+	    }
+	});
+}
   
 
 
 
-
+</script>
             <!-- page content -->
 	 <div class="right_col" role="main">
                 <div class="">
@@ -130,24 +164,22 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">카테고리</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select name="category1" class="form-control">
-                                                    <option>Choose Category</option>
-                                                    <option>옷</option>
-                                                    <option>음식</option>
-                                                    <option>화장품</option>
-                                                    <option>가구</option>
+                                                <select id="bigCategory" name="category1" class="form-control" onchange="bigCategoryList();">
+                                                    <option value="">Choose Category</option>
+                                                   <c:forEach var="dto" items="${list}">
+                                                   <option value="${dto.bcNum}">${dto.bcName}</option>
+                                                   </c:forEach>
+                                                   
+                                                    
+                                                  
                                                 </select>
                                             </div>
                                         </div>
                                            <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">세부 카테고리</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select name="category2" class="form-control">
-                                                    <option>Choose Category</option>
-                                                    <option>신발</option>
-                                                    <option>바지</option>
-                                                    <option>상의</option>
-                                                    <option>하의</option>
+                                                <select id="smallCategory" name="category2" class="form-control">
+                                                    <option>Choose SmallCategory</option>
                                                 </select>
                                             </div>
                                         </div>

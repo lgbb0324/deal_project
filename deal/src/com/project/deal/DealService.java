@@ -11,4 +11,6 @@ public interface DealService {
 	public int insertDealReply(DealReply dto);
 	public List<DealReply> dealReplyList(Map<String, Object> map);
 	public int insertDealLike(DealLike dto);
+	public List<DealCategory> listBigCategory();
+	public List<DealCategory> listSmallCategory(int bcNum);
 }

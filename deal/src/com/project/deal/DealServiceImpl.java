@@ -79,7 +79,33 @@ public class DealServiceImpl implements DealService{
 		}
 		return result;
 	}
-	
+
+
+	@Override
+	public List<DealCategory> listBigCategory() {
+		List<DealCategory> list = null;
+		
+		try {
+			list=dao.getListData("deal.listBigCategory");
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<DealCategory> listSmallCategory(int bcNum) {
+		List<DealCategory> list = null;
+		
+		try {
+			list=dao.getListData("deal.listSmallCategory", bcNum);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return list;
+	}
 
 
 }
