@@ -47,12 +47,15 @@ margin-left:5%
 .panel panel-default arrow left{
 	height: 131px;
 }
-
+.img-circle1{
+	width:130px;
+	height:130px;
+	border-radius:50%;
+	margin-left: 0px;
+}
 </style>
 
-<c:if test="${dataCount!=0}">
 <script type="text/javascript">
-
 // 댓글별 답글 리스트
 function listReply(num) {
 	var rta="#listReply"+num;
@@ -133,7 +136,22 @@ function sendReplyAnswer(num) {
 	});
 }
 
-
+function deleteQna(num) {
+	var isLogin="${sessionScope.member.userId}";
+	if(! isLogin){
+		login();
+		return false;
+	}
+	if(confirm("게시물을 삭제하시겠습니까?")){
+		var url="<%=cp%>/qna/deleteQna.do";
+		$.post(url,{num:num},function(data){
+			var state=data.state;
+			if(state=="loginFail"){
+				login();
+			}
+		},"json");
+	}
+}
 </script>
 
 <div class="right_col" role="main">
@@ -158,7 +176,7 @@ function sendReplyAnswer(num) {
           <article class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
               <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
+                <img src="<%=cp%>/uploads/photo/${dto.imageFilename}" class="img-circle1 img-responsive"/>
                 <figcaption class="text-center">${dto.userId}</figcaption>
               </figure>
             </div>
@@ -176,7 +194,11 @@ function sendReplyAnswer(num) {
                   </div>
  
                 </div>
-                <div><div class="pull-right"><a id="btnAnswer${dto.num}" class="btn btn-default btn-sm" onclick="listReply('${dto.num}')">답글보기</a></div><br><br>
+                <div>
+                <c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">
+                <div class="pull-right"><a onclick='deleteQna("${dto.num}")' class="btn btn-default btn-sm">삭제</a></div>
+                </c:if>
+                <div class="pull-right"><a id="btnAnswer${dto.num}" class="btn btn-default btn-sm" onclick="listReply('${dto.num}')">답글보기</a></div><br><br>
 					<div id="listReply${dto.num}"></div>
 					
 <c:if test="${sessionScope.member.userId=='admin'}">
@@ -224,7 +246,6 @@ function sendReplyAnswer(num) {
 </div>
 </div>
 
-</c:if>
 
 <style>
 div {word-break:break-all;}

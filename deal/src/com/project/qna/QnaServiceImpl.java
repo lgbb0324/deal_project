@@ -92,5 +92,16 @@ public class QnaServiceImpl implements QnaService{
 		}
 		return list;
 	}
+
+	@Override
+	public int deleteReply(int num) {
+		int result=0;
+		try {
+			result=dao.deleteData("qna.deleteQna", num);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
 	
 }

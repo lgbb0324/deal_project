@@ -14,4 +14,6 @@ public interface QnaService {
 	public List<Qna> listReply(int num);
 	
 	public List<Qna> faqList(Map<String, Object> map);
+	
+	public int deleteReply(int num);
 }

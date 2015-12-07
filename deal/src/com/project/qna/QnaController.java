@@ -64,8 +64,18 @@ public class QnaController {
 		map.put("start", start);
 		
 		List<Qna> list=service.listQna(map);
+		
+		int listNum,n=0;
+		
+		Iterator<Qna> it = list.iterator();
+		while (it.hasNext()) {
+			Qna data = it.next();
+			listNum = dataCount - (start + n - 1);
+			data.setListNum(listNum);
+			n++;
+		}
 		String params = "";
-		String urlList = cp + "/board/list";
+		String urlList = cp + "/qna/list";
 		
 		if (searchValue.length() != 0) {
 			params = "searchKey=" + searchKey + "&searchValue="
@@ -86,9 +96,10 @@ public class QnaController {
 	}
 	@RequestMapping(value="/qna/created", method=RequestMethod.GET)
 	public ModelAndView qnaForm(HttpSession session) throws Exception{
-		SessionInfo info=(SessionInfo)session.getAttribute("member");
-		if(info==null)
-			return new ModelAndView("redirect:/main.do");
+		SessionInfo info = (SessionInfo)session.getAttribute("member");
+		if(info==null){
+			return new ModelAndView(".member.login");
+		}
 		
 		ModelAndView mav = new ModelAndView(".qna.created");
 		mav.addObject("mode", "created");
@@ -160,5 +171,27 @@ public class QnaController {
 		mav.addObject("list", list);
 		
 		return mav;
+	}
+	
+	@RequestMapping(value="/qna/deleteQna",method=RequestMethod.POST)
+	public void deleteQna(HttpServletResponse resp,HttpSession session,
+			@RequestParam(value="num")int num
+			)throws Exception{
+		SessionInfo info=(SessionInfo)session.getAttribute("member");
+		
+		String state="true";
+		if(info==null){
+			state="loginFail";
+		}else {
+			int result=service.deleteReply(num);
+			if(result==0)
+				state="false";
+		}
+		JSONObject job=new JSONObject();
+		job.put("state", state);
+		
+		resp.setContentType("text/html;charset=utf-8");
+		PrintWriter out=resp.getWriter();
+		out.print(job.toString());
 	}
 }

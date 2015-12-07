@@ -1,8 +1,8 @@
 package com.project.qna;
 
 public class Qna {
-	private int num,hitCount;
-	private String userId,subject,content,created;
+	private int listNum,num,hitCount;
+	private String userId,subject,content,created,imageFilename;
 	
 	private int replyNum;
 	
@@ -47,6 +47,18 @@ public class Qna {
 	}
 	public void setReplyNum(int replyNum) {
 		this.replyNum = replyNum;
+	}
+	public int getListNum() {
+		return listNum;
+	}
+	public void setListNum(int listNum) {
+		this.listNum = listNum;
+	}
+	public String getImageFilename() {
+		return imageFilename;
+	}
+	public void setImageFilename(String imageFilename) {
+		this.imageFilename = imageFilename;
 	}
 
 }

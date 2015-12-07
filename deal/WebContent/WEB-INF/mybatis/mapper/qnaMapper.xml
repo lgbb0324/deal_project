@@ -32,16 +32,15 @@
 </select>
 
 <select id="listQna" resultType="com.project.qna.Qna" parameterType="map">
-SELECT num, userId, subject,content,DATE_FORMAT(created, '%Y-%m-%d') AS created
-FROM qna
+SELECT q.num, q.userId, subject,content,DATE_FORMAT(q.created, '%Y-%m-%d') AS created,imageFilename
+FROM qna q
+LEFT JOIN photo p ON p.userId=q.userId
 <where>
 	<if test="searchValue != null and searchValue != ''">
 		<include refid="where-list"/>
 	</if>
 </where>
-ORDER BY num DESC
-
-
+ORDER BY q.num DESC
 </select>
 
 <update id="updateHitCount" parameterType="Integer">
@@ -61,6 +60,9 @@ JOIN qna q ON qr.num=q.num
 WHERE qr.num=#{num}
 </select>
 
+<delete id="deleteQna" parameterType="Integer">
+DELETE FROM qna WHERE num = #{num}
+</delete>
 
 <select id="rankHitCount" resultType="com.project.qna.Qna" parameterType="map">
 select tb.* from(
