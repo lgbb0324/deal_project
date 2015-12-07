@@ -81,5 +81,16 @@ public class QnaServiceImpl implements QnaService{
 		}
 		return result;
 	}
+
+	@Override
+	public List<Qna> faqList(Map<String, Object> map) {
+		List<Qna> list=null;
+		try {
+			list=dao.getListData("qna.rankHitCount",map);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return list;
+	}
 	
 }

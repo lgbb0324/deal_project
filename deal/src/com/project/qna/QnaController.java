@@ -150,5 +150,15 @@ public class QnaController {
 		return mav;
 	}
 	
-	
+	@RequestMapping(value="/faq/faqList")
+	public ModelAndView faqList(HttpServletRequest req
+			) throws Exception{
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Qna> list = service.faqList(map);
+		ModelAndView mav = new ModelAndView(".faq.list");
+		mav.addObject("list", list);
+		
+		return mav;
+	}
 }

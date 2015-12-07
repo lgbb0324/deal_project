@@ -163,7 +163,7 @@
                                         </li>
                                         <li><a href="<%=cp%>/qna/list.do">QnA</a>
                                         </li>
-                                        <li><a href="<%=cp%>/faq/list.do">FaQ</a>
+                                        <li><a href="<%=cp%>/faq/faqList.do">FaQ</a>
                                         </li>
 
                                     </ul>

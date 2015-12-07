@@ -12,4 +12,6 @@ public interface QnaService {
 	
 	public int insertReply(Qna dto);
 	public List<Qna> listReply(int num);
+	
+	public List<Qna> faqList(Map<String, Object> map);
 }
