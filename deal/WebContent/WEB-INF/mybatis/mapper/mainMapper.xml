@@ -21,6 +21,7 @@ SELECT num,d.userId,userName,subject,price,instantPrice,discountRate,category1,c
 				 ,COUNT(dealNum) countLike FROM deal d
 					LEFT JOIN dealLike l ON d.num=l.dealNum
 					GROUP BY num
+						ORDER BY num DESC
 	</select>
 
 
