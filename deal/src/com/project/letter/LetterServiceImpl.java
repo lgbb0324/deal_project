@@ -121,9 +121,16 @@ public class LetterServiceImpl implements LetterService{
 
 	@Override
 	public int updateIdentifyDay(int num) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result=0;
+		
+		try {
+			result=dao.updateData("letter.updateIdentifyDay", num);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
 	}
+	
 
 	@Override
 	public int deleteLetter(Map<String, Object> map) {
