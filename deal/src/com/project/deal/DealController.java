@@ -35,6 +35,7 @@ public class DealController {
 			) throws Exception {
 		ModelAndView mav=new ModelAndView(".deal.article");
 		Deal dto = service.readDeal(num);
+		List<Deal> graphdto = service.readDealGraph(dto.getSmillarNum());
 		
 		String[] image = new String[11];
 		int imageCount=0;
@@ -67,10 +68,58 @@ public class DealController {
 		}
 
 	}
+		/*Deal[] graph = new Deal[1];
+		
 
-	
+		System.out.println(graph[0].getAvgprice());
+*/
+		 
+/*		 for(int j=0;j<13;j++){
+			 for (Deal g : graphdto) { // 배열의 내용을 출력할 때 향상된 for문으로 간단하게 출력
+				 if(g.getDealmonth()==j){
+					 System.out.println("avg");
+					 graph[j].setAvgprice(g.getAvgprice());
+				 }else{
+					 System.out.println("else");
+					 graph[j].setAvgprice(0);
+				 }
 
+			 }
+			
+		 }*/
+		
+		int[] graph = new int[13];
+		
+		 for (Deal g : graphdto) {
+			 
+		 if(g.getDealmonth()==1){graph[1]=g.getAvgprice();}else{graph[1]=0;}
+		 if(g.getDealmonth()==2){graph[2]=g.getAvgprice();}else{graph[2]=0;}
+		 if(g.getDealmonth()==3){graph[3]=g.getAvgprice();}else{graph[3]=0;}
+		 if(g.getDealmonth()==4){graph[4]=g.getAvgprice();}else{graph[4]=0;}
+		 if(g.getDealmonth()==5){graph[5]=g.getAvgprice();}else{graph[5]=0;}
+		 if(g.getDealmonth()==6){graph[6]=g.getAvgprice();}else{graph[6]=0;}
+		 if(g.getDealmonth()==7){graph[7]=g.getAvgprice();}else{graph[7]=0;}
+		 if(g.getDealmonth()==8){graph[8]=g.getAvgprice();}else{graph[8]=0;}
+		 if(g.getDealmonth()==9){graph[9]=g.getAvgprice();}else{graph[9]=0;}
+		 if(g.getDealmonth()==10){graph[10]=g.getAvgprice();}else{graph[10]=0;}
+		 if(g.getDealmonth()==11){graph[11]=g.getAvgprice();}else{graph[11]=0;}
+		 if(g.getDealmonth()==12){graph[12]=g.getAvgprice();}else{graph[12]=0;}
+		 }
 
+		
+
+		mav.addObject("graphdto1", graph[1]);
+		mav.addObject("graphdto2", graph[2]);
+		mav.addObject("graphdto3", graph[3]);
+		mav.addObject("graphdto4", graph[4]);
+		mav.addObject("graphdto5", graph[5]);
+		mav.addObject("graphdto6", graph[6]);
+		mav.addObject("graphdto7", graph[7]);
+		mav.addObject("graphdto8", graph[8]);
+		mav.addObject("graphdto9", graph[9]);
+		mav.addObject("graphdto10", graph[10]);
+		mav.addObject("graphdto11", graph[11]);
+		mav.addObject("graphdto12", graph[12]);
 		
 		
 		mav.addObject("dealArticle", dto);
@@ -165,7 +214,8 @@ public class DealController {
 		
 		dto.setUserId(info.getUserId());
 		dto.setUserName(info.getUserName());
-
+	
+	
 		service.insertDeal(dto, path);
 		
 		return new ModelAndView("redirect:/main.do");
@@ -266,11 +316,23 @@ public class DealController {
 		
 		
 		@RequestMapping(value="/deal/dealCategoryList", method=RequestMethod.POST)
-		public void cityList(HttpServletResponse resp, int bcNum) throws Exception {
+		public void smallCategoryList(HttpServletResponse resp, int bcNum) throws Exception {
 			List<DealCategory> list=service.listSmallCategory(bcNum);
 			
 			JSONObject jso=new JSONObject();
 			jso.put("list", list);
+			
+			resp.setContentType("text/html;charset=utf-8");
+			PrintWriter out=resp.getWriter();
+			out.print(jso.toString());
+		}
+		
+		@RequestMapping(value="/deal/smillarDealList", method=RequestMethod.POST)
+		public void smillarDealList(HttpServletResponse resp, int smNum) throws Exception {
+			List<DealCategory> smillarlist=service.listSmillarDeal(smNum);
+			
+			JSONObject jso=new JSONObject();
+			jso.put("smillarlist", smillarlist);
 			
 			resp.setContentType("text/html;charset=utf-8");
 			PrintWriter out=resp.getWriter();

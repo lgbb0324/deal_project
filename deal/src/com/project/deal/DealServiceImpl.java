@@ -28,7 +28,11 @@ public class DealServiceImpl implements DealService{
 				dto.setSaveFilename(saveFilename);
 				dto.setOriginalFilename(dto.getUpload().getOriginalFilename());
 			}
+			if(dto.getSmillarNum()==0){
+				result=dao.insertData("deal.insertNewDeal", dto);
+			}else{
 			result=dao.insertData("deal.insertDeal", dto);
+			}
 		} catch(Exception e) {
 			System.out.println(e.toString());
 		}
@@ -104,6 +108,32 @@ public class DealServiceImpl implements DealService{
 			System.out.println(e.toString());
 		}
 		
+		return list;
+	}
+
+	@Override
+	public List<DealCategory> listSmillarDeal(int smNum) {
+		List<DealCategory> list = null;
+		
+		try {
+			list=dao.getListData("deal.listSmillarDeal", smNum);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return list;
+	}
+
+
+	@Override
+	public List<Deal> readDealGraph(int smillarNum) {
+		List<Deal> list=null;
+	
+		try {
+			list=dao.getListData("deal.listDealGraph", smillarNum);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 		return list;
 	}
 

@@ -6,15 +6,40 @@ public class Deal {
 
 		private int num;
 		private String userId,userName,subject,category1,category2,start_date,end_date,content,imageFilename,region1,region2,tag1,tag2;
-		private String image1,image2,image3,image4,image5,image6,image7,image8,image9,image10;
+		private String image1,image2,image3,image4,image5,image6,image7,image8,image9,image10,created;
 		
 		private int price,instantPrice,discountRate,people,approveCheck;
 		private MultipartFile upload;
 		private String saveFilename;
 		private String originalFilename;
-		private int countLike;
+		private int countLike,smillarNum;
+		private int dealmonth,avgprice;
 		
-
+		
+		public int getAvgprice() {
+			return avgprice;
+		}
+		public void setAvgprice(int avgprice) {
+			this.avgprice = avgprice;
+		}
+		public int getDealmonth() {
+			return dealmonth;
+		}
+		public void setDealmonth(int dealmonth) {
+			this.dealmonth = dealmonth;
+		}
+		public String getCreated() {
+			return created;
+		}
+		public void setCreated(String created) {
+			this.created = created;
+		}
+		public int getSmillarNum() {
+			return smillarNum;
+		}
+		public void setSmillarNum(int smillarNum) {
+			this.smillarNum = smillarNum;
+		}
 		public int getCountLike() {
 			return countLike;
 		}

@@ -64,8 +64,12 @@ function bigCategoryList() {
 		$("#smallCategory option").each(function() {
 			$("#smallCategory option:eq(0)").remove();
 		});
+		$("#smillarDeal option").each(function() {
+			$("#smillarDeal option:eq(0)").remove();
+		});
 
 		$("#smallCategory").append("<option value=''>::소분류선택::</option>");
+		$("#smillarDeal").append("<option value=''>::비슷한 딜 선택::</option>");
 		return false;
 	}
 	
@@ -81,8 +85,9 @@ function bigCategoryList() {
 			$("#smallCategory option").each(function() {
 				$("#smallCategory option:eq(0)").remove();
 			});
-
+			
 			 $("#smallCategory").append("<option value=''>::소분류선택::</option>");
+			 $("#smillarDeal").append("<option value=''>::비슷한 딜 선택::</option>");
 			 
 			 for(var idx=0; idx<data.list.length; idx++) {
 				 $("#smallCategory").append("<option value='"+data.list[idx].smNum+"'>"+data.list[idx].smName+"</option>");
@@ -92,6 +97,51 @@ function bigCategoryList() {
 	    	alert(e.responseText);
 	    }
 	});
+}
+
+
+function smillarDealList() {
+	var smNum=$("#smallCategory").val();
+	
+
+	if(smNum=="") {
+		$("#smillarDeal option").each(function() {
+			$("#smillarDeal option:eq(0)").remove();
+		});
+
+
+		$("#smillarDeal").append("<option value=''>::비슷한 딜 선택::</option>");
+		return false;
+	}
+	
+	
+	
+	var url="<%=cp%>/deal/smillarDealList.do";
+	var params="smNum="+smNum;
+	
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+		,success:function(data){
+			$("#smillarDeal option").each(function() {
+				$("#smillarDeal option:eq(0)").remove();
+			});
+
+			 $("#smillarDeal").append("<option value='0'>::비슷한 딜 선택::</option>");
+			 
+			 for(var idx=0; idx<data.smillarlist.length; idx++) {
+				 $("#smillarDeal").append("<option value='"+data.smillarlist[idx].smillarNum+"'>"+data.smillarlist[idx].subject+"</option>");
+			 }
+			 $("#smillarDeal").append("<option value='0'>없음</option>");
+		}
+	    ,error:function(e) {
+	    	alert(e.responseText);
+	    }
+	});
+	
+	
 }
   
 
@@ -178,8 +228,17 @@ function bigCategoryList() {
                                            <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">세부 카테고리</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select id="smallCategory" name="category2" class="form-control">
-                                                    <option>Choose SmallCategory</option>
+                                                <select id="smallCategory" name="category2" class="form-control"  onchange="smillarDealList();">
+                                                    <option value="">Choose SmallCategory</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">유사한 딜 목록</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <select id="smillarDeal" name="smillarNum" class="form-control">
+                                                    <option value="">Choose SmillarCategory</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -521,7 +580,8 @@ function check() {
     
 /* alert(start_date);
 alert(end_date); */
-  
+
+
 		f.action="<%=cp%>/deal/created.do?start_date="+start_date+"&end_date="+end_date;
 
 

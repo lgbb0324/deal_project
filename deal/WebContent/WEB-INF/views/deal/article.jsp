@@ -365,24 +365,29 @@
                     </div>
                 </div>
    
-   
+ 
         </div>
  <script src="<%=cp%>/res/template/js/chartjs/chart.min.js"></script>
 
 <script>
-       
-    var january= 50;
-    var february=0;
-    var march=0;
-    var april=0;
-    var may=0;
-    var june=0;
-    var july=0;
-    var agust=0;
-    var september=0;
-    var october=0;
-    var november=0;
-    var december=0;
+
+/* 
+ for (var num : ${graphdto}) { // 배열의 내용을 출력할 때 향상된 for문으로 간단하게 출력
+   if(num3.dealmonth==11)
+	   {alert("된당 ㅛ ㅛ");}
+}  */
+    var january= graphdto1;
+    var february=graphdto2;
+    var march=graphdto3;
+    var april=graphdto4;
+    var may=graphdto5;
+    var june=graphdto6;
+    var july=graphdto7;
+    var agust=graphdto8;
+    var september=graphdto9;
+    var october=graphdto10;
+    var november=graphdto11;
+    var december=graphdto12; 
   
     
 
@@ -397,7 +402,7 @@
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [0, 0, 0, 0, 0, 0, 0,0,0,0,0,0]
+                    data: [january, february, march, april, may, june, july,agust,september,october,november,december]
             },
                 {
                     label: "My Second dataset",
