@@ -97,4 +97,35 @@ public class LetterController {
 			return  mav;
 	
 	}
+	
+	//읽은 상태로 변환
+	@RequestMapping(value="/letter/updateIdentify", method=RequestMethod.POST)
+	public void updateIdentify(
+			HttpServletResponse resp, 
+			HttpSession session,
+			int num
+			) throws Exception{
+		// 쪽지 보기에서 답변을 확인 한 경우 읽은 상태로 만들기
+				SessionInfo info=(SessionInfo)session.getAttribute("member");
+				if(info==null) {
+					JSONObject job=new JSONObject();
+					job.put("isLogin", "false");
+
+					// 로그인이 되지 않은 상태를 JSON으로 전송
+					resp.setContentType("text/html; charset=utf-8");
+					PrintWriter out=resp.getWriter();
+					out.print(job.toString());
+					
+					return;
+				}
+				service.updateIdentifyDay(num);
+				
+				JSONObject job=new JSONObject();
+				job.put("isLogin", "true");
+				job.put("state", "true");
+				
+				resp.setContentType("text/html; charset=utf-8");
+				PrintWriter out=resp.getWriter();
+				out.print(job.toString());
+	}
 }

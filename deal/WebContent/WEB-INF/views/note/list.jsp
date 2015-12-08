@@ -15,7 +15,7 @@
  
  // 아이디 출력방법??
   var receiveUserId;
- 
+  var sendDate;
  // 모달창열기(쪽지 보내기창)
 
  function noteForm(id) {
@@ -40,20 +40,28 @@
  }
  
  
- function readForm(id){
-	 sendUserId=id;
+ function readForm(id , day){
+	var sendUserId=id;
+	var sendDay=day;
+/* 	var sendDay=day; */
 	 $("#ModalArticle").modal('show');
 	 $("#ModalArticle").click(function(){
 			
 			var s = sendUserId;
+			var d = sendDay;
 			$("#idWrite2").change();
 			$("#idWrite2").text(s); 
 			
+			$("#dateWrite").text(d);
+			$("#dateWrite").change();
+
 			});
 		
 		$(".btn btn-default btn-close").click(function(){
 			
 			$("#idWrite2").text("");
+			$("#dateWrite").text("");
+			
 				});
 		
 		 $(".btn btn-success").click(function(){
@@ -86,18 +94,23 @@ Licensed under MIT
                     <div class="modal-body" style="padding: 5px;">
                           <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                 <div class="col-lg-4 col-md-4 col-sm-4" style="padding-bottom: 10px; margin-top: 10px">
+                                 <div class="col-lg-5 col-md-5 col-sm-5" style="padding-bottom: 10px; margin-top: 10px">
                             	 <div> 보낸사람 </div> 
                                 </div> 
                             
-                                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-bottom: 10px;">
-                            	 <div style="margin-right: 20px;" class="form-control" id="idWrite2">  </div> 
+                                <div class="col-lg-5 col-md-5 col-sm-5" style="padding-bottom: 10px;">
+                            	 <div style="margin-right: 10px;" class="form-control" id="idWrite2">  </div> 
                                 </div>
                                 	</div>
-                              
+                                 <div class="col-lg-6 col-md-6 col-sm-6">
+                                 <div class="col-lg-4 col-md-4 col-sm-4" style="padding-bottom: 10px; margin-top: 10px">
+                            	 <div> 받은날짜 </div> 
+                                </div> 
+                            
                                 <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
-                                    <div style="float: right" class="form-control" id="sendDay2">받은 날짜 : </div>
+                            	 <div style="margin-right: 10px;" class="form-control" id="dateWrite">  </div> 
                                 </div>
+                                	</div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -152,6 +165,7 @@ Licensed under MIT
                                                 <th class="column-title"  style="text-align: center;">보낸 사람</th>
                                                 <th class="column-title"  style="text-align: center;">내 용</th>
                                                 <th class="column-title"  style="text-align: center;">날짜</th>
+                               			  		<th class="column-title"  style="text-align: center;">수신확인</th>
                                			  </tr>
                             			</thead>
 
@@ -159,7 +173,7 @@ Licensed under MIT
                          <c:forEach var="dto" items="${list1}">
                                  <tr style="text-align: center;">
                                     <td class="a-center ">
-                                        <input type="checkbox" class="flat" name="table_records">
+                                       
                                     </td>
                                     <td class=" ">
                                     	<ul style="padding:0">
@@ -176,10 +190,10 @@ Licensed under MIT
 								            
 								          </ul>
 								        </li></ul></td>
-                                    <td class="even pointer"><a onclick="readForm('${dto.sendUserId}')">${dto.content}</a></td>
-                                    <td class=" ">${dto.sendDay}
-                                    
-                                    </td>
+                                    <td class="even pointer"><a onclick="readForm('${dto.sendUserId}','${dto.sendDay}')">${dto.content}</a></td>
+                                    <td class=" ">${dto.sendDay}</td>
+                                    <td class=" ">${dto.identifyDay}</td>
+                                  
                                   </tr>
                                   
                                   </c:forEach>
@@ -215,6 +229,8 @@ Licensed under MIT
                                                 <th class="column-title"  style="text-align: center;">받는 사람</th>
                                                 <th class="column-title"  style="text-align: center;">내 용</th>
                                                 <th class="column-title"  style="text-align: center;">날짜</th>
+                                                <th class="column-title"  style="text-align: center;">수신확인(날짜)</th>
+                                                
                                			  </tr>
                             			</thead>
 
@@ -225,7 +241,7 @@ Licensed under MIT
                           
                            <c:forEach var="dto" items="${list2}">
                                 <tr style="text-align: center;">
-                                    <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
+                                    <td class="a-center "></td>
                                     <td class=" ">
                                     	<ul style="padding:0">
                                     	<li class="dropdown">
@@ -243,6 +259,8 @@ Licensed under MIT
 								        </li></ul></td>
                                     <td  class="even pointer"  data-toggle="modal" data-target="#myModal" >${dto.content}</td>
                                     <td class=" ">${dto.sendDay}</td>
+                                    <td class=" ">${dto.identifyDay}</td>
+                                    
                                  </tr>
                                   </c:forEach>
                                  
