@@ -35,7 +35,7 @@
 	
 	<select id="listReceive" parameterType="String" resultType="com.project.letter.Letter">
 		    SELECT num, content, sendUserId, receiveUserId, DATE_FORMAT(sendDay, '%Y-%m-%d') AS sendDay
-             
+             		,DATE_FORMAT(identifyDay, '%Y-%m-%d') AS identifyDay
                    FROM letter JOIN member ON sendUserId=userId
            
 	     	      <where>
@@ -75,7 +75,7 @@
 	
 		 
 			     SELECT num, content, sendUserId, receiveUserId, DATE_FORMAT(sendDay, '%Y-%m-%d') AS sendDay
-             
+             		, DATE_FORMAT(identifyDay, '%Y-%m-%d') AS identifyDay
                    FROM letter JOIN member ON receiveUserId=userId
                     <where>
 	     	    	sendUserId = #{userId}
@@ -96,12 +96,9 @@
     </select>
 	
 	
-	
-	
-	 <!-- 쪽지를확인상태로변경 -->
-	 
-<!--     <delete id="updateIdentifyDay" parameterType="Integer">
-        UPDATE letter SET identifyDay = SYSDATE 
+	 <!-- 쪽지를확인상태로변경 --> 
+   <update id="updateIdentifyDay" parameterType="Integer">
+        UPDATE letter SET identifyDay = now()
                  WHERE num=#{num} AND identifyDay IS NULL
-    </delete> -->
+    </update> 
 </mapper>

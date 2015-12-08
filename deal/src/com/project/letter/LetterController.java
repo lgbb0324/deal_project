@@ -98,7 +98,7 @@ public class LetterController {
 	
 	}
 	
-	//읽은 상태로 변환
+	//읽은 상태로 변환 하기
 	@RequestMapping(value="/letter/updateIdentify", method=RequestMethod.POST)
 	public void updateIdentify(
 			HttpServletResponse resp, 

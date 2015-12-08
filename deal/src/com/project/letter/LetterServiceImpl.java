@@ -119,6 +119,7 @@ public class LetterServiceImpl implements LetterService{
 		return null;
 	}
 
+	//쪽지 읽은상태 바꾸기
 	@Override
 	public int updateIdentifyDay(int num) {
 		int result=0;

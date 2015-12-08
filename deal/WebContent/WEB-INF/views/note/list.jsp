@@ -1,6 +1,4 @@
-<!-- 복사본(강사님) -->
-
-
+<!-- deal 원본 -->
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -13,9 +11,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
  <script>
  
- // 아이디 출력방법??
-  var receiveUserId;
-  var sendDate;
+ // 출력해주기
+		 
+		 
+  	var receiveUserId;
+	var sendUserId=0;
+	var sendDay;
+	var readNum;
+	var content;
  // 모달창열기(쪽지 보내기창)
 
  function noteForm(id) {
@@ -34,44 +37,68 @@
 		$(".ui-dialog-titlebar-close").click(function(){
 			
 			$("#idWrite").text("");
-				});
+				
+		});
 		
 	
  }
  
  
- function readForm(id , day){
-	var sendUserId=id;
-	var sendDay=day;
-/* 	var sendDay=day; */
+	
+ function readForm(sendUserId ,sendDay, readNum, content){
+	
 	 $("#ModalArticle").modal('show');
+	 
+		this.sendUserId=sendUserId;				
+	 	this.sendDay=sendDay;
+	 	this.readNum=readNum;
+	 	this.content=content;
+
+	 	// 읽은 상태로 만들기 Ajax 처리
+	 	var url="<%=cp%>/letter/updateIdentify.do";
+		var num=readNum;
+	 	alert(num);
+		
+		$.post(url, {num:num}, function(data){
+		
+			
+		}, "json");
+		
 	 $("#ModalArticle").click(function(){
 			
-			var s = sendUserId;
-			var d = sendDay;
+		 
+		 
+			$("#idWrite2").text(sendUserId); 
 			$("#idWrite2").change();
-			$("#idWrite2").text(s); 
 			
-			$("#dateWrite").text(d);
-			$("#dateWrite").change();
+			 $("#dateWrite").text(sendDay);
+			$("#dateWrite").change(); 
 
-			});
-		
-		$(".btn btn-default btn-close").click(function(){
+			 $("#letterContent2").text(content);
+				$("#letterContent2").change();
+				
+			
+			
+			
+			$(".btn btn-success").click(function(){
+				 
+				 $('#ModalArticle').modal('close');
+			 });
+			
+			$(".btn btn-default btn-close").click(function(){
 			
 			$("#idWrite2").text("");
 			$("#dateWrite").text("");
 			
 				});
-		
-		 $(".btn btn-success").click(function(){
-		 
-			 $('#ModalArticle').modal('close');
-		 });
-		 
-		 
+			});
  }
  
+		
+		
+		 
+		 
+		 
  
  
  </script>
@@ -84,7 +111,7 @@ Bootstrap Line Tabs by @keenthemes
 A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
 Licensed under MIT
 -->
-                      <!--  임시 쪽지 확인창 -->
+                      <!--받은 쪽지 확인창-->
                                <div class="modal fade" id="ModalArticle"  role="dialog" aria-labelledby="receiveLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="panel panel-primary">
@@ -125,7 +152,7 @@ Licensed under MIT
                     </div>
                 </div>
             </div>
-            <!--  임시쪽지 확인 종료 -->
+            <!--  받은 쪽지 확인 종료 -->
 
 
 
@@ -146,9 +173,12 @@ Licensed under MIT
 							보낸 쪽지함 </a>
 						</li>
 					</ul>	
+					
 					<div class="tab-content">
 						<div class="tab-pane active" id="tab_default_1"> <!-- 받은쪽지함 -->
 						<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <!-- 검색바 설정(아이디로 검색, 되면 날짜가지) -->
+                            
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search for...">
                                     <span class="input-group-btn">
@@ -156,6 +186,9 @@ Licensed under MIT
                         </span>
                                 </div>
                             </div>
+                            <!-- 검색종료 -->
+                            
+                            <!-- 받은쪽지함  시작 첫번째 탭-->
 							 <table class="table table-striped responsive-utilities jambo_table bulk_action">
                                         <thead>
                                             <tr class="headings">
@@ -190,15 +223,23 @@ Licensed under MIT
 								            
 								          </ul>
 								        </li></ul></td>
-                                    <td class="even pointer"><a onclick="readForm('${dto.sendUserId}','${dto.sendDay}')">${dto.content}</a></td>
+                                    <td class="even pointer"><a onclick="readForm('${dto.sendUserId}','${dto.sendDay}' ,'${dto.num}','${dto.content}')">${dto.content}</a>
+                                    
+                                    </td>
                                     <td class=" ">${dto.sendDay}</td>
-                                    <td class=" ">${dto.identifyDay}</td>
-                                  
+                                    <c:if test="${dto.identifyDay==null}">
+                                    <td>읽지 않음</td>
+                                	</c:if>
+                                	 <c:if test="${dto.identifyDay!=null}">
+                                    <td>${dto.identifyDay}</td>
+                                	</c:if>
                                   </tr>
                                   
                                   </c:forEach>
                              </tbody>
                           </table>
+                          <!-- 받은쪽지함 종료 -->
+                          <!--  나중에 페이징처리 -->
                        <div class="container" >
 						<ul class="pagination">
 						              <li class="disabled"><a href="#">≪</a></li>
@@ -210,8 +251,10 @@ Licensed under MIT
 						              <li><a href="#">≫</a></li>
 						            </ul>
 						</div>
+						
+						<!-- 보낸쪽지함 시작 -->
                         </div>
-						<div class="tab-pane" id="tab_default_2"> <!-- 보낸쪽지함 -->
+						<div class="tab-pane" id="tab_default_2"> 
 						<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search for...">
@@ -259,13 +302,19 @@ Licensed under MIT
 								        </li></ul></td>
                                     <td  class="even pointer"  data-toggle="modal" data-target="#myModal" >${dto.content}</td>
                                     <td class=" ">${dto.sendDay}</td>
-                                    <td class=" ">${dto.identifyDay}</td>
+                                  	<c:if test="${dto.identifyDay==null}">
+                                    	<td>읽지 않음</td>
+                                	</c:if>
+                                	 <c:if test="${dto.identifyDay!=null}">
+                                    	<td>${dto.identifyDay}</td>
+                                	</c:if>
                                     
                                  </tr>
                                   </c:forEach>
                                  
                              </tbody>
                           </table>
+                          <!-- 보낸 쪽지함 종료 -->
                            	<ul class="pagination">
 						              <li class="disabled"><a href="#">≪</a></li>
 						              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
