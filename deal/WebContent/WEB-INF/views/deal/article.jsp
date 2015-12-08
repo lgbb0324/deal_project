@@ -371,10 +371,23 @@
 
 <script>
        
+    var january= 50;
+    var february=0;
+    var march=0;
+    var april=0;
+    var may=0;
+    var june=0;
+    var july=0;
+    var agust=0;
+    var september=0;
+    var october=0;
+    var november=0;
+    var december=0;
+  
     
 
         var lineChartData = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"],
             datasets: [
                 {
                     label: "My First dataset",
@@ -384,7 +397,7 @@
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [31, 74, 6, 39, 20, 85, 7]
+                    data: [0, 0, 0, 0, 0, 0, 0,0,0,0,0,0]
             },
                 {
                     label: "My Second dataset",
@@ -394,7 +407,7 @@
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [82, 23, 66, 9, 99, 4, 2]
+                    data: [${dealArticle.price}, 23, 66, 9, 99, 4, 2]
             }
         ]
 

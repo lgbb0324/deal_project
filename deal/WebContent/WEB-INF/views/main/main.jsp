@@ -427,7 +427,7 @@ function countLike(id,count){
                     <h5><span>Shared publicly</span> - <span>Jun 25, 2014</span> </h5>
                 </div>
                 <div class="panel-body">
-                    <p style="font-size:20px;">${dto.subject}<!--  <a href="http://bootsnipp.com/snippets/MaWrA">http://bootsnipp.com/snippets/MaWrA</a> --></p>
+                    <a href="<%=cp%>/deal/article.do?num=${dto.num}"><p style="font-size:20px;">${dto.subject}<!--  <a href="http://bootsnipp.com/snippets/MaWrA">http://bootsnipp.com/snippets/MaWrA</a> --></p></a>
                     <a class="panel-google-plus-image" href="<%=cp%>/deal/article.do?num=${dto.num}">
                         ${dto.image1}
                     </a>

@@ -144,9 +144,9 @@ function bigCategoryList() {
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label name="price" class="control-label col-md-3 col-sm-3 col-xs-12">가격</label>
+                                            <label  class="control-label col-md-3 col-sm-3 col-xs-12">가격</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" placeholder="딜 성공 예상가격">
+                                                <input name="price" type="text" class="form-control" placeholder="딜 성공 예상가격">
                                             </div>
                                         </div>
                                            <div class="form-group">
@@ -519,8 +519,8 @@ function check() {
         return false;
     }
     
-alert(start_date);
-alert(end_date);
+/* alert(start_date);
+alert(end_date); */
   
 		f.action="<%=cp%>/deal/created.do?start_date="+start_date+"&end_date="+end_date;
 
@@ -536,7 +536,7 @@ $(document).ready(function () {
         start_date=start.toISOString();
         end_date=end.toISOString();
         
-         alert( start_date+":"+end_date); 
+        /*  alert( start_date+":"+end_date);  */
     });
 
 });
