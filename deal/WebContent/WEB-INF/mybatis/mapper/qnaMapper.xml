@@ -8,8 +8,8 @@
 </insert>
 
 <sql id="where-list">
- 	<if test = "searchKey == 'name'">
-		name = #{searchValue}
+ 	<if test = "searchKey == 'userId'">
+		q.userId = #{searchValue}
 	</if>
 	<if test="searchKey == 'subject'">
 		subject LIKE CONCAT('%', #{searchValue}, '%')
@@ -18,7 +18,7 @@
 		INSTR(content, #{searchValue}) &gt; 0
 	</if>
 	<if test="searchKey == 'created'">
-		DATE_FORMAT(created, '%Y-%m-%d') = #{searchValue}
+		DATE_FORMAT(q.created, '%Y-%m-%d') = #{searchValue}
 	</if>
 </sql>
    
@@ -36,11 +36,12 @@ SELECT q.num, q.userId, subject,content,DATE_FORMAT(q.created, '%Y-%m-%d') AS cr
 FROM qna q
 LEFT JOIN photo p ON p.userId=q.userId
 <where>
-	<if test="searchValue != null and searchValue != ''">
+	<if test="searchValue != null and searchValue !='' ">
 		<include refid="where-list"/>
 	</if>
 </where>
 ORDER BY q.num DESC
+LIMIT #{start},10
 </select>
 
 <update id="updateHitCount" parameterType="Integer">

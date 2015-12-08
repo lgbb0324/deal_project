@@ -10,7 +10,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <style>
-
 .page-header{
 padding-bottom:9px;margin:40px 0 20px;border-bottom:1px solid #eee;font-size: 23pt;color: #555;    
     font-weight: bold;}
@@ -56,6 +55,13 @@ margin-left:5%
 </style>
 
 <script type="text/javascript">
+
+function searchList() {
+	var f=document.searchForm;
+	f.action="<%=cp%>/qna/list.do";
+	f.submit();
+}
+
 // 댓글별 답글 리스트
 function listReply(num) {
 	var rta="#listReply"+num;
@@ -158,15 +164,25 @@ function deleteQna(num) {
 <div class="container">
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
-    		
-    		<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+    	
+    		 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                 <form action="" name="searchForm" method="post">
+                 <select name="searchKey" class="selectField pull-left" style="height:32px; border-radius:20px;">
+					<option value="subject">제목</option>
+					<option value="userId">작성자</option>
+					<option value="content">내용</option>
+					<option value="created">등록일</option>
+			    </select>
+			     
+			    
                  <div class="input-group">
-                       <input type="text" class="form-control" placeholder="Search for...">
+                       <input type="text" name="searchValue" class="form-control" placeholder="Search for...">
                        <span class="input-group-btn">
-                       <button class="btn btn-default" type="button">Go!</button>
+                       <button class="btn btn-default" type="button" onclick="searchList()">Go!</button>
                        </span>
                  </div>
-           	</div>
+                 </form>
+           		</div>
            	
       <h2 class="page-header">Q&A</h2>
         <section class="comment-list">
@@ -230,7 +246,9 @@ function deleteQna(num) {
           <!-- 페이징 -->
           <div class="x_content" style="float: left">
           <a href="<%=cp%>/qna/created.do"><button type="button" class="btn btn-danger">글쓰기</button></a>
-          <ul class="pagination">
+          <div style="height: 30px">${pageIndexList}</div>
+          
+          <!-- <ul class="pagination">
 			<li class="disabled"><a href="#">«</a></li>
 			<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 			<li><a href="#">2</a></li>
@@ -238,7 +256,7 @@ function deleteQna(num) {
 			<li><a href="#">4</a></li>
 			<li><a href="#">5</a></li>
 			<li><a href="#">»</a></li>
-			</ul>
+			</ul> -->
 		  </div>
         </section>
     </div>

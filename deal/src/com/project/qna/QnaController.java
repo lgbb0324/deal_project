@@ -72,10 +72,12 @@ public class QnaController {
 			Qna data = it.next();
 			listNum = dataCount - (start + n - 1);
 			data.setListNum(listNum);
+			data.setCreated(data.getCreated().substring(0, 10));
 			n++;
 		}
 		String params = "";
-		String urlList = cp + "/qna/list";
+		String urlList = cp + "/qna/list.do";
+		String urlArticle = cp + "/qna/list.do?pageNum=" + current_page;
 		
 		if (searchValue.length() != 0) {
 			params = "searchKey=" + searchKey + "&searchValue="
@@ -84,12 +86,14 @@ public class QnaController {
 
 		if (params.length() != 0) {
 			urlList += "?" + params;
+			urlArticle+="&"+params;
 		}
 		
 		ModelAndView mav=new ModelAndView(".qna.list");
 		mav.addObject("list", list);
 		mav.addObject("dataCount", dataCount);
 		mav.addObject("pageNum", current_page);
+		mav.addObject("urlArticle", urlArticle);
 		mav.addObject("pageIndexList",myUtil.pageIndexList(current_page, total_page, urlList));
 
 		return mav;
