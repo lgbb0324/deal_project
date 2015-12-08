@@ -380,7 +380,7 @@ function sendLogin() {
                                     <li>
                                         <a>
                                             <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
+                                        <img src="<%=cp%>/res/images/img.jpg" alt="Profile Image" />
                                     </span>
                                             <span>
                                         <span>John Smith</span>
@@ -394,7 +394,7 @@ function sendLogin() {
                                     <li>
                                         <a>
                                             <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
+                                        <img src="<%=cp%>/res/images/img.jpg" alt="Profile Image" />
                                     </span>
                                             <span>
                                         <span>John Smith</span>
@@ -408,7 +408,7 @@ function sendLogin() {
                                     <li>
                                         <a>
                                             <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
+                                        <img src="<%=cp%>/res/images/img.jpg" alt="Profile Image" />
                                     </span>
                                             <span>
                                         <span>John Smith</span>
@@ -422,7 +422,7 @@ function sendLogin() {
                                     <li>
                                         <a>
                                             <span class="image">
-                                        <img src="images/img.jpg" alt="Profile Image" />
+                                        <img src="<%=cp%>/res/images/img.jpg" alt="Profile Image" />
                                     </span>
                                             <span>
                                         <span>John Smith</span>
