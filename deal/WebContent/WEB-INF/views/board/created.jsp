@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="x_content">
                                     <br>
-                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" onsubmit="return check();">
+                                    <form name = "boardForm" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" onsubmit="return submitContents(this);">
 
                                         <div class="form-group">
                                             <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">제목<span class="required">*</span>
@@ -151,8 +151,8 @@ function setDefaultFont() {
         }
 
     	str = f.content.value;
-    	alert(str);
-        if(!str) {
+    	
+    	 if(str=="" || str=="<br>") {
             alert("\n내용을 입력하세요. ");
             f.content.focus();
             return false;
