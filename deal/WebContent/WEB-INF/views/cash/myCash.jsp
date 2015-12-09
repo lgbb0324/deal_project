@@ -12,10 +12,42 @@
 	  if (!data) return e.preventDefault() // stops modal from being shown
 	})	 */
 	
-	function cashForm(userId) {
+	function cashForm() {
 		$("#userId").val("");
 		$('#cashmodal').modal('show');
+		
+		
 	}
+	
+	function chargeCash(){
+		var cash=$.trim($("#cashPrice").val());
+
+		
+		var url="<%=cp%>/cash/insertCash.do";
+		var params="userId="+userId+"&cash="+cash;
+		$.ajax({
+			type:"POST",
+			url:url,
+			data:params,
+			dataType:"json",
+			success:function(data){
+				var isLogin=data.isLogin;
+				if(isLogin=="false") {
+					location.href="<%=cp%>/member/member.do";
+					return false;
+				}
+				$("#cashPrice").val("");
+				// 여기에 받는 유저아이디를 받아야한다.?
+	    		alert("성공적으로 충전했습니다.");
+			},
+			error:function(e) {
+	    		alert("충전과정 중 오류가 발생했습니다.");
+	    	}
+		});
+		$('#cashmodal').modal('hide');
+	}
+	
+	
 	
 	function refundForm(userId) {
 		$("#userId").val("");
@@ -549,9 +581,8 @@
 									  <div class="modal-dialog">
 									      <div class="container">
 											    <blockquote id="js" class="quote-box">
-											    <span class="pull-right note_fontsize" >2015-11-18[16:59]</span><!-- 보낸시간 뜨는거야 -->
 											     
-											      <p class="">
+											    
 											      <!-- CREDIT CARD FORM STARTS HERE -->
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table" >
@@ -563,7 +594,7 @@
                     </div>                    
                 </div>
                 <div class="panel-body">
-                    <form role="form" id="payment-form">
+                   
                         <div class="row">
                             <div class="col-xs-12 col-md-12 col-sm-12">
                                 <div class="form-group">
@@ -572,7 +603,7 @@
                                         <input 
                                       
                                             class="form-control"
-                                            name="cardNumber"
+                                            id="cardNumber"
                                             placeholder="하이픈(-)제거 후 입력"
                                             required autofocus 
                                         />
@@ -589,7 +620,7 @@
                                     <input 
                                     
                                         class="form-control"
-                                        name="cardCVC"
+                                        id="cardCVC"
                                         placeholder="CVC 3자리 입력"
                                         required
                                     />
@@ -602,7 +633,7 @@
                                      <input 
                                 
                                         class="form-control"
-                                        name="cashPrice"
+                                        id="cashPrice"
                                         placeholder="1000원이상"
                                         required
                                     />
@@ -613,8 +644,8 @@
                         
                         <div class="row">
                             <div class="col-xs-12">
-                                <center>
-                                <button style="width:150px" class="btn btn-success btn-lg btn-block" type="submit">결제</button>
+                               <center>
+                            <input type="submit" class="btn btn-success" value="결제하기" onclick="chargeCash();"/>
                             	</center>
                             </div>
                         </div>
@@ -623,7 +654,7 @@
                                 <p class="payment-errors"></p>
                             </div>
                         </div>
-                    </form>
+                  
                 </div>
   
 					     
