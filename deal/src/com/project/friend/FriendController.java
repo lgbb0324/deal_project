@@ -28,9 +28,10 @@ public class FriendController {
 		
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 		List<Friend> list=service.friendList(info.getUserId());
-
+		List<Friend> myFriendList=service.myFriendList(info.getUserId());
 		ModelAndView mav = new ModelAndView(".friend.list");
 		mav.addObject("allList", list);
+		mav.addObject("myFriendList", myFriendList);
 		mav.addObject("mode", "allList");
 		mav.addObject("member",info);
 		return mav;

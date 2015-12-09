@@ -44,9 +44,11 @@ function insertFriend(friendUserId) {
 	        success: function(data){
 	        	var s=$.trim(data);
 				if(s=="loginFail") {
-					location.href="<%=cp%>/member/login";
+					location.href="<%=cp%>/member/login.do";
 					return false;	
 				}
+				
+				location.href="<%=cp%>/friend/list.do";
 	        	
 	        },
 	        error: function(e){
@@ -109,14 +111,22 @@ Licensed under MIT
 							                  
 							                  <div class="searchable-container">
 							                <c:if test="${mode=='allList'}">
-							              		<c:forEach var="dto"  items="${allList}">  
+							              		<c:forEach var="dto"  items="${allList}">
+							              		
 							               <div class="items col-md-6 col-sm-6 col-xs-12 animated fadeInDown"> <!-- 한줄에 몇개인지 -->
                                               <!-- c:forEach -->
                                             <div class="well profile_view"> <!-- 테두리 -->
                                                 <div class="col-xs-12"> <!-- 전체 크기 -->
+                                                 <c:if test="${dto.imageFilename!=null }">
+                                                   <div class="col-xs-5"> <!-- 그림 -->
+                                                         <a><img src="<%=cp%>/uploads/photo/${dto.imageFilename}" alt="" class="img-circle1 img-responsive"  style="padding:0px; margin: 0;"></a> <!-- 사진 -->
+                                                   </div> <!-- 그림끝 -->
+                                                   </c:if>
+                                                      <c:if test="${dto.imageFilename==null }">
                                                    <div class="col-xs-5"> <!-- 그림 -->
                                                          <a><img src="<%=cp %>/res/images/admin.PNG" alt="" class="img-circle1 img-responsive"  style="padding:0px; margin: 0;"></a> <!-- 사진 -->
                                                    </div> <!-- 그림끝 -->
+                                                   </c:if>
                                                     <div class="col-xs-4" style="vertical-align: middle;"> <!-- 이름과 팔로우수 -->
 						                                      <ul style="padding:0; margin-top: 20%;">
 						                                       <li class="dropdown" >
@@ -129,26 +139,36 @@ Licensed under MIT
 								                                     <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 신고하기</a></li>
 								                                    </ul>
 						                            	      </li></ul>
-						                                	<span>팔로우 450명</span>
+						                                	<span>팔로우 ${dto.cnt }명</span>
 						                            </div>   <!-- 이름과 팔로우수 끝 -->   
-						                            
-                                                    <div class="" data-toggle="buttons" style="margin-top:35px; ">
-												         <label class="btn btn-lg btn-default active" onclick="deleteFriend('${dto.userId}')" style="font-size: 9pt; border-color: #791212; border-width: 3px;">
+						                         
+                                                    	<div class="" data-toggle="buttons" style="margin-top:35px; ">
+                                                    	
+                                                    	<c:set var="active" value=""/>
+                                                    	   <c:forEach var="mdto" items="${myFriendList }">
+                                                    	   
+                                                    	   <c:if test="${dto.userId==mdto.friendUserId}">
+                                                    	   <c:set var="active" value="active"/>
+												         <label class="btn btn-lg btn-default" onclick="deleteFriend('${dto.userId}')" style="font-size: 9pt; border-color: #791212; border-width: 3px;">
 												            <input  type="radio" name="options" id="option1" autocomplete="off" checked>
 												            <span class="glyphicon glyphicon-ok"></span>팔로우
 												        </label>
-												        <label class="btn btn-lg btn-default"  style="font-size: 9pt; " onclick="insertFriend('${dto.userId}')">
-												            <input  type="radio" name="options" id="option2" autocomplete="off">
-												             <span class="glyphicon glyphicon-plus "></span>팔로우
+												              </c:if>
+												         </c:forEach>
+												   
+												        <label class="btn btn-lg btn-default ${active}"  style="font-size: 9pt; " onclick="insertFriend('${dto.userId}');" >
+												            <input  type="radio" name="options" id="option2" autocomplete="off"  >
+												             <span class="glyphicon glyphicon-plus " ></span>팔로우
 												        </label>   
 														</div>
-												   
+												     
 												   
                                                </div> <!-- 전체크기 끝 -->
                                             </div> <!-- 테두리 끝 -->
                                        <br><br>
                                         </div> <!-- 한줄에 몇개인지 끝 -->
-                                           </c:forEach>
+                                        </c:forEach>
+                                        
                                             </c:if>
                                             </div>
                                             
@@ -174,7 +194,7 @@ Licensed under MIT
 								                                     <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span> 신고하기</a></li>
 								                                    </ul>
 						                            	      </li></ul>
-						                                	<span>팔로우 450명</span>
+						                                	<span>팔로우 ${dto.cnt }명</span>
 						                            </div>   <!-- 이름과 팔로우수 끝 -->   
 						                            
                                                     <div class="" data-toggle="buttons" style="margin-top:35px; ">

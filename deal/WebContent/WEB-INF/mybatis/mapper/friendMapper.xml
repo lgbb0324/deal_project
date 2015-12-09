@@ -3,10 +3,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="friend">
      <select id="friendList"  parameterType="map"
-               resultType="com.project.friend.Friend">
-                 SELECT   userId
-                           FROM  member
-                           WHERE  userId  NOT IN  (#{userId})
+               resultType="com.project.friend.Friend">                          
+                          SELECT   m.userId, p.imageFilename, ifnull(cnt,0) cnt
+                           FROM  member m JOIN photo p ON m.userId=p.userId
+											left outer JOIN (SELECT   friendUserId, ifnull(count(friendUserId),0) cnt
+                        													FROM  friend 
+                     												    group by friendUserId) f 
+														 ON m.userId = f.friendUserId 
+	WHERE  m.userId  NOT IN  (#{userId})
      </select>
      
      <insert id="insertFriend"  parameterType="com.project.friend.Friend">

@@ -250,19 +250,13 @@ function countLike(id,count){
       <div class="carousel-inner">
       
         <div class="item active">
-          <img src="<%=cp%>/res/images/fifa.png">
-           <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
-            <h4><a href="#">aaaaaaaaaaaaaaaaaaaaaaaaa</a></h4>
-            <p>aaaaaaaaaaaaaaaaaaaaaa ㅅㅅ</a></p>
-          </div>
+          <img src="<%=cp%>/res/images/main1.jpg">
+
         </div><!-- End Item -->
  
          <div class="item">
-          <img src="<%=cp%>/res/images/wmp.png">
-           <div class="carousel-caption col-xs-12 col-sm-12 col-md-12">
-            <h4><a href="#">bbbbbbbbbbbbbbbbbbbbbbbbbbbb</a></h4>
-            <p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb<a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
-          </div>
+          <img src="<%=cp%>/res/images/main2.jpg">
+          
         </div><!-- End Item -->
         
         <div class="item">

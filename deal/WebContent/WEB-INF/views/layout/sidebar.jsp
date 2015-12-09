@@ -12,7 +12,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="<%=cp%>/main.do" class="site_title"><i class="fa fa-user"></i> <span>Dealer Chic!!</span></a>
+                        <a href="<%=cp%>/main.do" class="site_title" style="background: #ffffff"><img src="<%=cp %>/res/images/logosample.jpg" style="width:230px; height:55px; pull-left"></a>
                     </div>
                     <div class="clearfix"></div>
 

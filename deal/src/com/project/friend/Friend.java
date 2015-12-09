@@ -10,7 +10,7 @@ public class Friend {
 	private List<Integer> numList;
 	private List<String> userIdList;
 	private String mode;
-	private int friendUserIdcount;
+	private int cnt;
 /*
   -- state
     -- '0' : Ä£±¸¾Æ´Ô
@@ -21,11 +21,11 @@ public class Friend {
 	public int getNum() {
 		return num;
 	}
-	public int getFriendUserIdcount() {
-		return friendUserIdcount;
+	public int getCnt() {
+		return cnt;
 	}
-	public void setFriendUserIdcount(int friendUserIdcount) {
-		this.friendUserIdcount = friendUserIdcount;
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
 	}
 	public void setNum(int num) {
 		this.num = num;
