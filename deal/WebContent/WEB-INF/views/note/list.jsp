@@ -60,14 +60,6 @@
 	 	alert(num);
 		
 		$.post(url, {num:num}, function(data){
-		
-			
-		}, "json");
-		
-	 $("#ModalArticle").click(function(){
-			
-		 
-		 
 			$("#idWrite2").text(sendUserId); 
 			$("#idWrite2").change();
 			
@@ -75,22 +67,17 @@
 			$("#dateWrite").change(); 
 
 			 $("#letterContent2").text(content);
-				$("#letterContent2").change();
-				
+			 $("#letterContent2").change();
 			
-			
+		}, "json");
+		
+	 $("#ModalArticle").click(function(){
 			
 			$(".btn btn-success").click(function(){
 				 
 				 $('#ModalArticle').modal('close');
 			 });
-			
-			$(".btn btn-default btn-close").click(function(){
-			
-			$("#idWrite2").text("");
-			$("#dateWrite").text("");
-			
-				});
+		
 			});
  }
  
