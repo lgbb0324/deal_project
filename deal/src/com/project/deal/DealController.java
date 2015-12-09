@@ -123,7 +123,7 @@ public class DealController {
 					break;
 				}else
 				{
-					System.out.println("ss");
+					/*System.out.println("ss");*/
 					graph[n]=0;
 					/*System.out.println("ss");
 					graph[n]=0;
@@ -138,7 +138,7 @@ public class DealController {
 		}
 		int n2=0;
 		for(int a:graph){
-			System.out.println(n2+"¿ù-"+graph[n2]);
+			/*System.out.println(n2+"¿ù-"+graph[n2]);*/
 			n2++;
 		}
 		/* for (Deal g : graphdto) {

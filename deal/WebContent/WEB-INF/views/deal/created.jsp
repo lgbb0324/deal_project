@@ -572,6 +572,7 @@ function check() {
     }
 
 	str = f.content.value;
+	alert(str);
     if(str=="" || str=="<br>") {
         alert("내용을 입력하세요. ");
         f.content.focus();

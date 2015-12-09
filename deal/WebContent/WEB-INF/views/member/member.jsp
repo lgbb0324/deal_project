@@ -124,6 +124,7 @@ function memberOk() {
 			f.upload.focus();
 			return false;
 		}
+	 alert(f.businessNum.value());
 
 	f.action = "<%=cp%>/member/member.do";
 	f.submit();
@@ -361,6 +362,16 @@ function checkBox() {
                                 <div class="input-group">
                                   <input name="cardPwd" id="postcode" type="text" placeholder="Post Code" class="form-control" required>
                                   <span class="input-group-addon bg-success"><i class="fa fa-map-marker fa-lg text-white"></i></span>
+                                </div>
+                            </div>
+                          </div>
+
+						 <div class="form-group">
+                            <label class="col-sm-2 control-label" for="textinput">BusinessNum</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                  <input name="businessNum" autocomplete="on" type="text" placeholder="BusinessNum" class="form-control" required>
+                                  <span class="input-group-addon label-danger"><i class="fa fa-user fa-lg text-white"></i></span>
                                 </div>
                             </div>
                           </div>
