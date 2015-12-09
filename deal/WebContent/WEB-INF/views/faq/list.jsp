@@ -16,7 +16,7 @@
             </div>
 
             <div class="x_content">
-            	<div class="col-lg-8">
+            	<div class="col-md-10 col-sm-10 col-xs-10">
                 	<div class="panel-group accordion" id="accordion">
                         
                         <c:forEach var="dto" items="${list}">

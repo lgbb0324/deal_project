@@ -65,16 +65,18 @@ function searchList() {
 // 댓글별 답글 리스트
 function listReply(num) {
 	var rta="#listReply"+num;
+	var btn="#btnAnswer"+num;
 	var url="<%=cp%>/qna/reply.do";
 	
-	$.post(url, {num:num}, function(data){
+	 $.post(url, {num:num}, function(data){
 		$(rta).html(data);
-	});
-}
-
+	}); 
+	
+ }
+	
 //댓글별 답글 폼
-function replyAnswerForm(num) {
-	var id="#layoutAnswer"+num;
+function replyListForm(num) {
+	var id="#listReply"+num;
 	var rta="#rta"+num;
 	var btn="#btnAnswer"+num;
 	var s;
@@ -84,19 +86,48 @@ function replyAnswerForm(num) {
 		
 		$("[id*=btnAnswer]").each(function(){
 			s=$(this).val();
-			$(this).val(s);
+			$(this).val(s.substring(0, s.length-1)+"▼");
 		});
-
+		
+		listReply(num);
 		$(id).show();
+		
+		 
 		//$(rta).focus();
 		s=$(btn).val();
-		$(btn).val(s);
-	}  else {
+		$(btn).val(s.substring(0, s.length-1)+"▼");
+		//closetest(id); 
+	} else{
 		$(id).hide();
 		s=$(btn).val();
-		$(btn).val(s);
+		$(btn).val(s.substring(0, s.length-1)+ "▼");
 	}
 }
+
+function replyAnswerForm(num) {
+	   var id="#layoutAnswer"+num;
+	   var rta="#rta"+num;
+	   var btn="#btnAnswer"+num;
+	   var s;
+	   
+	   if($(id).is(':hidden')) {
+	      $("[id*=layoutAnswer]").hide();
+	      
+	      $("[id*=btnAnswer]").each(function(){
+	         s=$(this).val();
+	         $(this).val(s);
+	      });
+
+	      $(id).show();
+	      //$(rta).focus();
+	      s=$(btn).val();
+	      $(btn).val(s);
+	   }  else {
+	      $(id).hide();
+	      s=$(btn).val();
+	      $(btn).val(s);
+	   }
+	}
 
 // 댓글별 답글 추가
 function sendReplyAnswer(num) {
@@ -155,6 +186,7 @@ function deleteQna(num) {
 			if(state=="loginFail"){
 				login();
 			}
+			location.href="<%=cp%>/qna/list.do";
 		},"json");
 	}
 }
@@ -211,13 +243,16 @@ function deleteQna(num) {
  
                 </div>
                 <div>
-                <c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">
+				
+				<c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">
                 <div class="pull-right"><a onclick='deleteQna("${dto.num}")' class="btn btn-default btn-sm">삭제</a></div>
                 </c:if>
-                <div class="pull-right"><a id="btnAnswer${dto.num}" class="btn btn-default btn-sm" onclick="listReply('${dto.num}')">답글보기</a></div><br><br>
-					<div id="listReply${dto.num}"></div>
+                
+                <div class="pull-right"><a id="btnAnswer${dto.num}" class="btn btn-default btn-sm" onclick="replyListForm('${dto.num}')" >답글보기</a></div>
 					
 <c:if test="${sessionScope.member.userId=='admin'}">
+	<div class="pull-right">
+	<a id="btnAnswer${dto.num}" class="btn btn-default btn-sm" onclick="replyAnswerForm('${dto.num}')" >답변하기</a></div>
 	<div id="layoutAnswer${dto.num}" >
 		<div class="form-group">
 			<div class="col-md-12 col-sm-12 col-xs-12">
@@ -228,9 +263,11 @@ function deleteQna(num) {
 			</div>
 		</div>
 	</div>
+	
 </c:if>
 					
-					
+					<div id="listReply${dto.num}"></div>
+                
 					</div> 
 		
               </div>

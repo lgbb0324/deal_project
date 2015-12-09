@@ -148,6 +148,7 @@ public class QnaController {
 	@RequestMapping(value="/qna/reply")
 	public ModelAndView reply(
 			@RequestParam (value="num")int num
+			//,HttpServletResponse resp
 			)throws Exception{
 		
 		List<Qna> listReply=service.listReply(num);
@@ -159,8 +160,18 @@ public class QnaController {
 			dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
 		}
 		
-		ModelAndView mav=new ModelAndView("qna/reply");
+		//JSONObject ob=new JSONObject();
+		//ob.put("dataCount", dataCount);
+		//ob.put("pageIndexList", pageIndexList);
+		//ob.put("num", num);
+		//ob.put("listReply", listReply);
 		
+		//resp.setContentType("text/html;charset=utf-8");
+		//PrintWriter out=resp.getWriter();
+		//out.print(ob.toString());
+		
+		ModelAndView mav=new ModelAndView("qna/reply");
+		mav.addObject("num",num);
 		mav.addObject("listReply", listReply);
 		return mav;
 	}
