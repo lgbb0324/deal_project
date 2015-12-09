@@ -1,13 +1,24 @@
 package com.project.category;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.deal.Deal;
+
+
 @Controller("categoryController")
 public class CategoryController {
-	 
+	
+	@Autowired
+	private CategoryService service;
+
 	@RequestMapping(value="/deal/manCloth",method=RequestMethod.GET)
 	public ModelAndView manCloth() throws Exception {
 		String msg = "manCloth";
@@ -21,7 +32,11 @@ public class CategoryController {
 	public ModelAndView womanCloth() throws Exception {
 		String msg = "womanCloth";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category1", 2);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
 		mav.addObject("message",msg);
+		mav.addObject("CategoryDealList", categoryList);
 		return mav;
 	}
 	
