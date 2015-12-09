@@ -12,7 +12,7 @@ function deleteFriend(num) {
 		return false;
 	
 	   var params="num="+num;
-	    
+	    alert(num);
 	    $.ajax({
 	        type: "POST",
 	        url: "<%=cp%>/friend/deleteFriend.do",
@@ -149,7 +149,7 @@ Licensed under MIT
                                                     	   
                                                     	   <c:if test="${dto.userId==mdto.friendUserId}">
                                                     	   <c:set var="active" value="active"/>
-												         <label class="btn btn-lg btn-default" onclick="deleteFriend('${dto.userId}')" style="font-size: 9pt; border-color: #791212; border-width: 3px;">
+												         <label class="btn btn-lg btn-default" onclick="deleteFriend('${dto.num}')" style="font-size: 9pt; border-color: #791212; border-width: 3px;">
 												            <input  type="radio" name="options" id="option1" autocomplete="off" checked>
 												            <span class="glyphicon glyphicon-ok"></span>팔로우
 												        </label>

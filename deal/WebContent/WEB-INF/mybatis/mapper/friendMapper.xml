@@ -4,9 +4,9 @@
 <mapper namespace="friend">
      <select id="friendList"  parameterType="map"
                resultType="com.project.friend.Friend">                          
-                          SELECT   m.userId, p.imageFilename, ifnull(cnt,0) cnt
+                         SELECT f.num,  m.userId, p.imageFilename, ifnull(cnt,0) cnt
                            FROM  member m JOIN photo p ON m.userId=p.userId
-											left outer JOIN (SELECT   friendUserId, ifnull(count(friendUserId),0) cnt
+											left outer JOIN (SELECT   num, friendUserId, ifnull(count(friendUserId),0) cnt
                         													FROM  friend 
                      												    group by friendUserId) f 
 														 ON m.userId = f.friendUserId 
