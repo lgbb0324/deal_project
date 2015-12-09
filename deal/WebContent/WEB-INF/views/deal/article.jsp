@@ -376,18 +376,18 @@
    if(num3.dealmonth==11)
 	   {alert("된당 ㅛ ㅛ");}
 }  */
-    var january= graphdto1;
-    var february=graphdto2;
-    var march=graphdto3;
-    var april=graphdto4;
-    var may=graphdto5;
-    var june=graphdto6;
-    var july=graphdto7;
-    var agust=graphdto8;
-    var september=graphdto9;
-    var october=graphdto10;
-    var november=graphdto11;
-    var december=graphdto12; 
+    var january= ${graphdto1};
+    var february=${graphdto2};
+    var march=${graphdto3};
+    var april=${graphdto4};
+    var may=${graphdto5};
+    var june=${graphdto6};
+    var july=${graphdto7};
+    var agust=${graphdto8};
+    var september=${graphdto9};
+    var october=${graphdto10};
+    var november=${graphdto11};
+    var december=${graphdto12}; 
   
     
 
@@ -412,7 +412,7 @@
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [${dealArticle.price}, 23, 66, 9, 99, 4, 2]
+                    data: [0, 0, 0, 0, 0, 0, 0]
             }
         ]
 

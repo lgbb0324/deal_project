@@ -89,8 +89,59 @@ public class DealController {
 		 }*/
 		
 		int[] graph = new int[13];
+	/*	int n=0;
+		for (Deal g : graphdto) {
 		
-		 for (Deal g : graphdto) {
+			
+			if(g.getDealmonth()==n){
+				System.out.println("dd");
+				graph[++n]=g.getAvgprice();
+			}else
+			{
+				graph[++n]=g.getAvgprice();
+			}
+			
+			graph[++n]=g.getDealmonth();
+			System.out.print(g.getDealmonth()+"¿ù");
+			System.out.println(g.getAvgprice());
+		 }*/
+		int n=0;
+		for(int a:graph){
+			
+			System.out.println(n);
+			for (Deal g : graphdto) {
+				
+				
+				if(g.getDealmonth()==n){
+					System.out.println("dd");
+					System.out.println(g.getAvgprice());
+					graph[n]=g.getAvgprice();
+					System.out.println(graph[n]);
+					/*System.out.println("dd");
+					graph[n]=g.getAvgprice();
+					System.out.println(graph[n]);*/
+					break;
+				}else
+				{
+					System.out.println("ss");
+					graph[n]=0;
+					/*System.out.println("ss");
+					graph[n]=0;
+					System.out.println(graph[n]);*/
+				}
+				
+				/*graph[++n]=g.getDealmonth();
+				System.out.print(g.getDealmonth()+"¿ù");
+				System.out.println(g.getAvgprice());*/
+			 }
+			n++;
+		}
+		int n2=0;
+		for(int a:graph){
+			System.out.println(n2+"¿ù-"+graph[n2]);
+			n2++;
+		}
+		/* for (Deal g : graphdto) {
 			 
 		 if(g.getDealmonth()==1){graph[1]=g.getAvgprice();}else{graph[1]=0;}
 		 if(g.getDealmonth()==2){graph[2]=g.getAvgprice();}else{graph[2]=0;}
@@ -105,10 +156,12 @@ public class DealController {
 		 if(g.getDealmonth()==11){graph[11]=g.getAvgprice();}else{graph[11]=0;}
 		 if(g.getDealmonth()==12){graph[12]=g.getAvgprice();}else{graph[12]=0;}
 		 }
+		 */
+	
 
 		
 
-		mav.addObject("graphdto1", graph[1]);
+	mav.addObject("graphdto1", graph[1]);
 		mav.addObject("graphdto2", graph[2]);
 		mav.addObject("graphdto3", graph[3]);
 		mav.addObject("graphdto4", graph[4]);
