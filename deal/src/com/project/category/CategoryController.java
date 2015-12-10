@@ -21,7 +21,7 @@ public class CategoryController {
 
 	@RequestMapping(value="/deal/manCloth",method=RequestMethod.GET)
 	public ModelAndView manCloth() throws Exception {
-		String msg = "manCloth";
+		String msg = "manCloths";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
 		 Map<String, Object> map = new HashMap<String, Object>();
 		 map.put("category2", 1);

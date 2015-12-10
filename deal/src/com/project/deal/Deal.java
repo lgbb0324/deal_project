@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class Deal {
 
 		private int num;
+		private int dealNum;
 		private String userId,userName,subject,category1,category2,start_date,end_date,content,imageFilename,region1,region2,tag1,tag2;
 		private String image1,image2,image3,image4,image5,image6,image7,image8,image9,image10,created;
 		
@@ -16,6 +17,12 @@ public class Deal {
 		private int dealmonth,avgprice;
 		
 		
+		public int getDealNum() {
+			return dealNum;
+		}
+		public void setDealNum(int dealNum) {
+			this.dealNum = dealNum;
+		}
 		public int getAvgprice() {
 			return avgprice;
 		}

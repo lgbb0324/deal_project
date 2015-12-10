@@ -137,5 +137,44 @@ public class DealServiceImpl implements DealService{
 		return list;
 	}
 
+	@Override
+	public int updateDealIn(Deal dto) {
+		int result=0;
+		try{
+			
+	
+				result=dao.insertData("deal.updateDealIn", dto);
+	
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+
+	@Override
+	public int updateDealOut(Deal dto) {
+		int result=0;
+		try{
+	
+				result=dao.deleteData("deal.updateDealOut", dto);
+	
+		} catch(Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+
+	@Override
+	public List<Deal> listDealIn(String userId) {
+		List<Deal> list=null;
+		
+		try {
+			list=dao.getListData("deal.listDealIn", userId);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return list;
+	}
+
 
 }

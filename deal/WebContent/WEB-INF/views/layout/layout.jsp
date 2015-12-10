@@ -24,8 +24,8 @@
 <link href="<%=cp%>/res/template/css/icheck/flat/green.css" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-  
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  --> 
 
 <link rel="stylesheet" href=" http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" type="text/css"/>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>

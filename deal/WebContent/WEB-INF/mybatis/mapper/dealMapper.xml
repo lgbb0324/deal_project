@@ -83,4 +83,21 @@ SELECT price,(case substring(start_date,6,2)
 ) tb GROUP BY dealmonth
    </select>
 
+
+<insert id="updateDealIn" parameterType="com.project.deal.Deal">
+INSERT  INTO dealjoin(dealNum, userId) VALUES (#{num},#{userId});
+	</insert>
+	<delete id = "updateDealOut" parameterType="com.project.deal.Deal">
+	DELETE FROM dealjoin WHERE userId=#{userId} AND dealNum=#{num}
+</delete>
+
+
+	<select id="listDealIn" resultType="com.project.deal.Deal" 
+	          parameterType="String">
+		SELECT dealNum,userId FROM dealjoin WHERE userId=#{userId}
+	</select>
+	
+
+
+
 </mapper>

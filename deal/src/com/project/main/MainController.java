@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.main.MainService;
+import com.project.member.SessionInfo;
 import com.project.common.FileManager;
 import com.project.common.MyUtil;
 import com.project.deal.Deal;
+import com.project.deal.DealService;
 
 
 
@@ -26,23 +29,38 @@ public class MainController {
 	@Autowired
 	private MainService service;
 	@Autowired
+	private DealService dservice;
+	@Autowired
 	private MyUtil myUtil;
 	@Autowired
 	private FileManager fileManager;
 	 
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView method(
-			HttpServletRequest req
+			HttpServletRequest req,HttpSession session
 			) {
-		 String cp = req.getContextPath();
+		SessionInfo info=(SessionInfo) session.getAttribute("member");
 		 Map<String, Object> map = new HashMap<String, Object>();
-		 
 		 List<Deal> mainList = service.listDeal(map);
+		 ModelAndView mav = new ModelAndView(".mainLayout");
+		try {
+			
+			 List<Deal> DealInList = dservice.listDealIn(info.getUserId());
+				mav.addObject("DealInList", DealInList);
+		} catch (Exception e) {
+			System.out.println(e.toString()+"로그인 안하면 생기는 NULL이니 상관 ㄴㄴMAINCONTROLLER임");
+		}
+		
+		
 		 
 		 
-		ModelAndView mav = new ModelAndView(".mainLayout");
+		
+		 
+		 
+		
 	
 		mav.addObject("MainDealList", mainList);
+	
 		
 		return mav;
 	}

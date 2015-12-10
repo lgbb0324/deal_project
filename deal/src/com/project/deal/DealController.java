@@ -390,6 +390,55 @@ public class DealController {
 			PrintWriter out=resp.getWriter();
 			out.print(jso.toString());
 		}
+		
+		@RequestMapping(value="/deal/dealIn",method=RequestMethod.POST)
+		public void dealIn(
+				HttpServletResponse resp,
+				HttpSession session,
+				@RequestParam(value="dealNum") int dealNum,
+				@RequestParam(value="mode") int mode,
+				Deal dto) throws Exception {
+
+			SessionInfo info=(SessionInfo) session.getAttribute("member");
+			
+			String state="true";
+			
+			try {
+				
+				if(info==null) { // 로그인이 되지 않는 경우
+					state="loginFail";
+				} else {
+					int result = 0;
+					if(mode==1){
+					
+						dto.setNum(dealNum);
+						dto.setUserId(info.getUserId());
+						
+		
+					 result=service.updateDealIn(dto);
+					}
+					if(mode==0){
+						dto.setNum(dealNum);
+						dto.setUserId(info.getUserId());
+					 result=service.updateDealOut(dto);
+					}
+					if(result==0)
+						state="false";
+				}
+				
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+			
+			
+			// 작업 결과를 json으로 전송
+			JSONObject job=new JSONObject();
+			job.put("state", state);
+			
+			resp.setContentType("text/html;charset=utf-8");
+			PrintWriter out=resp.getWriter();
+			out.print(job.toString());
+		}
 	
 	
 }

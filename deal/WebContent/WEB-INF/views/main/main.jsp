@@ -232,13 +232,60 @@ function countLike(id,count){
 	$('#'+id+'-bs3').html(count); 
 }
 
+function dealjoin(Num,mode){
+	
+	 var params="dealNum="+Num;
+ 	params+="&mode="+mode;
+ 	
+ 	$.ajax({
+		type:"POST"
+		,url:"<%=cp%>/deal/dealIn.do"
+		,data:params
+		,dataType:"json"
+		,success:function(data) {
+			
+			var state=data.state;
+			if(state=="true") {
+				 if (!count) count = 0;
+				 count++;
+				countLike(id,count); 
+			   
+			} else if(state=="false") {
+				alert("좋아요/싫어요는 한번만 가능합니다. !!!");
+				return false;
+			} else if(state=="loginFail") {
+				alert("로그인하세여");
+				return false;
+			}else{
+				alert("로그인해");
+			}
+		}
+		,error:function(e) {
+			alert(e.responseText);
+		}
+	});
+
+}
+
 </script>
 
 <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<style>
+.btn.active {                
+	display: none;		
+}
+.panel-default>.panel-heading{
+background-image: block !important;
+background-color:rgb(255,255,255);
+}
+.panel-google-plus > .panel-heading > h5{
+color:rgb(0,0,0);
+}
 
+</style>
 <div class="right_col" role="main">
 
 
@@ -415,27 +462,76 @@ function countLike(id,count){
                         <li>#${dto.tag1}</li>
                     </ul>
                 </div>
-                <div class="panel-heading">
+                <div class="panel-heading" >
                     <img class="[ img-circle pull-left ]" src="https://lh3.googleusercontent.com/-CxXg7_7ylq4/AAAAAAAAAAI/AAAAAAAAAQ8/LhCIKQC5Aq4/s46-c-k-no/photo.jpg" alt="Mouse0270" />
                     <h3 style="font-size:20px;">${dto.userId}</h3>
                     <h5><span>Shared publicly</span> - <span>Jun 25, 2014</span> </h5>
                 </div>
                 <div class="panel-body">
                     <a href="<%=cp%>/deal/article.do?num=${dto.num}"><p style="font-size:20px;">${dto.subject}<!--  <a href="http://bootsnipp.com/snippets/MaWrA">http://bootsnipp.com/snippets/MaWrA</a> --></p></a>
+                    <%--  <c:forEach var="dealdto" items="${DealInList}">
+                    <c:if test="${dto.num==dealdto.dealNum}">
+                    <div>11111111</div>
+                    </c:if>
+                    </c:forEach>  --%>
                     <a class="panel-google-plus-image" href="<%=cp%>/deal/article.do?num=${dto.num}">
                         ${dto.image1}
                     </a>
                 </div>
                 <div class="panel-footer">
-                    <button type="button" class="[ btn btn-default ]">+1</button>
+             <!--        <button type="button" class="[ btn btn-default ]">+1</button>
                     <button type="button" class="[ btn btn-default ]">
                         <span class="[ glyphicon glyphicon-share-alt ]"></span>
-                    </button>
+                    </button> -->
+                    
+                    
+    <div class="text-center">      
+         <div class="" data-toggle="buttons">  
+         <c:set var="badId" value="0" />
+        <c:forEach var="dealdto" items="${DealInList}">
+         
+                    <c:if test="${dto.num==dealdto.dealNum}"> 
+                  <c:set var="badId" value="1" />
+                        <label onclick="dealjoin('${dto.num}',0)" class="btn btn-md btn-success ">
+                <input type="radio" name="options"  id="dealin${dto.num}" autocomplete="off" checked>
+                <i class="fa fa-check"></i> Deal에 참여하였습니다.
+            </label>
+              <label onclick="dealjoin('${dto.num}',1)" class="btn btn-md btn-danger active">
+                <input type="radio" name="options"  id="dealout${dto.num}" autocomplete="off">
+                <i class="fa fa-check"></i> Deal에 참여하지 않았습니다.
+            </label>     
+               </c:if>
+                    </c:forEach>  
+                
+                    
+                    <c:if test="${badId==0}">
+                                <label onclick="dealjoin('${dto.num}',0)" class="btn btn-md btn-success active">
+                <input type="radio" name="options"  id="dealin${dto.num}" autocomplete="off" checked>
+                <i class="fa fa-check"></i> Deal에 참여하였습니다.
+            </label>
+              <label onclick="dealjoin('${dto.num}',1)" class="btn btn-md btn-danger ">
+                <input type="radio" name="options"  id="dealout${dto.num}" autocomplete="off">
+                <i class="fa fa-check"></i> Deal에 참여하지 않았습니다.
+            </label>   
+            </c:if>
+                    
+
+        
+        
+           
+           
+        </div>
+   
+    
+    
+    </div>
+                    
+                    
                      <span class="pull-right">
                         <i id="like${dto.num}" style="font-size: 30px; backgoround-color:red;" onclick="Like(${dto.num},1);" class="glyphicon glyphicon-thumbs-up"><div style="font-size: 25px;" id="like${dto.num}-bs3" >${dto.countLike}</div></i> 
                        <%--  <i id="dislike${dto.num}"  style="font-size: 30px;" onclick="disLike(${dto.num});" class="glyphicon glyphicon-thumbs-down"><div style="font-size: 25px;" id="dislike${dto.num}-bs3">4</div></i> --%> 
                     </span>
-                    <div class="input-placeholder" style="font-size:15px;" onclick="listPage('${dto.num}')">Add a comment...</div>
+                    <div class="input-placeholder" style="font-size:15px; margin:0px;background-color:rgb(255, 255, 255);" onclick="listPage('${dto.num}')">Add a comment...</div>
                 </div>
                 <div class="panel-google-plus-comment" style="padding:10px;">
                     <c:if test="${pdto.imageFilename==null}">

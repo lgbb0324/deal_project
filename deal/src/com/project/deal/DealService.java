@@ -6,6 +6,7 @@ import java.util.Map;
 
 
 public interface DealService {
+	
 	public int insertDeal(Deal dto, String path);
 	public Deal readDeal(int num);
 	public List<Deal> readDealGraph(int smillarNum);
@@ -15,4 +16,10 @@ public interface DealService {
 	public List<DealCategory> listBigCategory();
 	public List<DealCategory> listSmallCategory(int bcNum);
 	public List<DealCategory> listSmillarDeal(int smNum);
+	
+	
+	public int updateDealIn(Deal dto);
+	public int updateDealOut(Deal dto);
+	public List<Deal> listDealIn(String userId);
+	
 }
