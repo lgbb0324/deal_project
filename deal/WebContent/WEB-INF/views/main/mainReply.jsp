@@ -8,7 +8,8 @@
 <c:forEach var="dto" items="${replyList}">
  <li class="comment">
                         <a class="pull-left" href="#">
-                            <img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">
+                            <img class="img-circle" src="${dto.imageFilename}" style="width:60px;height:59px;" alt="avatar">
+                            
                         </a>
                         <div class="comment-body">
                             <div class="comment-heading">

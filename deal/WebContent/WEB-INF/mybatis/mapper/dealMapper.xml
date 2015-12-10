@@ -32,8 +32,8 @@
 	</select>
 	
 	<insert id="insertDealReply" parameterType="com.project.deal.Deal" >
-	INSERT INTO dealReply (dealNum,userId,userName,content) 
-	VALUES (#{dealNum},#{userId},#{userName},#{content});
+	INSERT INTO dealReply (dealNum,userId,userName,content,imageFilename) 
+	VALUES (#{dealNum},#{userId},#{userName},#{content},#{imageFilename});
 
 	</insert>
 	
@@ -41,7 +41,7 @@
 	<!-- 댓글 리스트 -->
 	<select id="listReply" resultType="com.project.deal.DealReply" 
 	          parameterType="map">
-		SELECT num,dealNum,userId,userName,created,content FROM dealReply WHERE dealNum= #{dealNum}
+		SELECT num,dealNum,userId,userName,created,content,imageFilename FROM dealReply WHERE dealNum= #{dealNum}
 	</select>
 	
 	<insert id="insertDealLike" parameterType="com.project.deal.DealLike" >

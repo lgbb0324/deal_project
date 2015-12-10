@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.project.member.Photo;
+import com.project.member.PhotoService;
 import com.project.member.SessionInfo;
 
 
@@ -26,6 +29,9 @@ public class DealController {
 	
 	@Autowired
 	private DealService service;
+	
+	@Autowired
+	private PhotoService pservice;
 	 
 	@RequestMapping(value="/deal/article",method=RequestMethod.GET)
 	public ModelAndView articleInform(
@@ -108,7 +114,7 @@ public class DealController {
 		int n=0;
 		for(int a:graph){
 			
-			System.out.println(n);
+			
 			for (Deal g : graphdto) {
 				
 				
@@ -156,8 +162,8 @@ public class DealController {
 		 if(g.getDealmonth()==12){graph[12]=g.getAvgprice();}else{graph[12]=0;}
 		 }
 		 */
-	
-
+		List<Photo> dealInPepople = pservice.listInPeople(num);
+		
 		
 
 	mav.addObject("graphdto1", graph[1]);
@@ -176,6 +182,7 @@ public class DealController {
 		
 		mav.addObject("dealArticle", dto);
 		mav.addObject("dealPhoto", image);
+		mav.addObject("dealInPeople", dealInPepople);
 		
 		return mav;
 	}

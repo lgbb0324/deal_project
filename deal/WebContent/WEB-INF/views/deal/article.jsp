@@ -142,21 +142,19 @@
                                         <div class="">
                                             <h2>Available Colors</h2>
                                             <ul class="list-inline prod_color">
+                                             <c:forEach  var="dto" items="${dealInPeople}">   
                                                 <li>
-                                                    <p>Green</p>
-                                                    <div class="color bg-green"></div>
+                                                    <p>${dto.userId}</p>
+                                                    <a class="pull-left" href="#">
+                                                     <img class="img-circle" src="<%=cp%>/uploads/photo/${dto.imageFilename}" style="width:60px;height:59px;" alt="avatar">
+                        							</a>
                                                 </li>
+                                                </c:forEach>
                                                 <li>
                                                     <p>Blue</p>
-                                                    <div class="color bg-blue"></div>
-                                                </li>
-                                                <li>
-                                                    <p>Red</p>
-                                                    <div class="color bg-red"></div>
-                                                </li>
-                                                <li>
-                                                    <p>Orange</p>
-                                                    <div class="color bg-orange"></div>
+                                                    <a class="pull-left" href="#">
+                             <img class="img-circle" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s46" alt="User Image" /> 
+                        </a>
                                                 </li>
 
                                             </ul>

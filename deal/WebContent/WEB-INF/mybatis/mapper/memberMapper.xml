@@ -32,4 +32,10 @@
 	             WHERE userId=#{userId}
 	</select>
 	
+	<select id="listInPeople" parameterType="Integer"
+	      resultType="com.project.member.Photo">
+SELECT * FROM photo WHERE userID IN (select userId from dealjoin WHERE dealNum=#{num})
+	</select>
+
+	
 </mapper>

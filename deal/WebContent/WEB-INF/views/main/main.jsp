@@ -97,10 +97,17 @@ function sendReply(dealNum) {
 	
 
  	var content=$.trim($("#replyContent-"+dealNum).val());
+
+	var src=$("#imageFilename-"+dealNum).attr('src');
+	 
+	
+	
+	
 	
 	
 	var params="dealNum="+dealNum;
 	params+="&content="+content;
+	params+="&imageFilename="+src;
 
 	$.ajax({
 		type:"POST"
@@ -478,7 +485,7 @@ color:rgb(0,0,0);
                         ${dto.image1}
                     </a>
                 </div>
-                <div class="panel-footer">
+                <div class="panel-footer col-md-12 col-sm-12 col-xs-12" style="padding-left:0px;padding-right:0px;">
              <!--        <button type="button" class="[ btn btn-default ]">+1</button>
                     <button type="button" class="[ btn btn-default ]">
                         <span class="[ glyphicon glyphicon-share-alt ]"></span>
@@ -531,14 +538,14 @@ color:rgb(0,0,0);
                         <i id="like${dto.num}" style="font-size: 30px; backgoround-color:red;" onclick="Like(${dto.num},1);" class="glyphicon glyphicon-thumbs-up"><div style="font-size: 25px;" id="like${dto.num}-bs3" >${dto.countLike}</div></i> 
                        <%--  <i id="dislike${dto.num}"  style="font-size: 30px;" onclick="disLike(${dto.num});" class="glyphicon glyphicon-thumbs-down"><div style="font-size: 25px;" id="dislike${dto.num}-bs3">4</div></i> --%> 
                     </span>
-                    <div class="input-placeholder" style="font-size:15px; margin:0px;background-color:rgb(255, 255, 255);" onclick="listPage('${dto.num}')">Add a comment...</div>
+                    <div class="input-placeholder col-md-12 col-sm-12 col-xs-12" style="font-size:15px;margin:0px;" onclick="listPage('${dto.num}')">Add a comment...</div>
                 </div>
                 <div class="panel-google-plus-comment" style="padding:10px;">
                     <c:if test="${pdto.imageFilename==null}">
                    <img class="img-circle" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s46" alt="User Image" /> 
                     </c:if>
                     <c:if test="${pdto.imageFilename!=null}">
-                    <img class="img-circle" src="<%=cp%>/uploads/photo/${pdto.imageFilename}" style="width:55px;height:55px;padding-right:2px;" alt="User Image" />
+                    <img id="imageFilename-${dto.num}" class="img-circle" src="<%=cp%>/uploads/photo/${pdto.imageFilename}" style="width:55px;height:55px;padding-right:2px;" alt="User Image" />
                     </c:if>
                     <div class="panel-google-plus-textarea">
                     

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.common.FileManager;
 import com.project.common.dao.CommonDAO;
+import com.project.deal.DealReply;
 
 
 @Service("photo.photoServiceImpl")
@@ -115,6 +116,17 @@ public class PhotoServiceImpl implements PhotoService {
 	public int deletePhoto(int num, String imageFilename, String path) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<Photo> listInPeople(int num) {
+		List<Photo> list=null;
+		try {
+			list=dao.getListData("member.listInPeople", num);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return list;
 	}
 
 

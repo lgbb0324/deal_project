@@ -2,9 +2,19 @@ package com.project.deal;
 
 public class DealReply {
 	private int dealNum,num;
-	private String userId,userName,created,content;
+	private String userId,userName,created,content,imageFilename;
 
 	
+	
+	
+	public String getImageFilename() {
+		return imageFilename;
+	}
+
+	public void setImageFilename(String imageFilename) {
+		this.imageFilename = imageFilename;
+	}
+
 	public int getNum() {
 		return num;
 	}

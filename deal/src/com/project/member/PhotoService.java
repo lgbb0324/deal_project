@@ -21,4 +21,6 @@ public interface PhotoService {
 
 	public int deleteReplyLike(Map<String, Object> map);
 	public Map<String, Object> replyCountLike(int replyNum);
+	
+	public List<Photo> listInPeople(int num);
 }
