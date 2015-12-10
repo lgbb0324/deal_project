@@ -49,13 +49,14 @@ function searchList() {
                                     <div class="title_right">           
 
 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                         
                          <form name="searchForm" action="" method="post">  
-                            	     <select name="searchKey" class="selectField">
+                            	     <select name="searchKey" class="selectField pull-left" style="height:32px; border-radius:20px;">
 					                  <option value="subject">제목</option>
 					                  <option value="userName">작성자</option>
 					                  <option value="content">내용</option>
 					                  <option value="created">등록일</option>
-			           				 </select>
+			           				</select>
 			           			 
 			            
                                 <div class="input-group"> 
@@ -97,9 +98,9 @@ function searchList() {
                             <tbody>
                             <c:forEach var="dto" items="${noticeList}">
                             
-                                <tr class="even pointer" style="background-color: #FFD9FA;">
+                                <tr class="even pointer">
                                     <td class="a-center ">
-                                    <td class=" ">공지</td>
+                                    <td class=" " style="font-weight: bold; color: red;">공지</td>
                                     <td class=" "><a href="${urlArticle}&num=${dto.num}">${dto.subject}</a></td>
                                     <td class=" ">${dto.userName}</td>
                                     <td class=" ">${dto.created}</td>

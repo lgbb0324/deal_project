@@ -14,6 +14,7 @@ public interface BoardService {
 	
 	public Board readBoard(int num);
 	public Board nextReadBoard(Map<String, Object> map);
+	public Board preReadBoard(Map<String, Object> map);
 	
 	
 	public int updateBoard(Board dto);

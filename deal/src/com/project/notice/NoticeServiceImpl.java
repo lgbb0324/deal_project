@@ -160,4 +160,31 @@ public class NoticeServiceImpl implements NoticeService{
 		return result;
 	}
 
+	@Override
+	public Notice nextReadNotice(Map<String, Object> map) {
+		Notice dto = null;
+		
+		try {
+			
+			dto =dao.getReadData("notice.nextReadNotice", map);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return dto;
+	}
+
+	@Override
+	public Notice preReadNotice(Map<String, Object> map) {
+		Notice dto = null;
+		try {
+			
+			dto =dao.getReadData("notice.preReadNotice", map);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return dto;
+	}
+
 }

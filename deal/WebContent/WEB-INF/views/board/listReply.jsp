@@ -11,15 +11,20 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="row">
-                        <c:forEach var="vo" items="${listReply}">
+                        <c:forEach var="vo" items="${listReply}">                   
                             <div class="col-xs-2 col-md-1">
-                                <img src="<%=cp%>/res/images/img.jpg" class="img-circle img-responsive" alt="" /></div>
+                                <img src="<%=cp%>/uploads/photo/${vo.imageFilename}" class="img-circle img-responsive" alt="" />
+                                
+                            </div>
+                        
+                            
                             <div class="col-xs-10 col-md-11">
                                 <div>${vo.content}
                                     <div class="mic-info">
                                         By: <a href="#">${vo.userName}</a> ${vo.created}
                                     </div>
                                 </div>
+                                
                                 <div class="action">
                                     <button type="button" class="btn btn-primary btn-xs" title="Edit">
                                         <span class="glyphicon glyphicon-pencil"></span>답글
@@ -35,6 +40,7 @@
                                     </c:if>
                                 </div>
                             </div>
+
                             </c:forEach>
                             
                         </div>

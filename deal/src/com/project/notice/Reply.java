@@ -5,9 +5,15 @@ public class Reply {
 	private int replyNum, num;
 	private String content, created;
 	private int answer;
-	private String userId, userName;
+	private String userId, userName, imageFilename;
 	public int getReplyNum() {
 		return replyNum;
+	}
+	public String getImageFilename() {
+		return imageFilename;
+	}
+	public void setImageFilename(String imageFilename) {
+		this.imageFilename = imageFilename;
 	}
 	public void setReplyNum(int replyNum) {
 		this.replyNum = replyNum;

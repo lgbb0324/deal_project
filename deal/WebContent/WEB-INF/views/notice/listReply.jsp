@@ -13,7 +13,7 @@
                         <div class="row">
                         <c:forEach var="vo" items="${listReply}">
                             <div class="col-xs-2 col-md-1">
-                                <img src="<%=cp%>/res/images/img.jpg" class="img-circle img-responsive" alt="" /></div>
+                               <img src="<%=cp%>/uploads/photo/${vo.imageFilename}" class="img-circle img-responsive" alt="" /></div>
                             <div class="col-xs-10 col-md-11">
                                 <div>${vo.content}
                                     <div class="mic-info">

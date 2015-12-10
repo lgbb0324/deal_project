@@ -50,7 +50,7 @@ function searchList() {
 
 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                          <form name="searchForm" action="" method="post">  
-                            	     <select name="searchKey" class="selectField">
+                            	     <select name="searchKey" class="selectField pull-left" style="height:32px; border-radius:20px;">
 					                  <option value="subject">제목</option>
 					                  <option value="userName">작성자</option>
 					                  <option value="content">내용</option>

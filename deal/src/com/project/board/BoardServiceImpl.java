@@ -89,6 +89,18 @@ public class BoardServiceImpl implements BoardService{
 		}
 		return dto;
 	}
+	
+	@Override
+	public Board preReadBoard(Map<String, Object> map) {
+		Board dto = null;
+		try {
+			dto = dao.getReadData("board.preReadBoard", map);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return dto;
+	}
+	
 
 
 	@Override
@@ -163,5 +175,8 @@ public class BoardServiceImpl implements BoardService{
 		}
 		return result;
 	}
+
+
+
 
 }

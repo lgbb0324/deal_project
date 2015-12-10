@@ -188,9 +188,10 @@ public class BoardController {
 		
 		map.put("searchKey", searchKey);
 		map.put("searchValue", searchValue);
+		map.put("num", num);
 		
 		Board nextReadDto = service.nextReadBoard(map);
-		
+	    Board preReadDto = service.preReadBoard(map);
 		
 		
 		String params="pageNum="+pageNum;
@@ -204,6 +205,7 @@ public class BoardController {
 		
 		mav.addObject("dto", dto);
 		mav.addObject("nextReadDto", nextReadDto);
+		mav.addObject("preReadDto", preReadDto);
 		mav.addObject("pageNum", pageNum);
 		mav.addObject("params", params);
 		

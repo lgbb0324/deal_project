@@ -103,11 +103,12 @@ LIMIT #{start}, 10
 	
 	<select id="listReply" parameterType="map" resultType="com.project.notice.Reply">
 
-			select replyNum, num, r.userId, userName,
-	            content, answer, DATE_FORMAT(created, '%Y-%m-%d') AS created
+			select replyNum, r.num, r.userId, userName,
+	            content, answer, DATE_FORMAT(r.created, '%Y-%m-%d') AS created, imageFilename
 				from noticereply r
 				Join member m ON r.userId = m.userId
-				where num=#{num} and answer=0
+				Join photo p ON r.userId = p.userId
+				where r.num=#{num} and answer=0
 				ORDER BY replyNum DESC 
 				LIMIT #{start}, 10
 	</select>
@@ -115,6 +116,38 @@ LIMIT #{start}, 10
 	<delete id="deleteReply" parameterType="Integer">
 		DELETE FROM noticereply WHERE replyNum=#{replyNum}
 	</delete>
+
+
+
+<select id="nextReadNotice" parameterType="map" resultType="com.project.notice.Notice" >
+			SELECT num
+			       FROM notice
+                    <where>
+                         <if test="searchValue != null and searchValue != '' ">
+			                  <include refid="where-list"/>
+		                 </if>
+		               <![CDATA[
+		                 AND (num < #{num})
+		                 ]]>
+	                </where>
+				ORDER BY num DESC
+				LIMIT 1
+</select>
+
+<select id="preReadNotice" parameterType="map" resultType="com.project.notice.Notice" >
+			SELECT num
+			       FROM notice
+                    <where>
+                         <if test="searchValue != null and searchValue != '' ">
+			                  <include refid="where-list"/>
+		                 </if>
+		               <![CDATA[
+		                 AND (num > #{num})
+		                 ]]>
+	                </where>
+				ORDER BY num ASC
+				LIMIT 1
+</select>
 
 
 </mapper>

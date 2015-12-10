@@ -12,6 +12,8 @@ public interface NoticeService {
 
 	
 	public int updateHitCount(int num);
+	public Notice nextReadNotice(Map<String, Object>map);
+	public Notice preReadNotice(Map<String, Object>map);
 	
 	
 	public Notice readNotice(int num);

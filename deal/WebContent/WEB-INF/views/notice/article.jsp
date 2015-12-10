@@ -194,10 +194,7 @@
                                             </div>
                                             <!-- /.col -->
                                         </div>
-                                       
-                                         <c:if test="${not empty nextReadDto}">
-			      						      <a href="<%=cp%>/notice/article.do?num=${nextReadDto.num}&${params}">${nextReadDto.subject}</a>
-			       						</c:if>
+                                      
                                        
 
                                         <!-- this row will not appear when printing -->
@@ -207,9 +204,13 @@
                                                 <button class="btn btn-default" onclick="javascript:location.href='<%=cp%>/notice/update.do?num=${dto.num}&pageNum=${pageNum}';">수정</button>
                                                 <button class="btn btn-default" onclick="javascript:deleteNotice('${dto.num}');">삭제</button>
                                                </c:if>
-                                                <button class="btn btn-success pull-right">이전글</button>
+                                                 <c:if test="${not empty nextReadDto }">
+                                                	<a href="<%=cp%>/notice/article.do?${params}&num=${nextReadDto.num}"><button class="btn btn-success pull-right" style="margin-right: 5px;">다음글</button></a>
+   												</c:if>	
                                                 <a href="<%=cp%>/notice/list.do"><button class="btn btn-primary pull-right" style="margin-right: 5px;">목록</button></a>
-                                                 <button class="btn btn-success pull-right" style="margin-right: 5px;">다음글</button>
+                                                <c:if test="${not empty preReadDto }">
+                                               <a href="<%=cp%>/notice/article.do?${params}&num=${preReadDto.num}"><button class="btn btn-success pull-right" style="margin-right: 5px;">이전글</button></a>
+												</c:if>
    
                                             </div>
                                         </div>

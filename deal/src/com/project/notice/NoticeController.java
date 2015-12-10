@@ -185,7 +185,10 @@ public class NoticeController {
 		
 		map.put("searchKey", searchKey);
 		map.put("searchValue", searchValue);
+		map.put("num", num);
 		
+		Notice nextReadDto = service.nextReadNotice(map);
+		Notice preReadDto = service.preReadNotice(map);
 		
 		
 		String params="pageNum="+pageNum;
@@ -198,7 +201,8 @@ public class NoticeController {
 		
 		ModelAndView mav = new ModelAndView(".notice.article");
 		mav.addObject("dto", dto);
-		/*mav.addObject("nextReadDto", nextReadDto);*/
+		mav.addObject("nextReadDto", nextReadDto);
+		mav.addObject("preReadDto", preReadDto);
 		mav.addObject("pageNum", pageNum);
 		mav.addObject("params", params);
 		
