@@ -8,11 +8,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 function deleteFriend(num) {
-	if(!confirm("팔로우를 취소하시겠습니까? "))
+	if(!confirm("팔로우를 취소하시겠습니까? ")){
+		location.href="<%=cp%>/friend/list.do";
 		return false;
+	}
 	
 	   var params="num="+num;
-	    alert(num);
 	    $.ajax({
 	        type: "POST",
 	        url: "<%=cp%>/friend/deleteFriend.do",
@@ -31,8 +32,10 @@ function deleteFriend(num) {
 	    });
 }
 function insertFriend(friendUserId) {
-		if(!confirm("팔로우 하시겠습니까? "))
+		if(!confirm("팔로우 하시겠습니까? ")){
+			location.href="<%=cp%>/friend/list.do";
 			return false;
+		}
 		
 
 	    var params="friendUserId="+friendUserId;

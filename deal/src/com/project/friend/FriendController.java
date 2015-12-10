@@ -79,7 +79,6 @@ public class FriendController {
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 		
 		dto.setUserId(info.getUserId());
-		System.out.println(num);
 		service.deleteFriend(num);
 		   
 		JSONObject job=new JSONObject();

@@ -11,6 +11,7 @@
                      												    group by friendUserId) f 
 														 ON m.userId = f.friendUserId 
 	WHERE  m.userId  NOT IN  (#{userId})
+	ORDER BY rand()
      </select>
      
      <insert id="insertFriend"  parameterType="com.project.friend.Friend">
@@ -29,8 +30,14 @@
      
          <select id="myFriendList"  parameterType="String"
                resultType="com.project.friend.Friend">
-               select  f.num, p.userId,  f.friendUserId, p.imageFilename from  photo p JOIN   friend f ON p.userId=f.friendUserId
+              select  f.num, p.userId,  f.friendUserId, p.imageFilename, ifnull(cnt,0) cnt
+				 from  photo p JOIN   friend f ON p.userId=f.friendUserId
+											left outer JOIN (SELECT   num, friendUserId, ifnull(count(friendUserId),0) cnt
+                        													FROM  friend 
+                     												    group by friendUserId) fr
+														 ON p.userId = fr.friendUserId 
 					where f.userId=#{userId}
+					ORDER BY rand()
      </select>
      
      	
