@@ -1,7 +1,7 @@
 package com.project.member;
 
 import java.io.File;
-
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.member.SessionInfo;
-import com.project.member.Photo;
+import com.project.cash.Cash;
+import com.project.cash.CashService;
 
 
 
@@ -27,6 +27,9 @@ public class MemberController {
 	
 	@Autowired
 	private PhotoService pservice;
+	
+	@Autowired
+	private CashService cservice;
 
 	
 	
@@ -101,6 +104,8 @@ public class MemberController {
 			) throws Exception{
 		
 		Member dto = service.readMember(userId);
+		int cdto = cservice.readCash(userId);
+		
 		if(dto == null){
 			String msg = "아이디 또는 패스워드가 일치하지 않습니다.";
 			ModelAndView mav = new ModelAndView(".member.member");
@@ -108,16 +113,18 @@ public class MemberController {
 			return mav;
 		}
 		
+		System.out.println(cdto);
 		SessionInfo info = new SessionInfo();
 		info.setUserId(dto.getUserId());
 		info.setUserName(dto.getUserName());
+		
 	
 		Photo pdto = pservice.readPhoto(dto.getUserId());
 
 		//세션에 로그인 정보 저장
 		session.setAttribute("member", info);
 		session.setAttribute("pdto", pdto);
-		
+		session.setAttribute("cdto", cdto);
 		return new ModelAndView("redirect:/");
 	}
 	

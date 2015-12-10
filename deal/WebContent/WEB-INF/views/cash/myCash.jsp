@@ -21,7 +21,25 @@
 	
 	function chargeCash(){
 		var cash=$.trim($("#cashPrice").val());
-
+		var cardNum=$.trim($("#cardNumber").val());
+		var cvcNum=$.trim($("#cardCVC").val());
+		
+		
+		if(! cash){
+			alert("충전할 금액을 입력해 주세용!!!!!!!!!!!");
+			$("#letterContent").focus();
+			return false;
+		 }
+		if(! cardNum){
+			alert("카드번호를 입력해주세요");
+			$("#cardNumber").focus();
+			return false;
+		 }
+		if(! cardNum){
+			alert("카드 cvc를 입력해주세요");
+			$("#cardCVC").focus();
+			return false;
+		 }
 		
 		var url="<%=cp%>/cash/insertCash.do";
 		var params="userId="+userId+"&cash="+cash;
@@ -54,6 +72,51 @@
 		$('#refundModal').modal('show');
 	}
 	
+	
+	function returnCash(){
+		var account=$.trim($("#accoutNum").val());
+		var account2=$.trim($("#accountName").val());
+		var returnCash=$.trim($("#returnMoney").val());
+		
+		if(! account){
+			alert("받으실 계좌의 번호를 입력바랍니다.");
+			$("#accoutNum").focus();
+			return false;
+		 }
+		if(! account2){
+			alert("예금주 명을 입력해주세요");
+			$("#accountName").focus();
+			return false;
+		 }
+		if(! returnCash){
+			alert("환전하실 금액을 입력해주세요");
+			$("#returnMoney").focus();
+			return false;
+		 }
+		
+		var url="<%=cp%>/cash/returnCash.do";
+		var params="userId="+userId+"&returnCash="+returnCash;
+		$.ajax({
+			type:"POST",
+			url:url,
+			data:params,
+			dataType:"json",
+			success:function(data){
+				var isLogin=data.isLogin;
+				if(isLogin=="false") {
+					location.href="<%=cp%>/member/member.do";
+					return false;
+				}
+				$("#returnMoney").val("");
+				// 여기에 받는 유저아이디를 받아야한다.?
+	    		alert("성공적으로 환전했습니다했습니다.");
+			},
+			error:function(e) {
+	    		alert("환전과정 중 오류가 발생했습니다.");
+	    	}
+		});
+		$('#refundModal').modal('hide');
+	}
 	
 </script>
 
@@ -174,7 +237,8 @@
 
                                 <div  class="bs-example" data-example-id="simple-jumbotron">
                                     <div  class="jumbotron" style="margin-bottom:0px; padding:0px; padding-bottom:8px;">
-                                        <p>내 잔여캐시  2000 &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <p>내 잔여캐시 &nbsp;&nbsp;&nbsp;&nbsp;
+                                         
                                          <input type="button" class="btn btn-primary" value="충전하기" onclick="cashForm('userId');" >
                                           <input type="button" class="btn btn-primary" value="환전하기"  onclick="refundForm('userId');" ></p><br>
                                      	<p style="font-size: 13pt">캐시를 이용하여 사이트에서 진행되는 딜에 참여할 수 있습니다<br>캐시 충전은 카드를 이용하여 충전할 수 있습니다.</p>
@@ -645,7 +709,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                <center>
-                            <input type="submit" class="btn btn-success" value="결제하기" onclick="chargeCash();"/>
+                            <input type="button" class="btn btn-success" value="결제하기" onclick="chargeCash();"/>
                             	</center>
                             </div>
                         </div>
@@ -691,7 +755,6 @@
                     </div>                    
                 </div>
                 <div class="panel-body">
-                    <form role="form" id="payment-form">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
@@ -700,7 +763,7 @@
                                         <input 
                                             type="tel"
                                             class="form-control"
-                                            name="cardNumber"
+                                            id="accoutNum"
                                             placeholder="-(하이픈) 제거후 입력"
                                             autocomplete="cc-number"
                                             required autofocus 
@@ -718,7 +781,7 @@
                                     <input 
                                         type="text" 
                                         class="form-control" 
-                                        name="cardExpiry"
+                                        id="accountName"
                                         placeholder="홍길동"
                                         autocomplete="cc-exp"
                                         required 
@@ -729,14 +792,14 @@
                             <div class="col-xs-5 col-md-5 pull-right">
                                 <div class="form-group">
                                     <label for="cardCVC">잔여캐시</label>
-                                    <input 
-                                        type="tel" 
+                                    <div
+                                      
                                         class="form-control"
-                                        name="cardCVC"
-                                        placeholder="잔여캐시"
-                                        autocomplete="cc-csc"
-                                        required
-                                    />
+                                        
+                                        
+                                        
+                                   
+                                    ></div>
                                       <input type="hidden" id="userId">
                                     
                                 </div>
@@ -746,7 +809,7 @@
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="couponCode">환전금액</label>
-                                    <input style="width: 300px" type="text" class="form-control" name="couponCode"/>
+                                    <input style="width: 300px" type="text" class="form-control" id="returnMoney"/>
                               		<input type="hidden" id="userId">
                               		
                                 </div>
@@ -755,8 +818,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <center>
-                                <button style="width:150px" class="btn btn-success btn-lg btn-block" type="submit">환전</button>
-                            	</center>
+ 				<input type="button" class="btn btn-success" value="환전하기" onclick="returnCash();"/>                            	</center>
                             </div>
                         </div>
                         <div class="row" style="display:none;">
@@ -764,7 +826,6 @@
                                 <p class="payment-errors"></p>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div> 
 			   
