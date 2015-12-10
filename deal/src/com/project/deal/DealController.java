@@ -113,10 +113,9 @@ public class DealController {
 				
 				
 				if(g.getDealmonth()==n){
-					System.out.println("dd");
-					System.out.println(g.getAvgprice());
+
 					graph[n]=g.getAvgprice();
-					System.out.println(graph[n]);
+	
 					/*System.out.println("dd");
 					graph[n]=g.getAvgprice();
 					System.out.println(graph[n]);*/
