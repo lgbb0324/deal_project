@@ -23,6 +23,10 @@ public class CategoryController {
 	public ModelAndView manCloth() throws Exception {
 		String msg = "manCloth";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 1);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		
 		return mav;
@@ -33,10 +37,11 @@ public class CategoryController {
 		String msg = "womanCloth";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
 		 Map<String, Object> map = new HashMap<String, Object>();
-		 map.put("category1", 2);
+		 map.put("category2", 2);
 		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
-		mav.addObject("CategoryDealList", categoryList);
+		
 		return mav;
 	}
 	
@@ -44,6 +49,10 @@ public class CategoryController {
 	public ModelAndView childCloth() throws Exception {
 		String msg = "childCloth";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 3);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -52,6 +61,10 @@ public class CategoryController {
 	public ModelAndView accessaryCloth() throws Exception {
 		String msg = "accessaryCloth";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 4);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -60,6 +73,10 @@ public class CategoryController {
 	public ModelAndView EtcCloth() throws Exception {
 		String msg = "EtcCloth";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 5);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -68,6 +85,10 @@ public class CategoryController {
 	public ModelAndView skinBeauty() throws Exception {
 		String msg = "skinBeauty";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 6);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -76,6 +97,10 @@ public class CategoryController {
 	public ModelAndView makeupBeauty() throws Exception {
 		String msg = "makeupBeauty";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 7);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -84,6 +109,10 @@ public class CategoryController {
 	public ModelAndView hairBeauty() throws Exception {
 		String msg = "hairBeauty";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 8);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -92,6 +121,10 @@ public class CategoryController {
 	public ModelAndView bodyBeauty() throws Exception {
 		String msg = "bodyBeauty";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 9);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -100,6 +133,10 @@ public class CategoryController {
 	public ModelAndView perfumeBeauty() throws Exception {
 		String msg = "perfumeBeauty";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 10);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -108,6 +145,10 @@ public class CategoryController {
 	public ModelAndView farmGrocery() throws Exception {
 		String msg = "farmGrocery";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 11);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -116,6 +157,10 @@ public class CategoryController {
 	public ModelAndView processedGrocery() throws Exception {
 		String msg = "processedGrocery";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 12);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -124,6 +169,10 @@ public class CategoryController {
 	public ModelAndView healthGrocery() throws Exception {
 		String msg = "healthGrocery";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 13);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -132,6 +181,10 @@ public class CategoryController {
 	public ModelAndView childGrocery() throws Exception {
 		String msg = "childGrocery";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 14);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -140,6 +193,10 @@ public class CategoryController {
 	public ModelAndView waterGrocery() throws Exception {
 		String msg = "waterGrocery";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 15);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -148,6 +205,10 @@ public class CategoryController {
 	public ModelAndView cottonFurniture() throws Exception {
 		String msg = "cottonFurniture";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 16);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -156,6 +217,10 @@ public class CategoryController {
 	public ModelAndView tableFurniture() throws Exception {
 		String msg = "tableFurniture";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 17);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -164,6 +229,10 @@ public class CategoryController {
 	public ModelAndView interiorFurniture() throws Exception {
 		String msg = "interiorFurniture";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 18);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -172,6 +241,10 @@ public class CategoryController {
 	public ModelAndView normalFurniture() throws Exception {
 		String msg = "normalFurniture";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 19);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -180,6 +253,10 @@ public class CategoryController {
 	public ModelAndView kitchenFurniture() throws Exception {
 		String msg = "kitchenFurniture";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 20);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -188,6 +265,10 @@ public class CategoryController {
 	public ModelAndView sportsLeisure() throws Exception {
 		String msg = "sportsLeisure";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 21);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -196,6 +277,10 @@ public class CategoryController {
 	public ModelAndView outdoorLeisure() throws Exception {
 		String msg = "outdoorLeisure";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 22);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -204,6 +289,10 @@ public class CategoryController {
 	public ModelAndView campingLeisure() throws Exception {
 		String msg = "campingLeisure";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 23);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -212,6 +301,10 @@ public class CategoryController {
 	public ModelAndView carLeisure() throws Exception {
 		String msg = "carLeisure";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 24);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -220,6 +313,10 @@ public class CategoryController {
 	public ModelAndView normalLeisure() throws Exception {
 		String msg = "normalLeisure";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 25);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -228,6 +325,10 @@ public class CategoryController {
 	public ModelAndView cameraDigital() throws Exception {
 		String msg = "cameraDigital";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 26);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -236,6 +337,10 @@ public class CategoryController {
 	public ModelAndView kitchenDigital() throws Exception {
 		String msg = "kitchenDigital";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 27);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -244,6 +349,10 @@ public class CategoryController {
 	public ModelAndView lifeDigital() throws Exception {
 		String msg = "lifeDigital";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 28);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -252,6 +361,10 @@ public class CategoryController {
 	public ModelAndView pcDigital() throws Exception {
 		String msg = "pcDigital";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 29);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -260,6 +373,10 @@ public class CategoryController {
 	public ModelAndView phoneDigital() throws Exception {
 		String msg = "phoneDigital";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 30);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -268,6 +385,10 @@ public class CategoryController {
 	public ModelAndView normalBook() throws Exception {
 		String msg = "normalBook";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 31);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -276,6 +397,10 @@ public class CategoryController {
 	public ModelAndView ticketBook() throws Exception {
 		String msg = "ticketBook";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 32);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -284,6 +409,10 @@ public class CategoryController {
 	public ModelAndView travelBook() throws Exception {
 		String msg = "travelBook";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 33);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -292,6 +421,10 @@ public class CategoryController {
 	public ModelAndView animalBook() throws Exception {
 		String msg = "animalBook";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 34);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
@@ -300,6 +433,10 @@ public class CategoryController {
 	public ModelAndView hobbyBook() throws Exception {
 		String msg = "hobbyBook";
 		ModelAndView mav=new ModelAndView(".category.categoryForm");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("category2", 35);
+		 List<Deal> categoryList = service.listCategoryDeal(map);
+		 mav.addObject("CategoryDealList", categoryList);
 		mav.addObject("message",msg);
 		return mav;
 	}
