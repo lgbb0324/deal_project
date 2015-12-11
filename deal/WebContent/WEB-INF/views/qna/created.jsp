@@ -9,6 +9,9 @@
     <link href="<%=cp%>/res/defaultTemplate/css/editor/external/google-code-prettify/prettify.css" rel="stylesheet">
     <link href="<%=cp%>/res/defaultTemplate/css/editor/index.css" rel="stylesheet">
  
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+ 
  <style>
  .form-control {
     border-radius: 10px;
@@ -42,7 +45,7 @@
         return false;
     }
 	 str=f.content.value ;
-	 alert(str);
+	// alert(str);
 
 	var mode="${mode}";
 	if(mode == "created")
