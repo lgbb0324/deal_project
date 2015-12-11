@@ -182,6 +182,7 @@ public class QnaController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<Qna> list = service.faqList(map);
+		
 		ModelAndView mav = new ModelAndView(".faq.list");
 		mav.addObject("list", list);
 		
