@@ -66,11 +66,10 @@ DELETE FROM qna WHERE num = #{num}
 </delete>
 
 <select id="rankHitCount" resultType="com.project.qna.Qna" parameterType="map">
-select tb.* from(
-	select q.num, q.subject,qr.content,hitCount 
-	from qna_reply qr 
-	right join qna q on q.num=qr.num 
-	LIMIT 0, 10
-)tb order by hitCount DESC
+select q.num, q.subject,qr.content,hitCount 
+from qna_reply qr 
+join qna q on q.num=qr.num
+order by hitCount DESC
+LIMIT 0, 10
 </select>
 </mapper>
