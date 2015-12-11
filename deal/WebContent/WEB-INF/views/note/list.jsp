@@ -26,23 +26,61 @@
 	 
 	 receiveUserId=id;
 	 $('#contact').modal('show');
-		$("#contact").click(function(){
-			
+	
 			var s = receiveUserId;
 			$("#idWrite").change();
 			$("#idWrite").text(s); 
-			
-			});
 		
-		$(".ui-dialog-titlebar-close").click(function(){
+		
+	/* 	$(".ui-dialog-titlebar-close").click(function(){
 			
 			$("#idWrite").text("");
 				
-		});
+		}); */
 		
 	
  }
  
+ function sendLetter() {
+		var content=$.trim($("#letterContent").val());
+		
+		
+		
+		 if(! content){
+			alert("내용을 입력하세요!!!!!!!!!!!");
+			$("#letterContent").focus();
+			return false;
+		 }
+		 
+		 var url="<%=cp%>/letter/send.do";
+		 var params="receiveUserId="+receiveUserId+"&content="+content;
+
+			 $.ajax({
+			    	type:"POST",
+			    	url:url,
+			    	data:params,
+			    	dataType:"json",
+			    	success:function(data){
+			        	var isLogin=data.isLogin;
+						if(isLogin=="false") {
+							location.href="<%=cp%>/member/member.do";
+							return false;
+						}
+						
+						
+						// var state=data.state;
+			    		$("#letterContent").val("");
+						$("#idWrite").text("");
+						// 여기에 받는 유저아이디를 받아야한다.?
+			    		alert("메시지를 전송 했습니다.");
+						 $('#contact').modal('hide');
+
+			    	},
+			    	error:function(e) {
+			    		alert(e.responseText);
+			    	}
+			    });
+	}
  
 	
  function readForm(sendUserId ,sendDay, readNum, content){
@@ -57,7 +95,7 @@
 	 	// 읽은 상태로 만들기 Ajax 처리
 	 	var url="<%=cp%>/letter/updateIdentify.do";
 		var num=readNum;
-	 	alert(num);
+	 	
 		
 		$.post(url, {num:num}, function(data){
 			$("#idWrite2").text(sendUserId); 
@@ -75,7 +113,7 @@
 			
 			$(".btn btn-success").click(function(){
 				 
-				 $('#ModalArticle').modal('close');
+				 $('#ModalArticle').modal('hide');
 			 });
 		
 			});
@@ -98,7 +136,45 @@ Bootstrap Line Tabs by @keenthemes
 A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
 Licensed under MIT
 -->
-                      <!--받은 쪽지 확인창-->
+<!-- 쪽지 보내기창 -->
+<div class="modal fade" id="contact" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="panel panel-primary">
+                     <div class="panel-heading">
+                        <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> 쪽지보내기</h4>
+                    </div>
+                    <div class="modal-body" style="padding: 5px;">
+                          <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                 <div class="col-lg-4 col-md-4 col-sm-4" style="padding-bottom: 10px; margin-top: 10px">
+                            	 <div> 받는사람 </div> 
+                                </div> 
+                            
+                                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-bottom: 10px;">
+                            	 <div style="margin-right: 20px;" class="form-control" id="idWrite">  </div> 
+                                </div>
+                                	</div>
+                              
+                                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
+                                    <div style="float: right" class="form-control" id="sendDay">보내는 날짜 : </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <textarea style="resize:vertical;" class="form-control" placeholder="메세지.." rows="6" id="letterContent"></textarea>
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="panel-footer" style="margin-bottom:-14px;">
+                            <input type="submit" class="btn btn-success" value="전송" onclick="sendLetter();"/>
+                            <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- 쪽지보내기창 -->
+
+  <!--받은 쪽지 확인창-->
                                <div class="modal fade" id="ModalArticle"  role="dialog" aria-labelledby="receiveLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="panel panel-primary">
@@ -133,13 +209,18 @@ Licensed under MIT
                             </div>
                         </div>  
                         <div class="panel-footer" style="margin-bottom:-14px;">
-                            <input type="submit" class="btn btn-success" value="답장" onclick="noteForm('${dto.sendUserId}');"/>
+                            <input class="btn btn-success" value="답장" onclick="noteForm('${dto.sendUserId}');"/>
                             <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">닫기</button>
                         </div>
                     </div>
                 </div>
             </div>
             <!--  받은 쪽지 확인 종료 -->
+
+
+
+
+
 
 
 

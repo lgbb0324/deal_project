@@ -40,7 +40,7 @@
  */   
 
    // 쪽지보내기
-function sendLetter() {
+<%-- function sendLetter() {
 	var content=$.trim($("#letterContent").val());
 	
 	
@@ -73,7 +73,7 @@ function sendLetter() {
 		    		alert(e.responseText);
 		    	}
 		    });
-}
+} --%>
    
 
 </script>
@@ -105,7 +105,7 @@ function sendLetter() {
    </div>
 
 <!--  쪽지 보내기 -->
-<div class="modal fade" id="contact" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="contact" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="panel panel-primary">
                      <div class="panel-heading">
@@ -139,7 +139,7 @@ function sendLetter() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!--  임시 쪽지 종료 -->
 <!--  쪽지 보내기 제이쿼리 모달창 종료 -->
 
