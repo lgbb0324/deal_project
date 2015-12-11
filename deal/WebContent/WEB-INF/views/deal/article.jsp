@@ -140,7 +140,7 @@
                                         <br />
 
                                         <div class="">
-                                            <h2>Available Colors</h2>
+                                            <h2>딜 참여자 목록</h2>
                                             <ul class="list-inline prod_color">
                                              <c:forEach  var="dto" items="${dealInPeople}">   
                                                 <li>
@@ -150,12 +150,12 @@
                         							</a>
                                                 </li>
                                                 </c:forEach>
-                                                <li>
+                                                <!-- <li>
                                                     <p>Blue</p>
                                                     <a class="pull-left" href="#">
                              <img class="img-circle" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s46" alt="User Image" /> 
                         </a>
-                                                </li>
+                                                </li> -->
 
                                             </ul>
                                         </div>
