@@ -1,5 +1,8 @@
 package com.project.member;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,6 +62,17 @@ public class MemberServiceImpl implements MemberService{
 			System.out.println(e.toString());
 		}
 		return dto;//값이 안들어감...
+	}
+
+	@Override
+	public List<Member> listBusiness(Map<String, Object> map) {
+		List<Member> list=null;
+		try {
+			list=dao.getListData("member.listBusiness",map);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return list;
 	}
 	
 	

@@ -37,5 +37,12 @@
 SELECT * FROM photo WHERE userID IN (select userId from dealjoin WHERE dealNum=#{num})
 	</select>
 
-	
+
+	<!-- 가격흥정  -->
+	<select id="listBusiness" resultType="com.project.member.Member" parameterType="map">
+	SELECT m.userId,userName,tel,email,addr,businessNum, imageFilename FROM member m
+	JOIN photo p ON p.userId=m.userId
+	WHERE businessNum NOT IN('0')
+	</select>
+		
 </mapper>

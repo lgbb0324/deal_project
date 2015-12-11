@@ -75,7 +75,7 @@
 	            <!-- subject input-->
 	            <div class="form-group">
 	              <label class="col-md-2 control-label" for="name">제목</label>
-	              <div class="col-md-10">
+	              <div class="col-md-10 col-sm-10 col-xs-10">
 	                <input id="subject" name="subject" type="text" placeholder="제목을 입력하세요." class="form-control">
 	              </div>
 	            </div>
@@ -83,7 +83,7 @@
 	            <!-- userName input-->
 	            <div class="form-group">
 	              <label class="col-md-2 control-label" for="email">작성자 이름</label>
-	              <div class="col-md-10">
+	              <div class="col-md-10 col-sm-9 col-xs-9">
 	                <input id="userName" name="userName" type="text" placeholder="이름을 입력하세요." class="form-control">
 	              </div>
 	            </div>
@@ -91,7 +91,7 @@
 	            <!-- Message body -->
 	            <div class="form-group">
 	              <label class="col-md-2 control-label" for="message">Your message</label>
-	              <div class="col-md-10">
+	              <div class="col-md-10 col-sm-9 col-xs-9">
 	                <textarea class="form-control" id="content" name="content" placeholder="내용을 입력해 주세요" rows="10"></textarea>
 	              </div>
 	            </div>

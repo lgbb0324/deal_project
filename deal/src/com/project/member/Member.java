@@ -2,7 +2,7 @@ package com.project.member;
 
 public class Member {
 	
-	private String userId,userPwd,userName,birth,tel,email,addr,created_date,modify_date;
+	private String userId,userPwd,userName,birth,tel,email,addr,created_date,modify_date ,imageFilename;
 	private int  businessNum,success_money,success_count,badReport,cardNum,cardPwd;
 	public String getUserId() {
 		return userId;
@@ -93,6 +93,12 @@ public class Member {
 	}
 	public void setCardPwd(int cardPwd) {
 		this.cardPwd = cardPwd;
+	}
+	public String getImageFilename() {
+		return imageFilename;
+	}
+	public void setImageFilename(String imageFilename) {
+		this.imageFilename = imageFilename;
 	}
 	
 	
